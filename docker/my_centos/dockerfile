@@ -6,6 +6,7 @@ RUN yum install -y man \
     && yum install -y unzip \
     && yum install -y initscripts \
     && yum install -y git \
+    && yum install -y ctags \
     && yum install -y dos2unix \
     && yum install -y python-devel \
     && yum install -y gcc-c++ \
