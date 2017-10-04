@@ -1,0 +1,118 @@
+execute pathogen#infect()
+syntax on
+filetype plugin indent on
+let mapleader = ";"
+set number 
+set showmatch
+set encoding=utf-8
+set fencs=utf-8,gb2312,gbk     " Sets the default encoding
+set hlsearch
+
+set guioptions-=r
+set guioptions-=L
+set guioptions-=b
+set showtabline=0
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"=> When vimrc is edited, reload it
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd! BufWritePost ~/.vimrc source ~/.vimrc
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"=> color and theme
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set background=dark
+colorscheme molokai
+set guifont=Monaco:h13
+let g:solarized_termcolors=256
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => move between windows
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <leader>hw <C-W>h
+map <leader>lw <C-W>l
+map <leader>kw <C-W>k
+map <leader>jw <C-W>j
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => PEP8 style
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+au BufNewFile,BufRead *.py
+\ set tabstop=4
+\ set softtabstop=4
+\ set shiftwidth=4
+\ set textwidth=79
+\ set expandtab
+\ set autoindent
+\ set fileformat=unix
+\ set colorcolumn=80
+" "au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+ nmap <F8> :Autopep8<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Nerd Tree
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <leader>fl :NERDTreeToggle<CR>
+let g:NERDTreeWinPos = "right"
+let NERDTreeShowHidden = 1
+" 忽略以下文件的显示
+let NERDTreeIgnore=['\.pyc','\~$','\.swp','__pycache__','\.git$','\.DS_Store']
+"let g:NERDTreeWinSize=50
+
+""""""""""""""""""""""""""""""
+" => bufExplorer plugin
+""""""""""""""""""""""""""""""
+map <leader>bf :BufExplorer<cr>
+let g:bufExplorerDefaultHelp=0
+let g:bufExplorerShowRelativePath=1
+let g:bufExplorerFindActive=1
+let g:bufExplorerSortBy='name'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => TagBar
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <leader>tl :TagbarToggle<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Vim-Airline
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Always show statusline
+set laststatus=2
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => python with virtualenv support
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+py << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+  project_base_dir = os.environ['VIRTUAL_ENV']
+  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  execfile(activate_this, dict(__file__=activate_this))
+EOF
+
+""""""""""""""""""""""""""""""
+" => YCM plugin
+""""""""""""""""""""""""""""""
+let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
+let g:ycm_seed_identifiers_with_syntax=1
+" 禁止缓存匹配项,每次都重新生成匹配项
+let g:ycm_cache_omnifunc=0
+let g:ycm_confirm_extra_conf=0
+let g:ycm_key_invoke_completion = '<C-a>'
+set completeopt=longest,menu
+let g:ycm_min_num_of_chars_for_completion=2
+let g:ycm_seed_identifiers_with_syntax=1
+let g:ycm_complete_in_comments = 1
+let g:ycm_complete_in_strings = 1
+let g:ycm_collect_identifiers_from_comments_and_strings = 0
+nnoremap <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+"inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
+
+inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
+inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
+inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" :
+"\<PageDown>"
+inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" :
+"\<PageUp>"

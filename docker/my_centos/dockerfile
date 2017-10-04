@@ -1,0 +1,84 @@
+FROM centos:latest
+ENV container docker
+
+RUN yum update -y \
+        && yum upgrade -y \
+        && yum install -y man \
+        && yum install -y openssh-server \
+        && yum install -y zip \
+        && yum install -y unzip \
+        && yum install -y initscripts \
+        && yum install -y git \
+        && yum install -y wget \
+        && yum install -y ctags \
+        && yum install -y dos2unix \
+        && yum install -y gcc \
+        && yum install -y gcc-c++ \
+        && yum install -y make \
+        && yum install -y cmake \
+        && yum install -y python-devel
+
+RUN wget --no-check-certificate -P /opt/ http://pypi.python.org/packages/source/s/setuptools/setuptools-0.6c11.tar.gz \
+    && tar xzvf /opt/setuptools-0.6c11.tar.gz -C /opt \
+    && cd /opt/setuptools-0.6c11 \
+    && python setup.py install \
+    && rm -rf /opt/setuptools* \    
+    && wget --no-check-certificate -P /opt/ https://pypi.python.org/packages/source/p/pip/pip-1.3.1.tar.gz \
+        && tar -xzvf /opt/pip-1.3.1.tar.gz -C /opt \
+        && cd /opt/pip-1.3.1 \
+        && python setup.py install \
+#&& rm -rf /opt/pip* \
+                && pip install autopep8
+
+# install vim8
+                COPY vimrc /root/.vimrc
+
+#RUN wget https://github.com/vim/vim/archive/master.zip /opt/vim8.zip
+COPY vim8.zip /opt/vim8.zip
+RUN rpm -qa | grep vim | xargs -I{} rpm -e {} \
+    && yum install -y ncurses-devel \
+    && unzip /opt/vim8.zip -d /opt \
+    && cd /opt/vim-master/src \
+    && ./configure  --with-features=huge -enable-pythoninterp  --with-python-config-dir=/usr/lib64/python2.7/config --enable-cscope --enable-multibyte\
+    && make \
+    && make install \
+    && mkdir -p /root/.vim/{autoload,bundle} \
+    && dos2unix /root/.vimrc \
+    && rm -rf /usr/bin/vi \
+    && ln -s /usr/local/bin/vim /usr/bin/vi \
+    && rm -rf /opt/vim* \
+    && curl -LSso /root/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim 
+
+# install YCM
+#RUN cd /root/.vim/bundle/  \
+#&& git clone --depth 1 https://github.com/Valloric/YouCompleteMe  \
+#&& git submodule update --init --recursive \
+COPY YouCompleteMe /root/.vim/bundle/YouCompleteMe
+RUN /root/.vim/bundle/YouCompleteMe/install.py \
+    && cp root/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py root/ 
+
+RUN cd /root/.vim/bundle/ \
+    && git clone --depth 1 https://github.com/scrooloose/nerdtree \
+    && git clone --depth 1 https://github.com/Yggdroot/indentLine \
+    && git clone --depth 1 https://github.com/tell-k/vim-autopep8 \
+    && git clone --depth 1 https://github.com/jiangmiao/auto-pairs \
+    && git clone --depth 1 https://github.com/jlanzarotta/bufexplorer \
+    && git clone --depth 1 https://github.com/plasticboy/vim-markdown \
+    && git clone --depth 1 https://github.com/ekalinin/Dockerfile.vim \
+    && git clone --depth 1 https://github.com/majutsushi/tagbar \
+    && git clone --depth 1 https://github.com/scrooloose/syntastic \
+    && git clone --depth 1 https://github.com/vim-scripts/taglist.vim \
+    && git clone --depth 1 https://github.com/bling/vim-airline \
+    && git clone --depth 1 https://github.com/vim-airline/vim-airline-themes \
+    && git clone --depth 1 https://github.com/tpope/vim-surround \
+    && git clone --depth 1 https://github.com/vim-scripts/indentpython.vim \
+    && git clone --depth 1 https://github.com/tpope/vim-fugitive
+
+#RUN yum remove -y wget
+#RUN yum remove -y gcc
+#RUN yum remove -y gcc-c++
+#RUN yum remove -y make
+#RUN yum remove -y cmake
+#RUN rm -rf /opt/*
+
+CMD ["/usr/sbin/init"]
