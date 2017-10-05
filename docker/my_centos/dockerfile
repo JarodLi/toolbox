@@ -22,16 +22,12 @@ RUN tar xzvf /opt/setuptools-0.6c11.tar.gz -C /opt \
     && cd /opt/pip-1.3.1 \
     && python setup.py install \
     && pip install autopep8
-    #&& rm -rf opt/*
 
 # install vim8
 RUN mkdir -p /root/.vim/{autoload,bundle} 
-COPY vimrc /root/.vimrc
 ADD YouCompleteMe.tar.gz /root/.vim/bundle/
 ADD vim8.tar.gz /opt/
-RUN dos2unix /root/.vimrc \
-    && cd /opt/vim-master/src \
-    && ./configure  --with-features=huge -enable-pythoninterp  --with-python-config-dir=/usr/lib64/python2.7/config --enable-cscope --enable-multibyte\
+RUN /opt/vim-master/src/configure  --with-features=huge -enable-pythoninterp  --with-python-config-dir=/usr/lib64/python2.7/config --enable-cscope --enable-multibyte \
     && make \
     && make install \
     && rm -rf /usr/bin/vi \
@@ -39,7 +35,6 @@ RUN dos2unix /root/.vimrc \
     && curl -LSso /root/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim \
     && /root/.vim/bundle/YouCompleteMe/install.py \
     && cp /root/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py /root/ \
-    #&& rm -rf /opt/vim* 
     && cd /root/.vim/bundle/ \
     && git clone --depth 1 https://github.com/scrooloose/nerdtree \
     && git clone --depth 1 https://github.com/Yggdroot/indentLine \
@@ -61,5 +56,8 @@ RUN dos2unix /root/.vimrc \
     && git clone --depth 1 https://github.com/bronson/vim-trailing-whitespace \
     && git clone --depth 1 https://github.com/Glench/Vim-Jinja2-Syntax \
     && git clone --depth 1 https://github.com/elzr/vim-json
+
+COPY vimrc /root/.vimrc
+RUN dos2unix /root/.vimrc \
 
 CMD ["/usr/sbin/init"]
