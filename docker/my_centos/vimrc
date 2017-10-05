@@ -38,15 +38,15 @@ map <leader>jw <C-W>j
 " => PEP8 style
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 au BufNewFile,BufRead *.py
-\ set tabstop=4
-\ set softtabstop=4
-\ set shiftwidth=4
-\ set textwidth=79
-\ set expandtab
-\ set autoindent
-\ set fileformat=unix
+\ set tabstop=4 |
+\ set softtabstop=4 |
+\ set shiftwidth=4 |
+\ set textwidth=79 |
+\ set expandtab |
+\ set autoindent |
+\ set fileformat=unix |
 \ set colorcolumn=80
-" "au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match Error /\s\+$/
  nmap <F8> :Autopep8<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
