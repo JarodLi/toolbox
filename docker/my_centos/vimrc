@@ -2,12 +2,12 @@ execute pathogen#infect()
 syntax on
 filetype plugin indent on
 let mapleader = ";"
-set number
+set number 
 set showmatch
 set encoding=utf-8
 set fencs=utf-8,gb2312,gbk     " Sets the default encoding
 set hlsearch
-"set vb
+set vb
 set nocompatible
 set backspace=indent,eol,start
 set scrolloff=5  "在光标接近底端或顶端时,自动下滚或上滚. 
@@ -25,7 +25,7 @@ autocmd! BufWritePost ~/.vimrc source ~/.vimrc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "=> color and theme
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"set background=dark
+set background=dark
 colorscheme candy
 "colorscheme molokai
 set guifont=Monaco:h12:b
@@ -42,7 +42,7 @@ map <leader>jw <C-W>j
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => style
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-au BufNewFile,BufRead *.py
+au BufNewFile,BufRead *.py,*.go
 \ set tabstop=4 |
 \ set softtabstop=4 |
 \ set shiftwidth=4 |
@@ -53,11 +53,6 @@ au BufNewFile,BufRead *.py
 \ set colorcolumn=0
 "\ set colorcolumn=120
 "
-au BufNewFile,BufRead *.sh
-\ set tabstop=4 |
-\ set softtabstop=4 |
-\ set shiftwidth=4 
-
 au BufNewFile,BufRead *.yml
 \ set tabstop=2 |
 \ set softtabstop=2 |
@@ -105,14 +100,14 @@ let g:move_key_modifier = 'C'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => python with virtualenv support
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-py << EOF
-import os
-import sys
-if 'VIRTUAL_ENV' in os.environ:
-  project_base_dir = os.environ['VIRTUAL_ENV']
-  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-  execfile(activate_this, dict(__file__=activate_this))
-EOF
+"py << EOF
+"import os
+"import sys
+"if 'VIRTUAL_ENV' in os.environ:
+  "project_base_dir = os.environ['VIRTUAL_ENV']
+  "activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  "execfile(activate_this, dict(__file__=activate_this))
+"EOF
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => python-mode
@@ -126,6 +121,7 @@ map <leader>doc :Pydocstring<cr>
 " https://github.com/python-mode/python-mode/blob/develop/doc/pymode.txt
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:pymode_python = 'python'
 map <leader>lint :PymodeLint<cr>
 map <leader>auto :PymodeLintAuto<cr>
 let g:pymode = 1
@@ -164,7 +160,9 @@ let g:pymode_syntax_docstrings = g:pymode_syntax_all
 """"""""""""""""""""""""""""""
 " => YCM plugin
 """"""""""""""""""""""""""""""
+let g:ycm_auto_trigger = 1
 let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
+set tags+=./tags,/usr/include/tags,/usr/local/go/src/tags,/usr/local/lib/python3.7/tags
 let g:ycm_seed_identifiers_with_syntax=1
 " 禁止缓存匹配项,每次都重新生成匹配项
 let g:ycm_cache_omnifunc=0
@@ -176,7 +174,18 @@ let g:ycm_seed_identifiers_with_syntax=1
 let g:ycm_complete_in_comments = 1
 let g:ycm_complete_in_strings = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 0
-nnoremap <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+let g:ycm_semantic_triggers =  {
+  \   'c': ['->', '.'],
+  \   'objc': ['->', '.', 're!\[[_a-zA-Z]+\w*\s', 're!^\s*[^\W\d]\w*\s',
+  \            're!\[.*\]\s'],
+  \   'ocaml': ['.', '#'],
+  \   'cpp,cuda,objcpp': ['->', '.', '::'],
+  \   'perl': ['->'],
+  \   'php': ['->', '::'],
+  \   'cs,d,elixir,go,groovy,java,javascript,julia,perl6,python,scala,typescript,vb': ['.'],
+  \   'ruby,rust': ['.', '::'],
+  \   'lua': ['.', ':'],
+  \   'erlang': [':'], }
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 "inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
 
@@ -187,3 +196,48 @@ inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" :
 inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" :
 "\<PageUp>"
 set shortmess+=c
+
+""""""""""""""""""""""""""""""
+" => vim-go plugin
+""""""""""""""""""""""""""""""
+"let g:go_disable_autoinstall = 0
+"let g:go_highlight_functions = 1
+"let g:go_highlight_methods = 1
+"let g:go_highlight_structs = 1
+"let g:go_highlight_operators = 1
+"let g:go_highlight_build_constraints = 1
+
+""""""""""""""""""""""""""""""
+" => gotags plugin
+""""""""""""""""""""""""""""""
+"let g:tagbar_type_go = {
+"		\ 'ctagstype' : 'go',
+"		\ 'kinds'     : [
+"			\ 'p:package',
+"			\ 'i:imports:1',
+"			\ 'c:constants',
+"			\ 'v:variables',
+"			\ 't:types',
+"			\ 'n:interfaces',
+"			\ 'w:fields',
+"			\ 'e:embedded',
+"			\ 'm:methods',
+"			\ 'r:constructor',
+"			\ 'f:functions' ],
+"		\ 'sro' : '.',
+"		\ 'kind2scope' : {
+"			\ 't' : 'ctype',
+"			\ 'n' : 'ntype' },
+"			\ 'scope2kind' : {
+"			\ 'ctype' : 't',
+"			\ 'ntype' : 'n' },
+"		\ 'ctagsbin'  : 'gotags',
+"		\ 'ctagsargs' : '-sort -silent' }
+
+
+""""""""""""""""""""""""""""""
+" => gopls plugin
+""""""""""""""""""""""""""""""
+"let g:go_def_mode='gopls'
+
+" autocmd BufWritePre *.go :Fmt
