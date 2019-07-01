@@ -121,7 +121,7 @@ map <leader>doc :Pydocstring<cr>
 " https://github.com/python-mode/python-mode/blob/develop/doc/pymode.txt
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:pymode_python = 'python'
+let g:pymode_python = 'python3'
 map <leader>lint :PymodeLint<cr>
 map <leader>auto :PymodeLintAuto<cr>
 let g:pymode = 1
