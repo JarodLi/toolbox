@@ -1,67 +1,163 @@
 FROM centos:latest
 ENV container docker
 
-RUN yum install -y man \
-    && yum install -y openssh-server \
+RUN yum install -y wget \
+    && yum install -y make \
+    && yum install -y gcc-c++\
+    && yum install -y zlib-devel \
+    && yum install -y perl \
+    && yum install -y libffi-devel \
     && yum install -y unzip \
-    && yum install -y initscripts \
+    && yum install -y dos2unix \
+    && yum install -y tree \
+    && yum install -y ncurses-devel \
+    && yum install -y cmake \
     && yum install -y git \
     && yum install -y ctags \
-    && yum install -y dos2unix \
     && yum install -y python-devel \
-    && yum install -y gcc-c++ \
-    && yum install -y make \
-    && yum install -y cmake \ 
-    && yum install -y ncurses-devel
+    && yum install -y man \
+    && yum install -y openssh-server \
+    && yum install -y openssh \
+    && yum install -y unzip \
+    && yum install -y initscripts \
+    && yum install -y lsof \
+    && yum install -y shadow-utils
 
-# install vim8
-RUN mkdir -p /root/.vim/{autoload,bundle} 
-ADD YouCompleteMe.tar.gz /root/.vim/bundle/
-ADD vim8.tar.gz /opt/
-RUN cd /opt/vim-master/src/ \
-    && ./configure --with-features=huge -enable-pythoninterp  --with-python-config-dir=/usr/lib64/python2.7/config --enable-cscope --enable-multibyte \
+# openssl 1.1.1c
+ADD openssl-1.1.1c.tar.gz /opt
+#ADD https://www.openssl.org/source/openssl-1.1.1c.tar.gz /opt
+RUN cd /opt/openssl-1.1.1c \
+    && ./config --prefix=/usr --openssldir=/usr/openssl shared zlib \
     && make \
     && make install \
+    && rm -rf /opt/openssl-1.1.1c*
+
+# python 3.7.3
+ADD Python-3.7.3.tar.xz /opt
+#ADD https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tar.xz /opt
+#RUN tar xvJf /opt/Python-3.7.3.tar.xz -C /opt \
+RUN cd /opt/Python-3.7.3 \
+    && ./configure --enable-shared --prefix=/usr --with-openssl=/usr/ \
+    && make \
+    && make install \
+    && rm -rf /usr/bin/python \
+    && ln -s /usr/bin/python3 /usr/bin/python \
+    && rm -rf /opt/Python-3.7.3*
+
+# fix bug: yum not support python3
+RUN sed -i "s/\(^#.*\)python.*/\1python2/g" /usr/bin/yum \
+    && sed -i "s/\(^#.*\)python.*/\1python2/g" /usr/libexec/urlgrabber-ext-down
+
+# ldconfig
+RUN echo "/usr/lib/" > /etc/ld.so.conf.d/usr.conf \
+    && echo "/usr/lib64/" >> /etc/ld.so.conf.d/usr.conf \
+    && ldconfig
+
+# setuptools
+ADD setuptools-41.0.1.zip /opt
+#ADD https://files.pythonhosted.org/packages/1d/64/a18a487b4391a05b9c7f938b94a16d80305bf0369c6b0b9509e86165e1d3/setuptools-41.0.1.zip /opt
+RUN unzip /opt/setuptools-41.0.1.zip -d /opt \
+    && cd /opt/setuptools-41.0.1 \
+    && python setup.py install \
+    && rm -rf /opt/setuptools-41.0.1*
+
+# pip
+ADD pip-19.1.1.tar.gz /opt
+#ADD https://files.pythonhosted.org/packages/93/ab/f86b61bef7ab14909bd7ec3cd2178feb0a1c86d451bc9bccd5a1aedcde5f/pip-19.1.1.tar.gz /opt
+#RUN tar xzvf /opt/pip-19.1.1.tar.gz -C /opt \
+RUN cd /opt/pip-19.1.1 \
+    && python setup.py install \
+    && rm -rf /opt/pip-19.1.1*
+
+# paramiko
+#ADD https://files.pythonhosted.org/packages/0e/29/aa6647f283796ff1c46747ee8e69092390116cd86c7c660247ef0d56a146/paramiko-2.5.0.tar.gz /opt
+#RUN pip install /opt/paramiko-2.5.0.tar.gz \
+    #&& rm -rf /opt/paramiko-2.5.0*
+
+# cliff
+#ADD https://files.pythonhosted.org/packages/bb/3d/225750bee763d6f15edddf9fad8119e2e90a34a1941ca56ed069c9196e47/cliff-2.15.0.tar.gz /opt
+#RUN pip install /opt/cliff-2.15.0.tar.gz \
+    #&& rm -rf /opt/cliff-2.15.0
+
+RUN pip install paramiko \
+    && pip install cliff \
+    && pip install crypto \
+    && pip install ipython \ 
+    && pip install ansible
+
+# sshd
+RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N "" \
+    && ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key -N "" \
+    && ssh-keygen -t ed25519 -f /etc/ssh/ssh_host_ed25519_key -N ""
+RUN echo "root:123" | chpasswd
+
+# huawei sdk
+ADD sdk.zip /opt
+#ADD https://codeload.github.com/huaweicloud/huaweicloud-sdk-python-obs/zip/master /opt
+RUN cd /opt/huaweicloud-sdk-python-obs-master/src \
+    && python setup.py install \
+    && rm -rf /opt/huaweicloud-sdk-python-obs-master*
+
+# obsutil
+ADD obsutil_linux_amd64.tar.gz /opt
+#ADD https://obs-community.obs.cn-north-1.myhuaweicloud.com/obsutil/current/obsutil_linux_amd64.tar.gz /opt
+RUN cp /opt/obsutil_linux_amd64/obsutil /usr/bin \
+    && obsutil config -i=ak -k=sk -e=obs.cn-north-1.myhwclouds.com \
+    && rm -rf /opt/obsutil_linux_amd64*
+
+# vim8.1
+RUN mkdir -p /root/.vim/{autoload,bundle}
+ADD vim8.1.tar.gz /opt
+RUN cd /opt \
+    #&& git clone https://github.com/vim/vim.git \
+    && cd /opt/vim \
+    && ./configure --with-features=huge --enable-python3interp=dynamic --with-python-config-dir=/usr/lib/python3.7/config --enable-cscope --enable-multibyte \
+    && make \
+    && make install \
+    && rm -rf /opt/vim/.git \
     && rm -rf /usr/bin/vi \
     && ln -s /usr/local/bin/vim /usr/bin/vi \
-    && curl -LSso /root/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim \
+    && curl -LSso /root/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+
+# YCM
+ADD YouCompleteMe.tar.gz /root/.vim/bundle
+RUN cd /root/.vim/bundle/ \
+    #&& git clone --recursive https://github.com/ycm-core/YouCompleteMe \
+    && rm -rf /root/.vim/bundle/YouCompleteMe/.git \
     && /root/.vim/bundle/YouCompleteMe/install.py \
-    && cp /root/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py /root/ \
-    && cd /root/.vim/bundle/ \
-    && git clone --depth 1 https://github.com/scrooloose/nerdtree \
-    && git clone --depth 1 https://github.com/Yggdroot/indentLine \
-    && git clone --depth 1 https://github.com/tell-k/vim-autopep8 \
-    && git clone --depth 1 https://github.com/jiangmiao/auto-pairs \
-    && git clone --depth 1 https://github.com/jlanzarotta/bufexplorer \
-    && git clone --depth 1 https://github.com/plasticboy/vim-markdown \
-    && git clone --depth 1 https://github.com/ekalinin/Dockerfile.vim \
-    && git clone --depth 1 https://github.com/majutsushi/tagbar \
-    && git clone --depth 1 https://github.com/scrooloose/syntastic \
-    && git clone --depth 1 https://github.com/vim-scripts/taglist.vim \
-    && git clone --depth 1 https://github.com/bling/vim-airline \
-    && git clone --depth 1 https://github.com/vim-airline/vim-airline-themes \
-    && git clone --depth 1 https://github.com/tpope/vim-surround \
-    && git clone --depth 1 https://github.com/vim-scripts/indentpython.vim \
-    && git clone --depth 1 https://github.com/tpope/vim-fugitive \
-    && git clone --depth 1 https://github.com/flazz/vim-colorschemes \
-    && git clone --depth 1 https://github.com/altercation/vim-colors-solarized \
-    && git clone --depth 1 https://github.com/bronson/vim-trailing-whitespace \
-    && git clone --depth 1 https://github.com/Glench/Vim-Jinja2-Syntax \
-    && git clone --depth 1 https://github.com/elzr/vim-json \
-    && git clone --depth 1 https://github.com/matze/vim-move \
-    && git clone --depth 1 https://github.com/python-mode/python-mode \
-    && git clone --depth 1 https://github.com/heavenshell/vim-pydocstring
+    && cp /root/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py /root/
 
-ADD http://pypi.python.org/packages/source/s/setuptools/setuptools-0.6c11.tar.gz https://pypi.python.org/packages/source/p/pip/pip-1.3.1.tar.gz /opt/
-RUN tar xzvf /opt/setuptools-0.6c11.tar.gz -C /opt \
-    && cd /opt/setuptools-0.6c11 \ 
-    && python setup.py install \
-    && tar -xzvf /opt/pip-1.3.1.tar.gz -C /opt \
-    && cd /opt/pip-1.3.1 \
-    && python setup.py install \
-    && pip install autopep8
+# plugin
+ADD bundle.tar.gz /root/.vim/bundle
+#RUN cd /root/.vim/bundle/ \
+    #&& git clone --depth 1 https://github.com/scrooloose/nerdtree \
+    #&& git clone --depth 1 https://github.com/Yggdroot/indentLine \
+    #&& git clone --depth 1 https://github.com/tell-k/vim-autopep8 \
+    #&& git clone --depth 1 https://github.com/jiangmiao/auto-pairs \
+    #&& git clone --depth 1 https://github.com/jlanzarotta/bufexplorer \
+    #&& git clone --depth 1 https://github.com/plasticboy/vim-markdown \
+    #&& git clone --depth 1 https://github.com/ekalinin/Dockerfile.vim \
+    #&& git clone --depth 1 https://github.com/majutsushi/tagbar \
+    #&& git clone --depth 1 https://github.com/scrooloose/syntastic \
+    #&& git clone --depth 1 https://github.com/vim-scripts/taglist.vim \
+    #&& git clone --depth 1 https://github.com/bling/vim-airline \
+    #&& git clone --depth 1 https://github.com/vim-airline/vim-airline-themes \
+    #&& git clone --depth 1 https://github.com/tpope/vim-surround \
+    #&& git clone --depth 1 https://github.com/vim-scripts/indentpython.vim \
+    #&& git clone --depth 1 https://github.com/tpope/vim-fugitive \
+    #&& git clone --depth 1 https://github.com/flazz/vim-colorschemes \
+    #&& git clone --depth 1 https://github.com/altercation/vim-colors-solarized \
+    #&& git clone --depth 1 https://github.com/bronson/vim-trailing-whitespace \
+    #&& git clone --depth 1 https://github.com/Glench/Vim-Jinja2-Syntax \
+    #&& git clone --depth 1 https://github.com/elzr/vim-json \
+    #&& git clone --depth 1 https://github.com/matze/vim-move \
+    #&& git clone --recurse-submodules https://github.com/python-mode/python-mode.git \
+    #&& git clone --depth 1 https://github.com/heavenshell/vim-pydocstring
 
-COPY vimrc /root/.vimrc
-RUN dos2unix /root/.vimrc 
+# vimrc
+RUN cd /opt/ \
+    && git clone --depth 1 https://github.com/JarodLi/devops/ \
+    && cp /opt/devops/docker/my_centos/vimrc /root/.vimrc \
+    && rm -rf /opt/devops
 
 CMD ["/usr/sbin/init"]
