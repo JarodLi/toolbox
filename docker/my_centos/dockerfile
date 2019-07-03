@@ -21,7 +21,10 @@ RUN yum install -y wget \
     && yum install -y unzip \
     && yum install -y initscripts \
     && yum install -y lsof \
-    && yum install -y shadow-utils
+    && yum install -y shadow-utils \
+    && yum install -y bind-utils \
+    && yum install -y traceroute \
+    && yum install -y bash-completion
 
 # openssl 1.1.1c
 ADD openssl-1.1.1c.tar.gz /opt
@@ -83,7 +86,8 @@ RUN pip install paramiko \
     && pip install cliff \
     && pip install crypto \
     && pip install ipython \ 
-    && pip install ansible
+    && pip install ansible \
+    && pip install pycrypto
 
 # sshd
 RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N "" \
@@ -94,9 +98,11 @@ RUN echo "root:123" | chpasswd
 # huawei sdk
 ADD sdk.zip /opt
 #ADD https://codeload.github.com/huaweicloud/huaweicloud-sdk-python-obs/zip/master /opt
-RUN cd /opt/huaweicloud-sdk-python-obs-master/src \
+RUN unzip /opt/sdk.zip -d /opt \
+    && cd /opt/huaweicloud-sdk-python-obs-master/src \
     && python setup.py install \
-    && rm -rf /opt/huaweicloud-sdk-python-obs-master*
+    && rm -rf /opt/huaweicloud-sdk-python-obs-master* \
+    && rm -rf /opt/sdk.zip
 
 # obsutil
 ADD obsutil_linux_amd64.tar.gz /opt
@@ -128,7 +134,7 @@ RUN cd /root/.vim/bundle/ \
     && cp /root/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py /root/
 
 # plugin
-ADD bundle.tar.gz /root/.vim/bundle
+ADD bundle.tar.gz /root/.vim/
 #RUN cd /root/.vim/bundle/ \
     #&& git clone --depth 1 https://github.com/scrooloose/nerdtree \
     #&& git clone --depth 1 https://github.com/Yggdroot/indentLine \
@@ -160,4 +166,15 @@ RUN cd /opt/ \
     && cp /opt/devops/docker/my_centos/vimrc /root/.vimrc \
     && rm -rf /opt/devops
 
+# timezone
+ENV TimeZone=Asia/Shanghai
+RUN ln -snf /usr/share/zoneinfo/$TimeZone /etc/localtime \
+    && echo $TimeZone > /etc/timezone 
+
+# profile
+ADD profile.my /opt
+RUN cat /opt/profile.my >> /etc/profile \
+    && rm -rf /opt/profile.my
+
 CMD ["/usr/sbin/init"]
+
