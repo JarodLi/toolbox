@@ -38,6 +38,14 @@ map <leader>hw <C-W>h
 map <leader>lw <C-W>l
 map <leader>kw <C-W>k
 map <leader>jw <C-W>j
+map <leader>c <C-W>c
+map <leader>q <C-W>q
+map <leader>= <C-W>=
+map <leader>+ <C-W>+
+map <leader>- <C-W>-
+map <leader>< <C-W><
+map <leader>> <C-W>>
+map <leader>o <C-W>o
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => style
