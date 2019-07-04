@@ -24,7 +24,8 @@ RUN yum install -y wget \
     && yum install -y shadow-utils \
     && yum install -y bind-utils \
     && yum install -y traceroute \
-    && yum install -y bash-completion
+    && yum install -y bash-completion \
+    && yum install -y psmisc
 
 # openssl 1.1.1c
 ADD openssl-1.1.1c.tar.gz /opt
