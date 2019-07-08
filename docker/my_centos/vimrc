@@ -50,7 +50,7 @@ map <leader>o <C-W>o
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => style
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-au BufNewFile,BufRead *.py,*.go
+au BufNewFile,BufRead *.py,*.go,Dockerfile*,dockerfile*  
 \ set tabstop=4 |
 \ set softtabstop=4 |
 \ set shiftwidth=4 |
