@@ -166,6 +166,13 @@ let g:pymode_syntax_highlight_exceptions = g:pymode_syntax_all
 let g:pymode_syntax_docstrings = g:pymode_syntax_all
 
 """"""""""""""""""""""""""""""
+" => UltriSnip plugin
+""""""""""""""""""""""""""""""
+let g:UltiSnipsExpandTrigger="<C-j>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+""""""""""""""""""""""""""""""
 " => YCM plugin
 """"""""""""""""""""""""""""""
 " 避免和snipmate tab冲突
