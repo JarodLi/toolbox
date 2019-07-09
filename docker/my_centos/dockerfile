@@ -159,7 +159,14 @@ ADD bundle.tar.gz /root/.vim/
     #&& git clone --depth 1 https://github.com/elzr/vim-json \
     #&& git clone --depth 1 https://github.com/matze/vim-move \
     #&& git clone --recurse-submodules https://github.com/python-mode/python-mode.git \
-    #&& git clone --depth 1 https://github.com/heavenshell/vim-pydocstring
+    #&& git clone --depth 1 https://github.com/heavenshell/vim-pydocstring \
+    #&& git clone https://github.com/tomtom/tlib_vim.git \
+    #&& git clone https://github.com/MarcWeber/vim-addon-mw-utils.git \
+    #&& git clone https://github.com/honza/vim-snippets.git \
+    #&& git clone https://github.com/vim-scripts/UltiSnips
+
+
+
 
 # vimrc
 RUN cd /opt/ \
