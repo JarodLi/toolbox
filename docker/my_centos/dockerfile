@@ -179,9 +179,6 @@ ENV TimeZone=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TimeZone /etc/localtime \
     && echo $TimeZone > /etc/timezone 
 
-# git config
-RUN git config credential.helper store
-
 # profile
 ADD profile.my /opt
 RUN cat /opt/profile.my >> /etc/profile \
