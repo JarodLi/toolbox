@@ -24,8 +24,7 @@ RUN yum install -y wget \
     && yum install -y shadow-utils \
     && yum install -y bind-utils \
     && yum install -y traceroute \
-    && yum install -y bash-completion \
-    && yum install -y psmisc
+    && yum install -y bash-completion
 
 # openssl 1.1.1c
 ADD openssl-1.1.1c.tar.gz /opt
@@ -35,6 +34,40 @@ RUN cd /opt/openssl-1.1.1c \
     && make \
     && make install \
     && rm -rf /opt/openssl-1.1.1c*
+
+# setuptools
+ADD setuptools-41.0.1.zip /opt
+#ADD https://files.pythonhosted.org/packages/1d/64/a18a487b4391a05b9c7f938b94a16d80305bf0369c6b0b9509e86165e1d3/setuptools-41.0.1.zip /opt
+RUN unzip /opt/setuptools-41.0.1.zip -d /opt \
+    && cd /opt/setuptools-41.0.1 \
+    && python setup.py install \
+    && rm -rf /opt/setuptools-41.0.1*
+
+# pip
+ADD pip-19.1.1.tar.gz /opt
+#ADD https://files.pythonhosted.org/packages/93/ab/f86b61bef7ab14909bd7ec3cd2178feb0a1c86d451bc9bccd5a1aedcde5f/pip-19.1.1.tar.gz /opt
+#RUN tar xzvf /opt/pip-19.1.1.tar.gz -C /opt \
+RUN cd /opt/pip-19.1.1 \
+    && python setup.py install \
+    && rm -rf /opt/pip-19.1.1*
+
+RUN pip install paramiko \
+    && pip install cliff \
+    && pip install crypto \
+    && pip install ipython \ 
+    && pip install ansible \
+    && pip install pycrypto \
+    && pip install pandas \
+    && pip install openpyxl \
+    && pip install IPy \
+    && pip install Cython \
+    && pip install PyInstaller  \
+    && pip install xlrd \
+    && pip install xlwt \
+    && pip install pycdlib \
+    && pip install jupyter \
+    && pip install notebook \
+    && pip install ipdb
 
 # python 3.7.3
 ADD Python-3.7.3.tar.xz /opt
@@ -73,22 +106,23 @@ RUN cd /opt/pip-19.1.1 \
     && python setup.py install \
     && rm -rf /opt/pip-19.1.1*
 
-# paramiko
-#ADD https://files.pythonhosted.org/packages/0e/29/aa6647f283796ff1c46747ee8e69092390116cd86c7c660247ef0d56a146/paramiko-2.5.0.tar.gz /opt
-#RUN pip install /opt/paramiko-2.5.0.tar.gz \
-    #&& rm -rf /opt/paramiko-2.5.0*
-
-# cliff
-#ADD https://files.pythonhosted.org/packages/bb/3d/225750bee763d6f15edddf9fad8119e2e90a34a1941ca56ed069c9196e47/cliff-2.15.0.tar.gz /opt
-#RUN pip install /opt/cliff-2.15.0.tar.gz \
-    #&& rm -rf /opt/cliff-2.15.0
-
 RUN pip install paramiko \
     && pip install cliff \
     && pip install crypto \
     && pip install ipython \ 
     && pip install ansible \
-    && pip install pycrypto
+    && pip install pycrypto \
+    && pip install pandas \
+    && pip install openpyxl \
+    && pip install IPy \
+    && pip install Cython \
+    && pip install PyInstaller \
+    && pip install xlrd \
+    && pip install xlwt \
+    && pip install pycdlib
+    && pip install jupyter \
+    && pip install notebook \
+    && pip install ipdb
 
 # sshd
 RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N "" \
@@ -109,7 +143,7 @@ RUN unzip /opt/sdk.zip -d /opt \
 ADD obsutil_linux_amd64.tar.gz /opt
 #ADD https://obs-community.obs.cn-north-1.myhuaweicloud.com/obsutil/current/obsutil_linux_amd64.tar.gz /opt
 RUN cp /opt/obsutil_linux_amd64/obsutil /usr/bin \
-    && obsutil config -i=ak -k=sk -e=obs.cn-north-1.myhwclouds.com \
+    && obsutil config -i=xxx -k=xxx -e=obs.cn-north-1.myhwclouds.com \
     && rm -rf /opt/obsutil_linux_amd64*
 
 # vim8.1
@@ -118,7 +152,7 @@ ADD vim8.1.tar.gz /opt
 RUN cd /opt \
     #&& git clone https://github.com/vim/vim.git \
     && cd /opt/vim \
-    && ./configure --with-features=huge --enable-python3interp=dynamic --with-python-config-dir=/usr/lib/python3.7/config --enable-cscope --enable-multibyte \
+    && ./configure --with-features=huge --enable-python3interp=dynamic  --with-python-config-dir=/usr/lib/python3.7/config --enable-cscope --enable-multibyte \
     && make \
     && make install \
     && rm -rf /opt/vim/.git \
@@ -135,6 +169,7 @@ RUN cd /root/.vim/bundle/ \
     && cp /root/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py /root/
 
 # plugin
+RUN rm -rf /root/.vim/bundle
 ADD bundle.tar.gz /root/.vim/
 #RUN cd /root/.vim/bundle/ \
     #&& git clone --depth 1 https://github.com/scrooloose/nerdtree \
@@ -159,18 +194,11 @@ ADD bundle.tar.gz /root/.vim/
     #&& git clone --depth 1 https://github.com/elzr/vim-json \
     #&& git clone --depth 1 https://github.com/matze/vim-move \
     #&& git clone --recurse-submodules https://github.com/python-mode/python-mode.git \
-    #&& git clone --depth 1 https://github.com/heavenshell/vim-pydocstring \
-    #&& git clone https://github.com/tomtom/tlib_vim.git \
-    #&& git clone https://github.com/MarcWeber/vim-addon-mw-utils.git \
-    #&& git clone https://github.com/honza/vim-snippets.git \
-    #&& git clone https://github.com/vim-scripts/UltiSnips
-
-
-
+    #&& git clone --depth 1 https://github.com/heavenshell/vim-pydocstring
 
 # vimrc
 RUN cd /opt/ \
-    && git clone --depth 1 https://github.com/JarodLi/devops/ \
+    && git clone https://github.com/JarodLi/devops/ \
     && cp /opt/devops/docker/my_centos/vimrc /root/.vimrc \
     && rm -rf /opt/devops
 
@@ -185,4 +213,3 @@ RUN cat /opt/profile.my >> /etc/profile \
     && rm -rf /opt/profile.my
 
 CMD ["/usr/sbin/init"]
-
