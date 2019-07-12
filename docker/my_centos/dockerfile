@@ -119,7 +119,7 @@ RUN pip install paramiko \
     && pip install PyInstaller \
     && pip install xlrd \
     && pip install xlwt \
-    && pip install pycdlib
+    && pip install pycdlib \
     && pip install jupyter \
     && pip install notebook \
     && pip install ipdb
