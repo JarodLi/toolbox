@@ -211,10 +211,9 @@ ENV MY=/opt/devops/docker/my_centos
 RUN cp $MY/vimrc /root/.vimrc 
 
 # jupyter
-RUN cp -fp $MY/jupyter/jupyter_notebook_config.py /root/.jupyter \
-    && cp -fp $MY/jupyter/jupyter.service /usr/lib/systemd/system \
-    && systemctl daemon-reload \
-    && systemctl enable jupyter.service
+RUN jupyter notebook --generate-config \
+    && cp -fp $MY/jupyter/jupyter_notebook_config.py /root/.jupyter \
+    && cp -fp $MY/jupyter/jupyter.service /usr/lib/systemd/system 
 
 # profile
 RUN cat $MY/profile.my >> /etc/profile 
