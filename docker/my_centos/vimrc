@@ -26,8 +26,9 @@ autocmd! BufWritePost ~/.vimrc source ~/.vimrc
 "=> color and theme
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set background=dark
-colorscheme candy
-"colorscheme molokai
+"colorscheme candy
+"colorscheme molokai  
+colorscheme zenburn
 set guifont=Monaco:h12:b
 let g:solarized_termcolors=256
 
