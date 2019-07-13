@@ -1,0 +1,26 @@
+[Unit]
+Description=jupyter service
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+
+ExecStart=/usr/bin/jupyter notebook --allow-root
+ExecStopPost=
+
+Restart=always
+StartLimitInterval=10s
+StartLimitBurst=10
+RestartSec=3s
+
+StandardOutput=null
+StandardError=null
+CPUAccounting=true
+CPUQuota=50%
+MemoryAccounting=true
+MemoryLimit=3000M
+
+[Install]
+WantedBy=multi-user.target
