@@ -170,9 +170,9 @@ RUN wget https://obs-community.obs.cn-north-1.myhuaweicloud.com/obsutil/current/
 RUN mkdir -p /root/.vim/{autoload,bundle}
 #ADD vim8.1.tar.gz /opt
 RUN cd /opt \
-    && git clone https://github.com/vim/vim.git \
-    #&& obsutil cp obs://sftp-test/vim8.1.tar.gz . \
-    #&& tar xzvf vim8.1.tar.gz \
+    #&& git clone https://github.com/vim/vim.git \
+    && obsutil cp obs://sftp-test/vim8.1.tar.gz . \
+    && tar xzvf vim8.1.tar.gz \
     && cd /opt/vim \
     && ./configure --with-features=huge --enable-python3interp=dynamic  --with-python-config-dir=/usr/lib/python3.7/config --enable-cscope --enable-multibyte \
     && make \
@@ -185,9 +185,9 @@ RUN cd /opt \
 # YCM
 #ADD YouCompleteMe.tar.gz /root/.vim/bundle
 RUN cd /root/.vim/bundle/ \
-    && git clone --recursive https://github.com/ycm-core/YouCompleteMe \
-    #&& obsutil cp obs://sftp-test/YouCompleteMe.tar.gz . \
-    #&& tar xzvf YouCompleteMe.tar.gz \
+    #&& git clone --recursive https://github.com/ycm-core/YouCompleteMe \
+    && obsutil cp obs://sftp-test/YouCompleteMe.tar.gz . \
+    && tar xzvf YouCompleteMe.tar.gz \
     && rm -rf /root/.vim/bundle/YouCompleteMe/.git \
     && /root/.vim/bundle/YouCompleteMe/install.py \
     && cp /root/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py /root/
