@@ -231,7 +231,7 @@ RUN cp $MY/vimrc /root/.vimrc
 
 # jupyter
 RUN yum install -y sqlite \
-    && yum install -y sqlite-devel
+    && yum install -y sqlite-devel \
     && jupyter notebook --generate-config \
     && cp -fp $MY/jupyter/jupyter_notebook_config.py /root/.jupyter \
     && cp -fp $MY/jupyter/jupyter.service /usr/lib/systemd/system 
