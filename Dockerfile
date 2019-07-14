@@ -230,7 +230,9 @@ ENV MY=/opt/toolbox/
 RUN cp $MY/vimrc /root/.vimrc 
 
 # jupyter
-RUN jupyter notebook --generate-config \
+RUN yum install -y sqlite \
+    && yum install -y sqlite-devel
+    && jupyter notebook --generate-config \
     && cp -fp $MY/jupyter/jupyter_notebook_config.py /root/.jupyter \
     && cp -fp $MY/jupyter/jupyter.service /usr/lib/systemd/system 
 
