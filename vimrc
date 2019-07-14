@@ -177,8 +177,8 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " => YCM plugin
 """"""""""""""""""""""""""""""
 " 避免和snipmate tab冲突
-let g:ycm_key_list_select_completion = ['<c-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<c-p>', '<Up>']
+"let g:ycm_key_list_select_completion = ['<c-n>', '<Down>']
+"let g:ycm_key_list_previous_completion = ['<c-p>', '<Up>']
 
 let g:ycm_auto_trigger = 1
 let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
