@@ -30,9 +30,11 @@ RUN yum install -y wget \
 
 # openssl 1.1.1c
 #ADD openssl-1.1.1c.tar.gz /opt
-ADD https://www.openssl.org/source/openssl-1.1.1c.tar.gz /opt
-RUN tar xzvf /opt/openssl-1.1.1c.tar.gz -C /opt
-RUN cd /opt/openssl-1.1.1c \
+#ADD https://www.openssl.org/source/openssl-1.1.1c.tar.gz /opt
+
+RUN wget https://www.openssl.org/source/openssl-1.1.1c.tar.gz -P /opt \
+    && tar xzvf /opt/openssl-1.1.1c.tar.gz -C /opt \
+    && cd /opt/openssl-1.1.1c \
     && ./config --prefix=/usr --openssldir=/usr/openssl shared zlib \
     && make \
     && make install \
@@ -40,17 +42,19 @@ RUN cd /opt/openssl-1.1.1c \
 
 # setuptools  python2
 #ADD setuptools-41.0.1.zip /opt
-ADD https://files.pythonhosted.org/packages/1d/64/a18a487b4391a05b9c7f938b94a16d80305bf0369c6b0b9509e86165e1d3/setuptools-41.0.1.zip /opt
-RUN unzip /opt/setuptools-41.0.1.zip -d /opt \
+#ADD https://files.pythonhosted.org/packages/1d/64/a18a487b4391a05b9c7f938b94a16d80305bf0369c6b0b9509e86165e1d3/setuptools-41.0.1.zip /opt
+RUN wget https://files.pythonhosted.org/packages/1d/64/a18a487b4391a05b9c7f938b94a16d80305bf0369c6b0b9509e86165e1d3/setuptools-41.0.1.zip -P /opt \
+    && unzip /opt/setuptools-41.0.1.zip -d /opt \
     && cd /opt/setuptools-41.0.1 \
     && python setup.py install \
     && rm -rf /opt/setuptools-41.0.1*
 
 # pip  python2
 #ADD pip-19.1.1.tar.gz /opt
-ADD https://files.pythonhosted.org/packages/93/ab/f86b61bef7ab14909bd7ec3cd2178feb0a1c86d451bc9bccd5a1aedcde5f/pip-19.1.1.tar.gz /opt
-RUN tar xzvf /opt/pip-19.1.1.tar.gz -C /opt
-RUN cd /opt/pip-19.1.1 \
+#ADD https://files.pythonhosted.org/packages/93/ab/f86b61bef7ab14909bd7ec3cd2178feb0a1c86d451bc9bccd5a1aedcde5f/pip-19.1.1.tar.gz /opt
+RUN wget https://files.pythonhosted.org/packages/93/ab/f86b61bef7ab14909bd7ec3cd2178feb0a1c86d451bc9bccd5a1aedcde5f/pip-19.1.1.tar.gz -P /opt \
+    && tar xzvf /opt/pip-19.1.1.tar.gz -C /opt \
+    && cd /opt/pip-19.1.1 \
     && python setup.py install \
     && rm -rf /opt/pip-19.1.1*
 
@@ -78,9 +82,10 @@ RUN pip install paramiko \
 
 # python 3.7.3
 #ADD Python-3.7.3.tar.xz /opt
-ADD https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tar.xz /opt
-RUN tar xJvf /opt/Python-3.7.3.tar.xz -C /opt
-RUN cd /opt/Python-3.7.3 \
+#ADD https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tar.xz /opt
+RUN wget https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tar.xz -P /opt \
+    && tar xJvf /opt/Python-3.7.3.tar.xz -C /opt \
+    && cd /opt/Python-3.7.3 \
     && ./configure --enable-shared --prefix=/usr --with-openssl=/usr/ \
     && make \
     && make install \
@@ -97,19 +102,21 @@ RUN echo "/usr/lib/" > /etc/ld.so.conf.d/usr.conf \
     && echo "/usr/lib64/" >> /etc/ld.so.conf.d/usr.conf \
     && ldconfig
 
-# setuptools
+# setuptools for python3
 #ADD setuptools-41.0.1.zip /opt
-ADD https://files.pythonhosted.org/packages/1d/64/a18a487b4391a05b9c7f938b94a16d80305bf0369c6b0b9509e86165e1d3/setuptools-41.0.1.zip /opt
-RUN unzip /opt/setuptools-41.0.1.zip -d /opt \
+#ADD https://files.pythonhosted.org/packages/1d/64/a18a487b4391a05b9c7f938b94a16d80305bf0369c6b0b9509e86165e1d3/setuptools-41.0.1.zip /opt
+RUN wget https://files.pythonhosted.org/packages/1d/64/a18a487b4391a05b9c7f938b94a16d80305bf0369c6b0b9509e86165e1d3/setuptools-41.0.1.zip -P /opt \
+    && unzip /opt/setuptools-41.0.1.zip -d /opt \
     && cd /opt/setuptools-41.0.1 \
     && python setup.py install \
     && rm -rf /opt/setuptools-41.0.1*
 
-# pip
+# pip for python3
 #ADD pip-19.1.1.tar.gz /opt
-ADD https://files.pythonhosted.org/packages/93/ab/f86b61bef7ab14909bd7ec3cd2178feb0a1c86d451bc9bccd5a1aedcde5f/pip-19.1.1.tar.gz /opt
-RUN tar xzvf /opt/pip-19.1.1.tar.gz -C /opt
-RUN cd /opt/pip-19.1.1 \
+#ADD https://files.pythonhosted.org/packages/93/ab/f86b61bef7ab14909bd7ec3cd2178feb0a1c86d451bc9bccd5a1aedcde5f/pip-19.1.1.tar.gz /opt
+RUN wget https://files.pythonhosted.org/packages/93/ab/f86b61bef7ab14909bd7ec3cd2178feb0a1c86d451bc9bccd5a1aedcde5f/pip-19.1.1.tar.gz -P /opt \
+    && tar xzvf /opt/pip-19.1.1.tar.gz -C /opt \
+    && cd /opt/pip-19.1.1 \
     && python setup.py install \
     && rm -rf /opt/pip-19.1.1*
 
@@ -139,8 +146,8 @@ RUN echo "root:123" | chpasswd
 
 # huawei sdk
 #ADD sdk.zip /opt
-ADD https://codeload.github.com/huaweicloud/huaweicloud-sdk-python-obs/zip/master /opt
-RUN unzip /opt/master -d /opt \
+RUN wget https://codeload.github.com/huaweicloud/huaweicloud-sdk-python-obs/zip/master -P /opt \
+    && unzip /opt/master -d /opt \
     && cd /opt/huaweicloud-sdk-python-obs-master/src \
     && python setup.py install \
     && rm -rf /opt/huaweicloud-sdk-python-obs-master* \
@@ -148,9 +155,9 @@ RUN unzip /opt/master -d /opt \
 
 # obsutil
 #ADD obsutil_linux_amd64.tar.gz /opt
-ADD https://obs-community.obs.cn-north-1.myhuaweicloud.com/obsutil/current/obsutil_linux_amd64.tar.gz /opt
-RUN tar xzvf obsutil_linux_amd64.tar.gz -C /opt
-RUN cp /opt/obsutil_linux_amd64/obsutil /usr/bin \
+RUN wget https://obs-community.obs.cn-north-1.myhuaweicloud.com/obsutil/current/obsutil_linux_amd64.tar.gz -P /opt \
+    && tar xzvf obsutil_linux_amd64.tar.gz -C /opt \
+    && cp /opt/obsutil_linux_amd64/obsutil /usr/bin \
     && obsutil config -i=$ak -k=$sk -e=obs.cn-north-1.myhwclouds.com \
     && rm -rf /opt/obsutil_linux_amd64*
 
