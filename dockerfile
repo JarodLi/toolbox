@@ -1,5 +1,7 @@
 FROM centos:latest
 ENV container docker
+ARG ak
+ARG sk
 
 RUN yum install -y wget \
     && yum install -y make \
@@ -27,29 +29,34 @@ RUN yum install -y wget \
     && yum install -y bash-completion
 
 # openssl 1.1.1c
-ADD openssl-1.1.1c.tar.gz /opt
-#ADD https://www.openssl.org/source/openssl-1.1.1c.tar.gz /opt
+#ADD openssl-1.1.1c.tar.gz /opt
+ADD https://www.openssl.org/source/openssl-1.1.1c.tar.gz /opt
+RUN tar xzvf /opt/openssl-1.1.1c.tar.gz -C /opt
 RUN cd /opt/openssl-1.1.1c \
     && ./config --prefix=/usr --openssldir=/usr/openssl shared zlib \
     && make \
     && make install \
     && rm -rf /opt/openssl-1.1.1c*
 
-# setuptools
-ADD setuptools-41.0.1.zip /opt
-#ADD https://files.pythonhosted.org/packages/1d/64/a18a487b4391a05b9c7f938b94a16d80305bf0369c6b0b9509e86165e1d3/setuptools-41.0.1.zip /opt
+# setuptools  python2
+#ADD setuptools-41.0.1.zip /opt
+ADD https://files.pythonhosted.org/packages/1d/64/a18a487b4391a05b9c7f938b94a16d80305bf0369c6b0b9509e86165e1d3/setuptools-41.0.1.zip /opt
 RUN unzip /opt/setuptools-41.0.1.zip -d /opt \
     && cd /opt/setuptools-41.0.1 \
     && python setup.py install \
     && rm -rf /opt/setuptools-41.0.1*
 
-# pip
-ADD pip-19.1.1.tar.gz /opt
-#ADD https://files.pythonhosted.org/packages/93/ab/f86b61bef7ab14909bd7ec3cd2178feb0a1c86d451bc9bccd5a1aedcde5f/pip-19.1.1.tar.gz /opt
-#RUN tar xzvf /opt/pip-19.1.1.tar.gz -C /opt \
+# pip  python2
+#ADD pip-19.1.1.tar.gz /opt
+ADD https://files.pythonhosted.org/packages/93/ab/f86b61bef7ab14909bd7ec3cd2178feb0a1c86d451bc9bccd5a1aedcde5f/pip-19.1.1.tar.gz /opt
+RUN tar xzvf /opt/pip-19.1.1.tar.gz -C /opt
 RUN cd /opt/pip-19.1.1 \
     && python setup.py install \
     && rm -rf /opt/pip-19.1.1*
+
+# config pip mirror
+RUN mkdir -p  ~/.pip/ \
+    && echo -e "[global]\nindex-url = https://pypi.mirrors.ustc.edu.cn/simple/\n\n[install]\ntrusted-host = pypi.mirrors.ustc.edu.cn" > ~/.pip/pip.conf
 
 RUN pip install paramiko \
     && pip install cliff \
@@ -70,9 +77,9 @@ RUN pip install paramiko \
     && pip install ipdb
 
 # python 3.7.3
-ADD Python-3.7.3.tar.xz /opt
-#ADD https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tar.xz /opt
-#RUN tar xvJf /opt/Python-3.7.3.tar.xz -C /opt \
+#ADD Python-3.7.3.tar.xz /opt
+ADD https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tar.xz /opt
+RUN tar xJvf /opt/Python-3.7.3.tar.xz -C /opt
 RUN cd /opt/Python-3.7.3 \
     && ./configure --enable-shared --prefix=/usr --with-openssl=/usr/ \
     && make \
@@ -91,17 +98,17 @@ RUN echo "/usr/lib/" > /etc/ld.so.conf.d/usr.conf \
     && ldconfig
 
 # setuptools
-ADD setuptools-41.0.1.zip /opt
-#ADD https://files.pythonhosted.org/packages/1d/64/a18a487b4391a05b9c7f938b94a16d80305bf0369c6b0b9509e86165e1d3/setuptools-41.0.1.zip /opt
+#ADD setuptools-41.0.1.zip /opt
+ADD https://files.pythonhosted.org/packages/1d/64/a18a487b4391a05b9c7f938b94a16d80305bf0369c6b0b9509e86165e1d3/setuptools-41.0.1.zip /opt
 RUN unzip /opt/setuptools-41.0.1.zip -d /opt \
     && cd /opt/setuptools-41.0.1 \
     && python setup.py install \
     && rm -rf /opt/setuptools-41.0.1*
 
 # pip
-ADD pip-19.1.1.tar.gz /opt
-#ADD https://files.pythonhosted.org/packages/93/ab/f86b61bef7ab14909bd7ec3cd2178feb0a1c86d451bc9bccd5a1aedcde5f/pip-19.1.1.tar.gz /opt
-#RUN tar xzvf /opt/pip-19.1.1.tar.gz -C /opt \
+#ADD pip-19.1.1.tar.gz /opt
+ADD https://files.pythonhosted.org/packages/93/ab/f86b61bef7ab14909bd7ec3cd2178feb0a1c86d451bc9bccd5a1aedcde5f/pip-19.1.1.tar.gz /opt
+RUN tar xzvf /opt/pip-19.1.1.tar.gz -C /opt
 RUN cd /opt/pip-19.1.1 \
     && python setup.py install \
     && rm -rf /opt/pip-19.1.1*
@@ -131,8 +138,8 @@ RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N "" \
 RUN echo "root:123" | chpasswd
 
 # huawei sdk
-ADD sdk.zip /opt
-#ADD https://codeload.github.com/huaweicloud/huaweicloud-sdk-python-obs/zip/master /opt
+#ADD sdk.zip /opt
+ADD https://codeload.github.com/huaweicloud/huaweicloud-sdk-python-obs/zip/master /opt
 RUN unzip /opt/sdk.zip -d /opt \
     && cd /opt/huaweicloud-sdk-python-obs-master/src \
     && python setup.py install \
@@ -140,17 +147,18 @@ RUN unzip /opt/sdk.zip -d /opt \
     && rm -rf /opt/sdk.zip
 
 # obsutil
-ADD obsutil_linux_amd64.tar.gz /opt
-#ADD https://obs-community.obs.cn-north-1.myhuaweicloud.com/obsutil/current/obsutil_linux_amd64.tar.gz /opt
+#ADD obsutil_linux_amd64.tar.gz /opt
+ADD https://obs-community.obs.cn-north-1.myhuaweicloud.com/obsutil/current/obsutil_linux_amd64.tar.gz /opt
+RUN tar xzvf obsutil_linux_amd64.tar.gz -C /opt
 RUN cp /opt/obsutil_linux_amd64/obsutil /usr/bin \
-    && obsutil config -i=xxx -k=xxx -e=obs.cn-north-1.myhwclouds.com \
+    && obsutil config -i=$ak -k=$sk -e=obs.cn-north-1.myhwclouds.com \
     && rm -rf /opt/obsutil_linux_amd64*
 
 # vim8.1
 RUN mkdir -p /root/.vim/{autoload,bundle}
-ADD vim8.1.tar.gz /opt
+#ADD vim8.1.tar.gz /opt
 RUN cd /opt \
-    #&& git clone https://github.com/vim/vim.git \
+    && git clone https://github.com/vim/vim.git \
     && cd /opt/vim \
     && ./configure --with-features=huge --enable-python3interp=dynamic  --with-python-config-dir=/usr/lib/python3.7/config --enable-cscope --enable-multibyte \
     && make \
@@ -161,42 +169,42 @@ RUN cd /opt \
     && curl -LSso /root/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
 # YCM
-ADD YouCompleteMe.tar.gz /root/.vim/bundle
+#ADD YouCompleteMe.tar.gz /root/.vim/bundle
 RUN cd /root/.vim/bundle/ \
-    #&& git clone --recursive https://github.com/ycm-core/YouCompleteMe \
+    && git clone --recursive https://github.com/ycm-core/YouCompleteMe \
     && rm -rf /root/.vim/bundle/YouCompleteMe/.git \
     && /root/.vim/bundle/YouCompleteMe/install.py \
     && cp /root/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py /root/
 
 # plugin
 RUN rm -rf /root/.vim/bundle
-ADD bundle.tar.gz /root/.vim/
-#RUN cd /root/.vim/bundle/ \
-    #&& git clone --depth 1 https://github.com/scrooloose/nerdtree \
-    #&& git clone --depth 1 https://github.com/Yggdroot/indentLine \
-    #&& git clone --depth 1 https://github.com/tell-k/vim-autopep8 \
-    #&& git clone --depth 1 https://github.com/jiangmiao/auto-pairs \
-    #&& git clone --depth 1 https://github.com/jlanzarotta/bufexplorer \
-    #&& git clone --depth 1 https://github.com/plasticboy/vim-markdown \
-    #&& git clone --depth 1 https://github.com/ekalinin/Dockerfile.vim \
-    #&& git clone --depth 1 https://github.com/majutsushi/tagbar \
-    #&& git clone --depth 1 https://github.com/scrooloose/syntastic \
-    #&& git clone --depth 1 https://github.com/vim-scripts/taglist.vim \
-    #&& git clone --depth 1 https://github.com/bling/vim-airline \
-    #&& git clone --depth 1 https://github.com/vim-airline/vim-airline-themes \
-    #&& git clone --depth 1 https://github.com/tpope/vim-surround \
-    #&& git clone --depth 1 https://github.com/vim-scripts/indentpython.vim \
-    #&& git clone --depth 1 https://github.com/tpope/vim-fugitive \
-    #&& git clone --depth 1 https://github.com/flazz/vim-colorschemes \
-    #&& git clone --depth 1 https://github.com/altercation/vim-colors-solarized \
-    #&& git clone --depth 1 https://github.com/bronson/vim-trailing-whitespace \
-    #&& git clone --depth 1 https://github.com/Glench/Vim-Jinja2-Syntax \
-    #&& git clone --depth 1 https://github.com/elzr/vim-json \
-    #&& git clone --depth 1 https://github.com/matze/vim-move \
-    #&& git clone --recurse-submodules https://github.com/python-mode/python-mode.git \
-    #&& git clone --depth 1 https://github.com/heavenshell/vim-pydocstring \
-    #&& git clone https://github.com/tmhedberg/SimpylFold \
-    #&& git clone https://github.com/jnurmine/Zenburn  
+#ADD bundle.tar.gz /root/.vim/
+RUN cd /root/.vim/bundle/ \
+    && git clone --depth 1 https://github.com/scrooloose/nerdtree \
+    && git clone --depth 1 https://github.com/Yggdroot/indentLine \
+    && git clone --depth 1 https://github.com/tell-k/vim-autopep8 \
+    && git clone --depth 1 https://github.com/jiangmiao/auto-pairs \
+    && git clone --depth 1 https://github.com/jlanzarotta/bufexplorer \
+    && git clone --depth 1 https://github.com/plasticboy/vim-markdown \
+    && git clone --depth 1 https://github.com/ekalinin/Dockerfile.vim \
+    && git clone --depth 1 https://github.com/majutsushi/tagbar \
+    && git clone --depth 1 https://github.com/scrooloose/syntastic \
+    && git clone --depth 1 https://github.com/vim-scripts/taglist.vim \
+    && git clone --depth 1 https://github.com/bling/vim-airline \
+    && git clone --depth 1 https://github.com/vim-airline/vim-airline-themes \
+    && git clone --depth 1 https://github.com/tpope/vim-surround \
+    && git clone --depth 1 https://github.com/vim-scripts/indentpython.vim \
+    && git clone --depth 1 https://github.com/tpope/vim-fugitive \
+    && git clone --depth 1 https://github.com/flazz/vim-colorschemes \
+    && git clone --depth 1 https://github.com/altercation/vim-colors-solarized \
+    && git clone --depth 1 https://github.com/bronson/vim-trailing-whitespace \
+    && git clone --depth 1 https://github.com/Glench/Vim-Jinja2-Syntax \
+    && git clone --depth 1 https://github.com/elzr/vim-json \
+    && git clone --depth 1 https://github.com/matze/vim-move \
+    && git clone --recurse-submodules https://github.com/python-mode/python-mode.git \
+    && git clone --depth 1 https://github.com/heavenshell/vim-pydocstring \
+    && git clone https://github.com/tmhedberg/SimpylFold \
+    && git clone https://github.com/jnurmine/Zenburn  
 
 # timezone
 ENV TimeZone=Asia/Shanghai
@@ -204,9 +212,9 @@ RUN ln -snf /usr/share/zoneinfo/$TimeZone /etc/localtime \
     && echo $TimeZone > /etc/timezone 
 
 RUN cd /opt/ \
-    && git clone https://github.com/JarodLi/devops/ 
+    && git clone https://github.com/JarodLi/toolbox/ 
 
-ENV MY=/opt/devops/
+ENV MY=/opt/toolbox/
 # vimrc
 RUN cp $MY/vimrc /root/.vimrc 
 
@@ -217,5 +225,7 @@ RUN jupyter notebook --generate-config \
 
 # profile
 RUN cat $MY/profile.my >> /etc/profile 
+
+RUN rm -rf $MY
 
 CMD ["/usr/sbin/init"]
