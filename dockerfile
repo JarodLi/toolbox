@@ -206,7 +206,7 @@ RUN ln -snf /usr/share/zoneinfo/$TimeZone /etc/localtime \
 RUN cd /opt/ \
     && git clone https://github.com/JarodLi/devops/ 
 
-ENV MY=/opt/devops/docker/my_centos
+ENV MY=/opt/devops/
 # vimrc
 RUN cp $MY/vimrc /root/.vimrc 
 
