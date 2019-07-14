@@ -26,7 +26,10 @@ RUN yum install -y wget \
     && yum install -y shadow-utils \
     && yum install -y bind-utils \
     && yum install -y traceroute \
-    && yum install -y bash-completion
+    && yum install -y bash-completion \
+# sqlite必须在python3编译前安装
+    && yum install -y sqlite \
+    && yum install -y sqlite-devel 
 
 # openssl 1.1.1c
 #ADD openssl-1.1.1c.tar.gz /opt
@@ -230,9 +233,7 @@ ENV MY=/opt/toolbox/
 RUN cp $MY/vimrc /root/.vimrc 
 
 # jupyter
-RUN yum install -y sqlite \
-    && yum install -y sqlite-devel \
-    && jupyter notebook --generate-config \
+RUN jupyter notebook --generate-config \
     && cp -fp $MY/jupyter/jupyter_notebook_config.py /root/.jupyter \
     && cp -fp $MY/jupyter/jupyter.service /usr/lib/systemd/system 
 
