@@ -140,7 +140,7 @@ RUN echo "root:123" | chpasswd
 # huawei sdk
 #ADD sdk.zip /opt
 ADD https://codeload.github.com/huaweicloud/huaweicloud-sdk-python-obs/zip/master /opt
-RUN unzip /opt/sdk.zip -d /opt \
+RUN unzip /opt/master -d /opt \
     && cd /opt/huaweicloud-sdk-python-obs-master/src \
     && python setup.py install \
     && rm -rf /opt/huaweicloud-sdk-python-obs-master* \
