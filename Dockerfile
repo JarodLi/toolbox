@@ -188,7 +188,7 @@ RUN cd /root/.vim/bundle/ \
     && cp /root/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py /root/
 
 # plugin
-RUN rm -rf /root/.vim/bundle
+#RUN rm -rf /root/.vim/bundle
 #ADD bundle.tar.gz /root/.vim/
 RUN cd /root/.vim/bundle/ \
     && git clone --depth 1 https://github.com/scrooloose/nerdtree \
