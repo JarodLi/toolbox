@@ -216,10 +216,12 @@ RUN cd /root/.vim/bundle/ \
     && git clone --depth 1 https://github.com/elzr/vim-json \
     && git clone --depth 1 https://github.com/matze/vim-move \
     #&& git clone --recurse-submodules https://github.com/python-mode/python-mode.git \
-    && git clone --depth 1 https://github.com/python-mode/python-mode.git \
-    && git clone --depth 1 https://github.com/heavenshell/vim-pydocstring \
+    && git clone https://github.com/python-mode/python-mode.git \
+    && git clone https://github.com/heavenshell/vim-pydocstring \
     && git clone https://github.com/tmhedberg/SimpylFold \
-    && git clone https://github.com/jnurmine/Zenburn  
+    && git clone https://github.com/jnurmine/Zenburn \
+    && git clone https://github.com/vim-scripts/UltiSnips \
+    && git clone https://github.com/davidhalter/jedi-vim
 
 # timezone
 ENV TimeZone=Asia/Shanghai
