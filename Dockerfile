@@ -219,7 +219,10 @@ RUN cd /root/.vim/bundle/ \
     && git clone --depth 1 https://github.com/Glench/Vim-Jinja2-Syntax \
     && git clone --depth 1 https://github.com/elzr/vim-json \
     && git clone --depth 1 https://github.com/matze/vim-move \
-    && git clone --recurse-submodules https://github.com/python-mode/python-mode.git \
+    #&& git clone --recurse-submodules https://github.com/python-mode/python-mode.git \
+    && obsutil cp obs://sftp-test/python-mode.tar.gz . \
+    && tar xzvf python-mode.tar.gz \
+    && rm -rf python-mode.tar.gz \
     #&& git clone https://github.com/python-mode/python-mode.git \
     && git clone https://github.com/heavenshell/vim-pydocstring \
     && git clone https://github.com/tmhedberg/SimpylFold \
