@@ -3,6 +3,8 @@ ENV container docker
 ARG ak
 ARG sk
 
+RUN sed -i '/tsflags/d' /etc/yum.conf  
+
 RUN yum install -y wget \
     && yum install -y make \
     && yum install -y gcc-c++\
