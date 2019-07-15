@@ -11,6 +11,7 @@ set novb  "关闭闪屏
 set nocompatible
 set backspace=indent,eol,start
 set scrolloff=5  "在光标接近底端或顶端时,自动下滚或上滚. 
+set t_Co=256 "支持256色
 
 set guioptions-=r
 set guioptions-=L
