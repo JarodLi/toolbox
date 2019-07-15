@@ -20,3 +20,9 @@ alias vi='vim'
 alias cdrepo='cd /usr2/euleros/repo'
 alias cd2.8='cd /usr2/euleros/euleros2.8'
 alias cdpy='cd /usr/lib/python3.7'
+
+if [ -e  /usr/share/terminfo/x/xterm-256color ];then
+   export TERM='xterm-256color'
+else
+   export TERM='xterm-color'
+fi
