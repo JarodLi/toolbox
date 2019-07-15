@@ -100,7 +100,7 @@ let g:tagbar_left=1
 " => gundo plugin
 """"""""""""""""""""""""""""""
 let g:gundo_prefer_python3 = 1
-nnoremap <leader>u: GundoToggle<CR>
+nnoremap <leader>u :GundoToggle<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vim-Airline
