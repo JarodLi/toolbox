@@ -225,7 +225,8 @@ RUN cd /root/.vim/bundle/ \
     && git clone https://github.com/vim-scripts/UltiSnips \
     && git clone https://github.com/davidhalter/jedi-vim \
     && git clone https://github.com/honza/vim-snippets.git \
-    && git clone https://github.com/MarcWeber/vim-addon-mw-utils.git
+    && git clone https://github.com/MarcWeber/vim-addon-mw-utils.git \
+    && git clone https://github.com/sjl/gundo.vim
 
 # timezone
 ENV TimeZone=Asia/Shanghai
