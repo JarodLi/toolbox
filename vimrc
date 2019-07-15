@@ -35,10 +35,10 @@ let g:solarized_termcolors=256
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => move between windows
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>hw <C-W>h
-map <leader>lw <C-W>l
-map <leader>kw <C-W>k
-map <leader>jw <C-W>j
+map <leader>h <C-W>h
+map <leader>l <C-W>l
+map <leader>k <C-W>k
+map <leader>j <C-W>j
 map <leader>c <C-W>c
 map <leader>q <C-W>q
 map <leader>= <C-W>=
@@ -94,6 +94,13 @@ let g:bufExplorerSortBy='name'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <leader>tl :TagbarToggle<CR>
 let g:tagbar_left=1
+
+
+""""""""""""""""""""""""""""""
+" => gundo plugin
+""""""""""""""""""""""""""""""
+let g:gundo_prefer_python3 = 1
+nnoremap <leader>u: GundoToggle<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vim-Airline
