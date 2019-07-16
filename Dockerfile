@@ -33,7 +33,10 @@ RUN yum install -y wget \
     && yum install -y bash-completion \
 # sqlite必须在python3编译前安装
     && yum install -y sqlite \
-    && yum install -y sqlite-devel 
+    && yum install -y sqlite-devel \
+    && yum install -y file \
+    && yum install util-linux \
+    && yum install which 
 
 # openssl 1.1.1c
 #ADD openssl-1.1.1c.tar.gz /opt
