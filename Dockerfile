@@ -36,7 +36,8 @@ RUN yum install -y wget \
     && yum install -y sqlite-devel \
     && yum install -y file \
     && yum install -y util-linux \
-    && yum install -y which 
+    && yum install -y which \
+    && yum install -y sshpass
 
 # openssl 1.1.1c
 #ADD openssl-1.1.1c.tar.gz /opt
