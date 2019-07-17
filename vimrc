@@ -115,6 +115,30 @@ set laststatus=2
 let g:move_key_modifier = 'C'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Vim-move
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" cs"'            # 替换 ==> "Hello world!" -> 'Hello world!'
+" cst"            # 替换-标签(t=tag)  ==> <a>abc</a>a>  -> "abc"
+" cst<html>       # 替换标签 ==> <a>abc</a>a>  -> <html>abc</html>html>
+" ds"             # 删除  ==> "Hello world!" -> Hello world!
+" ysiw"           # 添加(ys=you surround) ==> Hello -> "Hello"
+" csw"            # 添加  ==> Hello -> "Hello"
+" veeS"           # 添加-两个词   ==> hello world -> "hello world"
+" ys$"            # 添加-当前到行尾:
+" yss"            # 添加-整行 ==> Hello world -> "Hello world"
+" ySS"
+" Hello world ->
+" "
+"    hello world
+" "
+"# 左符号/右符号 => 带不带空格
+" cs([
+" (hello) -> [ hello  ]
+" 
+" cs(]
+" (hello) -> [hello])
+" ])
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => python with virtualenv support
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "py << EOF
