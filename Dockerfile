@@ -87,8 +87,8 @@ RUN pip install paramiko \
     && pip install xlrd \
     && pip install xlwt \
     && pip install pycdlib \
-    && pip install jupyter \
-    && pip install notebook \
+    #&& pip install jupyter \
+    #&& pip install notebook \
     && pip install ipdb
 
 # python 3.7.3
