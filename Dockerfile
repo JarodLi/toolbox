@@ -37,7 +37,9 @@ RUN yum install -y wget \
     && yum install -y file \
     && yum install -y util-linux \
     && yum install -y which \
-    && yum install -y sshpass
+    && yum install -y sshpass \
+    && yum install -y zip \
+    && yum install -y bc
 
 # openssl 1.1.1c
 #ADD openssl-1.1.1c.tar.gz /opt
@@ -235,7 +237,8 @@ RUN cd /root/.vim/bundle/ \
     && git clone https://github.com/davidhalter/jedi-vim \
     && git clone https://github.com/honza/vim-snippets.git \
     && git clone https://github.com/MarcWeber/vim-addon-mw-utils.git \
-    && git clone https://github.com/sjl/gundo.vim
+    && git clone https://github.com/sjl/gundo.vim \
+    && find . -name ".git" | xargs -I{} rm -rf {}
 
 # timezone
 ENV TimeZone=Asia/Shanghai
