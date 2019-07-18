@@ -81,14 +81,19 @@ RUN pip install paramiko \
     && pip install ipython \ 
     && pip install ansible \
     && pip install pycrypto \
-    && pip install pandas \
-    && pip install openpyxl \
-    && pip install IPy \
-    && pip install Cython \
-    && pip install PyInstaller  \
-    && pip install xlrd \
-    && pip install xlwt \
-    && pip install pycdlib \
+    && pip install numpy==1.15.0 \
+    && pip install pandas==0.20.3 \
+    && pip install openpyxl==2.5.4 \
+    && pip install IPy==0.83 \
+    && pip install Cython==0.28.4 \
+    && pip install PyInstaller==3.2.1  \
+    && pip install xlrd==1.1.0 \
+    && pip install xlwt==1.1.2 \
+    && pip install pycdlib==1.0.0 \ 
+    && pip install PyYAML==3.13 \
+    && pip install jinja2==2.7.3 \
+    && pip install pyping \
+    && pip install ecdsa \
     #&& pip install jupyter \
     #&& pip install notebook \
     && pip install ipdb
@@ -147,9 +152,12 @@ RUN pip install paramiko \
     && pip install xlrd \
     && pip install xlwt \
     && pip install pycdlib \
+    && pip install pyping \
+    && pip install ecdsa \
     && pip install jupyter \
     && pip install notebook \
     && pip install ipdb
+    
 
 # sshd
 RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N "" \
