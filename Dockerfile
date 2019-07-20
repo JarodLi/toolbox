@@ -81,7 +81,7 @@ RUN pip install paramiko \
     && pip install ipython \ 
     && pip install ansible \
     && pip install pycrypto \
-    && pip install numpy==1.15.0 \
+    && pip install numpy==1.15.1 \
     && pip install pandas==0.20.3 \
     && pip install openpyxl==2.5.4 \
     && pip install IPy==0.83 \
