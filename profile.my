@@ -9,6 +9,7 @@ set -o vi
 alias cdcode='cd /usr1/code/'
 alias cdos='cd /usr1/code/obs_oam-euleros'
 alias cddevops='cd /usr1/code/devops'
+alias cdoj='cd /usr1/code/oj'
 alias cdtool='cd /usr1/code/obs_oam-dfvtool'
 alias cdobsrun='cd /usr1/code/obs_oam-dfvtool/src/obs_run/obs_run'
 alias cdpreinstall='cd /usr1/code/obs_oam-dfvtool/src/obs_run/preinstall'
