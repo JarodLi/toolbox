@@ -18,6 +18,7 @@ set guioptions-=L
 set guioptions-=b
 set showtabline=0
 
+set nofoldenable
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "=> When vimrc is edited, reload it
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -52,7 +53,7 @@ map <leader>o <C-W>o
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => style
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-au BufNewFile,BufRead *.py,*.go,Dockerfile*,dockerfile*  
+au BufNewFile,BufRead *.py,*.go,Dockerfile*,dockerfile*,*.sh 
 \ set tabstop=4 |
 \ set softtabstop=4 |
 \ set shiftwidth=4 |
@@ -258,7 +259,7 @@ let g:jedi#goto_assignments_command = "<leader>g"
 let g:jedi#goto_definitions_command = ""
 let g:jedi#documentation_command = "K"
 let g:jedi#usages_command = "<leader>n"
-let g:jedi#rename_command = "<leader>r"
+let g:jedi#rename_command = "<leader>e"
 autocmd FileType python setlocal completeopt-=preview  
 let g:pymode_rope = 0  
 
