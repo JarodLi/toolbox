@@ -96,7 +96,9 @@ RUN pip install paramiko \
     && pip install ecdsa \
     #&& pip install jupyter \
     #&& pip install notebook \
-    && pip install ipdb
+    && pip install ipdb \
+    && pip install pylint \
+    && pip install flake8
 
 # python 3.7.3
 #ADD Python-3.7.3.tar.xz /opt
@@ -156,7 +158,9 @@ RUN pip install paramiko \
     && pip install ecdsa \
     && pip install jupyter \
     && pip install notebook \
-    && pip install ipdb
+    && pip install ipdb \
+    && pip install pylint \
+    && pip install flake8
     
 
 # sshd
@@ -220,7 +224,7 @@ RUN cd /root/.vim/bundle/ \
     && git clone --depth 1 https://github.com/plasticboy/vim-markdown \
     && git clone --depth 1 https://github.com/ekalinin/Dockerfile.vim \
     && git clone --depth 1 https://github.com/majutsushi/tagbar \
-    && git clone --depth 1 https://github.com/scrooloose/syntastic \
+    #&& git clone --depth 1 https://github.com/scrooloose/syntastic \
     && git clone --depth 1 https://github.com/vim-scripts/taglist.vim \
     && git clone --depth 1 https://github.com/bling/vim-airline \
     && git clone --depth 1 https://github.com/vim-airline/vim-airline-themes \
@@ -246,6 +250,8 @@ RUN cd /root/.vim/bundle/ \
     && git clone https://github.com/honza/vim-snippets.git \
     && git clone https://github.com/MarcWeber/vim-addon-mw-utils.git \
     && git clone https://github.com/sjl/gundo.vim \
+    && git clone https://github.com/dense-analysis/ale.git \
+    && git clone https://github.com/Yggdroot/LeaderF.git \
     && find . -name ".git" | xargs -I{} rm -rf {}
 
 # timezone
