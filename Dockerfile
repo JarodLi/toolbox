@@ -193,7 +193,8 @@ RUN cd /opt \
     # && git clone https://github.com/universal-ctags/ctags.git \
     && obsutil cp obs://sftp-test/ctags.tar.gz . \
     && tar xzvf ctags.tar.gz \
-    && cd ctags \
+    && cd ctags \ 
+    && ./autogen.sh \
     && ./configure --prefix=/usr/bin/universal-ctags \
     && make \
     && make install \
