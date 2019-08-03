@@ -17,7 +17,9 @@ RUN yum install -y wget \
     && yum install -y ncurses-devel \
     && yum install -y cmake \
     && yum install -y git \
-    && yum install -y ctags \
+    #&& yum install -y ctags \
+    && yum install -y autoconf \
+    && yum install -y automake \
     && yum install -y python-devel \
     && yum install -y man \
     && yum install -y man-pages \
@@ -186,6 +188,16 @@ RUN wget https://obs-community.obs.cn-north-1.myhuaweicloud.com/obsutil/current/
     && obsutil config -i=$ak -k=$sk -e=obs.cn-north-1.myhwclouds.com \
     && rm -rf /opt/obsutil_linux_amd64*
 
+# universal ctags 
+RUN cd /opt \
+    && git clone https://github.com/universal-ctags/ctags.git \
+    && cd ctags \
+    && ./configure --prefix=/usr/bin/universal-ctags \
+    && make \
+    && make install \
+    && rm -rf /usr/bin/ctags \
+    && ln -s /usr/bin/universal-ctags/bin/ctags  /usr/bin/ctags 
+    
 # vim8.1
 RUN mkdir -p /root/.vim/{autoload,bundle}
 #ADD vim8.1.tar.gz /opt
