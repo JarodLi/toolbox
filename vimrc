@@ -230,6 +230,29 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 """"""""""""""""""""""""""""""
+" => vim-gutentags
+""""""""""""""""""""""""""""""
+ "gutentags 搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归
+let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+
+ " 所生成的数据文件的名称
+let g:gutentags_ctags_tagfile = '.tags'
+
+" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
+let s:vim_tags = expand('~/.cache/tags')
+let g:gutentags_cache_dir = s:vim_tags
+
+" 配置 ctags 的参数
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+
+" 检测 ~/.cache/tags 不存在就新建
+if !isdirectory(s:vim_tags)
+	   silent! call mkdir(s:vim_tags, 'p')
+   endif"
+
+""""""""""""""""""""""""""""""
 " => YCM plugin
 """"""""""""""""""""""""""""""
 " 避免和snipmate tab冲突
@@ -238,7 +261,8 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 let g:ycm_auto_trigger = 1
 let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
-set tags+=./tags,/usr/include/tags,/usr/local/go/src/tags,/usr/lib/python3.7/tags
+"set tags+=./tags,/usr/include/tags,/usr/local/go/src/tags,/usr/lib/python3.7/tags
+set tags=./.tags;,.tags
 let g:ycm_seed_identifiers_with_syntax=1
 " 禁止缓存匹配项,每次都重新生成匹配项
 let g:ycm_cache_omnifunc=0
