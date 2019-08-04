@@ -24,7 +24,7 @@ RUN yum install -y wget \
     && yum install -y flex \
     && yum install -y gperf \
     && yum install -y libtool \
-    && yum install -y libtool-ltdl \
+    && yum install -y libtool-ltdl-devel \
     && yum install -y texinfo \
     && yum install -y bison \
     && yum install -y python-devel \
