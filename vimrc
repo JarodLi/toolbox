@@ -35,6 +35,52 @@ set guifont=Monaco:h12:b
 let g:solarized_termcolors=256
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => use meta key : http://www.skywind.me/blog/archives/2021
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! Terminal_MetaMode(mode)
+    set ttimeout
+    if $TMUX != ''
+        set ttimeoutlen=30
+    elseif &ttimeoutlen > 80 || &ttimeoutlen <= 0
+        set ttimeoutlen=80
+    endif
+    if has('nvim') || has('gui_running')
+        return
+    endif
+    function! s:metacode(mode, key)
+        if a:mode == 0
+            exec "set <M-".a:key.">=\e".a:key
+        else
+            exec "set <M-".a:key.">=\e]{0}".a:key."~"
+        endif
+    endfunc
+    for i in range(10)
+        call s:metacode(a:mode, nr2char(char2nr('0') + i))
+    endfor
+    for i in range(26)
+        call s:metacode(a:mode, nr2char(char2nr('a') + i))
+        call s:metacode(a:mode, nr2char(char2nr('A') + i))
+    endfor
+    if a:mode != 0
+        for c in [',', '.', '/', ';', '[', ']', '{', '}']
+            call s:metacode(a:mode, c)
+        endfor
+        for c in ['?', ':', '-', '_']
+            call s:metacode(a:mode, c)
+        endfor
+    else
+        for c in [',', '.', '/', ';', '{', '}']
+            call s:metacode(a:mode, c)
+        endfor
+        for c in ['?', ':', '-', '_']
+            call s:metacode(a:mode, c)
+        endfor
+    endif
+endfunc
+
+call Terminal_MetaMode(0)
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => move between windows
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <leader>h <C-W>h
@@ -122,6 +168,7 @@ let g:tagbar_left=1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => LeaderF
+" gtags使用： https://www.v2ex.com/t/561549
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:Lf_ShortcutF = '<c-p>'
 let g:Lf_ShortcutB = '<m-n>'
@@ -139,6 +186,7 @@ let g:Lf_ShowRelativePath = 0
 let g:Lf_HideHelp = 1
 let g:Lf_StlColorscheme = 'powerline'
 let g:Lf_PreviewResult = {'Function':0, 'BufTag':0}
+let g:Lf_GtagsAutoGenerate = 1 " 打开第1个工程文件时自动生成gtags
 
 """"""""""""""""""""""""""""""
 " => gundo plugin

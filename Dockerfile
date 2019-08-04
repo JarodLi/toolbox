@@ -20,6 +20,13 @@ RUN yum install -y wget \
     #&& yum install -y ctags \
     && yum install -y autoconf \
     && yum install -y automake \
+    && yum install -y bison \
+    && yum install -y flex \
+    && yum install -y gperf \
+    && yum install -y libtool \
+    && yum install -y libtool-ltdl \
+    && yum install -y texinfo \
+    && yum install -y bison \
     && yum install -y python-devel \
     && yum install -y man \
     && yum install -y man-pages \
@@ -188,7 +195,7 @@ RUN wget https://obs-community.obs.cn-north-1.myhuaweicloud.com/obsutil/current/
     && obsutil config -i=$ak -k=$sk -e=obs.cn-north-1.myhwclouds.com \
     && rm -rf /opt/obsutil_linux_amd64*
 
-# universal ctags 
+# universal ctags
 RUN cd /opt \
     # && git clone https://github.com/universal-ctags/ctags.git \
     && obsutil cp obs://sftp-test/ctags.tar.gz . \
@@ -199,8 +206,18 @@ RUN cd /opt \
     && make \
     && make install \
     && rm -rf /usr/bin/ctags \
-    && ln -s /usr/bin/universal-ctags/bin/ctags  /usr/bin/ctags 
-    
+    && ln -s /usr/bin/universal-ctags/bin/ctags  /usr/bin/ctags
+
+# gtags for vim plugin LeaderF
+RUN wget http://tamacom.com/global/global-6.6.3.tar.gz -P /opt \
+    && tar xzvf /opt/global-6.6.3.tar.gz -C /opt \
+    && cd /opt/global-6.6.3 \
+    && bash reconf.sh \
+    && ./configure \
+    && make \
+    && cp -fp
+
+
 # vim8.1
 RUN mkdir -p /root/.vim/{autoload,bundle}
 #ADD vim8.1.tar.gz /opt
