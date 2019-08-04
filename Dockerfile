@@ -285,6 +285,7 @@ RUN cd /root/.vim/bundle/ \
     && git clone https://github.com/dense-analysis/ale.git \
     && git clone https://github.com/Yggdroot/LeaderF.git \
     && git clone https://github.com/ludovicchabant/vim-gutentags.git \
+    && git clone https://github.com/justinmk/vim-dirvish.git \
     && find . -name ".git" | xargs -I{} rm -rf {}
 
 # timezone
