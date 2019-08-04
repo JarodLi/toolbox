@@ -172,10 +172,14 @@ let g:tagbar_left=1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:Lf_ShortcutF = '<c-p>'
 let g:Lf_ShortcutB = '<m-n>'
-noremap <c-n> :LeaderfMru<cr>
-noremap <m-p> :LeaderfFunction!<cr>
-noremap <m-n> :LeaderfBuffer<cr>
-noremap <m-m> :LeaderfTag<cr>
+"noremap <c-n> :LeaderfMru<cr>
+"noremap <m-p> :LeaderfFunction!<cr>
+"noremap <m-n> :LeaderfBuffer<cr>
+"noremap <m-m> :LeaderfTag<cr>
+nmap <leader>lb :LeaderfBuffer<CR>
+nmap <leader>lt :LeaderfBufTag!<CR>
+nmap <leader>lf :LeaderfFunction!<CR>
+nmap <leader>lm :LeaderfMru<CR>
 let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
 
 let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
