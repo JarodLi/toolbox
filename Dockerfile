@@ -209,13 +209,14 @@ RUN cd /opt \
     && ln -s /usr/bin/universal-ctags/bin/ctags  /usr/bin/ctags
 
 # gtags for vim plugin LeaderF
+# https://www.gnu.org/software/global/download.html
 RUN wget http://tamacom.com/global/global-6.6.3.tar.gz -P /opt \
     && tar xzvf /opt/global-6.6.3.tar.gz -C /opt \
     && cd /opt/global-6.6.3 \
     && bash reconf.sh \
     && ./configure \
     && make \
-    && cp -fp
+    && cp -fp gtags/gtags /usr/bin
 
 
 # vim8.1
