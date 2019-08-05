@@ -246,7 +246,7 @@ RUN cd /root/.vim/bundle/ \
     && obsutil cp obs://sftp-test/YouCompleteMe.tar.gz . \
     && tar xzvf YouCompleteMe.tar.gz \
     && rm -rf /root/.vim/bundle/YouCompleteMe/.git \
-    && /root/.vim/bundle/YouCompleteMe/install.py \
+    && /root/.vim/bundle/YouCompleteMe/install.py --clang-completer --go-completer \
     && cp /root/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py /root/
 
 # plugin
@@ -260,9 +260,9 @@ RUN cd /root/.vim/bundle/ \
     && git clone --depth 1 https://github.com/jlanzarotta/bufexplorer \
     && git clone --depth 1 https://github.com/plasticboy/vim-markdown \
     && git clone --depth 1 https://github.com/ekalinin/Dockerfile.vim \
-    "&& git clone --depth 1 https://github.com/majutsushi/tagbar \
+    #&& git clone --depth 1 https://github.com/majutsushi/tagbar \
     #&& git clone --depth 1 https://github.com/scrooloose/syntastic \
-    "&& git clone --depth 1 https://github.com/vim-scripts/taglist.vim \
+    #&& git clone --depth 1 https://github.com/vim-scripts/taglist.vim \
     && git clone --depth 1 https://github.com/bling/vim-airline \
     && git clone --depth 1 https://github.com/vim-airline/vim-airline-themes \
     && git clone --depth 1 https://github.com/tpope/vim-surround \
