@@ -334,8 +334,8 @@ let g:gutentags_cache_dir = s:vim_tags
 
 " 检测 ~/.cache/tags 不存在就新建
 if !isdirectory(s:vim_tags)
-        ¦  silent! call mkdir(s:vim_tags, 'p')
-   endif"
+¦  silent! call mkdir(s:vim_tags, 'p')
+endif
 
 " 配置 ctags 的参数
 let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
