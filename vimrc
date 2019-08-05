@@ -103,11 +103,13 @@ map <leader>- <C-W>-
 map <leader>< <C-W><
 map <leader>> <C-W>>
 map <leader>o <C-W>o
+map <leader>v <C-W>v
+map <leader>s <C-W>s
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => style
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-au BufNewFile,BufRead *.py,*.go,Dockerfile*,dockerfile*,*.sh 
+au BufNewFile,BufRead *.py,*.go,Dockerfile*,dockerfile*,*.sh,*.c 
 \ set tabstop=4 |
 \ set softtabstop=4 |
 \ set shiftwidth=4 |
@@ -123,8 +125,8 @@ au BufNewFile,BufRead *.yml
 \ set softtabstop=2 |
 \ set shiftwidth=2
 
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match Error /\s\+$/
- nmap <F8> :PymodeLintAuto<CR>
+"au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match Error /\s\+$/
+ "nmap <F8> :PymodeLintAuto<CR>
  
  """"""""""""""""""""""""""""""
 " => ALE
@@ -171,8 +173,8 @@ nmap <leader>i :IndentLinesToggle<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => TagBar
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <leader>tl :TagbarToggle<CR>
-let g:tagbar_left=1
+"nmap <leader>tl :TagbarToggle<CR>
+"let g:tagbar_left=1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => LeaderF
