@@ -109,6 +109,15 @@ RUN pip install paramiko \
     && pip install pylint \
     && pip install flake8
 
+# obsutil
+#ADD obsutil_linux_amd64.tar.gz /opt
+RUN wget https://obs-community.obs.cn-north-1.myhuaweicloud.com/obsutil/current/obsutil_linux_amd64.tar.gz -P /opt \
+    && tar xzvf /opt/obsutil_linux_amd64.tar.gz -C /opt \
+    && cp /opt/obsutil_linux_amd64_5.1.6/obsutil /usr/bin \
+    && obsutil config -i=$ak -k=$sk -e=obs.cn-north-1.myhwclouds.com \
+    && rm -rf /opt/obsutil_linux_amd64*
+
+
 # python 3.7.3
 #ADD Python-3.7.3.tar.xz /opt
 #ADD https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tar.xz /opt
@@ -187,14 +196,6 @@ RUN wget https://codeload.github.com/huaweicloud/huaweicloud-sdk-python-obs/zip/
     && python setup.py install \
     && rm -rf /opt/huaweicloud-sdk-python-obs-master* \
     && rm -rf /opt/sdk.zip
-
-# obsutil
-#ADD obsutil_linux_amd64.tar.gz /opt
-RUN wget https://obs-community.obs.cn-north-1.myhuaweicloud.com/obsutil/current/obsutil_linux_amd64.tar.gz -P /opt \
-    && tar xzvf /opt/obsutil_linux_amd64.tar.gz -C /opt \
-    && cp /opt/obsutil_linux_amd64_5.1.6/obsutil /usr/bin \
-    && obsutil config -i=$ak -k=$sk -e=obs.cn-north-1.myhwclouds.com \
-    && rm -rf /opt/obsutil_linux_amd64*
 
 # universal ctags
 RUN cd /opt \
