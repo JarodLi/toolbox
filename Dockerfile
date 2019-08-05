@@ -113,7 +113,7 @@ RUN pip install paramiko \
 #ADD Python-3.7.3.tar.xz /opt
 #ADD https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tar.xz /opt
 #RUN wget https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tar.xz -P /opt \
-RUN obsutil cp obs://sftp-test/Python-3.7.3.tar.xz /opt
+RUN obsutil cp obs://sftp-test/Python-3.7.3.tar.xz /opt \
     && tar xJvf /opt/Python-3.7.3.tar.xz -C /opt \
     && cd /opt/Python-3.7.3 \
     && ./configure --enable-shared --prefix=/usr --with-openssl=/usr/ \
