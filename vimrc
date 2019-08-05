@@ -349,47 +349,44 @@ let g:gutentags_auto_add_gtags_cscope = 0
 """"""""""""""""""""""""""""""
 " => YCM plugin
 """"""""""""""""""""""""""""""
-" 避免和snipmate tab冲突
-"let g:ycm_key_list_select_completion = ['<c-n>', '<Down>']
-"let g:ycm_key_list_previous_completion = ['<c-p>', '<Up>']
-
-let g:ycm_auto_trigger = 1
-let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
-"set tags+=./tags,/usr/include/tags,/usr/local/go/src/tags,/usr/lib/python3.7/tags
-set tags=./.tags;,.tags
-let g:ycm_seed_identifiers_with_syntax=1
-" 禁止缓存匹配项,每次都重新生成匹配项
-let g:ycm_cache_omnifunc=0
+" 指定C 头文件tags，需要使用ctags -R --output-format=e-ctags提前生成
+set tags+=~/.cache/tags/usr-include.tags
+" 关闭函数原型预览窗口
+set completeopt=menu,menuone
+let g:ycm_add_preview_to_completeopt = 0
+" 关闭静态检查
+let g:ycm_show_diagnostics_ui = 0
 let g:ycm_confirm_extra_conf=0
-let g:ycm_key_invoke_completion = '<C-a>'
-set completeopt=longest,menu
-let g:ycm_min_num_of_chars_for_completion=2
-let g:ycm_seed_identifiers_with_syntax=1
-let g:ycm_complete_in_comments = 1
-let g:ycm_complete_in_strings = 1
-let g:ycm_collect_identifiers_from_comments_and_strings = 0
-let g:ycm_semantic_triggers =  {
-  \   'c': ['->', '.'],
-  \   'objc': ['->', '.', 're!\[[_a-zA-Z]+\w*\s', 're!^\s*[^\W\d]\w*\s',
-  \            're!\[.*\]\s'],
-  \   'ocaml': ['.', '#'],
-  \   'cpp,cuda,objcpp': ['->', '.', '::'],
-  \   'perl': ['->'],
-  \   'php': ['->', '::'],
-  \   'cs,d,elixir,go,groovy,java,javascript,julia,perl6,python,scala,typescript,vb': ['.'],
-  \   'ruby,rust': ['.', '::'],
-  \   'lua': ['.', ':'],
-  \   'erlang': [':'], }
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-"inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
+let g:ycm_server_log_level = 'info'
+let g:ycm_min_num_identifier_candidate_chars = 2
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+let g:ycm_complete_in_strings=1
+"let g:ycm_key_invoke_completion = '<c-z>'
+let g:ycm_auto_trigger = 1
+"noremap <c-z> <NOP>
 
-inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
-inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
-inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" :
-"\<PageDown>"
-inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" :
-"\<PageUp>"
-set shortmess+=c
+"let g:ycm_semantic_triggers =  {
+  "\   'c': ['->', '.'],
+  "\   'cpp,cuda,objcpp': ['->', '.', '::'],
+  "\   'cs,d,elixir,go,groovy,java,javascript,julia,perl6,python,scala,typescript,vb': ['.'], }
+
+let g:ycm_semantic_triggers =  {
+                        \ 'c': ['->', '.'],
+                        \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+                        \ 'cs,lua,javascript': ['re!\w{2}'],  
+                        \ }
+
+" 设置补全白名单
+let g:ycm_filetype_whitelist = { 
+                        \ "c":1,
+                        \ "cpp":1, 
+                        \ "objc":1,
+                        \ "sh":1,
+                        \ "zsh":1,
+                        \ "python":1,
+                        \ "go":1,
+                        \ }
+
 
 """"""""""""""""""""""""""""""
 " => jedi-vim plugin

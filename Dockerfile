@@ -206,7 +206,9 @@ RUN cd /opt \
     && make \
     && make install \
     && rm -rf /usr/bin/ctags \
-    && ln -s /usr/bin/universal-ctags/bin/ctags  /usr/bin/ctags
+    && ln -s /usr/bin/universal-ctags/bin/ctags  /usr/bin/ctags \
+    && cd /usr/ \
+    && ctags -R --output-format=e-ctags
 
 # gtags for vim plugin LeaderF
 # https://www.gnu.org/software/global/download.html
@@ -300,8 +302,9 @@ RUN cd /opt/ \
     && git clone https://github.com/JarodLi/toolbox/ 
 
 ENV MY=/opt/toolbox/
-# vimrc
-RUN cp $MY/vimrc /root/.vimrc 
+# vimrc and ycm_conf
+RUN cp $MY/vimrc /root/.vimrc  \
+    cp $MY/ycm_extra_conf.py /root/.ycm_extra_conf.py
 
 # jupyter
 RUN jupyter notebook --generate-config \
