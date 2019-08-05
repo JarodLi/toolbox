@@ -210,14 +210,16 @@ RUN cd /opt \
 
 # gtags for vim plugin LeaderF
 # https://www.gnu.org/software/global/download.html
-RUN wget http://tamacom.com/global/global-6.6.3.tar.gz -P /opt \
+#RUN wget http://tamacom.com/global/global-6.6.3.tar.gz -P /opt \
+RUN cd /opt \
+    # fix c99 compile bug
+    && obsutil cp obs://sftp-test/global-6.6.3.tar.gz . \
     && tar xzvf /opt/global-6.6.3.tar.gz -C /opt \
     && cd /opt/global-6.6.3 \
     && bash reconf.sh \
     && ./configure \
     && make \
     && cp -fp gtags/gtags /usr/bin
-
 
 # vim8.1
 RUN mkdir -p /root/.vim/{autoload,bundle}
