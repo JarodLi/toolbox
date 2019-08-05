@@ -359,6 +359,7 @@ let g:ycm_add_preview_to_completeopt = 0
 " 关闭静态检查
 let g:ycm_show_diagnostics_ui = 0
 let g:ycm_confirm_extra_conf=0
+let g:ycm_global_ycm_extra_conf = '/root/.ycm_extra_conf.py'
 let g:ycm_server_log_level = 'info'
 let g:ycm_min_num_identifier_candidate_chars = 2
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
