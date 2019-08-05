@@ -304,7 +304,7 @@ RUN cd /opt/ \
 ENV MY=/opt/toolbox/
 # vimrc and ycm_conf
 RUN cp $MY/vimrc /root/.vimrc  \
-    cp $MY/ycm_extra_conf.py /root/.ycm_extra_conf.py
+    cp $MY/ycm/ycm_extra_conf.py /root/.ycm_extra_conf.py
 
 # jupyter
 RUN jupyter notebook --generate-config \
