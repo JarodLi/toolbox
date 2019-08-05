@@ -248,7 +248,8 @@ RUN cd /root/.vim/bundle/ \
     && obsutil cp obs://sftp-test/YouCompleteMe.tar.gz . \
     && tar xzvf YouCompleteMe.tar.gz \
     && rm -rf /root/.vim/bundle/YouCompleteMe/.git \
-    && /root/.vim/bundle/YouCompleteMe/install.py --clang-completer --go-completer \
+    #&& /root/.vim/bundle/YouCompleteMe/install.py --clang-completer --go-completer \
+    && /root/.vim/bundle/YouCompleteMe/install.py --clang-completer  \
     && cp /root/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py /root/
 
 # plugin
