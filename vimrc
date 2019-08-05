@@ -352,7 +352,7 @@ let g:gutentags_auto_add_gtags_cscope = 0
 " => YCM plugin
 """"""""""""""""""""""""""""""
 " 指定C 头文件tags，需要使用ctags -R --output-format=e-ctags提前生成
-set tags+=~/.cache/tags/usr-include.tags
+set tags+=/usr/tags
 " 关闭函数原型预览窗口
 set completeopt=menu,menuone
 let g:ycm_add_preview_to_completeopt = 0
