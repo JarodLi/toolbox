@@ -300,9 +300,9 @@ RUN cd /root/.vim/bundle/ \
     && git clone https://github.com/justinmk/vim-dirvish.git \
     && git clone https://github.com/mhinz/vim-signify.git \
     && git clone https://github.com/kana/vim-textobj-user.git \
-    && git clone https://github.com/kana/vim-textobj-indent \
-    && git clone https://github.com/kana/vim-textobj-syntax \
-    && git clone https://github.com/kana/kana/vim-textobj-function \
+    && git clone https://github.com/kana/vim-textobj-indent.git \
+    && git clone https://github.com/kana/vim-textobj-syntax.git \
+    && git clone https://github.com/kana/vim-textobj-function.git \
     && git clone https://github.com/sgur/vim-textobj-parameter.git \
     && git clone https://github.com/Shougo/echodoc.vim.git \
     && git clone https://github.com/tpope/vim-unimpaired.git \
