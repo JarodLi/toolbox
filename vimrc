@@ -404,14 +404,14 @@ let g:ycm_semantic_triggers =  {
                         \ 'cs,lua,javascript': ['re!\w{2}'],  
                         \ }
 
-" 设置补全白名单
+" 设置补全白名单。 python使用jedi-vim进行补全
 let g:ycm_filetype_whitelist = { 
                         \ "c":1,
                         \ "cpp":1, 
                         \ "objc":1,
                         \ "sh":1,
                         \ "zsh":1,
-                        \ "python":1,
+                        \ "python":0,
                         \ "go":1,
                         \ }
 
