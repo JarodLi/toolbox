@@ -91,20 +91,20 @@ call Terminal_MetaMode(0)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => move between windows
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>h <C-W>h
-map <leader>l <C-W>l
-map <leader>k <C-W>k
-map <leader>j <C-W>j
-map <leader>c <C-W>c
-map <leader>q <C-W>q
-map <leader>= <C-W>=
-map <leader>+ <C-W>+
-map <leader>- <C-W>-
-map <leader>< <C-W><
-map <leader>> <C-W>>
-map <leader>o <C-W>o
-map <leader>v <C-W>v
-map <leader>s <C-W>s
+map <TAB>h <C-W>h
+map <TAB>l <C-W>l
+map <TAB>k <C-W>k
+map <TAB>j <C-W>j
+map <TAB>c <C-W>c
+map <TAB>q <C-W>q
+map <TAB>= <C-W>=
+map <TAB>+ <C-W>+
+map <TAB>- <C-W>-
+map <TAB>< <C-W><
+map <TAB>> <C-W>>
+map <TAB>o <C-W>o
+map <TAB>v <C-W>v
+map <TAB>s <C-W>s
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => style
@@ -171,7 +171,7 @@ let g:bufExplorerSortBy='name'
 nmap <leader>i :IndentLinesToggle<CR> 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => TagBar
+" => TagBar  --使用LeaderF替代
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "nmap <leader>tl :TagbarToggle<CR>
 "let g:tagbar_left=1
@@ -186,10 +186,16 @@ let g:Lf_ShortcutB = '<m-n>'
 "noremap <m-p> :LeaderfFunction!<cr>
 "noremap <m-n> :LeaderfBuffer<cr>
 "noremap <m-m> :LeaderfTag<cr>
-nmap <leader>lb :LeaderfBuffer<CR>
+nmap <leader>l :Leaderf
+nmap <leader>bf :Leaderf! buffer<CR>
+nmap <leader>lb :Leaderf! buffer<CR>
 nmap <leader>lt :LeaderfBufTag!<CR>
-nmap <leader>lf :LeaderfFunction!<CR>
-nmap <leader>lm :LeaderfMru<CR>
+nmap <leader>tl :LeaderfBufTag!<CR>
+"nmap <leader>fl :Leaderf! file<CR>
+nmap <leader>lf :Leaderf! file<CR>
+nmap <leader>lm :Leaderf! mru<CR>
+nmap <leader>lr :Leaderf rg<CR>
+"nmap <leader>lf :LeaderfFunction!<CR>
 let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
 
 let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']

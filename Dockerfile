@@ -117,6 +117,10 @@ RUN wget https://obs-community.obs.cn-north-1.myhuaweicloud.com/obsutil/current/
     && obsutil config -i=$ak -k=$sk -e=obs.cn-north-1.myhwclouds.com \
     && rm -rf /opt/obsutil_linux_amd64*
 
+# rg 索引工具，LeaderF会用到，需要在python3编译前安装，否则yum-config-manager工具无法使用 https://github.com/BurntSushi/ripgrep#installation
+RUN yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo \
+    && sudo yum install ripgrep
+
 
 # python 3.7.3
 #ADD Python-3.7.3.tar.xz /opt
@@ -294,6 +298,14 @@ RUN cd /root/.vim/bundle/ \
     && git clone https://github.com/Yggdroot/LeaderF.git \
     && git clone https://github.com/ludovicchabant/vim-gutentags.git \
     && git clone https://github.com/justinmk/vim-dirvish.git \
+    && git clone https://github.com/mhinz/vim-signify.git \
+    && git clone https://github.com/kana/vim-textobj-user.git \
+    && git clone https://github.com/kana/vim-textobj-indent \
+    && git clone https://github.com/kana/vim-textobj-syntax \
+    && git clone https://github.com/kana/kana/vim-textobj-function \
+    && git clone https://github.com/sgur/vim-textobj-parameter.git \
+    && git clone https://github.com/Shougo/echodoc.vim.git \
+    && git clone https://github.com/tpope/vim-unimpaired.git \
     && find . -name ".git" | xargs -I{} rm -rf {}
 
 # timezone
