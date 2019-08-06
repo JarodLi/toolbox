@@ -421,12 +421,11 @@ let g:ycm_filetype_whitelist = {
 """"""""""""""""""""""""""""""
 let g:jedi#completions_command = "<C-N>"
 let g:jedi#goto_command = "<leader>d"
-"let g:jedi#goto_assignments_command = "<leader>g"
-let g:jedi#goto_assignments_command = "<leader>cg"
+let g:jedi#goto_assignments_command = "<leader>g"
 let g:jedi#goto_definitions_command = ""
 let g:jedi#documentation_command = "K"
-"let g:jedi#usages_command = "<leader>n"
-let g:jedi#usages_command = "<leader>cc"
+let g:jedi#usages_command = "<leader>n"
+"let g:jedi#usages_command = "<leader>cc"
 let g:jedi#rename_command = "<leader>e"
 autocmd FileType python setlocal completeopt-=preview  
 let g:pymode_rope = 0  
