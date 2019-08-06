@@ -201,6 +201,34 @@ RUN wget https://codeload.github.com/huaweicloud/huaweicloud-sdk-python-obs/zip/
     && rm -rf /opt/huaweicloud-sdk-python-obs-master* \
     && rm -rf /opt/sdk.zip
 
+
+# vim8.1
+RUN mkdir -p /root/.vim/{autoload,bundle}
+#ADD vim8.1.tar.gz /opt
+RUN cd /opt \
+    #&& git clone https://github.com/vim/vim.git \
+    && obsutil cp obs://sftp-test/vim8.1.tar.gz . \
+    && tar xzvf vim8.1.tar.gz \
+    && cd /opt/vim \
+    && ./configure --with-features=huge --enable-python3interp=dynamic  --with-python-config-dir=/usr/lib/python3.7/config --enable-cscope --enable-multibyte \
+    && make \
+    && make install \
+    && rm -rf /opt/vim/.git \
+    && rm -rf /usr/bin/vi \
+    && ln -s /usr/local/bin/vim /usr/bin/vi \
+    && curl -LSso /root/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+
+# YCM
+#ADD YouCompleteMe.tar.gz /root/.vim/bundle
+RUN cd /root/.vim/bundle/ \
+    #&& git clone --recursive https://github.com/ycm-core/YouCompleteMe \
+    && obsutil cp obs://sftp-test/YouCompleteMe.tar.gz . \
+    && tar xzvf YouCompleteMe.tar.gz \
+    && rm -rf /root/.vim/bundle/YouCompleteMe/.git \
+    #&& /root/.vim/bundle/YouCompleteMe/install.py --clang-completer --go-completer \
+    && /root/.vim/bundle/YouCompleteMe/install.py --clang-completer  \
+    && cp /root/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py /root/
+
 # universal ctags
 RUN cd /opt \
     # && git clone https://github.com/universal-ctags/ctags.git \
@@ -232,33 +260,6 @@ RUN cd /opt \
     && cp -fp global/global /usr/bin 
 
 RUN yum install -y cscope
-
-# vim8.1
-RUN mkdir -p /root/.vim/{autoload,bundle}
-#ADD vim8.1.tar.gz /opt
-RUN cd /opt \
-    #&& git clone https://github.com/vim/vim.git \
-    && obsutil cp obs://sftp-test/vim8.1.tar.gz . \
-    && tar xzvf vim8.1.tar.gz \
-    && cd /opt/vim \
-    && ./configure --with-features=huge --enable-python3interp=dynamic  --with-python-config-dir=/usr/lib/python3.7/config --enable-cscope --enable-multibyte \
-    && make \
-    && make install \
-    && rm -rf /opt/vim/.git \
-    && rm -rf /usr/bin/vi \
-    && ln -s /usr/local/bin/vim /usr/bin/vi \
-    && curl -LSso /root/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-
-# YCM
-#ADD YouCompleteMe.tar.gz /root/.vim/bundle
-RUN cd /root/.vim/bundle/ \
-    #&& git clone --recursive https://github.com/ycm-core/YouCompleteMe \
-    && obsutil cp obs://sftp-test/YouCompleteMe.tar.gz . \
-    && tar xzvf YouCompleteMe.tar.gz \
-    && rm -rf /root/.vim/bundle/YouCompleteMe/.git \
-    #&& /root/.vim/bundle/YouCompleteMe/install.py --clang-completer --go-completer \
-    && /root/.vim/bundle/YouCompleteMe/install.py --clang-completer  \
-    && cp /root/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py /root/
 
 # plugin
 #RUN rm -rf /root/.vim/bundle
