@@ -355,6 +355,14 @@ let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
 let g:gutentags_auto_add_gtags_cscope = 0
 
 """"""""""""""""""""""""""""""
+" => cscope
+""""""""""""""""""""""""""""""
+" cscope
+set cscopetag                  " 使用 cscope 作为 tags 命令
+set cscopeprg='gtags-cscope'   " 使用 gtags-cscope 代替 cscope
+
+
+""""""""""""""""""""""""""""""
 " => YCM plugin
 """"""""""""""""""""""""""""""
 " 指定C 头文件tags，需要使用ctags -R --output-format=e-ctags提前生成

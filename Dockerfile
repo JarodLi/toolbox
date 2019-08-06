@@ -216,7 +216,7 @@ RUN cd /opt \
     && cd /usr/ \
     && ctags -R --output-format=e-ctags
 
-# gtags for vim plugin LeaderF
+# gtags for LeaderF and cscope
 # https://www.gnu.org/software/global/download.html
 #RUN wget http://tamacom.com/global/global-6.6.3.tar.gz -P /opt \
 RUN cd /opt \
@@ -227,7 +227,11 @@ RUN cd /opt \
     && bash reconf.sh \
     && ./configure \
     && make \
-    && cp -fp gtags/gtags /usr/bin
+    && cp -fp gtags/gtags /usr/bin \
+    && cp -fp gtags-cscope/gtags-cscope /usr/bin \
+    && cp -fp global/global /usr/bin 
+
+RUN yum install -y cscope
 
 # vim8.1
 RUN mkdir -p /root/.vim/{autoload,bundle}
@@ -306,6 +310,8 @@ RUN cd /root/.vim/bundle/ \
     && git clone https://github.com/sgur/vim-textobj-parameter.git \
     && git clone https://github.com/Shougo/echodoc.vim.git \
     && git clone https://github.com/tpope/vim-unimpaired.git \
+    && git clone https://github.com/skywind3000/gutentags_plus.git \
+    && git clone https://github.com/skywind3000/vim-preview.git \
     && find . -name ".git" | xargs -I{} rm -rf {}
 
 # timezone
