@@ -314,6 +314,7 @@ RUN cd /root/.vim/bundle/ \
     && git clone https://github.com/skywind3000/gutentags_plus.git \
     && git clone https://github.com/skywind3000/vim-preview.git \
     && git clone https://github.com/sillybun/vim-repl.git \
+    && git clone https://github.com/sillybun/vim-autodoc.git \
     && find . -name ".git" | xargs -I{} rm -rf {}
 
 # timezone
