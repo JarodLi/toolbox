@@ -183,7 +183,8 @@ RUN pip install paramiko \
     && pip install notebook \
     && pip install ipdb \
     && pip install pylint \
-    && pip install flake8
+    && pip install flake8 \
+    && pip install line_profiler
     
 
 # sshd
@@ -315,6 +316,8 @@ RUN cd /root/.vim/bundle/ \
     && git clone https://github.com/skywind3000/vim-preview.git \
     && git clone https://github.com/sillybun/vim-repl.git \
     && git clone https://github.com/sillybun/vim-autodoc.git \
+# 异步运行python
+    && git clone https://github.com/skywind3000/asyncrun.vim.git \
     && find . -name ".git" | xargs -I{} rm -rf {}
 
 # timezone

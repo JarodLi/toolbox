@@ -456,9 +456,38 @@ let g:repl_python_automerge = 1
 let g:repl_console_name = 'ZYTREPL'
 let g:repl_auto_sends = ['class ', 'def ', 'for ', 'if ', 'while ']
 let g:repl_cursor_down = 1
+let g:repl_width = 75
 autocmd Filetype python nnoremap <F12> <Esc>:REPLDebugStopAtCurrentLine<Cr>
 autocmd Filetype python nnoremap <F10> <Esc>:REPLPDBN<Cr>
 autocmd Filetype python nnoremap <F11> <Esc>:REPLPDBS<Cr>
+
+""""""""""""""""""""""""""""""
+" => asyncrun --异步执行python&C https://github.com/skywind3000/asyncrun.vim
+""""""""""""""""""""""""""""""
+nnoremap <F5> :call CompileRunGcc()<cr>
+
+func! CompileRunGcc()
+        exec "w"
+        if &filetype == 'python'
+                if search("@profile")
+                        exec "AsyncRun kernprof -l -v %"
+                        exec "copen"
+                        exec "wincmd p"
+                elseif search("set_trace()")
+                        exec "!python3 %"
+                else
+                        exec "AsyncRun -raw python3 %"
+                        exec "copen"
+                        exec "wincmd p"
+                endif
+        elseif &filetype == 'c'
+                exec "AsyncRun gcc % -o %< && ./%<"
+                exec "copen"
+                exec "wincmd p"
+        endif
+
+endfunc
+
 
 
 """"""""""""""""""""""""""""""
