@@ -264,16 +264,26 @@ let g:move_key_modifier = 'C'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => python-mode
 " https://github.com/python-mode/python-mode/blob/develop/doc/pymode.txt
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>doc :Pydocstring<cr>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => python-mode
-" https://github.com/python-mode/python-mode/blob/develop/doc/pymode.txt
+"The plugin contains all you need to develop python applications in Vim.
+"
+"Support Python version 2.6+ and 3.2+
+"Syntax highlighting
+"Virtualenv support
+"Run python code (<leader>r)
+"Add/remove breakpoints (<leader>b)
+"Improved Python indentation
+"Python motions and operators (]], 3[[, ]]M, vaC, viM, daC, ciM, ...)
+"Improved Python folding
+"Run multiple code checkers simultaneously (:PymodeLint)
+"Autofix PEP8 errors (:PymodeLintAuto)
+"Search in python documentation (<leader>K)
+"Code refactoring
+"Intellisense code-completion
+"Go to definition (<C-c>g)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:pymode_python = 'python3'
+map <leader>doc :Pydocstring<cr>
 map <leader>lint :PymodeLint<cr>
 map <leader>auto :PymodeLintAuto<cr>
 let g:pymode = 1
@@ -429,6 +439,27 @@ let g:jedi#usages_command = "<leader>n"
 let g:jedi#rename_command = "<leader>e"
 autocmd FileType python setlocal completeopt-=preview  
 let g:pymode_rope = 0  
+
+""""""""""""""""""""""""""""""
+" => REPL plugin https://github.com/sillybun/vim-repl
+""""""""""""""""""""""""""""""
+nnoremap <leader>re :REPLToggle<Cr>
+let g:sendtorepl_invoke_key = "<leader>w"
+let g:repl_position = 0
+let g:repl_program = {
+                        \       'python': 'ipython',
+                        \       'default': 'bash'
+                        \       }
+let g:repl_ipython_version = '7.7'
+let g:repl_position = 3
+let g:repl_python_automerge = 1
+let g:repl_console_name = 'ZYTREPL'
+let g:repl_auto_sends = ['class ', 'def ', 'for ', 'if ', 'while ']
+let g:repl_cursor_down = 1
+autocmd Filetype python nnoremap <F12> <Esc>:REPLDebugStopAtCurrentLine<Cr>
+autocmd Filetype python nnoremap <F10> <Esc>:REPLPDBN<Cr>
+autocmd Filetype python nnoremap <F11> <Esc>:REPLPDBS<Cr>
+
 
 """"""""""""""""""""""""""""""
 " => vim-go plugin
