@@ -315,6 +315,8 @@ RUN cd /root/.vim/bundle/ \
     && git clone https://github.com/skywind3000/gutentags_plus.git \
     && git clone https://github.com/skywind3000/vim-preview.git \
     && git clone https://github.com/sillybun/vim-repl.git \
+    && git clone https://github.com/sillybun/vim-async.git \
+    && git clone https://github.com/sillybun/zytutil.git \
     && git clone https://github.com/sillybun/vim-autodoc.git \
 # 异步运行python
     && git clone https://github.com/skywind3000/asyncrun.vim.git \
