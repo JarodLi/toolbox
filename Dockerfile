@@ -183,8 +183,7 @@ RUN pip install paramiko \
     && pip install notebook \
     && pip install ipdb \
     && pip install pylint \
-    && pip install flake8 \
-    && pip install line_profiler
+    && pip install flake8 
     
 
 # sshd
