@@ -286,6 +286,8 @@ let g:pymode_python = 'python3'
 map <leader>doc :Pydocstring<cr>
 map <leader>lint :PymodeLint<cr>
 map <leader>auto :PymodeLintAuto<cr>
+" 禁用run功能，将<leader>r快捷键让出来
+let g:pymode_run_bind = '<leader>rrrrrrrr'
 let g:pymode = 1
 let g:pymode_trim_whitespaces = 1
 let g:pymode_options = 1
@@ -436,7 +438,7 @@ let g:jedi#goto_definitions_command = ""
 let g:jedi#documentation_command = "K"
 let g:jedi#usages_command = "<leader>n"
 "let g:jedi#usages_command = "<leader>cc"
-let g:jedi#rename_command = "<leader>e"
+let g:jedi#rename_command = "<leader>r"
 autocmd FileType python setlocal completeopt-=preview  
 let g:pymode_rope = 0  
 
