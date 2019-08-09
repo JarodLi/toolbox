@@ -319,6 +319,7 @@ RUN cd /root/.vim/bundle/ \
     && git clone https://github.com/sillybun/vim-autodoc.git \
 # 异步运行python
     && git clone https://github.com/skywind3000/asyncrun.vim.git \
+    && git clone https://github.com/scrooloose/nerdcommenter.git \
     && find . -name ".git" | xargs -I{} rm -rf {}
 
 # timezone
