@@ -311,6 +311,7 @@ RUN cd /root/.vim/bundle/ \
 # 异步运行python
     && git clone https://github.com/skywind3000/asyncrun.vim.git \
     && git clone https://github.com/scrooloose/nerdcommenter.git \
+    && git clone git clone https://github.com/kien/rainbow_parentheses.vim.git \
     && find . -name ".git" | xargs -I{} rm -rf {}
 
 
