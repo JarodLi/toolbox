@@ -19,6 +19,8 @@ set guioptions-=b
 set showtabline=0
 
 set nofoldenable
+"开启关闭paste模式
+set pastetoggle=<leader>p
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "=> 自动定位上次的行号
