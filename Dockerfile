@@ -3,9 +3,8 @@ ENV container docker
 ARG ak
 ARG sk
 
-RUN sed -i '/tsflags/d' /etc/yum.conf  
-
-RUN yum install -y wget \
+RUN sed -i '/tsflags/d' /etc/yum.conf \ 
+    && yum install -y wget \
     && yum install -y make \
     && yum install -y gcc-c++\
     && yum install -y zlib-devel \
@@ -48,7 +47,11 @@ RUN yum install -y wget \
     && yum install -y which \
     && yum install -y sshpass \
     && yum install -y zip \
-    && yum install -y bc
+    && yum install -y bc \
+    && RUN yum install -y cscope \
+# rg 索引工具，LeaderF会用到，需要在python3编译前安装，否则yum-config-manager工具无法使用 https://github.com/BurntSushi/ripgrep#installation
+    && RUN yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo \
+    && yum install -y ripgrep
 
 # openssl 1.1.1c
 #ADD openssl-1.1.1c.tar.gz /opt
@@ -117,11 +120,6 @@ RUN wget https://obs-community.obs.cn-north-1.myhuaweicloud.com/obsutil/current/
     && obsutil config -i=$ak -k=$sk -e=obs.cn-north-1.myhwclouds.com \
     && rm -rf /opt/obsutil_linux_amd64*
 
-# rg 索引工具，LeaderF会用到，需要在python3编译前安装，否则yum-config-manager工具无法使用 https://github.com/BurntSushi/ripgrep#installation
-RUN yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo \
-    && yum install -y ripgrep
-
-
 # python 3.7.3
 #ADD Python-3.7.3.tar.xz /opt
 #ADD https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tar.xz /opt
@@ -185,12 +183,6 @@ RUN pip install paramiko \
     && pip install pylint \
     && pip install flake8 
     
-
-# sshd
-RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N "" \
-    && ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key -N "" \
-    && ssh-keygen -t ed25519 -f /etc/ssh/ssh_host_ed25519_key -N ""
-RUN echo "root:123" | chpasswd
 
 # huawei sdk
 #ADD sdk.zip /opt
@@ -259,7 +251,6 @@ RUN cd /opt \
     && cp -fp gtags-cscope/gtags-cscope /usr/bin \
     && cp -fp global/global /usr/bin 
 
-RUN yum install -y cscope
 
 # plugin
 #RUN rm -rf /root/.vim/bundle
@@ -322,27 +313,32 @@ RUN cd /root/.vim/bundle/ \
     && git clone https://github.com/scrooloose/nerdcommenter.git \
     && find . -name ".git" | xargs -I{} rm -rf {}
 
-# timezone
-ENV TimeZone=Asia/Shanghai
-RUN ln -snf /usr/share/zoneinfo/$TimeZone /etc/localtime \
-    && echo $TimeZone > /etc/timezone 
-
-RUN cd /opt/ \
-    && git clone https://github.com/JarodLi/toolbox/ 
 
 ENV MY=/opt/toolbox/
-# vimrc and ycm_conf
-RUN cp $MY/vimrc /root/.vimrc  \
-    && cp $MY/ycm/ycm_extra_conf.py /root/.ycm_extra_conf.py
-
-# jupyter
-RUN jupyter notebook --generate-config \
+RUN cd /opt/ \
+    && git clone https://github.com/JarodLi/toolbox/ \
+    # vimrc and ycm_conf
+    && cp $MY/vimrc /root/.vimrc  \
+    && cp $MY/ycm/ycm_extra_conf.py /root/.ycm_extra_conf.py \
+    # jupyter
+    && jupyter notebook --generate-config \
     && cp -fp $MY/jupyter/jupyter_notebook_config.py /root/.jupyter \
-    && cp -fp $MY/jupyter/jupyter.service /usr/lib/systemd/system 
+    && cp -fp $MY/jupyter/jupyter.service /usr/lib/systemd/system  \ 
+    # profile
+    && cat $MY/profile.my >> /etc/profile  \ 
+    && rm -rf $MY \
+    && rm -rf /opt/*
 
-# profile
-RUN cat $MY/profile.my >> /etc/profile 
+# OS config
+ENV TimeZone=Asia/Shanghai
+# sshd
+RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N "" \
+    && ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key -N "" \
+    && ssh-keygen -t ed25519 -f /etc/ssh/ssh_host_ed25519_key -N "" \
+    && echo "root:123" | chpasswd \
+# timezone
+    && ln -snf /usr/share/zoneinfo/$TimeZone /etc/localtime \
+    && echo $TimeZone > /etc/timezone 
 
-RUN rm -rf $MY
 
 CMD ["/usr/sbin/init"]
