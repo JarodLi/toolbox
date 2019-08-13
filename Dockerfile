@@ -251,6 +251,8 @@ RUN cd /opt \
     && cp -fp gtags-cscope/gtags-cscope /usr/bin \
     && cp -fp global/global /usr/bin 
 
+RUN pip install pynvim
+
 
 # plugin
 #RUN rm -rf /root/.vim/bundle
@@ -312,7 +314,12 @@ RUN cd /root/.vim/bundle/ \
     && git clone https://github.com/skywind3000/asyncrun.vim.git \
     && git clone https://github.com/scrooloose/nerdcommenter.git \
     && git clone git clone https://github.com/kien/rainbow_parentheses.vim.git \
-    && find . -name ".git" | xargs -I{} rm -rf {}
+    && git clone https://github.com/Shougo/defx.nvim.git \
+    && git clone https://github.com/roxma/nvim-yarp.git \
+    && git clone https://github.com/roxma/vim-hug-neovim-rpc.git \
+    && git clone git clone https://github.com/kristijanhusak/defx-icons.git \
+
+    && find . -name ".git" | xargs -I{} rm -rf {} 
 
 
 ENV MY=/opt/toolbox/
