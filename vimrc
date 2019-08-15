@@ -199,7 +199,7 @@ call defx#custom#option('_', {
       \ 'resume': 1
       \ })
 
-map <silent> - :Defx<CR>
+map <silent> = :Defx<CR>
 " Avoid the white space highting issue
 autocmd FileType defx match ExtraWhitespace /^^/
 " Keymap in defx
@@ -210,6 +210,10 @@ function! s:defx_my_settings() abort
   setl signcolumn=no
   setl nonumber
   nnoremap <silent><buffer><expr> o
+  \ defx#is_directory() ?
+  \ defx#do_action('open_or_close_tree') :
+  \ defx#do_action('drop',)
+  nnoremap <silent><buffer><expr> <CR>
   \ defx#is_directory() ?
   \ defx#do_action('open_or_close_tree') :
   \ defx#do_action('drop',)
