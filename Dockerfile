@@ -208,7 +208,9 @@ RUN cd /opt \
     && rm -rf /opt/vim/.git \
     && rm -rf /usr/bin/vi \
     && ln -s /usr/local/bin/vim /usr/bin/vi \
-    && curl -LSso /root/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+	# 使用vim-plug替代pathogen
+    # && curl -LSso /root/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+    && curl -fLo /root/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # YCM
 #ADD YouCompleteMe.tar.gz /root/.vim/bundle

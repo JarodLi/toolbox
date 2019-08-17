@@ -1,4 +1,50 @@
-execute pathogen#infect()
+" execute pathogen#infect()
+
+call plug#begin('~/.vim/bundle')
+Plug 'jnurmine/Zenburn'
+Plug 'Shougo/defx.nvim'
+Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'elzr/vim-json', { 'for': 'json'}
+Plug 'matze/vim-move'
+Plug 'python-mode/python-mode', { 'for': 'python'}
+Plug 'heavenshell/vim-pydocstring', { 'for': 'python'}
+Plug 'tmhedberg/SimpylFold'
+Plug 'jnurmine/Zenburn'
+Plug 'vim-scripts/UltiSnips'
+Plug 'davidhalter/jedi-vim', { 'for': 'python'}
+Plug 'honza/vim-snippets'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'sjl/gundo.vim'
+Plug 'dense-analysis/ale', { 'for': 'python'}
+Plug 'Yggdroot/LeaderF'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'justinmk/vim-dirvish'
+Plug 'mhinz/vim-signify'
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-indent'
+Plug 'kana/vim-textobj-syntax'
+Plug 'kana/vim-textobj-function'
+Plug 'sgur/vim-textobj-parameter'
+Plug 'Shougo/echodoc.vim'
+Plug 'tpope/vim-unimpaired'
+Plug 'skywind3000/gutentags_plus'
+Plug 'skywind3000/vim-preview'
+Plug 'sillybun/vim-repl', { 'for': 'python'}
+Plug 'sillybun/vim-async', { 'for': 'python'}
+Plug 'sillybun/zytutil', { 'for': 'python'}
+Plug 'sillybun/vim-autodoc', { 'for': 'python'}
+Plug 'skywind3000/asyncrun.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'Shougo/defx.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'kristijanhusak/defx-icons'
+Plug 'kristijanhusak/defx-git'
+Plug 'ycm-core/YouCompleteMe', { 'for': ['python', 'c', 'go']}
+
+call plug#end()
+
 syntax on
 filetype plugin indent on
 let mapleader = ";"
