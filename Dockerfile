@@ -116,7 +116,7 @@ RUN pip install paramiko \
 #ADD obsutil_linux_amd64.tar.gz /opt
 RUN wget https://obs-community.obs.cn-north-1.myhuaweicloud.com/obsutil/current/obsutil_linux_amd64.tar.gz -P /opt \
     && tar xzvf /opt/obsutil_linux_amd64.tar.gz -C /opt \
-    && cp /opt/obsutil_linux_amd64_5.1.6/obsutil /usr/bin \
+    && cp /opt/obsutil_linux_amd64_5.1.7/obsutil /usr/bin \
     && obsutil config -i=$ak -k=$sk -e=obs.cn-north-1.myhwclouds.com \
     && rm -rf /opt/obsutil_linux_amd64*
 
