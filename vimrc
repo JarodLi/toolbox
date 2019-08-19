@@ -41,7 +41,7 @@ Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'kristijanhusak/defx-icons'
 Plug 'kristijanhusak/defx-git'
-Plug 'ycm-core/YouCompleteMe', { 'for': ['python', 'c', 'go']}
+Plug 'ycm-core/YouCompleteMe', { 'for': ['python', 'c', 'go', 'sh']}
 
 call plug#end()
 
