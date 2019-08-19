@@ -15,7 +15,7 @@ Plug 'davidhalter/jedi-vim', { 'for': 'python'}
 Plug 'honza/vim-snippets'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'sjl/gundo.vim'
-Plug 'dense-analysis/ale', { 'for': 'python'}
+Plug 'dense-analysis/ale', { 'for': ['python', 'c', 'go', 'sh']}
 Plug 'Yggdroot/LeaderF'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'justinmk/vim-dirvish'
