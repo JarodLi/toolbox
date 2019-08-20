@@ -1,7 +1,6 @@
 " execute pathogen#infect()
 
 call plug#begin('~/.vim/bundle')
-Plug 'jnurmine/Zenburn'
 Plug 'Shougo/defx.nvim'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'elzr/vim-json', { 'for': 'json'}
