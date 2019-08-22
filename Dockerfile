@@ -124,7 +124,7 @@ RUN wget https://obs-community.obs.cn-north-1.myhuaweicloud.com/obsutil/current/
 #ADD Python-3.7.4.tar.xz /opt
 #ADD https://www.python.org/ftp/python/3.7.4/Python-3.7.4.tar.xz /opt
 #RUN wget https://www.python.org/ftp/python/3.7.4/Python-3.7.4.tar.xz -P /opt \
-RUN obsutil cp obs://sftp-test/Python-3.7.4.tar.xz /opt \
+RUN obsutil cp obs://lijian-test/Python-3.7.4.tar.xz /opt \
     && tar xJvf /opt/Python-3.7.4.tar.xz -C /opt \
     && cd /opt/Python-3.7.4 \
     && ./configure --enable-shared --prefix=/usr --with-openssl=/usr/ \
@@ -199,7 +199,7 @@ RUN mkdir -p /root/.vim/{autoload,bundle}
 #ADD vim8.1.tar.gz /opt
 RUN cd /opt \
     #&& git clone https://github.com/vim/vim.git \
-    && obsutil cp obs://sftp-test/vim8.1.tar.gz . \
+    && obsutil cp obs://lijian-test/vim8.1.tar.gz . \
     && tar xzvf vim8.1.tar.gz \
     && cd /opt/vim \
     && ./configure --with-features=huge --enable-python3interp=dynamic  --with-python-config-dir=/usr/lib/python3.7/config --enable-cscope --enable-multibyte \
@@ -216,7 +216,7 @@ RUN cd /opt \
 #ADD YouCompleteMe.tar.gz /root/.vim/bundle
 RUN cd /root/.vim/bundle/ \
     #&& git clone --recursive https://github.com/ycm-core/YouCompleteMe \
-    && obsutil cp obs://sftp-test/YouCompleteMe.tar.gz . \
+    && obsutil cp obs://lijian-test/YouCompleteMe.tar.gz . \
     && tar xzvf YouCompleteMe.tar.gz \
     && rm -rf /root/.vim/bundle/YouCompleteMe/.git \
     #&& /root/.vim/bundle/YouCompleteMe/install.py --clang-completer --go-completer \
@@ -226,7 +226,7 @@ RUN cd /root/.vim/bundle/ \
 # universal ctags
 RUN cd /opt \
     # && git clone https://github.com/universal-ctags/ctags.git \
-    && obsutil cp obs://sftp-test/ctags.tar.gz . \
+    && obsutil cp obs://lijian-test/ctags.tar.gz . \
     && tar xzvf ctags.tar.gz \
     && cd ctags \ 
     && ./autogen.sh \
@@ -243,7 +243,7 @@ RUN cd /opt \
 #RUN wget http://tamacom.com/global/global-6.6.3.tar.gz -P /opt \
 RUN cd /opt \
     # fix c99 compile bug
-    && obsutil cp obs://sftp-test/global-6.6.3.tar.gz . \
+    && obsutil cp obs://lijian-test/global-6.6.3.tar.gz . \
     && tar xzvf /opt/global-6.6.3.tar.gz -C /opt \
     && cd /opt/global-6.6.3 \
     && bash reconf.sh \
@@ -281,7 +281,7 @@ RUN cd /root/.vim/bundle/ \
     && git clone --depth 1 https://github.com/elzr/vim-json \
     && git clone --depth 1 https://github.com/matze/vim-move \
     #&& git clone --recurse-submodules https://github.com/python-mode/python-mode.git \
-    && obsutil cp obs://sftp-test/python-mode.tar.gz . \
+    && obsutil cp obs://lijian-test/python-mode.tar.gz . \
     && tar xzvf python-mode.tar.gz \
     && rm -rf python-mode.tar.gz \
     #&& git clone https://github.com/python-mode/python-mode.git \
