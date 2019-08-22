@@ -120,13 +120,13 @@ RUN wget https://obs-community.obs.cn-north-1.myhuaweicloud.com/obsutil/current/
     && obsutil config -i=$ak -k=$sk -e=obs.cn-north-1.myhwclouds.com \
     && rm -rf /opt/obsutil_linux_amd64*
 
-# python 3.7.3
-#ADD Python-3.7.3.tar.xz /opt
-#ADD https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tar.xz /opt
-#RUN wget https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tar.xz -P /opt \
-RUN obsutil cp obs://sftp-test/Python-3.7.3.tar.xz /opt \
-    && tar xJvf /opt/Python-3.7.3.tar.xz -C /opt \
-    && cd /opt/Python-3.7.3 \
+# python 3.7.4
+#ADD Python-3.7.4.tar.xz /opt
+#ADD https://www.python.org/ftp/python/3.7.4/Python-3.7.4.tar.xz /opt
+#RUN wget https://www.python.org/ftp/python/3.7.4/Python-3.7.4.tar.xz -P /opt \
+RUN obsutil cp obs://sftp-test/Python-3.7.4.tar.xz /opt \
+    && tar xJvf /opt/Python-3.7.4.tar.xz -C /opt \
+    && cd /opt/Python-3.7.4 \
     && ./configure --enable-shared --prefix=/usr --with-openssl=/usr/ \
     && make \
     && make install \
