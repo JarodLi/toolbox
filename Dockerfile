@@ -51,7 +51,8 @@ RUN sed -i '/tsflags/d' /etc/yum.conf \
     && yum install -y cscope \
 # rg 索引工具，LeaderF会用到，需要在python3编译前安装，否则yum-config-manager工具无法使用 https://github.com/BurntSushi/ripgrep#installation
     && yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo \
-    && yum install -y ripgrep
+    && yum install -y ripgrep \
+    && yum install -y tcpdump
 
 # openssl 1.1.1c
 #ADD openssl-1.1.1c.tar.gz /opt
