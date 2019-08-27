@@ -53,7 +53,9 @@ RUN sed -i '/tsflags/d' /etc/yum.conf \
 # rg 索引工具，LeaderF会用到，需要在python3编译前安装，否则yum-config-manager工具无法使用 https://github.com/BurntSushi/ripgrep#installation
     && yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo \
     && yum install -y ripgrep \
-    && yum install -y tcpdump
+    && yum install -y tcpdump \
+    && yum install -y pcre \
+    && yum install -y pcre-devel
 
 # openssl 1.1.1c
 #ADD openssl-1.1.1c.tar.gz /opt
@@ -144,6 +146,14 @@ RUN sed -i "s/\(^#.*\)python.*/\1python2/g" /usr/bin/yum \
 RUN echo "/usr/lib/" > /etc/ld.so.conf.d/usr.conf \
     && echo "/usr/lib64/" >> /etc/ld.so.conf.d/usr.conf \
     && ldconfig
+
+# nginx
+RUN wget https://nginx.org/download/nginx-1.16.1.tar.gz -P /opt \
+    && tar xzvf /opt/nginx-1.16.1.tar.gz -C /opt \ 
+    && cd /opt/nginx-1.16.1/ \
+    && ./configure \
+    && make \
+    && make install
 
 # setuptools for python3
 #ADD setuptools-41.0.1.zip /opt
