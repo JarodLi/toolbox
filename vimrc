@@ -26,6 +26,7 @@ Plug 'kana/vim-textobj-function'
 Plug 'sgur/vim-textobj-parameter'
 Plug 'Shougo/echodoc.vim'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-surround'
 Plug 'skywind3000/gutentags_plus'
 Plug 'skywind3000/vim-preview'
 Plug 'sillybun/vim-repl', { 'for': 'python'}
