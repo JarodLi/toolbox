@@ -7,6 +7,7 @@ RUN sed -i '/tsflags/d' /etc/yum.conf \
     && yum install -y wget \
     && yum install -y make \
     && yum install -y gcc-c++\
+    && yum install -y zlib \
     && yum install -y zlib-devel \
     && yum install -y perl \
     && yum install -y libffi-devel \
