@@ -55,7 +55,9 @@ RUN sed -i '/tsflags/d' /etc/yum.conf \
     && yum install -y ripgrep \
     && yum install -y tcpdump \
     && yum install -y pcre \
-    && yum install -y pcre-devel
+    && yum install -y pcre-devel \
+# pandas依赖bzip2,需要在python编译前安装
+    && yum install -y bzip2-devel
 
 # openssl 1.1.1c
 #ADD openssl-1.1.1c.tar.gz /opt
