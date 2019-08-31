@@ -3,6 +3,7 @@
 call plug#begin('~/.vim/bundle')
 Plug 'Shougo/defx.nvim'
 Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'Yggdroot/indentLine'
 Plug 'elzr/vim-json', { 'for': 'json'}
 Plug 'matze/vim-move'
 Plug 'python-mode/python-mode', { 'for': 'python'}
