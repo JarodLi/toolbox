@@ -11,8 +11,7 @@ Plug 'heavenshell/vim-pydocstring', { 'for': 'python'}
 Plug 'tmhedberg/SimpylFold'
 Plug 'jnurmine/Zenburn'
 Plug 'vim-scripts/UltiSnips'
-" jedi补全pandas太慢，暂时换成YCM补全
-"Plug 'davidhalter/jedi-vim', { 'for': 'python'}
+Plug 'davidhalter/jedi-vim', { 'for': 'python'}
 Plug 'honza/vim-snippets'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'sjl/gundo.vim'
@@ -27,6 +26,7 @@ Plug 'kana/vim-textobj-syntax'
 Plug 'kana/vim-textobj-function'
 Plug 'sgur/vim-textobj-parameter'
 Plug 'Shougo/echodoc.vim'
+Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
 Plug 'skywind3000/gutentags_plus'
@@ -576,6 +576,8 @@ let g:jedi#usages_command = "<leader>n"
 let g:jedi#rename_command = "<leader>r"
 autocmd FileType python setlocal completeopt-=preview  
 let g:pymode_rope = 0  
+" jedi补全pandas太慢，暂时换成YCM补全
+let g:jedi#completions_enabled = 0
 
 """"""""""""""""""""""""""""""
 " => REPL plugin https://github.com/sillybun/vim-repl
