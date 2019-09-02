@@ -11,7 +11,8 @@ Plug 'heavenshell/vim-pydocstring', { 'for': 'python'}
 Plug 'tmhedberg/SimpylFold'
 Plug 'jnurmine/Zenburn'
 Plug 'vim-scripts/UltiSnips'
-Plug 'davidhalter/jedi-vim', { 'for': 'python'}
+" jedi补全pandas太慢，暂时换成YCM补全
+"Plug 'davidhalter/jedi-vim', { 'for': 'python'}
 Plug 'honza/vim-snippets'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'sjl/gundo.vim'
@@ -557,7 +558,7 @@ let g:ycm_filetype_whitelist = {
                         \ "objc":1,
                         \ "sh":1,
                         \ "zsh":1,
-                        \ "python":0,
+                        \ "python":1,
                         \ "go":1,
                         \ }
 
