@@ -60,6 +60,7 @@ RUN sed -i '/tsflags/d' /etc/yum.conf \
     && yum install -y bzip2-devel \
     # python lzma依赖
     && yum install -y xz-devel
+    && yum install -y rpm-build \
 
 # openssl 1.1.1c
 #ADD openssl-1.1.1c.tar.gz /opt
