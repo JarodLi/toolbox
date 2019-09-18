@@ -196,6 +196,7 @@ RUN pip install paramiko \
     && pip install ecdsa \
     && pip install jupyter \
     && pip install notebook \
+    && pip install jupyter_contrib_nbextensions \
     && pip install ipdb \
     && pip install pylint \
     && pip install flake8 \ 
@@ -351,6 +352,7 @@ RUN cd /opt/ \
     && jupyter notebook --generate-config \
     && cp -fp $MY/jupyter/jupyter_notebook_config.py /root/.jupyter \
     && cp -fp $MY/jupyter/jupyter.service /usr/lib/systemd/system  \ 
+    && jupyter contrib nbextension install --user --skip-running-check \
     # profile
     && cat $MY/profile.my >> /etc/profile  \ 
     && rm -rf $MY \
