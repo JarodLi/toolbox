@@ -247,7 +247,7 @@ call defx#custom#option('_', {
       \ 'resume': 1
       \ })
 
-map <silent> = :Defx<CR>
+map <silent> - :Defx<CR>
 " Avoid the white space highting issue
 autocmd FileType defx match ExtraWhitespace /^^/
 " Keymap in defx
