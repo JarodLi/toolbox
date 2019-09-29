@@ -201,7 +201,8 @@ RUN pip install paramiko \
     && pip install pylint \
     && pip install flake8 \ 
     && pip install pynvim \
-    && pip install wget
+    && pip install wget \
+    && pip install sqlalchemy 
 
 # huawei sdk
 #ADD sdk.zip /opt
