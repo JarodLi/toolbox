@@ -166,7 +166,8 @@ function! Terminal_MetaMode(mode)
     endif
 endfunc
 
-call Terminal_MetaMode(0)
+"防止出现特殊字符
+"call Terminal_MetaMode(0)
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => move between windows
