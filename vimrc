@@ -19,7 +19,8 @@ Plug 'dense-analysis/ale', { 'for': ['python', 'c', 'go', 'sh']}
 Plug 'Yggdroot/LeaderF'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'justinmk/vim-dirvish'
-Plug 'mhinz/vim-signify'
+"git对比，暂时注释，防止切换文件时卡死
+"Plug 'mhinz/vim-signify'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-syntax'
@@ -223,6 +224,9 @@ let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
 let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
 let g:ale_c_cppcheck_options = ''
 let g:ale_cpp_cppcheck_options = ''
+
+let g:ale_python_pylint_options = '--max-line-length=120'
+let g:ale_python_flake8_options = '--max-line-length=120'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Nerd Tree
