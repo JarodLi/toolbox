@@ -219,13 +219,13 @@ RUN mkdir -p /root/.vim/{autoload,bundle}
 #ADD vim8.1.tar.gz /opt
 RUN cd /opt \
     #&& git clone https://github.com/vim/vim.git \
-    && obsutil cp obs://lijian-test/vim8.1.tar.gz . \
-    && tar xzvf vim8.1.tar.gz \
-    && cd /opt/vim \
+    && obsutil cp obs://lijian-test/vim-8.1.2120.tar.gz . \
+    && tar xzvf vim-8.1.2120.tar.gz \
+    && cd /opt/vim-8.1.2120 \
     && ./configure --with-features=huge --enable-python3interp=dynamic  --with-python-config-dir=/usr/lib/python3.7/config --enable-cscope --enable-multibyte \
     && make \
     && make install \
-    && rm -rf /opt/vim/.git \
+    && rm -rf /opt/vim-8.1.2120/.git \
     && rm -rf /usr/bin/vi \
     && ln -s /usr/local/bin/vim /usr/bin/vi \
 	# 使用vim-plug替代pathogen
