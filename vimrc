@@ -2,6 +2,8 @@
 
 call plug#begin('~/.vim/bundle')
 Plug 'Shougo/defx.nvim'
+Plug 'majutsushi/tagbar'
+Plug 'tell-k/vim-autopep8'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'Yggdroot/indentLine'
 Plug 'elzr/vim-json', { 'for': 'json'}
@@ -226,8 +228,8 @@ let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
 let g:ale_c_cppcheck_options = ''
 let g:ale_cpp_cppcheck_options = ''
 
-let g:ale_python_pylint_options = '--max-line-length=120'
-let g:ale_python_flake8_options = '--max-line-length=120'
+let g:ale_python_pylint_options = '--max-line-length=140'
+let g:ale_python_flake8_options = '--max-line-length=140'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Nerd Tree
@@ -313,8 +315,33 @@ nmap <leader>i :IndentLinesToggle<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => TagBar  --使用LeaderF替代
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"nmap <leader>tl :TagbarToggle<CR>
-"let g:tagbar_left=1
+ "-------- general ----------
+  " <CR>: 回车跳到定义位置
+  " p: 跳到定义位置，但光标仍然在tagbar原位置
+  " P: 打开一个预览窗口显示标签内容，如果在标签处回车跳到vim编辑页面内定义处，则预览窗口关闭
+  " <C-N>: 跳到下一个标签页的顶端
+  " <C-P>: 跳到上一个（或当前）标签页的顶端
+  " <Space>: 底行显示标签原型
+  "
+  " ---------- Folds ----------
+  " + 展开标签内容
+  " -  折叠标签内容
+
+" *  展开所有标签
+ "= 折叠所有标签
+ " o 在折叠与展开间切换，按o键，折叠标签，再按一次o，则展开标签，如此来回切换
+ "
+ " ---------- Misc -----------
+ " s: 切换排序，一次s，则让标签按字典排序，再一次s，则按照文件内出现顺序排序
+ " x: 是否展开tagbar标签栏，x展开，再一次x，则缩小标签栏
+ " <F1>:
+ "切换快捷键帮助页面，F1一次出现快捷键帮助页面，在一次F1，快捷键帮助页面隐藏。
+ "
+nmap <leader>tl :TagbarToggle<CR>
+let g:tagbar_left=1
+let g:tagbar_sort = 1 
+"let Tlist_Sort_Type = "order"
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => LeaderF
@@ -330,7 +357,6 @@ nmap <leader>l :Leaderf
 nmap <leader>bf :Leaderf! buffer<CR>
 nmap <leader>lb :Leaderf! buffer<CR>
 nmap <leader>lt :LeaderfBufTag!<CR>
-nmap <leader>tl :LeaderfBufTag!<CR>
 "nmap <leader>fl :Leaderf! file<CR>
 nmap <leader>lf :Leaderf! file<CR>
 nmap <leader>lm :Leaderf! mru<CR>
@@ -460,6 +486,35 @@ let g:pymode_syntax_builtin_objs = g:pymode_syntax_all
 let g:pymode_syntax_builtin_types = g:pymode_syntax_all
 let g:pymode_syntax_highlight_exceptions = g:pymode_syntax_all
 let g:pymode_syntax_docstrings = g:pymode_syntax_all
+
+""""""""""""""""""""""""""""""
+" => vim-autopep8
+""""""""""""""""""""""""""""""
+autocmd FileType python noremap <buffer> <F8> :call Autopep8()<CR>
+
+" Do not fix these errors/warnings (default: E226,E24,W6) 
+let g:autopep8_ignore=""
+"Fix only these errors/warnings (e.g. E4,W) 
+let g:autopep8_select=""
+"Maximum number of additional pep8 passes (default: 100)
+let g:autopep8_pep8_passes=100
+"Set maximum allowed line length (default: 79)
+let g:autopep8_max_line_length=140
+"Enable possibly unsafe changes (E711, E712) (default: non defined) 
+"add aggressive option (--aggressive)
+let g:autopep8_aggressive=1
+"add more aggressive options (--aggressive --aggressive)
+let g:autopep8_aggressive=2
+"Number of spaces per indent level (default: 4) 
+let g:autopep8_indent_size=4
+"Disable show diff window
+let g:autopep8_disable_show_diff=1
+"Chose diff window type. (default: horizontal)
+"# default
+let g:autopep8_diff_type='horizontal'
+let g:autopep8_diff_type='vertical'
+"Automatically format every time saving a file.
+let g:autopep8_on_save = 0
 
 """"""""""""""""""""""""""""""
 " => UltriSnip plugin

@@ -200,6 +200,7 @@ RUN pip install paramiko \
     && pip install ipdb \
     && pip install pylint \
     && pip install flake8 \ 
+    && pip install autopep8\ 
     && pip install pynvim \
     && pip install wget \
     && pip install sqlalchemy 
