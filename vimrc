@@ -1,6 +1,8 @@
 " execute pathogen#infect()
 
 call plug#begin('~/.vim/bundle')
+Plug 'lfv89/vim-interestingwords'
+Plug 'itchyny/vim-cursorword'
 Plug 'Shougo/defx.nvim'
 Plug 'majutsushi/tagbar'
 Plug 'tell-k/vim-autopep8'
@@ -96,6 +98,18 @@ set guifont=Monaco:h12:b
 let g:solarized_termcolors=256
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"=> vim-interestingwords
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <silent> <leader>k :call InterestingWords('n')<cr>
+nnoremap <silent> <leader>K :call UncolorAllWords()<cr>
+
+nnoremap <silent> n :call WordNavigation('forward')<cr>
+nnoremap <silent> N :call WordNavigation('backward')<cr>
+let g:interestingWordsTermColors = ['154', '121', '211', '137', '214', '222']
+let g:interestingWordsRandomiseColors = 1
+
+
 "=> rainbow_parentheses
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:rbpt_colorpairs = [

@@ -341,6 +341,8 @@ RUN cd /root/.vim/bundle/ \
     && git clone https://github.com/roxma/vim-hug-neovim-rpc.git \
     && git clone https://github.com/kristijanhusak/defx-icons.git \
     && git clone https://github.com/kristijanhusak/defx-git.git \
+    && git clone https://github.com/lfv89/vim-interestingwords \
+    && git clone https://github.com/itchyny/vim-cursorword 
     && find . -name ".git" | xargs -I{} rm -rf {} 
 
 
