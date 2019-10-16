@@ -203,7 +203,8 @@ RUN pip install paramiko \
     && pip install autopep8\ 
     && pip install pynvim \
     && pip install wget \
-    && pip install sqlalchemy 
+    && pip install sqlalchemy \
+    && pip install pygments 
 
 # huawei sdk
 #ADD sdk.zip /opt
