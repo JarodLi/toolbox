@@ -359,8 +359,8 @@ RUN cd /opt/ \
     && jupyter contrib nbextension install --user --skip-running-check \
     # profile
     && cat $MY/profile.my >> /etc/profile  \ 
-    && rm -rf $MY \
-    && rm -rf /opt/*
+    && rm -rf $MY 
+    #&& rm -rf /opt/*
 
 # OS config
 ENV TimeZone=Asia/Shanghai
