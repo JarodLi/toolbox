@@ -21,7 +21,10 @@ Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'sjl/gundo.vim'
 Plug 'dense-analysis/ale', { 'for': ['python', 'c', 'go', 'sh']}
 Plug 'Yggdroot/LeaderF'
+" vim-gutentags管理gtags的GTAGS\GRTAGS、GPATH等文件
 Plug 'ludovicchabant/vim-gutentags'
+" 管理gtags-cscope数据库，自动添加、切换
+Plug 'skywind3000/gutentags_plus'
 Plug 'justinmk/vim-dirvish'
 "git对比，暂时注释，防止切换文件时卡死
 "Plug 'mhinz/vim-signify'
@@ -34,7 +37,6 @@ Plug 'Shougo/echodoc.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
-Plug 'skywind3000/gutentags_plus'
 Plug 'skywind3000/vim-preview'
 Plug 'sillybun/vim-repl', { 'for': 'python'}
 Plug 'sillybun/vim-async', { 'for': 'python'}
@@ -381,7 +383,7 @@ let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
 let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
 let g:Lf_WorkingDirectoryMode = 'Ac'
 let g:Lf_WindowHeight = 0.30
-let g:Lf_CacheDirectory = expand('~/.vim/cache')
+let g:Lf_CacheDirectory = expand('~/.cache/tags')
 let g:Lf_ShowRelativePath = 0
 let g:Lf_HideHelp = 1
 let g:Lf_StlColorscheme = 'powerline'
@@ -538,6 +540,12 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 """"""""""""""""""""""""""""""
+" => gtags
+""""""""""""""""""""""""""""""
+let $GTAGSLABEL = 'native-pygments'
+let $GTAGSCONF = '/usr/local/share/gtags/gtags.conf'
+
+""""""""""""""""""""""""""""""
 " => vim-gutentags
 """"""""""""""""""""""""""""""
  " gutentags 搜索工程目录的标志，当前文件路径向上递归直到碰到这些文件/目录名
@@ -574,6 +582,32 @@ let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
 
 " 禁用 gutentags 自动加载 gtags 数据库的行为
 let g:gutentags_auto_add_gtags_cscope = 0
+
+""""""""""""""""""""""""""""""
+" => gutentags_plus
+""""""""""""""""""""""""""""""
+" change focus to quickfix window after search (optional).
+"let g:gutentags_plus_switch = 1
+let g:gutentags_plus_nomap = 1 
+noremap <silent> <leader>gs :GscopeFind s <C-R><C-W><cr>
+noremap <silent> <leader>gg :GscopeFind g <C-R><C-W><cr>
+noremap <silent> <leader>gc :GscopeFind c <C-R><C-W><cr>
+noremap <silent> <leader>gt :GscopeFind t <C-R><C-W><cr>
+noremap <silent> <leader>ge :GscopeFind e <C-R><C-W><cr>
+noremap <silent> <leader>gf :GscopeFind f <C-R>=expand("<cfile>")<cr><cr>
+noremap <silent> <leader>gi :GscopeFind i <C-R>=expand("<cfile>")<cr><cr>
+noremap <silent> <leader>gd :GscopeFind d <C-R><C-W><cr>
+noremap <silent> <leader>ga :GscopeFind a <C-R><C-W><cr>
+
+"0 or s: Find this symbol
+"1 or g: Find this definition
+"2 or d: Find functions called by this function
+"3 or c: Find functions calling this function
+"4 or t: Find this text string
+"6 or e: Find this egrep pattern
+"7 or f: Find this file
+"8 or i: Find files #including this file
+"9 or a: Find places where this symbol is assigned a value
 
 """"""""""""""""""""""""""""""
 " => cscope

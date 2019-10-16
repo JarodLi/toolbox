@@ -269,11 +269,12 @@ RUN cd /opt \
     && tar xzvf /opt/global-6.6.3.tar.gz -C /opt \
     && cd /opt/global-6.6.3 \
     && bash reconf.sh \
-    && ./configure \
+    && ./configure --with-sqlite3 \
     && make \
-    && cp -fp gtags/gtags /usr/bin \
-    && cp -fp gtags-cscope/gtags-cscope /usr/bin \
-    && cp -fp global/global /usr/bin 
+    && make install 
+    #&& cp -fp gtags/gtags /usr/bin \
+    #&& cp -fp gtags-cscope/gtags-cscope /usr/bin \
+    #&& cp -fp global/global /usr/bin 
 
 
 
