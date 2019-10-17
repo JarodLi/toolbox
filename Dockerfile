@@ -289,7 +289,7 @@ RUN cd /root/.vim/bundle/ \
     && git clone --depth 1 https://github.com/jlanzarotta/bufexplorer \
     && git clone --depth 1 https://github.com/plasticboy/vim-markdown \
     && git clone --depth 1 https://github.com/ekalinin/Dockerfile.vim \
-    #&& git clone --depth 1 https://github.com/majutsushi/tagbar \
+    && git clone --depth 1 https://github.com/majutsushi/tagbar \
     #&& git clone --depth 1 https://github.com/scrooloose/syntastic \
     #&& git clone --depth 1 https://github.com/vim-scripts/taglist.vim \
     && git clone --depth 1 https://github.com/bling/vim-airline \
