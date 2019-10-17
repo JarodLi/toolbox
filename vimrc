@@ -583,6 +583,8 @@ let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
 " 禁用 gutentags 自动加载 gtags 数据库的行为
 let g:gutentags_auto_add_gtags_cscope = 0
 
+let g:gutentags_file_list_command = 'find . -type f -name *.py -o -type f -name *.sh -o -type f -name *.c -type f -name *.h'
+
 """"""""""""""""""""""""""""""
 " => gutentags_plus
 """"""""""""""""""""""""""""""
