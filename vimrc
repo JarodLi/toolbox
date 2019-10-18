@@ -51,6 +51,7 @@ Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'kristijanhusak/defx-icons'
 Plug 'kristijanhusak/defx-git'
 Plug 'ycm-core/YouCompleteMe', { 'for': ['python', 'c', 'go', 'sh']}
+Plug 'MattesGroeger/vim-bookmarks'
 
 " vim-lsp
 Plug 'prabirshrestha/async.vim'
@@ -106,6 +107,14 @@ set background=dark
 colorscheme zenburn
 set guifont=Monaco:h12:b
 let g:solarized_termcolors=256
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"=> vim-bookmarks
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
+highlight BookmarkSign ctermbg=NONE ctermfg=160
+highlight BookmarkLine ctermbg=194 ctermfg=NONE
+let g:bookmark_sign = '♥'
+let g:bookmark_highlight_lines = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "=> vim-interestingwords
@@ -675,10 +684,10 @@ let g:LanguageClient_serverCommands = {
     \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
     \ }
 " lsp不支持python的rename
-nnoremap lh :call LanguageClient#textDocument_hover()<CR>
-nnoremap ld :call LanguageClient#textDocument_definition()<CR>
-nnoremap lc :call LanguageClient#textDocument_references()<CR>
-nnoremap lf :call LanguageClient#textDocument_rangeFormatting_sync()<CR>
+"nnoremap lh :call LanguageClient#textDocument_hover()<CR>
+"nnoremap ld :call LanguageClient#textDocument_definition()<CR>
+"nnoremap lc :call LanguageClient#textDocument_references()<CR>
+"nnoremap lf :call LanguageClient#textDocument_rangeFormatting_sync()<CR>
 
 
 """""""""""""""""""""""""""""

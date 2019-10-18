@@ -352,6 +352,7 @@ RUN cd /root/.vim/bundle/ \
     && git clone https://github.com/ryanolsonx/vim-lsp-python.git \
     && git clone -b next https://github.com/autozimu/LanguageClient-neovim.git \
     && cd ~/.vim/bundle/LanguageClient-neovim && bash install.sh && cd - \
+    && git clone https://github.com/MattesGroeger/vim-bookmarks.git \
     && find . -name ".git" | xargs -I{} rm -rf {} 
 
 
