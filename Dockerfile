@@ -204,7 +204,8 @@ RUN pip install paramiko \
     && pip install pynvim \
     && pip install wget \
     && pip install sqlalchemy \
-    && pip install pygments 
+    && pip install pygments \
+    && pip install python-language-server 
 
 # huawei sdk
 #ADD sdk.zip /opt
@@ -345,6 +346,10 @@ RUN cd /root/.vim/bundle/ \
     && git clone https://github.com/kristijanhusak/defx-git.git \
     && git clone https://github.com/lfv89/vim-interestingwords \
     && git clone https://github.com/itchyny/vim-cursorword \
+# lsp
+    && git clone https://github.com/prabirshrestha/vim-lsp.git \
+    && git clone https://github.com/prabirshrestha/async.vim.git \
+    && git clone https://github.com/ryanolsonx/vim-lsp-python.git \
     && find . -name ".git" | xargs -I{} rm -rf {} 
 
 
