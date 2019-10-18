@@ -51,9 +51,14 @@ Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'kristijanhusak/defx-icons'
 Plug 'kristijanhusak/defx-git'
 Plug 'ycm-core/YouCompleteMe', { 'for': ['python', 'c', 'go', 'sh']}
+
+" vim-lsp
 Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'ryanolsonx/vim-lsp-python'
+Plug 'prabirshrestha/vim-lsp' "在vim中支持lsp功能的插件
+Plug 'ryanolsonx/vim-lsp-python'  "vim-lsp的python配置插件
+
+" LCN, 比vim-lsp好用
+Plug 'autozimu/LanguageClient-neovim'
 
 call plug#end()
 
@@ -651,14 +656,29 @@ let g:lsp_diagnostics_enabled = 0         " disable diagnostics support"
 let g:lsp_highlight_references_enabled = 1
 "highlight lspReference ctermfg=red guifg=red ctermbg=green guibg=green
 
-nmap <leader>ld :LspDefinition<CR>
-nmap <leader>lpd :LspPeekDefinition<CR>
-nmap <leader>lh :LspHover<CR>
-"nmap <leader>li :LspImplementation<CR>
-"nmap <leader>lr :LspRename<CR> "renaming时会卡死，使用jedi的rename
-nmap <leader>lc :LspReferences<CR>
-nmap <leader>lf :LspDocumentRangeFormat<CR>
+nmap ld :LspDefinition<CR>
+nmap lpd :LspPeekDefinition<CR>
+nmap lh :LspHover<CR>
+"nmap lr :LspRename<CR> "renaming时会卡死，使用jedi的rename
+nmap lc :LspReferences<CR>
+nmap lf :LspDocumentRangeFormat<CR>
 
+
+"""""""""""""""""""""""""""""
+" => LanguageClient-neovim
+""""""""""""""""""""""""""""""
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+    \ 'python': ['/usr/bin/pyls'],
+    \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
+    \ }
+" lsp不支持python的rename
+nnoremap lh :call LanguageClient#textDocument_hover()<CR>
+nnoremap ld :call LanguageClient#textDocument_definition()<CR>
+nnoremap lc :call LanguageClient#textDocument_references()<CR>
+nnoremap lf :call LanguageClient#textDocument_rangeFormatting_sync()<CR>
 
 
 """""""""""""""""""""""""""""
