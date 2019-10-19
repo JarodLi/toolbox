@@ -2,7 +2,8 @@
 
 call plug#begin('~/.vim/bundle')
 Plug 'lfv89/vim-interestingwords'
-Plug 'itchyny/vim-cursorword'
+" 给光标所在word加下划线
+"Plug 'itchyny/vim-cursorword' 
 Plug 'Shougo/defx.nvim'
 Plug 'majutsushi/tagbar'
 Plug 'tell-k/vim-autopep8'
@@ -59,7 +60,7 @@ Plug 'prabirshrestha/vim-lsp' "在vim中支持lsp功能的插件
 Plug 'ryanolsonx/vim-lsp-python'  "vim-lsp的python配置插件
 
 " LCN, 比vim-lsp好用
-Plug 'autozimu/LanguageClient-neovim'
+" Plug 'autozimu/LanguageClient-neovim'
 
 call plug#end()
 
@@ -665,12 +666,12 @@ let g:lsp_diagnostics_enabled = 0         " disable diagnostics support"
 let g:lsp_highlight_references_enabled = 1
 "highlight lspReference ctermfg=red guifg=red ctermbg=green guibg=green
 
-nmap ld :LspDefinition<CR>
-nmap lpd :LspPeekDefinition<CR>
-nmap lh :LspHover<CR>
-"nmap lr :LspRename<CR> "renaming时会卡死，使用jedi的rename
-nmap lc :LspReferences<CR>
-nmap lf :LspDocumentRangeFormat<CR>
+nmap <leader>ld :LspDefinition<CR>
+nmap <leader>lpd :LspPeekDefinition<CR>
+nmap <leader>lh :LspHover<CR>
+"nmap <leader>lr :LspRename<CR> "renaming时会卡死，使用jedi的rename
+nmap <leader>lc :LspReferences<CR>
+nmap <leader>lf :LspDocumentRangeFormat<CR>
 
 
 """""""""""""""""""""""""""""
@@ -684,10 +685,10 @@ let g:LanguageClient_serverCommands = {
     \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
     \ }
 " lsp不支持python的rename
-"nnoremap lh :call LanguageClient#textDocument_hover()<CR>
-"nnoremap ld :call LanguageClient#textDocument_definition()<CR>
-"nnoremap lc :call LanguageClient#textDocument_references()<CR>
-"nnoremap lf :call LanguageClient#textDocument_rangeFormatting_sync()<CR>
+"nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
+"nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
+"nnoremap <leader>lc :call LanguageClient#textDocument_references()<CR>
+"nnoremap <leader>lf :call LanguageClient#textDocument_rangeFormatting_sync()<CR>
 
 
 """""""""""""""""""""""""""""
@@ -778,7 +779,7 @@ let g:repl_auto_sends = ['class ', 'def ', 'for ', 'if ', 'while ']
 let g:repl_cursor_down = 1
 let g:repl_width = 75
 autocmd Filetype python nnoremap <F12> <Esc>:REPLDebugStopAtCurrentLine<Cr>
-autocmd Filetype python nnoremap <F10> <Esc>:REPLPDBN<Cr>
+"autocmd Filetype python nnoremap <F10> <Esc>:REPLPDBN<Cr>
 autocmd Filetype python nnoremap <F11> <Esc>:REPLPDBS<Cr>
 
 """"""""""""""""""""""""""""""
@@ -854,3 +855,11 @@ endfunc
 "let g:go_def_mode='gopls'
 
 " autocmd BufWritePre *.go :Fmt
+
+""""""""""""""""""""""""""""""
+" => quickfix
+""""""""""""""""""""""""""""""
+nnoremap <F10> :call CloseQuickfix()<cr>
+func! CloseQuickfix()
+        exec "cclose"
+endfunc

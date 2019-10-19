@@ -205,7 +205,8 @@ RUN pip install paramiko \
     && pip install wget \
     && pip install sqlalchemy \
     && pip install pygments \
-    && pip install python-language-server 
+    && pip install python-language-server \
+    && pip install transitions
 
 # huawei sdk
 #ADD sdk.zip /opt
