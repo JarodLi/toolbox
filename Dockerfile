@@ -355,7 +355,6 @@ RUN cd /root/.vim/bundle/ \
     && cd ~/.vim/bundle/LanguageClient-neovim && bash install.sh && cd - \
     && git clone https://github.com/MattesGroeger/vim-bookmarks.git \
     && git clone https://github.com/Vimjas/vim-python-pep8-indent.git \
-    && git clone https://github.com/bronson/vim-trailing-whitespace.git \
     && git clone https://github.com/junegunn/vim-easy-align.git \
     && find . -name ".git" | xargs -I{} rm -rf {} 
 
