@@ -29,6 +29,7 @@ Plug 'skywind3000/gutentags_plus'
 Plug 'justinmk/vim-dirvish'
 "git对比，暂时注释，防止切换文件时卡死
 "Plug 'mhinz/vim-signify'
+"只有ident支持python
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-syntax'
@@ -53,6 +54,11 @@ Plug 'kristijanhusak/defx-icons'
 Plug 'kristijanhusak/defx-git'
 Plug 'ycm-core/YouCompleteMe', { 'for': ['python', 'c', 'go', 'sh']}
 Plug 'MattesGroeger/vim-bookmarks'
+Plugin 'Vimjas/vim-python-pep8-indent', { 'for': 'python'}
+Plugin 'fisadev/vim-isort', { 'for': 'python'}
+" 一键去除行尾空格
+Plugin 'bronson/vim-trailing-whitespace' 
+Plugin 'junegunn/vim-easy-align' 
 
 " vim-lsp
 Plug 'prabirshrestha/async.vim'
@@ -87,6 +93,8 @@ set nofoldenable
 "开启关闭paste模式
 set pastetoggle=<leader>p
 
+nnoremap gv `[v`]
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "=> 自动定位上次的行号
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -112,6 +120,19 @@ let g:solarized_termcolors=256
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "=> vim-bookmarks
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
+"Add/remove bookmark at current line	mm	:BookmarkToggle
+"Add/edit/remove annotation at current line	mi	:BookmarkAnnotate <TEXT>
+"Jump to next bookmark in buffer	mn	:BookmarkNext
+"Jump to previous bookmark in buffer	mp	:BookmarkPrev
+"Show all bookmarks (toggle)	ma	:BookmarkShowAll
+"Clear bookmarks in current buffer only	mc	:BookmarkClear
+"Clear bookmarks in all buffers	mx	:BookmarkClearAll
+"Move up bookmark at current line	[count]mkk	:BookmarkMoveUp [<COUNT>]
+"Move down bookmark at current line	[count]mjj	:BookmarkMoveDown [<COUNT>]
+"Move bookmark at current line to another line	[count]mg	:BookmarkMoveToLine <LINE>
+"Save all bookmarks to a file		:BookmarkSave <FILE_PATH>
+"Load bookmarks from a file		:BookmarkLoad <FILE_PATH
+
 highlight BookmarkSign ctermbg=NONE ctermfg=160
 highlight BookmarkLine ctermbg=194 ctermfg=NONE
 let g:bookmark_sign = '♥'
@@ -863,3 +884,24 @@ nnoremap <F10> :call CloseQuickfix()<cr>
 func! CloseQuickfix()
         exec "cclose"
 endfunc
+
+""""""""""""""""""""""""""""""
+" => vim-isort
+""""""""""""""""""""""""""""""
+let g:vim_isort_map = '<C-i>'
+
+""""""""""""""""""""""""""""""
+" => trailingwhitespace 
+""""""""""""""""""""""""""""""
+map <leader><space> :FixWhitespace<cr>
+
+""""""""""""""""""""""""""""""
+" => vim-easy-align
+""""""""""""""""""""""""""""""
+vmap <Leader>a <Plug>(EasyAlign)
+nmap <Leader>a <Plug>(EasyAlign)
+if !exists('g:easy_align_delimiters')
+  let g:easy_align_delimiters = {}
+endif
+let g:easy_align_delimiters['#'] = { 'pattern': '#', 'ignore_groups': ['String'] }
+
