@@ -53,7 +53,7 @@ Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'kristijanhusak/defx-icons'
 Plug 'kristijanhusak/defx-git'
 Plug 'ycm-core/YouCompleteMe', { 'for': ['python', 'c', 'go', 'sh']}
-Plug 'MattesGroeger/vim-bookmarks'
+Plug 'MattesGroeger/vim-bookmarks',
 Plugin 'Vimjas/vim-python-pep8-indent', { 'for': 'python'}
 Plugin 'fisadev/vim-isort', { 'for': 'python'}
 " 一键去除行尾空格
