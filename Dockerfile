@@ -226,7 +226,7 @@ RUN cd /opt \
     && obsutil cp obs://lijian-test/vim-8.1.2120.tar.gz . \
     && tar xzvf vim-8.1.2120.tar.gz \
     && cd /opt/vim-8.1.2120 \
-    && ./configure --with-features=huge --enable-python3interp=dynamic  --with-python-config-dir=/usr/lib/python3.7/config --enable-cscope --enable-multibyte \
+    && ./configure --with-features=huge --enable-python3interp=dynamic  --with-python-config-dir=/usr/lib/python3.7/config --enable-cscope --enable-multibyte --enable-luainterp=yes \
     && make \
     && make install \
     && rm -rf /opt/vim-8.1.2120/.git \
@@ -356,6 +356,8 @@ RUN cd /root/.vim/bundle/ \
     && git clone https://github.com/MattesGroeger/vim-bookmarks.git \
     && git clone https://github.com/Vimjas/vim-python-pep8-indent.git \
     && git clone https://github.com/junegunn/vim-easy-align.git \
+    && git clone https://github.com/jeetsukumaran/vim-pythonsense.git \
+    && git clone https://github.com/timothycrosley/isort.git \
     && find . -name ".git" | xargs -I{} rm -rf {} 
 
 

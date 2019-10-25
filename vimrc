@@ -57,6 +57,7 @@ Plug 'MattesGroeger/vim-bookmarks',
 Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python'}
 Plug 'fisadev/vim-isort', { 'for': 'python'}
 " 一键去除行尾空格
+Plug 'jeetsukumaran/vim-pythonsense', { 'for': 'python'}
 Plug 'bronson/vim-trailing-whitespace' 
 Plug 'junegunn/vim-easy-align' 
 
@@ -904,4 +905,42 @@ if !exists('g:easy_align_delimiters')
   let g:easy_align_delimiters = {}
 endif
 let g:easy_align_delimiters['#'] = { 'pattern': '#', 'ignore_groups': ['String'] }
+
+""""""""""""""""""""""""""""""
+" => vim-pythonsense
+""""""""""""""""""""""""""""""
+"class OneRing(object):             -----------------------------+
+                                   "--------------------+        |
+    "def __init__(self):                                |        |
+        "print("One ring to ...")                       |        |
+                                                       "|        |
+    "def rule_them_all(self):                           |        |
+        "self.find_them()                               |        |
+                                                       "|        |
+    "def find_them(self):           ------------+       |        |
+        "a = [3, 7, 9, 1]           ----+       |       |        |
+        "self.bring_them(a)             |- `if` |- `af` |- `ic`  | - `ac`
+        "self.bind_them("darkness") ----+       |       |        |
+                                   "------------+       |        |
+    "def bring_them_all(self, a):                       |        |
+        "self.bind_them(a, "#000")                      |        |
+                                                       "|        |
+    "def bind_them(self, a, c):                         |        |
+        "print("shadows lie.")      --------------------+        |
+                                   "-----------------------------+
+
+"]]" : Move (forward) to the beginning of the next Python class.
+"][" : Move (forward) to the end of the current Python class.
+"[[" : Move (backward) to beginning of the current Python class (or beginning of the previous Python class if not currently in a class or already at the beginning of a class).
+"[]" : Move (backward) to end of the previous Python class.
+"]m" : Move (forward) to the beginning of the next Python method or function.
+"]M" : Move (forward) to the end of the current Python method or function.
+"[m" : Move (backward) to the beginning of the current Python method or function (or to the beginning of the previous method or function if not currently in a method/function or already at the beginning of a method/function).
+"[M" : Move (backward) to the end of the previous Python method or function.
+
+""""""""""""""""""""""""""""""
+" => vim-isort 自动排序import
+""""""""""""""""""""""""""""""
+autocmd FileType python nnoremap <Leader>t :!isort %<CR><CR>
+
 
