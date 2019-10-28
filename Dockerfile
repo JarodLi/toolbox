@@ -372,14 +372,12 @@ RUN cd /opt/ \
     && jupyter notebook --generate-config \
     && cp -fp $MY/jupyter/jupyter_notebook_config.py /root/.jupyter \
     && cp -fp $MY/jupyter/jupyter.service /usr/lib/systemd/system  \ 
+    && cp $MY/tmux.conf /root/.tmux.conf \
     && jupyter contrib nbextension install --user --skip-running-check \
     # profile
     && cat $MY/profile.my >> /etc/profile  \ 
     && rm -rf $MY 
     #&& rm -rf /opt/*
-
-# tmux
-RUN cp $MY/tmux.conf /root/.tmux.conf 
 
 
 # OS config
