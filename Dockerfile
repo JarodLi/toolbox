@@ -60,7 +60,8 @@ RUN sed -i '/tsflags/d' /etc/yum.conf \
     && yum install -y bzip2-devel \
     # python lzma依赖
     && yum install -y xz-devel \
-    && yum install -y rpm-build 
+    && yum install -y rpm-build \
+    && yum install -y tmux
 
 # openssl 1.1.1c
 #ADD openssl-1.1.1c.tar.gz /opt
@@ -376,6 +377,10 @@ RUN cd /opt/ \
     && cat $MY/profile.my >> /etc/profile  \ 
     && rm -rf $MY 
     #&& rm -rf /opt/*
+
+# tmux
+RUN cp $MY/tmux.conf /root/.tmux.conf 
+
 
 # OS config
 ENV TimeZone=Asia/Shanghai
