@@ -395,7 +395,9 @@ nmap <leader>i :IndentLinesToggle<CR>
  "
 nmap <leader>tl :TagbarToggle<CR>
 let g:tagbar_left=1
-let g:tagbar_sort = 1 
+let g:tagbar_sort = 0 
+let g:tagbar_iconchars = ['▸', '▾']
+let g:tagbar_foldlevel = 2 
 "let Tlist_Sort_Type = "order"
 
 
