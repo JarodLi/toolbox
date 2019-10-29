@@ -68,6 +68,8 @@ Plug 'ryanolsonx/vim-lsp-python'  "vim-lsp的python配置插件
 
 " LCN, 比vim-lsp好用
 " Plug 'autozimu/LanguageClient-neovim'
+Plug 'jacoborus/tender.vim'
+Plug 'bling/vim-airline'
 
 call plug#end()
 
@@ -117,6 +119,10 @@ set background=dark
 colorscheme zenburn
 set guifont=Monaco:h12:b
 let g:solarized_termcolors=256
+
+colorscheme tender
+let g:lightline = { 'colorscheme': 'tender'  }
+let g:airline_theme = 'tender'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "=> vim-bookmarks

@@ -359,6 +359,7 @@ RUN cd /root/.vim/bundle/ \
     && git clone https://github.com/junegunn/vim-easy-align.git \
     && git clone https://github.com/jeetsukumaran/vim-pythonsense.git \
     && git clone https://github.com/timothycrosley/isort.git \
+    && git clone https://github.com/jacoborus/tender.vim.git \
     && find . -name ".git" | xargs -I{} rm -rf {} 
 
 
