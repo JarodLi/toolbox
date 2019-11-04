@@ -245,8 +245,8 @@ RUN cd /opt \
     && obsutil cp obs://lijian-test/nvim.appimage . \
     && chmod u+x nvim.appimage && ./nvim.appimage --appimage-extract && cp ./squashfs-root/usr/bin/nvim /usr/bin \
     && mkdir -p ~/.config \
-    && ln -s ~/.vim .config/nvim \
-    && ln -s ~/.vimrc .config/nvim/init.vim
+    && ln -s ~/.vim ~/.config/nvim \
+    && ln -s ~/.vimrc ~/.config/nvim/init.vim
 
 
 # YCM
