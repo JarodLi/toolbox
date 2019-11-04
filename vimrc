@@ -4,7 +4,15 @@ call plug#begin('~/.vim/bundle')
 Plug 'lfv89/vim-interestingwords'
 " 给光标所在word加下划线
 "Plug 'itchyny/vim-cursorword' 
-Plug 'Shougo/defx.nvim'
+
+
+if has('nvim')
+  Plug 'Shougo/defx.nvim'
+else
+  Plug 'Shougo/defx.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 Plug 'majutsushi/tagbar'
 Plug 'tell-k/vim-autopep8'
 Plug 'Glench/Vim-Jinja2-Syntax'
@@ -47,9 +55,6 @@ Plug 'sillybun/vim-autodoc', { 'for': 'python'}
 Plug 'skywind3000/asyncrun.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'kien/rainbow_parentheses.vim'
-Plug 'Shougo/defx.nvim'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'kristijanhusak/defx-icons'
 Plug 'kristijanhusak/defx-git'
 Plug 'ycm-core/YouCompleteMe', { 'for': ['python', 'c', 'go', 'sh']}
@@ -61,15 +66,23 @@ Plug 'jeetsukumaran/vim-pythonsense', { 'for': 'python'}
 Plug 'bronson/vim-trailing-whitespace' 
 Plug 'junegunn/vim-easy-align' 
 
-" vim-lsp
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp' "在vim中支持lsp功能的插件
-Plug 'ryanolsonx/vim-lsp-python'  "vim-lsp的python配置插件
 
 " LCN, 比vim-lsp好用
-" Plug 'autozimu/LanguageClient-neovim'
+
+if has('nvim')
+  "" LCN, 比vim-lsp好用
+  Plug 'autozimu/LanguageClient-neovim'
+else
+  " vim-lsp
+  Plug 'prabirshrestha/async.vim'
+  Plug 'prabirshrestha/vim-lsp' "在vim中支持lsp功能的插件
+  Plug 'ryanolsonx/vim-lsp-python'  "vim-lsp的python配置插件
+endif
+
+
 Plug 'jacoborus/tender.vim'
 Plug 'bling/vim-airline'
+Plug 'liuchengxu/vista.vim'
 
 call plug#end()
 
@@ -120,9 +133,9 @@ colorscheme zenburn
 set guifont=Monaco:h12:b
 let g:solarized_termcolors=256
 
-colorscheme tender
-let g:lightline = { 'colorscheme': 'tender'  }
-let g:airline_theme = 'tender'
+colorscheme zenburn
+#let g:lightline = { 'colorscheme': 'tender'  }
+#let g:airline_theme = 'tender'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "=> vim-bookmarks
@@ -714,6 +727,8 @@ let g:LanguageClient_serverCommands = {
     \ 'python': ['/usr/bin/pyls'],
     \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
     \ }
+
+let g:LanguageClient_diagnosticsEnable = 0
 " lsp不支持python的rename
 "nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
 "nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
@@ -952,3 +967,7 @@ let g:easy_align_delimiters['#'] = { 'pattern': '#', 'ignore_groups': ['String']
 autocmd FileType python nnoremap <Leader>t :!isort %<CR><CR>
 
 
+""""""""""""""""""""""""""""""
+" => vim-airline 
+""""""""""""""""""""""""""""""
+let g:airline#extensions#tagbar#flags = 'f'  " show full tag hierarchy" 

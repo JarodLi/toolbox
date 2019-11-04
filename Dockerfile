@@ -237,6 +237,17 @@ RUN cd /opt \
     # && curl -LSso /root/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
     && curl -fLo /root/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+# nvim
+#RUN yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm \
+    #&& yum install -y neovim python3-neovim \
+RUN cd /opt \
+    && wget https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage \
+    && chmod u+x nvim.appimage && ./nvim.appimage --appimage-extract && cp ./squashfs-root/usr/bin/nvim /usr/bin \
+    && mkdir -p ~/.config \
+    && ln -s ~/.vim .config/nvim \
+    && ln -s ~/.vimrc .config/nvim/init.vim
+
+
 # YCM
 #ADD YouCompleteMe.tar.gz /root/.vim/bundle
 RUN cd /root/.vim/bundle/ \
@@ -360,6 +371,7 @@ RUN cd /root/.vim/bundle/ \
     && git clone https://github.com/jeetsukumaran/vim-pythonsense.git \
     && git clone https://github.com/timothycrosley/isort.git \
     && git clone https://github.com/jacoborus/tender.vim.git \
+    && git clone https://github.com/liuchengxu/vista.vim.git \
     && find . -name ".git" | xargs -I{} rm -rf {} 
 
 
