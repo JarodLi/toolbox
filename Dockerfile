@@ -241,7 +241,8 @@ RUN cd /opt \
 #RUN yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm \
     #&& yum install -y neovim python3-neovim \
 RUN cd /opt \
-    && wget https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage \
+    #&& wget https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage \
+    && obsutil cp obs://lijian-test/nvim.appimage . \
     && chmod u+x nvim.appimage && ./nvim.appimage --appimage-extract && cp ./squashfs-root/usr/bin/nvim /usr/bin \
     && mkdir -p ~/.config \
     && ln -s ~/.vim .config/nvim \
