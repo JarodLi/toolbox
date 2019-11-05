@@ -906,10 +906,13 @@ endfunc
 """"""""""""""""""""""""""""""
 " => quickfix
 """"""""""""""""""""""""""""""
-nnoremap <F10> :call CloseQuickfix()<cr>
-func! CloseQuickfix()
-        exec "cclose"
-endfunc
+"nnoremap <F10> :call CloseQuickfix()<cr>
+"func! CloseQuickfix()
+        "exec "cclose"
+"endfunc
+"In each window, run lcl (close location list) and ccl (close quickfix)    
+nmap <F10> :windo lcl\|ccl<CR>
+
 
 """"""""""""""""""""""""""""""
 " => vim-isort
