@@ -243,7 +243,7 @@ RUN cd /opt \
 RUN cd /opt \
     #&& wget https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage \
     && obsutil cp obs://lijian-test/nvim.appimage . \
-    && chmod u+x nvim.appimage && ./nvim.appimage --appimage-extract && cp ./squashfs-root/usr/bin/nvim /usr/bin \
+    && chmod u+x nvim.appimage && ./nvim.appimage --appimage-extract && cp -fpr ./squashfs-root/usr/* /usr/\
     && mkdir -p ~/.config \
     && ln -s ~/.vim ~/.config/nvim \
     && ln -s ~/.vimrc ~/.config/nvim/init.vim

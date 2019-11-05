@@ -7,7 +7,7 @@ Plug 'lfv89/vim-interestingwords'
 
 
 if has('nvim')
-  Plug 'Shougo/defx.nvim'
+  Plug 'Shougo/defx.nvim' , { 'do': ':UpdateRemotePlugins'  }
 else
   Plug 'Shougo/defx.nvim'
   Plug 'roxma/nvim-yarp'
@@ -134,8 +134,8 @@ set guifont=Monaco:h12:b
 let g:solarized_termcolors=256
 
 colorscheme zenburn
-#let g:lightline = { 'colorscheme': 'tender'  }
-#let g:airline_theme = 'tender'
+"let g:lightline = { 'colorscheme': 'tender'  }
+"let g:airline_theme = 'tender'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "=> vim-bookmarks
