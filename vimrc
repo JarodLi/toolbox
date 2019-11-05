@@ -728,12 +728,14 @@ let g:LanguageClient_serverCommands = {
     \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
     \ }
 
-let g:LanguageClient_diagnosticsEnable = 0
+if has('nvim')
+  let g:LanguageClient_diagnosticsEnable = 0
 " lsp不支持python的rename
-"nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
-"nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
-"nnoremap <leader>lc :call LanguageClient#textDocument_references()<CR>
-"nnoremap <leader>lf :call LanguageClient#textDocument_rangeFormatting_sync()<CR>
+  nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
+  nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
+  nnoremap <leader>lc :call LanguageClient#textDocument_references()<CR>
+  nnoremap <leader>lf :call LanguageClient#textDocument_rangeFormatting_sync()<CR>
+endif
 
 
 """""""""""""""""""""""""""""
