@@ -399,6 +399,7 @@ RUN cd /opt/ \
     && jupyter contrib nbextension install --user --skip-running-check \
     # profile
     && cat $MY/profile.my >> /etc/profile  \ 
+    && cat $MY/zshrc.my >> /root/.zshrc \
     && rm -rf $MY 
     #&& rm -rf /opt/*
 
