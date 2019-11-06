@@ -376,12 +376,10 @@ RUN cd /root/.vim/bundle/ \
     && find . -name ".git" | xargs -I{} rm -rf {} 
 
 # zsh
-#RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" \
-#RUN cd /opt \
-  #&& curl -Lo install.sh https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh \
-  #&& sed -i "s/\(.*zsh -l\)/#\1/g" install.sh \
-  #&& bash -x install.sh 
 RUN yum install -y zsh \
+  && cd /opt \
+  && curl -Lo install.sh https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh \
+  && bash install.sh \
   && mkdir -p ~/.oh-my-zsh/plugins/incr \
   && wget http://mimosa-pudica.net/src/incr-0.2.zsh -P ~/.oh-my-zsh/plugins/incr \
   && echo "source ~/.oh-my-zsh/plugins/incr/incr*.zsh" >> ~/.zshrc
