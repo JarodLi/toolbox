@@ -376,7 +376,10 @@ RUN cd /root/.vim/bundle/ \
     && find . -name ".git" | xargs -I{} rm -rf {} 
 
 # zsh
-RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
+RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" \
+  && mkdir -p ~/.oh-my-zsh/plugins/incr \
+  && wget http://mimosa-pudica.net/src/incr-0.2.zsh -P ~/.oh-my-zsh/plugins/incr \
+  && echo "source ~/.oh-my-zsh/plugins/incr/incr*.zsh" >> ~/.zshrc
 
 
 ENV MY=/opt/toolbox/
