@@ -69,15 +69,15 @@ Plug 'junegunn/vim-easy-align'
 
 " LCN, 比vim-lsp好用
 
-if has('nvim')
+"if has('nvim')
   "" LCN, 比vim-lsp好用
-  Plug 'autozimu/LanguageClient-neovim'
-else
+  "Plug 'autozimu/LanguageClient-neovim'
+"else
   " vim-lsp
   Plug 'prabirshrestha/async.vim'
   Plug 'prabirshrestha/vim-lsp' "在vim中支持lsp功能的插件
   Plug 'ryanolsonx/vim-lsp-python'  "vim-lsp的python配置插件
-endif
+"endif
 
 
 Plug 'jacoborus/tender.vim'
@@ -129,13 +129,15 @@ autocmd! BufWritePost ~/.vimrc source ~/.vimrc
 set background=dark
 "colorscheme candy
 "colorscheme molokai  
-colorscheme zenburn
 set guifont=Monaco:h12:b
 let g:solarized_termcolors=256
-
-colorscheme zenburn
-"let g:lightline = { 'colorscheme': 'tender'  }
-"let g:airline_theme = 'tender'
+if has('nvim')
+  colorscheme zenburn
+else
+  colorscheme tender
+  let g:lightline = { 'colorscheme': 'tender'  }
+  let g:airline_theme = 'tender'
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "=> vim-bookmarks
@@ -720,22 +722,23 @@ nmap <leader>lf :LspDocumentRangeFormat<CR>
 """""""""""""""""""""""""""""
 " => LanguageClient-neovim
 """"""""""""""""""""""""""""""
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
-    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
-    \ 'python': ['/usr/bin/pyls'],
-    \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
-    \ }
+"let g:LanguageClient_serverCommands = {
+    "\ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    "\ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+    "\ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+    "\ 'python': ['/usr/bin/pyls'],
+    "\ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
+    "\ }
 
-if has('nvim')
-  let g:LanguageClient_diagnosticsEnable = 0
+"if has('nvim')
+  "let g:LanguageClient_diagnosticsEnable = 0
+  "let g:LanguageClient_selectionUI = 'quickfix'
 " lsp不支持python的rename
-  nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
-  nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
-  nnoremap <leader>lc :call LanguageClient#textDocument_references()<CR>
-  nnoremap <leader>lf :call LanguageClient#textDocument_rangeFormatting_sync()<CR>
-endif
+  "nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
+  "nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
+  "nnoremap <leader>lc :call LanguageClient#textDocument_references()<CR>
+  "nnoremap <leader>lf :call LanguageClient#textDocument_rangeFormatting_sync()<CR>
+"endif
 
 
 """""""""""""""""""""""""""""
@@ -917,7 +920,7 @@ nmap <F10> :windo lcl\|ccl<CR>
 """"""""""""""""""""""""""""""
 " => vim-isort
 """"""""""""""""""""""""""""""
-let g:vim_isort_map = '<C-i>'
+let g:vim_isort_map = '<C-j>'
 
 """"""""""""""""""""""""""""""
 " => trailingwhitespace 
