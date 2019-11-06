@@ -380,7 +380,7 @@ RUN cd /root/.vim/bundle/ \
 RUN cd /opt \
   && curl -Lo install.sh https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh \
   && sed -i "s/\(.*zsh -l\)/#\1/g" install.sh \
-  && bash install.sh 
+  && bash -x install.sh 
   #&& mkdir -p ~/.oh-my-zsh/plugins/incr \
   #&& wget http://mimosa-pudica.net/src/incr-0.2.zsh -P ~/.oh-my-zsh/plugins/incr \
   #&& echo "source ~/.oh-my-zsh/plugins/incr/incr*.zsh" >> ~/.zshrc
