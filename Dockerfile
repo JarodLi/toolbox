@@ -375,6 +375,9 @@ RUN cd /root/.vim/bundle/ \
     && git clone https://github.com/liuchengxu/vista.vim.git \
     && find . -name ".git" | xargs -I{} rm -rf {} 
 
+# zsh
+RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
+
 
 ENV MY=/opt/toolbox/
 RUN cd /opt/ \
