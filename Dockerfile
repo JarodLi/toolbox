@@ -130,13 +130,13 @@ RUN wget https://obs-community.obs.cn-north-1.myhuaweicloud.com/obsutil/current/
     && obsutil config -i=$ak -k=$sk -e=obs.cn-north-1.myhwclouds.com \
     && rm -rf /opt/obsutil_linux_amd64*
 
-# python 3.7.4
-#ADD Python-3.7.4.tar.xz /opt
-#ADD https://www.python.org/ftp/python/3.7.4/Python-3.7.4.tar.xz /opt
-#RUN wget https://www.python.org/ftp/python/3.7.4/Python-3.7.4.tar.xz -P /opt \
-RUN obsutil cp obs://lijian-test/Python-3.7.4.tar.xz /opt \
-    && tar xJvf /opt/Python-3.7.4.tar.xz -C /opt \
-    && cd /opt/Python-3.7.4 \
+# python 3.8.0
+#ADD Python-3.8.0.tar.xz /opt
+#ADD https://www.python.org/ftp/python/3.8.0/Python-3.8.0.tar.xz /opt
+#RUN wget https://www.python.org/ftp/python/3.8.0/Python-3.8.0.tar.xz -P /opt \
+RUN obsutil cp obs://lijian-test/Python-3.8.0.tar.xz /opt \
+    && tar xJvf /opt/Python-3.8.0.tar.xz -C /opt \
+    && cd /opt/Python-3.8.0 \
     && ./configure --enable-shared --prefix=/usr --with-openssl=/usr/ \
     && make \
     && make install \
@@ -224,13 +224,13 @@ RUN mkdir -p /root/.vim/{autoload,bundle}
 #ADD vim8.1.tar.gz /opt
 RUN cd /opt \
     #&& git clone https://github.com/vim/vim.git \
-    && obsutil cp obs://lijian-test/vim-8.1.2120.tar.gz . \
-    && tar xzvf vim-8.1.2120.tar.gz \
-    && cd /opt/vim-8.1.2120 \
+    && obsutil cp obs://lijian-test/vim-8.1.2272.tar.gz . \
+    && tar xzvf vim-8.1.2272.tar.gz \
+    && cd /opt/vim-8.1.2272 \
     && ./configure --with-features=huge --enable-python3interp=dynamic  --with-python-config-dir=/usr/lib/python3.7/config --enable-cscope --enable-multibyte --enable-luainterp=yes \
     && make \
     && make install \
-    && rm -rf /opt/vim-8.1.2120/.git \
+    && rm -rf /opt/vim-8.1.2272/.git \
     && rm -rf /usr/bin/vi \
     && ln -s /usr/local/bin/vim /usr/bin/vi \
 	# 使用vim-plug替代pathogen
