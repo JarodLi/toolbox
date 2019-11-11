@@ -423,6 +423,13 @@ let g:tagbar_foldlevel = 2
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vista
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <leader>tl :Vista!!<CR>
+"let g:vista_sidebar_position = 'vertical topleft'
+autocmd FileType vista nnoremap <buffer> q :call vista#sidebar#Close()<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => LeaderF
 " gtags使用： https://www.v2ex.com/t/561549
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

@@ -262,12 +262,18 @@ RUN cd /root/.vim/bundle/ \
 
 # universal ctags
 RUN cd /opt \
+    && wget http://www.digip.org/jansson/releases/jansson-2.12.tar.gz \
+    && tar xzvf jansson-2.12.tar.gz \
+    && cd jansson-2.12  && ./configure && make && make check && make install \
+    && cp /usr/lib/pkgconfig/jansson.pc  /usr/lib64/pkgconfig/ \
+    && ldconfig \
+    && cd /opt \
     # && git clone https://github.com/universal-ctags/ctags.git \
     && obsutil cp obs://lijian-test/ctags.tar.gz . \
     && tar xzvf ctags.tar.gz \
     && cd ctags \ 
     && ./autogen.sh \
-    && ./configure --prefix=/usr/bin/universal-ctags \
+    && ./configure --prefix=/usr/bin/universal-ctags --enable-json \
     && make \
     && make install \
     && rm -rf /usr/bin/ctags \
