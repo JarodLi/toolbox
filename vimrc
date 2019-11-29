@@ -14,7 +14,8 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 Plug 'majutsushi/tagbar'
-Plug 'tell-k/vim-autopep8'
+"使用autoformat+yapf替代autopep8
+"Plug 'tell-k/vim-autopep8'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'Yggdroot/indentLine'
 Plug 'elzr/vim-json', { 'for': 'json'}
@@ -305,8 +306,17 @@ let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
 let g:ale_c_cppcheck_options = ''
 let g:ale_cpp_cppcheck_options = ''
 
-let g:ale_python_pylint_options = '--max-line-length=140'
-let g:ale_python_flake8_options = '--max-line-length=140'
+
+let b:ale_linters = ['flake8', 'pylint']
+"ALE can fix files with the ALEFix command. 
+let g:ale_fixers = {
+            \ 'python': ['yapf', 'isort'],
+            \ }
+noremap <F4> :ALEFix<CR>
+let g:ale_fix_on_save = 1
+
+let g:ale_python_pylint_options = '--max-line-length=79'
+let g:ale_python_flake8_options = '--max-line-length=79'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Nerd Tree
@@ -538,8 +548,8 @@ let g:move_key_modifier = 'C'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:pymode_python = 'python3'
 map <leader>doc :Pydocstring<cr>
-map <leader>lint :PymodeLint<cr>
-map <leader>auto :PymodeLintAuto<cr>
+"map <leader>lint :PymodeLint<cr>
+"map <leader>auto :PymodeLintAuto<cr>
 " 禁用run功能，将<leader>r快捷键让出来
 let g:pymode_run_bind = '<leader>rrrrrrrr'
 let g:pymode = 1
@@ -578,31 +588,31 @@ let g:pymode_syntax_docstrings = g:pymode_syntax_all
 """"""""""""""""""""""""""""""
 " => vim-autopep8
 """"""""""""""""""""""""""""""
-autocmd FileType python noremap <buffer> <F8> :call Autopep8()<CR>
+"autocmd FileType python noremap <buffer> <F8> :call Autopep8()<CR>
 
 " Do not fix these errors/warnings (default: E226,E24,W6) 
-let g:autopep8_ignore=""
+"let g:autopep8_ignore=""
 "Fix only these errors/warnings (e.g. E4,W) 
-let g:autopep8_select=""
+"let g:autopep8_select=""
 "Maximum number of additional pep8 passes (default: 100)
-let g:autopep8_pep8_passes=100
+"let g:autopep8_pep8_passes=100
 "Set maximum allowed line length (default: 79)
-let g:autopep8_max_line_length=140
+"let g:autopep8_max_line_length=79
 "Enable possibly unsafe changes (E711, E712) (default: non defined) 
 "add aggressive option (--aggressive)
-let g:autopep8_aggressive=1
+"let g:autopep8_aggressive=1
 "add more aggressive options (--aggressive --aggressive)
-let g:autopep8_aggressive=2
+"let g:autopep8_aggressive=2
 "Number of spaces per indent level (default: 4) 
-let g:autopep8_indent_size=4
+"let g:autopep8_indent_size=4
 "Disable show diff window
-let g:autopep8_disable_show_diff=1
+"let g:autopep8_disable_show_diff=1
 "Chose diff window type. (default: horizontal)
 "# default
-let g:autopep8_diff_type='horizontal'
-let g:autopep8_diff_type='vertical'
+"let g:autopep8_diff_type='horizontal'
+"let g:autopep8_diff_type='vertical'
 "Automatically format every time saving a file.
-let g:autopep8_on_save = 0
+"let g:autopep8_on_save = 0
 
 """"""""""""""""""""""""""""""
 " => UltriSnip plugin
@@ -991,3 +1001,14 @@ autocmd FileType python nnoremap <Leader>t :!isort %<CR><CR>
 " => vim-airline 
 """"""""""""""""""""""""""""""
 let g:airline#extensions#tagbar#flags = 'f'  " show full tag hierarchy" 
+
+
+""""""""""""""""""""""""""""
+=> vim-autoformat
+""""""""""""""""""""""""""""""
+"noremap <F4> :Autoformat<CR>
+let g:formatter_yapf_style = 'pep8'
+"let g:autoformat_autoindent = 0
+"let g:autoformat_retab = 0
+"let g:autoformat_remove_trailing_spaces = 0
+"

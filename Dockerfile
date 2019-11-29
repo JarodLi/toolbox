@@ -208,7 +208,8 @@ RUN pip install paramiko \
     && pip install pygments \
     && pip install python-language-server \
     && pip install transitions \
-    && pip install isort
+    && pip install isort \
+    && pip install yapf
 
 # huawei sdk
 #ADD sdk.zip /opt
@@ -382,6 +383,7 @@ RUN cd /root/.vim/bundle/ \
     && git clone https://github.com/jeetsukumaran/vim-pythonsense.git \
     # 依赖isort： pip install isort
     && git clone https://github.com/fisadev/vim-isort.git \
+    && git clone https://github.com/Chiel92/vim-autoformat \
     && git clone https://github.com/jacoborus/tender.vim.git \
     && git clone https://github.com/liuchengxu/vista.vim.git \
     && find . -name ".git" | xargs -I{} rm -rf {} 
