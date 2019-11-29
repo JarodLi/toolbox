@@ -425,7 +425,7 @@ let g:tagbar_foldlevel = 2
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vista
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <leader>tl :Vista!!<CR>
+nmap <leader>tlv :Vista!!<CR>
 "let g:vista_sidebar_position = 'vertical topleft'
 autocmd FileType vista nnoremap <buffer> q :call vista#sidebar#Close()<CR>
 let g:vista#renderer#enable_icon = 0
