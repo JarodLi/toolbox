@@ -267,7 +267,7 @@ RUN cd /opt \
     && wget http://www.digip.org/jansson/releases/jansson-2.12.tar.gz \
     && tar xzvf jansson-2.12.tar.gz \
     && cd jansson-2.12  && ./configure && make && make check && make install \
-    && cp /usr/lib/pkgconfig/jansson.pc  /usr/lib64/pkgconfig/ \
+    && cp /usr/local/lib/pkgconfig/jansson.pc  /usr/lib64/pkgconfig/ \
     && ldconfig \
     && cd /opt \
     # && git clone https://github.com/universal-ctags/ctags.git \
