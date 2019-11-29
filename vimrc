@@ -929,7 +929,10 @@ nmap <F10> :windo lcl\|ccl<CR>
 """"""""""""""""""""""""""""""
 " => vim-isort
 """"""""""""""""""""""""""""""
-let g:vim_isort_map = '<C-j>'
+" sort所有import： :Isort
+
+" 选中import块进行排列
+let g:vim_isort_map = '<C-i>'
 
 """"""""""""""""""""""""""""""
 " => trailingwhitespace 

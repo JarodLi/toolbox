@@ -207,7 +207,8 @@ RUN pip install paramiko \
     && pip install sqlalchemy \
     && pip install pygments \
     && pip install python-language-server \
-    && pip install transitions
+    && pip install transitions \
+    && pip install isort
 
 # huawei sdk
 #ADD sdk.zip /opt
@@ -379,7 +380,8 @@ RUN cd /root/.vim/bundle/ \
     && git clone https://github.com/Vimjas/vim-python-pep8-indent.git \
     && git clone https://github.com/junegunn/vim-easy-align.git \
     && git clone https://github.com/jeetsukumaran/vim-pythonsense.git \
-    && git clone https://github.com/timothycrosley/isort.git \
+    # 依赖isort： pip install isort
+    && git clone https://github.com/fisadev/vim-isort.git \
     && git clone https://github.com/jacoborus/tender.vim.git \
     && git clone https://github.com/liuchengxu/vista.vim.git \
     && find . -name ".git" | xargs -I{} rm -rf {} 
