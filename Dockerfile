@@ -268,6 +268,7 @@ RUN cd /opt \
     && tar xzvf jansson-2.12.tar.gz \
     && cd jansson-2.12  && ./configure && make && make check && make install \
     && cp /usr/local/lib/pkgconfig/jansson.pc  /usr/lib64/pkgconfig/ \
+    && echo "/usr/local/lib" >> /etc/ld.so.conf.d/usr.conf \
     && ldconfig \
     && cd /opt \
     # && git clone https://github.com/universal-ctags/ctags.git \
