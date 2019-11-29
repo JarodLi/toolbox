@@ -330,7 +330,7 @@ RUN cd /root/.vim/bundle/ \
     #&& git clone --recurse-submodules https://github.com/python-mode/python-mode.git \
     && obsutil cp obs://lijian-test/python-mode.tar.gz . \
     # 解决python-mode自带astroid不兼容3.8的bug
-    && rm -rf /root/.vim/bundle/python-mode/pymode/libs/astroid/ \
+    && rm -rf /root/.vim/bundle/python-mode/pymode/libs/astroid \
     && ln -s /usr/lib/python3.8/site-packages/astroid/ /root/.vim/bundle/python-mode/pymode/libs/astroid/ \
     && tar xzvf python-mode.tar.gz \
     && rm -rf python-mode.tar.gz \
