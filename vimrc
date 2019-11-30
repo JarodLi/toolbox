@@ -1005,7 +1005,7 @@ let g:airline#extensions#tagbar#flags = 'f'  " show full tag hierarchy"
 
 
 """"""""""""""""""""""""""""
-=> vim-autoformat
+"=> vim-autoformat
 """"""""""""""""""""""""""""""
 "noremap <F4> :Autoformat<CR>
 let g:formatter_yapf_style = 'pep8'
