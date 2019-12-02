@@ -392,7 +392,7 @@ RUN cd /root/.vim/bundle/ \
 # zsh
 RUN yum install -y zsh \
   && cd /opt \
-  && curl -Lo install.sh https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh \
+  && curl -Lo install.sh https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh \
   && bash install.sh \
   && mkdir -p ~/.oh-my-zsh/plugins/incr \
   && wget http://mimosa-pudica.net/src/incr-0.2.zsh -P ~/.oh-my-zsh/plugins/incr \
