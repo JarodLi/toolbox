@@ -389,6 +389,18 @@ RUN cd /root/.vim/bundle/ \
     && git clone https://github.com/liuchengxu/vista.vim.git \
     && find . -name ".git" | xargs -I{} rm -rf {} 
 
+# markdown-preview plug
+RUN curl --silent --location https://rpm.nodesource.com/setup_10.x | bash - \
+    && yum install nodejs -y \
+    && curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo |  tee /etc/yum.repos.d/yarn.repo \
+    && rpm --import https://dl.yarnpkg.com/rpm/pubkey.gpg \
+    && yum install yarn -y \
+    && cd /root/.vim/bundle/ \
+    && git clone https://github.com/iamcco/markdown-preview.nvim.git \
+    && cd /root/.vim/bundle/markdown-preview.nvim/app \
+    && yarn install
+
+
 # zsh
 RUN yum install -y zsh \
   && cd /opt \
