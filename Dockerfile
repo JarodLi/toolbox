@@ -209,7 +209,8 @@ RUN pip install paramiko \
     && pip install python-language-server \
     && pip install transitions \
     && pip install isort \
-    && pip install yapf
+    && pip install yapf \
+    && pip install python-daemon
 
 # huawei sdk
 #ADD sdk.zip /opt
@@ -295,10 +296,10 @@ RUN cd /opt \
     && bash reconf.sh \
     && ./configure --with-sqlite3 \
     && make \
-    && make install 
+    && make install
     #&& cp -fp gtags/gtags /usr/bin \
     #&& cp -fp gtags-cscope/gtags-cscope /usr/bin \
-    #&& cp -fp global/global /usr/bin 
+    #&& cp -fp global/global /usr/bin
 
 
 
@@ -387,7 +388,7 @@ RUN cd /root/.vim/bundle/ \
     && git clone https://github.com/Chiel92/vim-autoformat \
     && git clone https://github.com/jacoborus/tender.vim.git \
     && git clone https://github.com/liuchengxu/vista.vim.git \
-    && find . -name ".git" | xargs -I{} rm -rf {} 
+    && find . -name ".git" | xargs -I{} rm -rf {}
 
 # markdown-preview plug
 RUN curl --silent --location https://rpm.nodesource.com/setup_10.x | bash - \
@@ -427,7 +428,7 @@ RUN cd /opt/ \
     # profile
     && cat $MY/profile.my >> /etc/profile  \ 
     && cat $MY/zshrc.my >> /root/.zshrc \
-    && rm -rf $MY 
+    && rm -rf $MY
     #&& rm -rf /opt/*
 
 
@@ -440,7 +441,7 @@ RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N "" \
     && echo "root:123" | chpasswd \
 # timezone
     && ln -snf /usr/share/zoneinfo/$TimeZone /etc/localtime \
-    && echo $TimeZone > /etc/timezone 
+    && echo $TimeZone > /etc/timezone
 
 
 CMD ["/usr/sbin/init"]
