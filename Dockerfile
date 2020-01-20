@@ -75,13 +75,12 @@ RUN wget https://www.openssl.org/source/openssl-1.1.1c.tar.gz -P /opt \
     && make install \
     && rm -rf /opt/openssl-1.1.1c*
 
-# setuptools  python2
-#ADD https://files.pythonhosted.org/packages/1d/64/a18a487b4391a05b9c7f938b94a16d80305bf0369c6b0b9509e86165e1d3/setuptools-45.1.0.zip /opt
-RUN wget https://files.pythonhosted.org/packages/42/3e/2464120172859e5d103e5500315fb5555b1e908c0dacc73d80d35a9480ca/setuptools-45.1.0.zip -P /opt \
-    && unzip /opt/setuptools-45.1.0.zip -d /opt \
-    && cd /opt/setuptools-45.1.0 \
+# setuptools  python2 use old version: 41.0.1
+RUN wget https://files.pythonhosted.org/packages/1d/64/a18a487b4391a05b9c7f938b94a16d80305bf0369c6b0b9509e86165e1d3/setuptools-41.0.1.zip -P /opt \
+    && unzip /opt/setuptools-41.0.1.zip -d /opt \
+    && cd /opt/setuptools-41.0.1 \
     && python setup.py install \
-    && rm -rf /opt/setuptools-45.1.0*
+    && rm -rf /opt/setuptools-41.0.1*
 
 # pip  python2
 #ADD pip-19.3.1.tar.gz /opt
