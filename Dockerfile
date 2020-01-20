@@ -76,22 +76,20 @@ RUN wget https://www.openssl.org/source/openssl-1.1.1c.tar.gz -P /opt \
     && rm -rf /opt/openssl-1.1.1c*
 
 # setuptools  python2
-#ADD setuptools-41.0.1.zip /opt
-#ADD https://files.pythonhosted.org/packages/1d/64/a18a487b4391a05b9c7f938b94a16d80305bf0369c6b0b9509e86165e1d3/setuptools-41.0.1.zip /opt
-RUN wget https://files.pythonhosted.org/packages/1d/64/a18a487b4391a05b9c7f938b94a16d80305bf0369c6b0b9509e86165e1d3/setuptools-41.0.1.zip -P /opt \
-    && unzip /opt/setuptools-41.0.1.zip -d /opt \
-    && cd /opt/setuptools-41.0.1 \
+#ADD https://files.pythonhosted.org/packages/1d/64/a18a487b4391a05b9c7f938b94a16d80305bf0369c6b0b9509e86165e1d3/setuptools-45.1.0.zip /opt
+RUN wget https://files.pythonhosted.org/packages/42/3e/2464120172859e5d103e5500315fb5555b1e908c0dacc73d80d35a9480ca/setuptools-45.1.0.zip -P /opt \
+    && unzip /opt/setuptools-45.1.0.zip -d /opt \
+    && cd /opt/setuptools-45.1.0 \
     && python setup.py install \
-    && rm -rf /opt/setuptools-41.0.1*
+    && rm -rf /opt/setuptools-45.1.0*
 
 # pip  python2
-#ADD pip-19.1.1.tar.gz /opt
-#ADD https://files.pythonhosted.org/packages/93/ab/f86b61bef7ab14909bd7ec3cd2178feb0a1c86d451bc9bccd5a1aedcde5f/pip-19.1.1.tar.gz /opt
-RUN wget https://files.pythonhosted.org/packages/93/ab/f86b61bef7ab14909bd7ec3cd2178feb0a1c86d451bc9bccd5a1aedcde5f/pip-19.1.1.tar.gz -P /opt \
-    && tar xzvf /opt/pip-19.1.1.tar.gz -C /opt \
-    && cd /opt/pip-19.1.1 \
+#ADD pip-19.3.1.tar.gz /opt
+RUN wget https://files.pythonhosted.org/packages/ce/ea/9b445176a65ae4ba22dce1d93e4b5fe182f953df71a145f557cffaffc1bf/pip-19.3.1.tar.gz -P /opt \
+    && tar xzvf /opt/pip-19.3.1.tar.gz -C /opt \
+    && cd /opt/pip-19.3.1 \
     && python setup.py install \
-    && rm -rf /opt/pip-19.1.1*
+    && rm -rf /opt/pip-19.3.1*
 
 # config pip mirror
 RUN mkdir -p  ~/.pip/ \
@@ -162,22 +160,20 @@ RUN wget https://nginx.org/download/nginx-1.16.1.tar.gz -P /opt \
     && make install
 
 # setuptools for python3
-#ADD setuptools-41.0.1.zip /opt
-#ADD https://files.pythonhosted.org/packages/1d/64/a18a487b4391a05b9c7f938b94a16d80305bf0369c6b0b9509e86165e1d3/setuptools-41.0.1.zip /opt
-RUN wget https://files.pythonhosted.org/packages/1d/64/a18a487b4391a05b9c7f938b94a16d80305bf0369c6b0b9509e86165e1d3/setuptools-41.0.1.zip -P /opt \
-    && unzip /opt/setuptools-41.0.1.zip -d /opt \
-    && cd /opt/setuptools-41.0.1 \
+#ADD setuptools-45.1.0.zip /opt
+RUN wget https://files.pythonhosted.org/packages/42/3e/2464120172859e5d103e5500315fb5555b1e908c0dacc73d80d35a9480ca/setuptools-45.1.0.zip -P /opt \
+    && unzip /opt/setuptools-45.1.0.zip -d /opt \
+    && cd /opt/setuptools-45.1.0 \
     && python setup.py install \
-    && rm -rf /opt/setuptools-41.0.1*
+    && rm -rf /opt/setuptools-45.1.0*
 
 # pip for python3
-#ADD pip-19.1.1.tar.gz /opt
-#ADD https://files.pythonhosted.org/packages/93/ab/f86b61bef7ab14909bd7ec3cd2178feb0a1c86d451bc9bccd5a1aedcde5f/pip-19.1.1.tar.gz /opt
-RUN wget https://files.pythonhosted.org/packages/93/ab/f86b61bef7ab14909bd7ec3cd2178feb0a1c86d451bc9bccd5a1aedcde5f/pip-19.1.1.tar.gz -P /opt \
-    && tar xzvf /opt/pip-19.1.1.tar.gz -C /opt \
-    && cd /opt/pip-19.1.1 \
+#ADD pip-19.3.1.tar.gz /opt
+RUN wget https://files.pythonhosted.org/packages/ce/ea/9b445176a65ae4ba22dce1d93e4b5fe182f953df71a145f557cffaffc1bf/pip-19.3.1.tar.gz -P /opt \
+    && tar xzvf /opt/pip-19.3.1.tar.gz -C /opt \
+    && cd /opt/pip-19.3.1 \
     && python setup.py install \
-    && rm -rf /opt/pip-19.1.1*
+    && rm -rf /opt/pip-19.3.1*
 
 RUN pip install paramiko \
     && pip install cliff \
