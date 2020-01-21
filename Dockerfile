@@ -128,18 +128,16 @@ RUN wget https://obs-community.obs.cn-north-1.myhuaweicloud.com/obsutil/current/
     && rm -rf /opt/obsutil_linux_amd64*
 
 # python 3.8.0
-#ADD Python-3.8.0.tar.xz /opt
-#ADD https://www.python.org/ftp/python/3.8.0/Python-3.8.0.tar.xz /opt
-#RUN wget https://www.python.org/ftp/python/3.8.0/Python-3.8.0.tar.xz -P /opt \
-RUN obsutil cp obs://lijian-test/Python-3.8.0.tar.xz /opt \
-    && tar xJvf /opt/Python-3.8.0.tar.xz -C /opt \
-    && cd /opt/Python-3.8.0 \
+#RUN wget https://www.python.org/ftp/python/3.8.1/Python-3.8.1.tar.xz -P /opt \
+RUN obsutil cp obs://lijian-test/Python-3.8.1.tar.xz /opt \
+    && tar xJvf /opt/Python-3.8.1.tar.xz -C /opt \
+    && cd /opt/Python-3.8.1 \
     && ./configure --enable-shared --prefix=/usr --with-openssl=/usr/ \
     && make \
     && make install \
     && rm -rf /usr/bin/python \
     && ln -s /usr/bin/python3 /usr/bin/python \
-    && rm -rf /opt/Python-3.7.3*
+    && rm -rf /opt/Python-3*
 
 # fix bug: yum not support python3
 RUN sed -i "s/\(^#.*\)python.*/\1python2/g" /usr/bin/yum \
