@@ -231,7 +231,10 @@ RUN cd /opt \
     && ln -s /usr/local/bin/vim /usr/bin/vi \
 	# 使用vim-plug替代pathogen
     # && curl -LSso /root/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-    && curl -fLo /root/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    # 原始网址无法下载，暂存obs
+    #&& curl -fLo /root/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    && cd /root/.vim/autoload/ \
+    && obsutil cp obs://lijian-test/plug.vim .
 
 # nvim
 #RUN yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm \
