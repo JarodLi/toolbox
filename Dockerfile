@@ -401,7 +401,9 @@ RUN curl --silent --location https://rpm.nodesource.com/setup_10.x | bash - \
 # zsh
 RUN yum install -y zsh \
   && cd /opt \
-  && curl -Lo install.sh https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh \
+  # 原始网址无法访问，暂存obs
+  #&& curl -Lo install.sh https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh \
+  && obsutil cp obs://lijian-test/zsh_install.sh ./install.sh \
   && bash install.sh \
   && mkdir -p ~/.oh-my-zsh/plugins/incr \
   && wget http://mimosa-pudica.net/src/incr-0.2.zsh -P ~/.oh-my-zsh/plugins/incr \
