@@ -203,7 +203,8 @@ RUN pip install paramiko \
     && pip install transitions \
     && pip install isort \
     && pip install yapf \
-    && pip install python-daemon
+    && pip install python-daemon \
+    && pip install asyncssh 
 
 # huawei sdk
 #ADD sdk.zip /opt
