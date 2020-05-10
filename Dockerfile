@@ -334,6 +334,8 @@ RUN cd /root/.vim/bundle/ \
     && ln -s /usr/lib/python3.8/site-packages/astroid/ /root/.vim/bundle/python-mode/pymode/libs/astroid \
     #&& git clone https://github.com/python-mode/python-mode.git \
     && git clone https://github.com/heavenshell/vim-pydocstring \
+    # 安装docstring信赖的doq
+    && cd /root/.vim/bundle/vim-pydocstring; make install; cd - \
     && git clone https://github.com/tmhedberg/SimpylFold \
     && git clone https://github.com/jnurmine/Zenburn \
     && git clone https://github.com/vim-scripts/UltiSnips \
