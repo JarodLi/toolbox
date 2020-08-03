@@ -129,9 +129,9 @@ RUN wget https://obs-community.obs.cn-north-1.myhuaweicloud.com/obsutil/current/
 
 # python 3.8.0
 #RUN wget https://www.python.org/ftp/python/3.7.6/Python-3.7.6.tar.xz -P /opt \
-RUN obsutil cp obs://lijian-test/Python-3.7.6.tar.xz /opt \
-    && tar xJvf /opt/Python-3.7.6.tar.xz -C /opt \
-    && cd /opt/Python-3.7.6 \
+RUN obsutil cp obs://lijian-test/Python-3.8.5.tar.xz /opt \
+    && tar xJvf /opt/Python-3.8.5.tar.xz -C /opt \
+    && cd /opt/Python-3.8.5 \
     && ./configure --enable-shared --prefix=/usr --with-openssl=/usr/ \
     && make \
     && make install \
