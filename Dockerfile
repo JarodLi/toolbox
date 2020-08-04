@@ -445,4 +445,4 @@ RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N "" \
     && echo $TimeZone > /etc/timezone
 
 
-CMD ["/usr/sbin/init"]
+CMD ["/usr/bin/zsh", "-l"]
