@@ -1,0 +1,110 @@
+FROM tmux:latest
+ENV container docker
+
+# pandas及ycm编译都依赖bz2，需要在编译python前安装
+RUN yum install -y libffi-devel bzip2-devel
+
+COPY pkgs/python/ /opt/
+# setuptools  python2 use old version: 41.0.1
+#RUN wget https://files.pythonhosted.org/packages/1d/64/a18a487b4391a05b9c7f938b94a16d80305bf0369c6b0b9509e86165e1d3/setuptools-41.0.1.zip -P /opt \
+    RUN unzip /opt/setuptools-41.0.1.zip -d /opt \
+    && cd /opt/setuptools-41.0.1 \
+    && python setup.py install \
+    && cd - \
+    && echo -e "#! /bin/bash\nrm -rf /usr/bin/python\nln -s /usr/bin/python2 /usr/bin/python" > /usr/local/bin/chpy2 \
+    && chmod +x /usr/local/bin/chpy2 \
+    && rm -rf /opt/setuptools* \
+# pip  python2
+    #&& wget https://files.pythonhosted.org/packages/ce/ea/9b445176a65ae4ba22dce1d93e4b5fe182f953df71a145f557cffaffc1bf/pip-19.3.1.tar.gz -P /opt \
+    && tar xzvf /opt/pip-19.3.1.tar.gz -C /opt \
+    && cd /opt/pip-19.3.1 \
+    && python setup.py install \
+    && cd - \
+    && rm -rf /opt/pip* \
+    #&& rm -rf /opt/pip-19.3.1* \
+# config pip mirror
+    && mkdir -p  ~/.pip/ \
+    && echo -e "[global]\nindex-url = https://pypi.mirrors.ustc.edu.cn/simple/\n\n[install]\ntrusted-host = pypi.mirrors.ustc.edu.cn" > ~/.pip/pip.conf \
+    #&& pip install paramiko \
+    && pip install cliff \
+    && pip install crypto \
+    && pip install ipython \ 
+    #&& pip install ansible \
+    #&& pip install pycrypto \
+    && pip install numpy==1.15.1 \
+    && pip install pandas==0.20.3 \
+    && pip install openpyxl==2.5.4 \
+    && pip install IPy==0.83 \
+    && pip install Cython==0.28.4 \
+    && pip install PyInstaller==3.2.1  \
+    && pip install xlrd==1.1.0 \
+    && pip install xlwt==1.1.2 \
+    && pip install pycdlib==1.0.0 \ 
+    && pip install PyYAML==3.13 \
+    && pip install jinja2==2.7.3 \
+    && pip install pyping \
+    && pip install ecdsa \
+    && pip install ipdb \
+    && pip install pylint \
+    && pip install flake8 \
+    && pip install ipaddress 
+
+#RUN wget https://www.python.org/ftp/python/3.8.5/Python-3.8.5.tar.xz  -P /opt
+RUN tar xJvf /opt/Python-3.8.5.tar.xz -C /opt \
+    && cd /opt/Python-3.8.5 \
+    && ./configure --enable-shared --prefix=/usr --with-openssl=/usr/ \
+    && make \
+    && make install \
+    && rm -rf /usr/bin/python \
+    && ln -s /usr/bin/python3 /usr/bin/python \
+    && cd - \
+    && rm -rf /opt/Python-3* \
+    && echo -e "#! /bin/bash\nrm -rf /usr/bin/python\nln -s /usr/bin/python3 /usr/bin/python" > /usr/local/bin/chpy3 \
+    && chmod +x /usr/local/bin/chpy3 \
+    && echo "/usr/lib/" > /etc/ld.so.conf.d/usr.conf \
+    && echo "/usr/lib64/" >> /etc/ld.so.conf.d/usr.conf \
+    && ldconfig \
+#RUN python -m pip install --upgrade pip
+    && mkdir -p  ~/.pip/ \
+    && echo -e "[global]\nindex-url = https://pypi.mirrors.ustc.edu.cn/simple/\n\n[install]\ntrusted-host = pypi.mirrors.ustc.edu.cn" > ~/.pip/pip.conf  \
+    && pip3 install cliff  \
+    &&  pip3 install crypto \
+    &&  pip3 install ipython  \
+    &&  pip3 install pycrypto \
+    &&  pip3 install pandas \
+    &&  pip3 install openpyxl \
+    &&  pip3 install IPy \
+    &&  pip3 install Cython \
+    &&  pip3 install PyInstaller \
+    &&  pip3 install xlrd \
+    &&  pip3 install xlwt \
+    &&  pip3 install pycdlib \
+    &&  pip3 install pyping \
+    &&  pip3 install ecdsa \
+    &&  pip3 install jupyter \
+    &&  pip3 install notebook \
+    &&  pip3 install jupyter_contrib_nbextensions \
+    &&  pip3 install ipdb \
+    &&  pip3 install pylint \
+    &&  pip3 install flake8  \
+    &&  pip3 install autopep8 \
+    &&  pip3 install pynvim \
+    &&  pip3 install wget \
+    &&  pip3 install sqlalchemy \
+    &&  pip3 install python-language-server \
+    &&  pip3 install transitions \
+    &&  pip3 install isort \
+    &&  pip3 install yapf \
+    &&  pip3 install asyncssh  \
+    &&  pip3 install pyroute2 \
+# fix bug: yum not support python3
+    && sed -i "s/\(^#.*\)python.*/\1python2/g" /usr/bin/yum \
+    && sed -i "s/\(^#.*\)python.*/\1python2/g" /usr/libexec/urlgrabber-ext-down
+
+# jupyter
+RUN jupyter notebook --generate-config 
+COPY config/jupyter/jupyter_notebook_config.py /root/.jupyter
+COPY config/jupyter/jupyter.service /usr/lib/systemd/system  
+RUN jupyter contrib nbextension install --user --skip-running-check \
+    && echo "c.NotebookApp.ip = '0.0.0.0'" >> /root/.jupyter/jupyter_notebook_config.py \
+    && systemctl enable jupyter.service

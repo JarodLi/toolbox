@@ -1,0 +1,136 @@
+let mapleader = ";"
+
+call plug#begin('~/.vim/bundle')
+  "Plug('jlanzarotta/bufexplorer')
+  for f in glob('~/.vim/rc/*.vim', 0, 1)
+    execute ':source ' f
+  endfor
+call plug#end()
+
+"defx窗口大小配置必须在plug加载 完成后执行
+call defx#custom#option('_', {
+      \ 'winwidth': 30,
+      \ 'split': 'vertical',
+      \ 'direction': 'botright',
+      \ 'show_ignored_files': 0,
+      \ 'buffer_name': '',
+      \ 'toggle': 1,
+      \ 'resume': 1
+      \ })
+
+
+
+syntax on
+filetype plugin indent on
+set number
+set showmatch
+set encoding=utf-8
+set fencs=utf-8    " Sets the default encoding
+set hlsearch
+set novb  "关闭闪屏
+set nocompatible
+set backspace=indent,eol,start
+set scrolloff=5  "在光标接近底端或顶端时,自动下滚或上滚.
+set t_Co=256 "支持256色
+
+set guioptions-=r
+set guioptions-=L
+set guioptions-=b
+set showtabline=0
+
+set nofoldenable
+"开启关闭paste模式
+set pastetoggle=<leader>p
+
+nnoremap gv `[v`]
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"=> 自动定位上次的行号
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"=> When vimrc is edited, reload it
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd! BufWritePost ~/.vimrc source ~/.vimrc
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"=> color and theme
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set background=dark
+"colorscheme candy
+"colorscheme molokai
+set guifont=Monaco:h12:b
+let g:solarized_termcolors=256
+"colorscheme tender
+colorscheme desertEx
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => style
+" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+ au BufNewFile,BufRead *.py,*.go,Dockerfile*,dockerfile*,*.sh,*.c
+ \ set tabstop=4 |
+ \ set softtabstop=4 |
+ \ set shiftwidth=4 |
+ \ set textwidth=79 |
+ \ set expandtab |
+ \ set autoindent |
+ \ set fileformat=unix |
+ \ set colorcolumn=0
+ "\ set colorcolumn=120
+ "
+ au BufNewFile,BufRead *.yml
+ \ set tabstop=2 |
+ \ set softtabstop=2 |
+ \ set shiftwidth=2
+
+
+""""""""""""""""""""""""""""""
+" => quickfix
+" """"""""""""""""""""""""""""""
+" nmap <F10> :windo lcl\|ccl<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => move between windows
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <TAB>h <C-W>h
+map <TAB>l <C-W>l
+map <TAB>k <C-W>k
+map <TAB>j <C-W>j
+map <TAB>c <C-W>c
+map <TAB>q <C-W>q
+map <TAB>= <C-W>=
+map <TAB>+ <C-W>+
+map <TAB>- <C-W>-
+map <TAB>< <C-W><
+map <TAB>> <C-W>>
+map <TAB>o <C-W>o
+map <TAB>v <C-W>v
+map <TAB>s <C-W>s
+
+"隐藏边栏，用于鼠标快速选中文本
+set mouse=
+let s:showleft = 1
+nnoremap <leader>1 : call Showleft()<cr>
+func! Showleft()
+        if s:showleft == 1
+                exec "set nonu"
+                exec "IndentLinesDisable"
+                if &filetype == 'python'
+                        exec "ALEDisable"
+                endif
+                let s:showleft=0
+        else
+                exec "set nu"
+                exec "IndentLinesEnable"
+                if &filetype == 'python'
+                        exec "ALEEnable"
+                endif
+                let s:showleft=1
+
+        endif
+endfunc
+

@@ -1,0 +1,28 @@
+FROM centos:latest
+ENV container docker
+
+RUN sed -i '/tsflags/d' /etc/yum.conf \ 
+    && yum install -y wget make  gcc-c++ zlib zlib-devel unzip dos2unix tree git man man-pages man-pages-zh-CN openssh-server openssh unzip initscripts shadow-utils bind-utils traceroute bash-completion file util-linux which sshpass zip bc tcpdump rpm-build bc lsof sqlite sqlite-devel 
+
+RUN wget https://www.openssl.org/source/openssl-1.1.1c.tar.gz -P /opt \
+    && tar xzvf /opt/openssl-1.1.1c.tar.gz -C /opt \
+    && cd /opt/openssl-1.1.1c \
+    && ./config --prefix=/usr --openssldir=/usr/openssl shared zlib \
+    && make \
+    && make install \
+    && rm -rf /opt/openssl-1.1.1c*
+
+# OS config
+ENV TimeZone=Asia/Shanghai
+# sshd
+RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N "" \
+    && ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key -N "" \
+    && ssh-keygen -t ed25519 -f /etc/ssh/ssh_host_ed25519_key -N "" \
+    && echo "root:123" | chpasswd \
+# timezone
+    && ln -snf /usr/share/zoneinfo/$TimeZone /etc/localtime \
+    && echo $TimeZone > /etc/timezone
+
+
+# 必须使用init，否则无法使用systemctl
+CMD ["/usr/sbin/init"]

@@ -91,27 +91,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 source ~/.oh-my-zsh/plugins/incr/incr*.zsh
-set -o vi
-alias cdcode='cd /usr1/code/'
-alias cdos='cd /usr1/code/obs_oam-euleros'
-alias cdup='cd /usr1/code/obs_oam-euleros/src/upgrade'
-alias cddevops='cd /usr1/code/devops'
-alias cdoj='cd /usr1/code/oj'
-alias cdtool='cd /usr1/code/obs_oam-dfvtool'
-alias cdobsrun='cd /usr1/code/obs_oam-dfvtool/src/obs_run/obs_run'
-alias cdpreinstall='cd /usr1/code/obs_oam-dfvtool/src/obs_run/preinstall'
-alias cdoam='cd /usr1/code/obs_oam-u'
-alias cdsysconfig='cd /usr1/code/obs_oam-u/Deploy/oam/packages/sysconfig'
-alias cdsftp='cd /usr1/code/obs_sftp'
-alias vi='vim'
-alias cdrepo='cd /usr2/euleros/repo'
-alias cd2.8='cd /usr2/euleros/euleros2.8'
-alias cd2.5='cd /usr2/euleros/euleros2.5'
-alias cd2.3='cd /usr2/euleros/euleros2.3'
-alias cd2.2='cd /usr2/euleros/euleros2.2'
-alias cdpy='cd /usr/lib/python3.7'
-
-git config --add oh-my-zsh.hide-dirty 1
+#git config --add oh-my-zsh.hide-dirty 1
 #git config --add oh-my-zsh.hide-status 1
 #
 
@@ -120,4 +100,12 @@ git config --add oh-my-zsh.hide-dirty 1
 #
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
+
+if [ -e  /usr/share/terminfo/x/xterm-256color  ];then
+    export TERM='xterm-256color'
+else
+    export TERM='xterm-color'
+fi
+
+git config credential.helper store
 
