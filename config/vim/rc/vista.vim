@@ -5,7 +5,7 @@ Plug 'liuchengxu/vista.vim'
 
 
 
-nmap <leader>tl :Vista!!<CR>
+nmap 1 :Vista!!<CR>
 let g:vista_sidebar_position = 'vertical topleft'
 autocmd FileType vista nnoremap <buffer> q :call vista#sidebar#Close()<CR>
 let g:vista#renderer#enable_icon = 0
