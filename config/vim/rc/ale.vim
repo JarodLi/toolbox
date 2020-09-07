@@ -39,4 +39,4 @@ func! ToggleAle()
                 let g:ale_fix_on_save = 1
                 exec "ALEEnable"
                 let s:enable_ale=1
-
+endfunction
