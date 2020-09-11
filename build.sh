@@ -84,6 +84,7 @@ function pre_vim()
 
     git clone --recursive https://github.com/ycm-core/YouCompleteMe || exit 1
     git clone https://github.com/mg979/vim-visual-multi.git || exit 1
+    git clone https://github.com/uguu-org/vim-matrix-screensaver.git || exit 1
     cd -
 }
 
@@ -91,9 +92,9 @@ function main()
 {
     today=$(date "+%Y%m%d")
     build_args="--no-cache"
-    docker build . -f Dockerfile.basic -t basic:latest --rm --no-cache || exit 1
-    docker build . -f Dockerfile.zsh -t zsh:latest --rm --no-cache || exit 1
-    docker build . -f Dockerfile.tmux -t tmux:latest --rm --no-cache || exit 1
+    #docker build . -f Dockerfile.basic -t basic:latest --rm --no-cache || exit 1
+    #docker build . -f Dockerfile.zsh -t zsh:latest --rm --no-cache || exit 1
+    #docker build . -f Dockerfile.tmux -t tmux:latest --rm --no-cache || exit 1
     docker build . -f Dockerfile.python -t python:latest --rm --no-cache || exit 1
     docker build . -f Dockerfile.vim -t vim:latest --rm --no-cache || exit 1
     docker build . -f Dockerfile.my  -t my:${today} --rm --no-cache || exit 1
@@ -101,9 +102,9 @@ function main()
     obsutil cp my_${today}.tar obs://lijian-test && rm -rf my_${today}.tar
 }
 
-pre &&
-pre_tmux &&
-pre_python &&
-pre_vim && 
+#pre &&
+#pre_tmux &&
+#pre_python &&
+#pre_vim && 
 main
 
