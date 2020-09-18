@@ -29,7 +29,7 @@ function pre_vim()
     wget https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage pkgs/vim/pkgs
     wget https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim pkgs/vim/pkgs
     curl -fLo pkgs/vim/pkgs/plug.vim  --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    wget http://tamacom.com/global/global-6.6.4.tar.gz -P pkgs/vim/pkgs
+    wget http://tamacom.com/global/global-6.6.5.tar.gz -P pkgs/vim/pkgs
     git clone https://github.com/universal-ctags/ctags.git pkgs/vim/pkgs
 
     rm -rf pkgs/vim/vim-bundle
@@ -88,23 +88,45 @@ function pre_vim()
     cd -
 }
 
+function pre_c()
+{
+    rm -rf pkgs/c
+    mkdir -p pkgs/c
+    cd pkgs/c
+    # download gcc and deps
+    wget https://ftp.gnu.org/gnu/mpc/mpc-1.2.0.tar.gz
+    wget https://ftp.gnu.org/gnu/gmp/gmp-6.2.0.tar.xz
+    wget https://ftp.gnu.org/gnu/mpfr/mpfr-4.1.0.tar.gz
+    wget https://ftp.gnu.org/gnu/gcc/gcc-10.2.0/gcc-10.2.0.tar.gz
+    wget http://isl.gforge.inria.fr/isl-0.22.tar.xz 
+    # download cmake
+    #wget https://github.com/Kitware/CMake/releases/download/v3.18.2/cmake-3.18.2.tar.gz
+    wget https://github.com/Kitware/CMake/releases/download/v3.17.5/cmake-3.17.5-Linux-x86_64.tar.gz
+    wget https://ftp.gnu.org/gnu/make/make-4.3.tar.gz
+    # glibc
+    wget https://ftp.gnu.org/gnu/glibc/glibc-2.32.tar.gz
+    # cland
+    wget https://github.com/clangd/clangd/releases/download/10.0.0/clangd-linux-10.0.0.zip
+}
+
 function main()
 {
     today=$(date "+%Y%m%d")
     build_args="--no-cache"
-    #docker build . -f Dockerfile.basic -t basic:latest --rm --no-cache || exit 1
-    #docker build . -f Dockerfile.zsh -t zsh:latest --rm --no-cache || exit 1
-    #docker build . -f Dockerfile.tmux -t tmux:latest --rm --no-cache || exit 1
+    docker build . -f Dockerfile.basic -t basic:latest --rm --no-cache || exit 1
     docker build . -f Dockerfile.python -t python:latest --rm --no-cache || exit 1
+    docker build . -f Dockerfile.c -t c:latest --rm --no-cache || exit 1
+    docker build . -f Dockerfile.zsh -t zsh:latest --rm --no-cache || exit 1
+    docker build . -f Dockerfile.tmux -t tmux:latest --rm --no-cache || exit 1
     docker build . -f Dockerfile.vim -t vim:latest --rm --no-cache || exit 1
     docker build . -f Dockerfile.my  -t my:${today} --rm --no-cache || exit 1
     docker save my:${today} > my_${today}.tar
     obsutil cp my_${today}.tar obs://lijian-test && rm -rf my_${today}.tar
 }
 
-#pre &&
-#pre_tmux &&
-#pre_python &&
-#pre_vim && 
+pre &&
+pre_tmux &&
+pre_python &&
+pre_vim && 
 main
 

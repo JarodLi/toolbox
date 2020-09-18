@@ -47,3 +47,5 @@ let g:ycm_extra_conf_vim_data = [
   \  'g:ycm_python_sys_path'
   \]
 let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
+let g:ycm_use_clangd = 1
+let g:ycm_clangd_binary_path="/usr/local/bin/clangd"

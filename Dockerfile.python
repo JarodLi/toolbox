@@ -1,4 +1,4 @@
-FROM tmux:latest
+FROM basic:latest
 ENV container docker
 
 # pandas及ycm编译都依赖bz2，需要在编译python前安装

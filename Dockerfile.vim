@@ -1,9 +1,11 @@
-FROM python:latest
+FROM tmux:latest
 ENV container docker
 
 ADD pkgs/vim/pkgs/* /opt/
 #COPY pkgs/vim/pkgs /opt
 
+RUN rm -rf /var/lib/rpm/*db* \
+    && rpm --rebuilddb 
 RUN yum install -y ncurses-devel
 RUN mkdir -p /root/.vim/{autoload,bundle,rc}
 #ADD pkgs/vim8.2-20200820.tar.gz /opt
@@ -68,13 +70,13 @@ RUN pip3 install pygments
 RUN yum install -y bison flex gperf libtool libtool-ltdl-devel texinfo  \
 
 # https://www.gnu.org/software/global/download.html
-#RUN wget http://tamacom.com/global/global-6.6.4.tar.gz -P /opt  \
+#RUN wget http://tamacom.com/global/global-6.6.5.tar.gz -P /opt  \
 # fix c99 compile bug
-#&& obsutil cp obs://lijian-test/global-6.6.4.tar.gz . \
-    #&& tar xzvf /opt/global-6.6.4.tar.gz -C /opt \
-    && cd /opt/global-6.6.4 \
+#&& obsutil cp obs://lijian-test/global-6.6.5.tar.gz . \
+    #&& tar xzvf /opt/global-6.6.5.tar.gz -C /opt \
+    && cd /opt/global-6.6.5 \
     && bash reconf.sh \
-    && ./configure --with-sqlite3 \
+    && ./configure --with-sqlite3  \
     && make \
     && make install \
     && rm -rf /opt/global* \

@@ -58,3 +58,5 @@ let g:pymode_syntax_builtin_objs = g:pymode_syntax_all
 let g:pymode_syntax_builtin_types = g:pymode_syntax_all
 let g:pymode_syntax_highlight_exceptions = g:pymode_syntax_all
 let g:pymode_syntax_docstrings = g:pymode_syntax_all
+let g:pymode_rope_lookup_project = 0
+let g:pymode_rope = 0
