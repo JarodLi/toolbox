@@ -40,6 +40,8 @@ RUN yum install -y bison \
     && ldconfig  \
  
     # 编译gcc
+    # 先安装libstdc++，避免后面其他rpm依赖， 将libstdc++.so.6给覆盖回去
+    && yum install -y libstdc++ \
     && cd /opt/gcc-10.2.0 \
     && ./configure --prefix=/usr/local/gcc-10.2.0 --enable-threads=posix --disable-checking --enable--long-long --enable-languages=c,c++ --with-gmp=/usr/local/gmp-6.2.0/ --with-mpfr=/usr/local/mpfr-4.1.0/ --with-mpc=/usr/local/mpc-1.2.0/ --with-isl=/usr/local/isl-0.22 --disable-multilib \
     && echo "/usr/local/gcc-10.2.0/lib" >> /etc/ld.so.conf.d/usr.conf \
@@ -96,4 +98,7 @@ RUN yum install -y bison \
    && rm -rf /opt/clangd* 
 
 RUN rm -rf /var/lib/rpm/*db* \
-    && rpm --rebuilddb
+    && rpm --rebuilddb \
+# libstdc++.so.6会被覆盖回去，最后再修改一次
+    && rm -rf /usr/lib64/libstdc++.so.6 \
+    && ln -s /usr/local/gcc-10.2.0/lib64/libstdc++.so.6.0.28 /usr/lib64/libstdc++.so.6 
