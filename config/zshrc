@@ -71,7 +71,7 @@ ZSH_THEME="robbyrussell"
 plugins=(git
         history-substring-search
         zsh-autosuggestions
-        zsh-syntax-highlighting) 
+        zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -112,5 +112,17 @@ else
 fi
 
 #git config credential.helper store
-#
+#解决粘贴卡顿的问题
+pasteinit() {
+	OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
+	zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
+}
+pastefinish() {
+	zle -N self-insert $OLD_SELF_INSERT
+}
+zstyle :bracketed-paste-magic paste-init pasteinit
+zstyle :bracketed-paste-magic paste-finish pastefinish
+
+source ~/.zshrc.my
+/usr/bin/tmux
 source ~/.zshrc.my

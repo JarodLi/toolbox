@@ -3,15 +3,8 @@ ENV container docker
 
 COPY pkgs/tmux /opt
 
-RUN yum install -y libevent-devel  bison  ncurses-devel \
-#RUN wget https://github.com/tmux/tmux/releases/download/3.2-rc/tmux-3.2-rc2.tar.gz -P /opt \
-    && cd /opt \
-    && tar xzvf tmux-3*.tar.gz \
-    && cd  tmux-3* \ 
-    && ./configure \
-    && make \
-    && make install \
-    && echo "/usr/local/bin/tmux" >> /root/.zshrc \
+RUN pacman -S tmux --noconfirm \
+    && echo "/usr/bin/tmux" >> /root/.zshrc \
     && git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm \
     #&& mv /opt/tpm ~/.tmux/plugins/tpm \
     # plugins无法自动下载，提前下载好ADD进去

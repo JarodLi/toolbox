@@ -88,6 +88,14 @@ function pre_vim()
     cd -
 }
 
+function pre_zsh()
+{
+    cd pkgs/zsh/
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git 
+    git clone https://github.com/zsh-users/zsh-autosuggestions.git
+}
+
+
 function pre_c()
 {
     rm -rf pkgs/c
@@ -114,19 +122,19 @@ function main()
     today=$(date "+%Y%m%d")
     build_args="--no-cache"
     docker build . -f Dockerfile.basic -t basic:latest --rm --no-cache || exit 1
-    docker build . -f Dockerfile.python -t python:latest --rm --no-cache || exit 1
-    docker build . -f Dockerfile.c -t c:latest --rm --no-cache || exit 1
     docker build . -f Dockerfile.zsh -t zsh:latest --rm --no-cache || exit 1
     docker build . -f Dockerfile.tmux -t tmux:latest --rm --no-cache || exit 1
+    docker build . -f Dockerfile.python -t python:latest --rm --no-cache || exit 1
     docker build . -f Dockerfile.vim -t vim:latest --rm --no-cache || exit 1
     docker build . -f Dockerfile.my  -t my:${today} --rm --no-cache || exit 1
     docker save my:${today} > my_${today}.tar
     obsutil cp my_${today}.tar obs://lijian-test && rm -rf my_${today}.tar
 }
 
-pre &&
-pre_tmux &&
-pre_python &&
-pre_vim && 
+#pre &&
+#pre_tmux &&
+#pre_zsh &&
+#pre_python &&
+#pre_vim && 
 main
 
