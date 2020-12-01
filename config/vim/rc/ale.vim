@@ -17,7 +17,7 @@ let g:ale_cpp_cppcheck_options = ''
 let b:ale_linters = ['flake8', 'pylint']
 "ALE can fix files with the ALEFix command.
 let g:ale_fixers = {
-            \ 'python': ['yapf', 'isort'],
+            \ 'python': ['yapf', 'autopep8', 'isort'],
             \ }
 noremap <F4> :ALEFix<CR>
 let g:ale_fix_on_save = 1
