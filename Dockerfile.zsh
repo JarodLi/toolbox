@@ -1,8 +1,10 @@
 FROM basic:latest
 ENV container docker
 
+ADD pkgs/zsh/install.sh /opt/install.sh
+
 RUN pacman -S wget zsh --noconfirm \
-  && curl -Lo /opt/install.sh https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh  \
+  #&& curl -Lo /opt/install.sh https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh  \
   && bash /opt/install.sh \
   && mkdir -p ~/.oh-my-zsh/plugins/incr \
   && wget http://mimosa-pudica.net/src/incr-0.2.zsh -P ~/.oh-my-zsh/plugins/incr \

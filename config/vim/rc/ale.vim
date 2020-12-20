@@ -20,7 +20,8 @@ let g:ale_fixers = {
             \ 'python': ['yapf', 'autopep8', 'isort'],
             \ }
 noremap <F4> :ALEFix<CR>
-let g:ale_fix_on_save = 1
+" 关闭保存时自动修复，防止文件太大时卡顿的问题
+let g:ale_fix_on_save = 0
 
 let g:ale_python_pylint_options = '--max-line-length=79 --rcfile=~/py_check/pylintrc'
 let g:ale_python_flake8_options = '--max-line-length=79 --select E122,E123,E126,E127,E128,E129,E265,E402,F821,W503,W504,W605,W606,E203,F841'

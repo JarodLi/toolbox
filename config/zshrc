@@ -125,4 +125,3 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 
 source ~/.zshrc.my
 /usr/bin/tmux
-source ~/.zshrc.my
