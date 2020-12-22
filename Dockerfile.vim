@@ -13,7 +13,8 @@ RUN cd /opt &&  chmod u+x nvim.appimage && ./nvim.appimage --appimage-extract &&
     && mkdir -p ~/.config \
     && ln -s ~/.vim ~/.config/nvim \
     && ln -s ~/.vimrc ~/.config/nvim/init.vim \
-    && rm -rf /opt/nvim.appimage
+    && rm -rf /opt/nvim.appimage \
+    && ln -s /usr/bin/vim /usr/bin/vi 
 
 # 使用universal ctags进行前端符号分析定义，提供给gtags使用（GNU tags）
 # GTags （或者叫做 GNU GLOBAL）比起 ctags 来说，有几个主要的优点：
