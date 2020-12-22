@@ -72,7 +72,8 @@ RUN pacman -S python2 --noconfirm \
     && pip3 install asyncssh  \
     && pip3 install pylama \
     && pip3 install pyroute2 \
-    && pip3 install scapy 
+    && pip3 install scapy \
+    && pip3 install psutil 
 
 # jupyter
 RUN jupyter notebook --generate-config 
