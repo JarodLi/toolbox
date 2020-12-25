@@ -1,5 +1,5 @@
 " vim-gutentags管理gtags的GTAGS\GRTAGS、GPATH等文件
-Plug 'ludovicchabant/vim-gutentags'
+Plug 'ludovicchabant/vim-gutentags', { 'for': ['python', 'c', 'go', 'sh']}
 
 
 " gutentags 搜索工程目录的标志，当前文件路径向上递归直到碰到这些文件/目录名

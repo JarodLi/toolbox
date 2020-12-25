@@ -1,5 +1,5 @@
  " 管理gtags-cscope数据库，自动添加、切换
- Plug 'skywind3000/gutentags_plus'
+ Plug 'skywind3000/gutentags_plus', { 'for': ['python', 'c', 'go', 'sh']}
  " change focus to quickfix window after search (optional).
  "let g:gutentags_plus_switch = 1
  let g:gutentags_plus_nomap = 1
