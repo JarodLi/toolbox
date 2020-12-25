@@ -35,6 +35,9 @@ RUN pip3 install pygments
 # 把所有插件copy进去
 COPY pkgs/vim/vim-bundle /root/.vim/bundle/
 
+RUN cd /root/.vim/bundle/markdown-preview.nvim/app \
+    && yarn install
+
 # YCM
 #ADD YouCompleteMe.tar.gz /root/.vim/bundle
 RUN pacman -S cmake make --noconfirm \
