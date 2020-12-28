@@ -25,8 +25,10 @@ RUN cd /opt &&  chmod u+x nvim.appimage && ./nvim.appimage --appimage-extract &&
 # 支持增量更新，每次只索引改变过的文件
 # 多种输出格式，能更好的同编辑器相集成
 
-# gtags for LeaderF and cscope
-RUN pacman -S universal-ctags --noconfirm \
+# gtags for LeaderF and cscope, for vista
+# archlinux中，ctags已经被universal-ctags收编
+#RUN pacman -S universal-ctags --noconfirm \
+RUN pacman -S ctags --noconfirm \
     && pacman -S global --noconfirm 
 
 # 使用pygments进行前端符号分析引用，提供给gtags使用（GNU tags）
