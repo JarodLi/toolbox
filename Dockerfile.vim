@@ -1,4 +1,4 @@
-FROM python:latest
+FROM java:latest
 ENV container docker
 
 ADD pkgs/vim/pkgs/* /opt/
@@ -37,6 +37,7 @@ RUN pip3 install pygments
 # 把所有插件copy进去
 COPY pkgs/vim/vim-bundle /root/.vim/bundle/
 
+# 安装markdown-preview
 RUN cd /root/.vim/bundle/markdown-preview.nvim/app \
     && yarn install
 
@@ -48,6 +49,14 @@ RUN pacman -S cmake make --noconfirm \
     #&& /root/.vim/bundle/YouCompleteMe/install.py --clang-completer --system-libclang \
     && /root/.vim/bundle/YouCompleteMe/install.py --clangd-completer \
     && cp /root/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py /root/
+
+# 安装bash的lsp server, shfmt
+RUN pacman -S npm shfmt --noconfirm \ 
+    && npm i -g bash-language-server
+
+# 安装LC
+RUN cd /root/.vim/bundle/LanguageClient-neovim \
+    && bash install.sh
 
 COPY config/vim/vimrc /root/.vimrc
 COPY config/vim/rc /root/.vim/rc
