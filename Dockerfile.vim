@@ -2,6 +2,7 @@ FROM java:latest
 ENV container docker
 
 ADD pkgs/vim/pkgs/* /opt/
+RUN rm -rf /usr/lib/python3.9/site-packages/clang
 RUN pacman -S vim clang --noconfirm
 
 RUN mkdir -p /root/.vim/{autoload,bundle,rc} \
@@ -43,10 +44,14 @@ RUN cd /root/.vim/bundle/markdown-preview.nvim/app \
 
 # YCM
 #ADD YouCompleteMe.tar.gz /root/.vim/bundle
-RUN pacman -S cmake make --noconfirm \
-    && cd /root/.vim/bundle/ \
+RUN pacman -S cmake make --noconfirm 
+RUN cd /root/.vim/bundle/ \
     #&& git clone --recursive https://github.com/ycm-core/YouCompleteMe \
     #&& /root/.vim/bundle/YouCompleteMe/install.py --clang-completer --system-libclang \
+    # 支持java： --java-complete会去下载eclipse.jdt.ls，下载失败概率高。 直接使用下载好的，建议link使用
+    #&& /root/.vim/bundle/YouCompleteMe/install.py --clangd-completer --java-complete \
+    && mkdir -p /root/.vim/bundle/YouCompleteMe/third_party/ycmd/third_party/eclipse.jdt.ls/target/ \
+    && ln -s /opt/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/ /root/.vim/bundle/YouCompleteMe/third_party/ycmd/third_party/eclipse.jdt.ls/target/repository \
     && /root/.vim/bundle/YouCompleteMe/install.py --clangd-completer \
     && cp /root/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py /root/
 

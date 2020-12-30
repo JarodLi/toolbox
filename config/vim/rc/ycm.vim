@@ -37,6 +37,7 @@ let g:ycm_filetype_whitelist = {
                         \ "zsh":1,
                         \ "python":1,
                         \ "go":1,
+                        \ "java":1,
                         \ }
 
 

@@ -1,4 +1,4 @@
-Plug 'dense-analysis/ale', { 'for': ['python', 'c', 'cpp', 'go', 'sh']}
+Plug 'dense-analysis/ale', { 'for': ['python', 'c', 'cpp', 'go', 'sh', 'java']}
 
 let g:ale_completion_delay = 500
 let g:ale_echo_delay = 20
@@ -22,6 +22,7 @@ let g:ale_linters = {
 let g:ale_fixers = {
             \  '*': ['remove_trailing_lines', 'trim_whitespace'],
             \ 'python': ['yapf', 'autopep8', 'isort'],
+            \ 'java': ['google_java_format'],
             \ }
 noremap <F4> :ALEFix<CR>
 " 关闭保存时自动修复，防止文件太大时卡顿的问题
@@ -45,3 +46,8 @@ func! ToggleAle()
                 exec "ALEEnable"
                 let s:enable_ale=1
 endfunction
+
+let g:ale_java_eclipselsp_path = '/opt/eclipse.jdt.ls/'
+let g:ale_java_eclipselsp_config_path = '/opt/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/config_linux'
+let g:ale_java_eclipselsp_executable = '/usr/bin/java'
+let g:ale_java_google_java_format_executable = 'google-java-format'

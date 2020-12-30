@@ -2,6 +2,8 @@ Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp' "在vim中支持lsp功能的插件
 Plug 'ryanolsonx/vim-lsp-python'  "vim-lsp的python配置插件
 Plug 'autozimu/LanguageClient-neovim'
+Plug 'lgranie/vim-lsp-java'
+
 
 """"""""""""""""""""""""""""""
 " => vim-lsp plugin
@@ -75,6 +77,16 @@ nmap <leader>lh :LspHover<CR>
 nmap <leader>lr :LspRename<CR>
 nmap <leader>lc :LspReferences<CR>
 nmap <leader>lf :LspDocumentRangeFormat<CR>
+
+
+let g:vim_lsp_java = {
+  \ 'eclipse_jdtls' : {
+    \ 'repository': expand('/opt/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository'),
+    \ 'config': 'config_linux',
+    \ 'workspace': expand('$WORKSPACE'),
+  \ },
+\ }
+
 
 """"""""""""""""""""""""""""""
 " => language-client
