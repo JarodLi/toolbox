@@ -16,6 +16,7 @@ let g:ale_cpp_cppcheck_options = ''
 let g:ale_linters = {
     \ 'python': ['flake8', 'pylint'],
     \ 'sh': ['language_server'],
+    \ 'xml': ['xmllint'],
     \ }
 "ALE can fix files with the ALEFix command.
 let g:ale_fixers = {
