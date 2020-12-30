@@ -1,4 +1,4 @@
-Plug 'dense-analysis/ale', { 'for': ['python', 'c', 'go', 'sh']}
+Plug 'dense-analysis/ale', { 'for': ['python', 'c', 'cpp', 'go', 'sh']}
 
 let g:ale_completion_delay = 500
 let g:ale_echo_delay = 20
@@ -13,10 +13,13 @@ let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
 let g:ale_c_cppcheck_options = ''
 let g:ale_cpp_cppcheck_options = ''
 
-
-let b:ale_linters = ['flake8', 'pylint']
+let g:ale_linters = {
+    \ 'python': ['flake8', 'pylint'],
+    \ 'sh': ['language_server'],
+    \ }
 "ALE can fix files with the ALEFix command.
 let g:ale_fixers = {
+            \  '*': ['remove_trailing_lines', 'trim_whitespace'],
             \ 'python': ['yapf', 'autopep8', 'isort'],
             \ }
 noremap <F4> :ALEFix<CR>

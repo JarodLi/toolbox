@@ -1,8 +1,7 @@
-
-
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp' "在vim中支持lsp功能的插件
 Plug 'ryanolsonx/vim-lsp-python'  "vim-lsp的python配置插件
+Plug 'autozimu/LanguageClient-neovim'
 
 """"""""""""""""""""""""""""""
 " => vim-lsp plugin
@@ -30,6 +29,42 @@ Plug 'ryanolsonx/vim-lsp-python'  "vim-lsp的python配置插件
 ":LspTypeDefinition     Go to the type definition of the word under the cursor, and open in the current window
 ":LspWorkspaceSymbol    Search/Show workspace symbol
 
+
+if executable('pyls')
+  au User lsp_setup call lsp#register_server({
+    \ 'name': 'pyls',
+    \ 'cmd': {server_info->['pyls']},
+    \ 'whitelist': ['python'],
+    \ })
+else
+  echohl ErrorMsg
+  echom 'Sorry, `pyls` is not installed. See :h vim-lsp-python for more details on setup.'
+  echohl NONE
+endif
+
+if executable('clangd')
+    augroup lsp_clangd
+        autocmd!
+        autocmd User lsp_setup call lsp#register_server({
+                    \ 'name': 'clangd',
+                    \ 'cmd': {server_info->['clangd']},
+                    \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
+                    \ })
+        autocmd FileType c setlocal omnifunc=lsp#complete
+        autocmd FileType cpp setlocal omnifunc=lsp#complete
+        autocmd FileType objc setlocal omnifunc=lsp#complete
+        autocmd FileType objcpp setlocal omnifunc=lsp#complete
+    augroup end
+endif
+
+if executable('bash-language-server')
+  au User lsp_setup call lsp#register_server({
+        \ 'name': 'bash-language-server',
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'bash-language-server start']},
+        \ 'allowlist': ['sh'],
+        \ })
+endif
+
 let g:lsp_diagnostics_enabled = 0         " disable diagnostics support"
 let g:lsp_highlight_references_enabled = 1
 "highlight lspReference ctermfg=red guifg=red ctermbg=green guibg=green
@@ -37,8 +72,29 @@ let g:lsp_highlight_references_enabled = 1
 nmap <leader>ld :LspDefinition<CR>
 nmap <leader>lpd :LspPeekDefinition<CR>
 nmap <leader>lh :LspHover<CR>
-" renaming时会卡死，使用jedi的rename
 nmap <leader>lr :LspRename<CR>
 nmap <leader>lc :LspReferences<CR>
 nmap <leader>lf :LspDocumentRangeFormat<CR>
+
+""""""""""""""""""""""""""""""
+" => language-client
+""""""""""""""""""""""""""""""
+
+let g:LanguageClient_loadSettings = 1
+let g:LanguageClient_diagnosticsEnable = 0
+let g:LanguageClient_settingsPath = expand('~/.vim/languageclient.json')
+let g:LanguageClient_selectionUI = 'quickfix'
+let g:LanguageClient_diagnosticsList = v:null
+let g:LanguageClient_hoverPreview = 'Never'
+
+let g:LanguageClient_serverCommands = {
+    \ 'python': ['/usr/bin/pyls'],
+    \ 'c': ['clangd'],
+    \ 'cpp': ['clangd'],
+    \ 'sh': ['bash-language-server', 'start'],
+    \ }
+noremap <leader>rd :call LanguageClient#textDocument_definition()<cr>
+noremap <leader>rc :call LanguageClient#textDocument_references()<cr>
+noremap <leader>rh :call LanguageClient#textDocument_hover()<cr>
+
 
