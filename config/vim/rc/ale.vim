@@ -23,6 +23,7 @@ let g:ale_fixers = {
             \  '*': ['remove_trailing_lines', 'trim_whitespace'],
             \ 'python': ['yapf', 'autopep8', 'isort'],
             \ 'java': ['google_java_format'],
+            \ 'sh': ['shfmt'],
             \ }
 noremap <F4> :ALEFix<CR>
 " 关闭保存时自动修复，防止文件太大时卡顿的问题
