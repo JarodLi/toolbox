@@ -11,7 +11,7 @@ RUN pacman -S wget zsh --noconfirm \
   && echo "source ~/.oh-my-zsh/plugins/incr/incr*.zsh" >> ~/.zshrc \
   && echo "/bin/zsh" >> /etc/shells \
   && chsh -s /bin/zsh \
-  && git clone https://github.com/zsh-users/zsh-history-substring-search ~/.oh-my-zsh/plugins/zsh-history-substring-search 
+  && git clone https://github.com.cnpmjs.org/zsh-users/zsh-history-substring-search ~/.oh-my-zsh/plugins/zsh-history-substring-search 
 
 ADD pkgs/zsh/* /root/.oh-my-zsh/plugins/
 

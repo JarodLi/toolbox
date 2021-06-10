@@ -63,6 +63,9 @@ RUN pacman -S npm shfmt --noconfirm \
 RUN cd /root/.vim/bundle/LanguageClient-neovim \
     && bash install.sh
 
+# python-mode doc功能依赖
+RUN pip install doq
+
 COPY config/vim/vimrc /root/.vimrc
 COPY config/vim/rc /root/.vim/rc
 COPY config/vim/ycm_extra_conf.py /root/.vim/

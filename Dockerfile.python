@@ -1,12 +1,14 @@
 FROM tmux:latest
 ENV container docker
 
-# pandas及ycm编译都依赖bz2，需要在编译python前安装
+# python2包下载失败，使用备份
+ADD pkgs/python/python2-pacman-pkgs.tar.gz /opt
+RUN pacman -U /opt/python2-pacman-pkgs/* --noconfirm \
 
-RUN pacman -S python2 --noconfirm \
-    && pacman -S python2-setuptools --noconfirm \
-    && pacman -S python2-wheel --noconfirm \
-    && pacman -S python2-pip --noconfirm \
+#RUN pacman -S python2 --noconfirm \
+    #&& pacman -S python2-setuptools --noconfirm \
+    #&& pacman -S python2-wheel --noconfirm \
+    #&& pacman -S python2-pip --noconfirm \
     && echo -e "#! /bin/bash\nrm -rf /usr/bin/python\nln -s /usr/bin/python2 /usr/bin/python" > /usr/local/bin/chpy2 \
     && chmod +x /usr/local/bin/chpy2 \
     && /usr/local/bin/chpy2  \
@@ -31,13 +33,18 @@ RUN pacman -S python2 --noconfirm \
     && pip2 install ipdb \
     && pip2 install pylint \
     && pip2 install flake8 \
-    && pip2 install ipaddress \
+    && pip2 install ipaddress 
 
-    && rm -rf /usr/bin/python \
-    && pacman -S python3 --noconfirm \
-    && pacman -S python-setuptools --noconfirm \
-    && pacman -S python-wheel --noconfirm \
-    && pacman -S python-pip --noconfirm \
+# python2包下载失败，使用备份
+ADD pkgs/python/python3-pacman-pkgs.tar.gz /opt
+RUN rm -rf /usr/bin/python \
+    && pacman -U /opt/python3-pacman-pkgs/* --noconfirm 
+
+RUN rm -rf /usr/bin/python \
+    #&& pacman -S python3 --noconfirm \
+    #&& pacman -S python-setuptools --noconfirm \
+    #&& pacman -S python-wheel --noconfirm \
+    #&& pacman -S python-pip --noconfirm \
     && echo -e "#! /bin/bash\nrm -rf /usr/bin/python\nln -s /usr/bin/python3 /usr/bin/python" > /usr/local/bin/chpy3 \
     && chmod +x /usr/local/bin/chpy3 \
     && /usr/local/bin/chpy3 \

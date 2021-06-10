@@ -7,7 +7,7 @@ ENV container docker
 
 
 RUN cd /opt \
-    && git clone https://github.com/alexmurray/cstyle.git \
+    && git clone https://github.com.cnpmjs.org/alexmurray/cstyle.git \
     && cd cstyle \
     && pip3 install . \
     && cstyle --generate-config > ~/.cstyle

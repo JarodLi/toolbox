@@ -10,3 +10,4 @@ RUN wget https://obs-community.obs.cn-north-1.myhuaweicloud.com/obsutil/current/
     && cp /opt/obsutil_linux_amd64_*/obsutil /usr/bin \
     && rm -rf /opt/obsutil_linux_amd64*
 
+
