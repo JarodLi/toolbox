@@ -25,3 +25,12 @@ let g:Lf_HideHelp = 1
 let g:Lf_StlColorscheme = 'powerline'
 let g:Lf_PreviewResult = {'Function':0, 'BufTag':0}
 let g:Lf_GtagsAutoGenerate = 1 " 打开第1个工程文件时自动生成gtags
+
+"防止rg 卡死
+let g:Lf_RgConfig = [
+\ "--max-columns=150",
+\ "--glob=!node_modules/*",
+\ "--glob=!dist/*",
+\ ]
+
+
