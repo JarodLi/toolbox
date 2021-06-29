@@ -10,8 +10,8 @@ function pre_tmux()
 {
     rm -rf pkgs/tmux
     mkdir -p pkgs/tmux
-    wget https://github.com/tmux/tmux/releases/download/3.2-rc/tmux-3.2-rc2.tar.gz -P /pkgs/tmux
-    git clone https://github.com/tmux-plugins/tpm pkgs/tmux
+    wget https://github.com/tmux/tmux/releases/download/3.2-rc/tmux-3.2-rc3.tar.gz -P /pkgs/tmux
+    git clone https://github.com.cnpmjs.org/tmux-plugins/tpm pkgs/tmux
 }
 
 function pre_python()
@@ -30,69 +30,71 @@ function pre_vim()
     wget https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim pkgs/vim/pkgs
     curl -fLo pkgs/vim/pkgs/plug.vim  --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     wget http://tamacom.com/global/global-6.6.5.tar.gz -P pkgs/vim/pkgs
-    git clone https://github.com/universal-ctags/ctags.git pkgs/vim/pkgs
+    git clone https://github.com.cnpmjs.org/universal-ctags/ctags.git pkgs/vim/pkgs
 
     rm -rf pkgs/vim/vim-bundle
     mkdir -p pkgs/vim/vim-bundle
     cd pkgs/vim/vim-bundle
-    git clone --depth 1 https://github.com/Yggdroot/indentLine || exit 1
-    git clone --depth 1 https://github.com/jiangmiao/auto-pairs || exit 1 || exit 1
-    git clone --depth 1 https://github.com/jlanzarotta/bufexplorer || exit 1
-    git clone --depth 1 https://github.com/bling/vim-airline || exit 1
-    git clone --depth 1 https://github.com/vim-airline/vim-airline-themes || exit 1
-    git clone --depth 1 https://github.com/tpope/vim-surround || exit 1
-    git clone --depth 1 https://github.com/flazz/vim-colorschemes || exit 1
-    git clone --depth 1 https://github.com/bronson/vim-trailing-whitespace || exit 1
+    git clone --depth 1 https://github.com.cnpmjs.org/Yggdroot/indentLine || exit 1
+    git clone --depth 1 https://github.com.cnpmjs.org/jiangmiao/auto-pairs || exit 1 
+    git clone --depth 1 https://github.com.cnpmjs.org/jlanzarotta/bufexplorer || exit 1
+    git clone --depth 1 https://github.com.cnpmjs.org/bling/vim-airline || exit 1
+    git clone --depth 1 https://github.com.cnpmjs.org/vim-airline/vim-airline-themes || exit 1
+    git clone --depth 1 https://github.com.cnpmjs.org/tpope/vim-surround || exit 1
+    git clone --depth 1 https://github.com.cnpmjs.org/flazz/vim-colorschemes || exit 1
+    git clone --depth 1 https://github.com.cnpmjs.org/bronson/vim-trailing-whitespace || exit 1
 
-    git clone https://github.com/sjl/gundo.vim || exit 1
-    git clone https://github.com/dense-analysis/ale.git || exit 1
-    git clone https://github.com/Yggdroot/LeaderF.git || exit 1
-    git clone https://github.com/ludovicchabant/vim-gutentags.git || exit 1
-    git clone https://github.com/kana/vim-textobj-user.git || exit 1
-    git clone https://github.com/kana/vim-textobj-indent.git || exit 1
-    git clone https://github.com/kana/vim-textobj-syntax.git || exit 1
-    git clone https://github.com/kana/vim-textobj-function.git || exit 1
-    git clone https://github.com/sgur/vim-textobj-parameter.git || exit 1
+    git clone https://github.com.cnpmjs.org/sjl/gundo.vim || exit 1
+    git clone https://github.com.cnpmjs.org/dense-analysis/ale.git || exit 1
+    git clone https://github.com.cnpmjs.org/Yggdroot/LeaderF.git || exit 1
+    git clone https://github.com.cnpmjs.org/ludovicchabant/vim-gutentags.git || exit 1
+    git clone https://github.com.cnpmjs.org/kana/vim-textobj-user.git || exit 1
+    git clone https://github.com.cnpmjs.org/kana/vim-textobj-indent.git || exit 1
+    git clone https://github.com.cnpmjs.org/kana/vim-textobj-syntax.git || exit 1
+    git clone https://github.com.cnpmjs.org/kana/vim-textobj-function.git || exit 1
+    git clone https://github.com.cnpmjs.org/sgur/vim-textobj-parameter.git || exit 1
 
-    git clone https://github.com/prabirshrestha/vim-lsp.git || exit 1
-    git clone https://github.com/MattesGroeger/vim-bookmarks.git || exit 1
-    git clone https://github.com/liuchengxu/vista.vim.git || exit 1
-    git clone https://github.com/jacoborus/tender.vim.git || exit 1
-    git clone https://github.com/lfv89/vim-interestingwords || exit 1
+    git clone https://github.com.cnpmjs.org/prabirshrestha/vim-lsp.git || exit 1
+    git clone https://github.com.cnpmjs.org/MattesGroeger/vim-bookmarks.git || exit 1
+    git clone https://github.com.cnpmjs.org/liuchengxu/vista.vim.git || exit 1
+    git clone https://github.com.cnpmjs.org/jacoborus/tender.vim.git || exit 1
+    git clone https://github.com.cnpmjs.org/lfv89/vim-interestingwords || exit 1
 
-    git clone https://github.com/Shougo/defx.nvim.git || exit 1
-    git clone https://github.com/roxma/nvim-yarp.git || exit 1
-    git clone https://github.com/roxma/vim-hug-neovim-rpc.git || exit 1
-    git clone https://github.com/scrooloose/nerdcommenter.git || exit 1
+    git clone https://github.com.cnpmjs.org/Shougo/defx.nvim.git || exit 1
+    git clone https://github.com.cnpmjs.org/roxma/nvim-yarp.git || exit 1
+    git clone https://github.com.cnpmjs.org/roxma/vim-hug-neovim-rpc.git || exit 1
+    git clone https://github.com.cnpmjs.org/scrooloose/nerdcommenter.git || exit 1
 
-    git clone https://github.com/sillybun/vim-async.git || exit 1
+    git clone https://github.com.cnpmjs.org/sillybun/vim-async.git || exit 1
     # 支持异步运行python || exit 1
-    git clone https://github.com/skywind3000/asyncrun.vim.git || exit 1
-    git clone https://github.com/prabirshrestha/async.vim.git || exit 1
-    git clone https://github.com/skywind3000/vim-preview.git || exit 1
-    git clone https://github.com/skywind3000/gutentags_plus.git || exit 1
-    git clone https://github.com/morhetz/gruvbox || exit 1
-    git clone https://github.com/nanotech/jellybeans.vim || exit 1
-    git clone https://github.com/mbbill/desertEx || exit 1
+    git clone https://github.com.cnpmjs.org/skywind3000/asyncrun.vim.git || exit 1
+    git clone https://github.com.cnpmjs.org/prabirshrestha/async.vim.git || exit 1
+    git clone https://github.com.cnpmjs.org/skywind3000/vim-preview.git || exit 1
+    git clone https://github.com.cnpmjs.org/skywind3000/gutentags_plus.git || exit 1
+    git clone https://github.com.cnpmjs.org/morhetz/gruvbox || exit 1
+    git clone https://github.com.cnpmjs.org/nanotech/jellybeans.vim || exit 1
+    git clone https://github.com.cnpmjs.org/mbbill/desertEx || exit 1
     # Python开发环境配置 || exit 1
-    git clone https://github.com/ryanolsonx/vim-lsp-python.git || exit 1
-    git clone --recurse-submodules -b master https://github.com/python-mode/python-mode.git || exit 1
-    git clone https://github.com/heavenshell/vim-pydocstring || exit 1
+    git clone https://github.com.cnpmjs.org/ryanolsonx/vim-lsp-python.git || exit 1
+    git clone --recurse-submodules -b master https://github.com.cnpmjs.org/python-mode/python-mode.git || exit 1
+    git clone https://github.com.cnpmjs.org/heavenshell/vim-pydocstring || exit 1
    # 安装docstring信赖的doq || exit 1
-    git clone https://github.com/Vimjas/vim-python-pep8-indent.git || exit 1
-    git clone https://github.com/jeetsukumaran/vim-pythonsense.git || exit 1
+    git clone https://github.com.cnpmjs.org/Vimjas/vim-python-pep8-indent.git || exit 1
+    git clone https://github.com.cnpmjs.org/jeetsukumaran/vim-pythonsense.git || exit 1
 
-    git clone --recursive https://github.com/ycm-core/YouCompleteMe || exit 1
-    git clone https://github.com/mg979/vim-visual-multi.git || exit 1
-    git clone https://github.com/uguu-org/vim-matrix-screensaver.git || exit 1
+    git clone --recursive https://github.com.cnpmjs.org/ycm-core/YouCompleteMe || exit 1
+    git clone https://github.com.cnpmjs.org/mg979/vim-visual-multi.git || exit 1
+    git clone https://github.com.cnpmjs.org/uguu-org/vim-matrix-screensaver.git || exit 1
+    git clone https://github.com.cnpmjs.org/iamcco/markdown-preview.nvim.git || exit 1
+    git clone https://github.com.cnpmjs.org/autozimu/LanguageClient-neovim.git || exit 1
     cd -
 }
 
 function pre_zsh()
 {
     cd pkgs/zsh/
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git 
-    git clone https://github.com/zsh-users/zsh-autosuggestions.git
+    git clone https://github.com.cnpmjs.org/zsh-users/zsh-syntax-highlighting.git 
+    git clone https://github.com.cnpmjs.org/zsh-users/zsh-autosuggestions.git
 }
 
 
@@ -125,16 +127,21 @@ function main()
     docker build . -f Dockerfile.zsh -t zsh:latest --rm --no-cache || exit 1
     docker build . -f Dockerfile.tmux -t tmux:latest --rm --no-cache || exit 1
     docker build . -f Dockerfile.python -t python:latest --rm --no-cache || exit 1
+    docker build . -f Dockerfile.python -t python:latest --rm || exit 1
+    docker build . -f Dockerfile.c -t c:latest --rm --no-cache || exit 1
+    docker build . -f Dockerfile.java -t java:latest --rm --no-cache || exit 1
     docker build . -f Dockerfile.vim -t vim:latest --rm --no-cache || exit 1
+    docker build . -f Dockerfile.vim -t vim:latest --rm || exit 1
     docker build . -f Dockerfile.my  -t my:${today} --rm --no-cache || exit 1
     docker save my:${today} > my_${today}.tar
     obsutil cp my_${today}.tar obs://lijian-test && rm -rf my_${today}.tar
 }
 
-#pre &&
-#pre_tmux &&
-#pre_zsh &&
-#pre_python &&
-#pre_vim && 
+pre &&
+pre_tmux &&
+pre_zsh &&
+pre_c &&
+pre_python &&
+pre_vim && 
 main
 
