@@ -64,7 +64,8 @@ RUN cd /root/.vim/bundle/LanguageClient-neovim \
     && bash install.sh
 
 # python-mode doc功能依赖
-RUN pip install doq
+RUN pip install doq \
+    && pacman -S pyright --noconfirm
 
 COPY config/vim/vimrc /root/.vimrc
 COPY config/vim/rc /root/.vim/rc

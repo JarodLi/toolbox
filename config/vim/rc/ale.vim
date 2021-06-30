@@ -14,7 +14,7 @@ let g:ale_c_cppcheck_options = ''
 let g:ale_cpp_cppcheck_options = ''
 
 let g:ale_linters = {
-    \ 'python': ['flake8', 'pylint'],
+    \ 'python': ['flake8', 'pylint', 'pyright'],
     \ 'sh': ['language_server'],
     \ 'xml': ['xmllint'],
     \ }
