@@ -21,7 +21,7 @@ let g:ale_linters = {
 "ALE can fix files with the ALEFix command.
 let g:ale_fixers = {
             \  '*': ['remove_trailing_lines', 'trim_whitespace'],
-            \ 'python': ['yapf', 'autopep8', 'isort'],
+            \ 'python': ['yapf', 'autopep8',  'autoimport', 'isort', 'black', 'add_blank_lines_for_python_control_statements'],
             \ 'java': ['google_java_format'],
             \ 'sh': ['shfmt'],
             \ }

@@ -67,6 +67,9 @@ RUN cd /root/.vim/bundle/LanguageClient-neovim \
 RUN pip install doq \
     && pacman -S pyright --noconfirm
 
+RUN pip install autoflake
+RUN pip install autoimport
+
 COPY config/vim/vimrc /root/.vimrc
 COPY config/vim/rc /root/.vim/rc
 COPY config/vim/ycm_extra_conf.py /root/.vim/
