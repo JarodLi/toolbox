@@ -52,6 +52,8 @@ RUN cd /root/.vim/bundle/ \
     #&& /root/.vim/bundle/YouCompleteMe/install.py --clangd-completer --java-complete \
     && mkdir -p /root/.vim/bundle/YouCompleteMe/third_party/ycmd/third_party/eclipse.jdt.ls/target/ \
     && ln -s /opt/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/ /root/.vim/bundle/YouCompleteMe/third_party/ycmd/third_party/eclipse.jdt.ls/target/repository \
+    # 提前下载好clangd, install.py自动下载会失败
+    && wget https://github.com.cnpmjs.org/ycm-core/llvm/releases/download/12.0.0/clangd-12.0.0-x86_64-unknown-linux-gnu.tar.bz2 -P /root/.vim/bundle/YouCompleteMe/third_party/ycmd/third_party/clangd/cache/ \
     && /root/.vim/bundle/YouCompleteMe/install.py --clangd-completer \
     && cp /root/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py /root/
 

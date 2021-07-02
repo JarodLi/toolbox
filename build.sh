@@ -8,10 +8,11 @@ function pre()
 
 function pre_tmux()
 {
-    rm -rf pkgs/tmux
-    mkdir -p pkgs/tmux
-    wget https://github.com/tmux/tmux/releases/download/3.2-rc/tmux-3.2-rc3.tar.gz -P /pkgs/tmux
-    git clone https://github.com.cnpmjs.org/tmux-plugins/tpm pkgs/tmux
+    #rm -rf pkgs/tmux
+    #mkdir -p pkgs/tmux
+    #wget https://github.com/tmux/tmux/releases/download/3.2a/tmux-3.2a.tar.gz -P pkgs/tmux
+    #git clone https://github.com.cnpmjs.org/tmux-plugins/tpm pkgs/tmux
+    return 0
 }
 
 function pre_python()
@@ -82,7 +83,10 @@ function pre_vim()
     git clone https://github.com.cnpmjs.org/Vimjas/vim-python-pep8-indent.git || exit 1
     git clone https://github.com.cnpmjs.org/jeetsukumaran/vim-pythonsense.git || exit 1
 
-    git clone --recursive https://github.com.cnpmjs.org/ycm-core/YouCompleteMe || exit 1
+    #git clone --recursive https://github.com.cnpmjs.org/ycm-core/YouCompleteMe || exit 1
+    # github.com/LooEv/A-bridge-to-YouCompleteMe
+    wget -O YouCompleteMe.tar.gz "http://106.53.74.248:8888/YouCompleteMe.tar.gz" || exit 1
+    tar xzvf YouCompleteMe.tar.gz
     git clone https://github.com.cnpmjs.org/mg979/vim-visual-multi.git || exit 1
     git clone https://github.com.cnpmjs.org/uguu-org/vim-matrix-screensaver.git || exit 1
     git clone https://github.com.cnpmjs.org/iamcco/markdown-preview.nvim.git || exit 1
@@ -126,12 +130,10 @@ function main()
     docker build . -f Dockerfile.basic -t basic:latest --rm --no-cache || exit 1
     docker build . -f Dockerfile.zsh -t zsh:latest --rm --no-cache || exit 1
     docker build . -f Dockerfile.tmux -t tmux:latest --rm --no-cache || exit 1
-    docker build . -f Dockerfile.python -t python:latest --rm --no-cache || exit 1
     docker build . -f Dockerfile.python -t python:latest --rm || exit 1
     docker build . -f Dockerfile.c -t c:latest --rm --no-cache || exit 1
     docker build . -f Dockerfile.java -t java:latest --rm --no-cache || exit 1
     docker build . -f Dockerfile.vim -t vim:latest --rm --no-cache || exit 1
-    docker build . -f Dockerfile.vim -t vim:latest --rm || exit 1
     docker build . -f Dockerfile.my  -t my:${today} --rm --no-cache || exit 1
     docker save my:${today} > my_${today}.tar
     obsutil cp my_${today}.tar obs://lijian-test && rm -rf my_${today}.tar
