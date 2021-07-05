@@ -91,6 +91,7 @@ function pre_vim()
     git clone https://github.com.cnpmjs.org/uguu-org/vim-matrix-screensaver.git || exit 1
     git clone https://github.com.cnpmjs.org/iamcco/markdown-preview.nvim.git || exit 1
     git clone https://github.com.cnpmjs.org/autozimu/LanguageClient-neovim.git || exit 1
+    git clone https://github.com.cnpmjs.org/tell-k/vim-autoflake.git || exit 1
     cd -
 }
 
@@ -99,6 +100,7 @@ function pre_zsh()
     cd pkgs/zsh/
     git clone https://github.com.cnpmjs.org/zsh-users/zsh-syntax-highlighting.git 
     git clone https://github.com.cnpmjs.org/zsh-users/zsh-autosuggestions.git
+    cd -
 }
 
 
