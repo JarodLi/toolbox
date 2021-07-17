@@ -1,4 +1,4 @@
-Plug 'dense-analysis/ale', { 'for': ['python', 'c', 'cpp', 'go', 'sh', 'java']}
+Plug 'dense-analysis/ale', { 'for': ['python', 'c', 'cpp', 'go', 'sh', 'java', 'cpp']}
 
 let g:ale_completion_delay = 500
 let g:ale_echo_delay = 20
@@ -8,15 +8,13 @@ let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_insert_leave = 1
 let g:airline#extensions#ale#enabled = 1
 
-let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
-let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
-let g:ale_c_cppcheck_options = ''
-let g:ale_cpp_cppcheck_options = ''
-
 let g:ale_linters = {
     \ 'python': ['flake8', 'pylint', 'pyright'],
     \ 'sh': ['language_server'],
     \ 'xml': ['xmllint'],
+    \ 'cpp': ['clang'],
+    \ 'c': ['clang'],
+
     \ }
 "ALE can fix files with the ALEFix command.
 let g:ale_fixers = {
@@ -24,6 +22,8 @@ let g:ale_fixers = {
             \ 'python': ['yapf', 'autopep8',  'autoimport', 'isort', 'black', 'add_blank_lines_for_python_control_statements'],
             \ 'java': ['google_java_format'],
             \ 'sh': ['shfmt'],
+            \ 'cpp': ['astyle', 'clang-format', 'clangtidy'],
+            \ 'c': ['astyle'],
             \ }
 noremap <F4> :ALEFix<CR>
 " 关闭保存时自动修复，防止文件太大时卡顿的问题
@@ -52,3 +52,8 @@ let g:ale_java_eclipselsp_path = '/opt/eclipse.jdt.ls/'
 let g:ale_java_eclipselsp_config_path = '/opt/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/config_linux'
 let g:ale_java_eclipselsp_executable = '/usr/bin/java'
 let g:ale_java_google_java_format_executable = 'google-java-format'
+
+let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
+let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++11'
+let g:ale_c_cppcheck_options = ''
+let g:ale_cpp_cppcheck_options = ''
