@@ -71,7 +71,7 @@ colorscheme desertEx
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => style
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
- au BufNewFile,BufRead *.py,*.go,Dockerfile*,dockerfile*,*.sh,*.c
+ au BufNewFile,BufRead *.py,*.go,Dockerfile*,dockerfile*,*.sh
  \ set tabstop=4 |
  \ set softtabstop=4 |
  \ set shiftwidth=4 |
@@ -86,6 +86,16 @@ colorscheme desertEx
  \ set tabstop=2 |
  \ set softtabstop=2 |
  \ set shiftwidth=2
+ 
+  au BufNewFile,BufRead *.c,*.cpp,*.c++
+ \ set tabstop=2 |
+ \ set softtabstop=2 |
+ \ set shiftwidth=2 |
+ \ set textwidth=79 |
+ \ set expandtab |
+ \ set autoindent |
+ \ set fileformat=unix |
+ \ set colorcolumn=0
 
 
 """"""""""""""""""""""""""""""
