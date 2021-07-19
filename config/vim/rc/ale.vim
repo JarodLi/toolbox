@@ -22,8 +22,8 @@ let g:ale_fixers = {
             \ 'python': ['yapf', 'autopep8',  'autoimport', 'isort', 'black', 'add_blank_lines_for_python_control_statements'],
             \ 'java': ['google_java_format'],
             \ 'sh': ['shfmt'],
-            \ 'cpp': ['astyle', 'clang-format', 'clangtidy'],
-            \ 'c': ['astyle'],
+            "\ 'cpp': ['astyle', 'clang-format', 'clangtidy'],
+            \ 'c': ['clang-format'],
             \ }
 noremap <F4> :ALEFix<CR>
 " 关闭保存时自动修复，防止文件太大时卡顿的问题
@@ -57,3 +57,5 @@ let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
 let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++11'
 let g:ale_c_cppcheck_options = ''
 let g:ale_cpp_cppcheck_options = ''
+"使用本地的.clang-format配置文件，先查找当前工程目录，再递归向上找
+let g:ale_c_clangformat_use_local_file = 1
