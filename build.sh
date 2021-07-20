@@ -92,6 +92,7 @@ function pre_vim()
     git clone https://github.com.cnpmjs.org/iamcco/markdown-preview.nvim.git || exit 1
     git clone https://github.com.cnpmjs.org/autozimu/LanguageClient-neovim.git || exit 1
     git clone https://github.com.cnpmjs.org/tell-k/vim-autoflake.git || exit 1
+    git clone https://github.com.cnpmjs.org/octol/vim-cpp-enhanced-highlight || exit 1
     cd -
 }
 

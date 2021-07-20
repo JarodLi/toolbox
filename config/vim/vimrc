@@ -65,7 +65,9 @@ set background=dark
 set guifont=Monaco:h12:b
 let g:solarized_termcolors=256
 "colorscheme tender
-colorscheme desertEx
+"colorscheme desertEx
+"colorscheme jellybeans
+"colorscheme gruvbox
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
