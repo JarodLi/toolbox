@@ -59,3 +59,8 @@ let g:ale_c_cppcheck_options = ''
 let g:ale_cpp_cppcheck_options = ''
 "使用本地的.clang-format配置文件，先查找当前工程目录，再递归向上找
 let g:ale_c_clangformat_use_local_file = 1
+
+" 开启解析 compile_commands 的功能
+let g:ale_c_parse_compile_commands = 1
+" ale 将在工程目录下的 build 和 . 中搜索 compile_commands.json
+let g:ale_c_build_dir_names = ['build','.']
