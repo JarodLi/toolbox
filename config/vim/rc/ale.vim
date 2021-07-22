@@ -54,7 +54,7 @@ let g:ale_java_eclipselsp_executable = '/usr/bin/java'
 let g:ale_java_google_java_format_executable = 'google-java-format'
 
 let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
-let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++11'
+let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++17'
 let g:ale_c_cppcheck_options = ''
 let g:ale_cpp_cppcheck_options = ''
 "使用本地的.clang-format配置文件，先查找当前工程目录，再递归向上找
