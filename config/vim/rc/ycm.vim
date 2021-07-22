@@ -1,4 +1,4 @@
-"Plug 'ycm-core/YouCompleteMe', { 'for': ['python', 'c', 'go', 'sh']}
+"Plug 'ycm-core/YouCompleteMe', { 'for': ['python', 'c', 'cpp', 'go', 'sh']}
 Plug 'ycm-core/YouCompleteMe'
 
 set tags+=/usr/tags
@@ -13,9 +13,9 @@ let g:ycm_server_log_level = 'info'
 let g:ycm_min_num_identifier_candidate_chars = 2
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_complete_in_strings=1
-"let g:ycm_key_invoke_completion = '<c-z>'
+let g:ycm_key_invoke_completion = '<c-z>'
 let g:ycm_auto_trigger = 1
-"noremap <c-z> <NOP>
+noremap <c-z> <NOP>
 
 "let g:ycm_semantic_triggers =  {
   "\   'c': ['->', '.'],
@@ -23,7 +23,6 @@ let g:ycm_auto_trigger = 1
   "\   'cs,d,elixir,go,groovy,java,javascript,julia,perl6,python,scala,typescript,vb': ['.'], }
 
 let g:ycm_semantic_triggers =  {
-                        \ 'c': ['->', '.'],
                         \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
                         \ 'cs,lua,javascript': ['re!\w{2}'],
                         \ }
