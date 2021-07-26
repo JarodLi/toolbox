@@ -146,3 +146,23 @@ func! Showleft()
         endif
 endfunc
 
+func! HeaderPython()
+    normal gg
+    normal O
+    normal O
+    normal O
+    normal O
+    normal O
+    normal O
+    call setline(1, '#!/usr/bin/env python3')
+    call setline(2, '# -*- coding: utf-8 -*-')
+    call setline(3, '"""')
+    call setline(4, '功能：')
+    call setline(5, '版权信息：华为技术有限公司，版本所有(C) 2021-2030')
+    call setline(6, '"""')
+    "call append(2, '# Lijian @ ' . strftime('%Y-%m-%d %T', localtime()))
+    normal 7G
+endfunc
+
+autocmd bufnewfile *.py call HeaderPython()
+nmap <F6> : call HeaderPython()<CR>
