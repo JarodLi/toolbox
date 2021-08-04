@@ -76,7 +76,7 @@ nmap <leader>lpd :LspPeekDefinition<CR>
 nmap <leader>lh :LspHover<CR>
 nmap <leader>lr :LspRename<CR>
 nmap <leader>lc :LspReferences<CR>
-nmap <leader>lf :LspDocumentRangeFormat<CR>
+"nmap <leader>lf :LspDocumentRangeFormat<CR>
 
 
 let g:vim_lsp_java = {
@@ -108,5 +108,8 @@ let g:LanguageClient_serverCommands = {
 noremap <leader>rd :call LanguageClient#textDocument_definition()<cr>
 noremap <leader>rc :call LanguageClient#textDocument_references()<cr>
 noremap <leader>rh :call LanguageClient#textDocument_hover()<cr>
+noremap <leader>rr :call LanguageClient#textDocument_rename()<cr>
+noremap <leader>ri :call LanguageClient#textDocument_implementation()<cr>
+noremap <leader>rt :call LanguageClient#textDocument_typeDefinition()<cr>
 
 
