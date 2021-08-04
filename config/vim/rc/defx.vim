@@ -13,7 +13,7 @@ Plug 'roxma/vim-hug-neovim-rpc'
       "\ })
 
 
-map <silent> - :Defx<CR>
+map <silent> = :Defx<CR>
 " Avoid the white space highting issue
 autocmd FileType defx match ExtraWhitespace /^^/
 " Keymap in defx
