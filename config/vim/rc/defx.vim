@@ -45,11 +45,15 @@ function! s:defx_my_settings() abort
   nnoremap <silent><buffer><expr> M defx#do_action('rename')
   nnoremap <silent><buffer><expr> D defx#do_action('remove_trash')
   nnoremap <silent><buffer><expr> A defx#do_action('new_multiple_files')
+  nnoremap <silent><buffer><expr> AD defx#do_action('new_directory')
   nnoremap <silent><buffer><expr> U defx#do_action('cd', ['..'])
+  nnoremap <silent><buffer><expr> mv defx#do_action('move')
+  nnoremap <silent><buffer><expr> cp defx#do_action('copy')
   nnoremap <silent><buffer><expr> . defx#do_action('toggle_ignored_files')
   nnoremap <silent><buffer><expr> <Space> defx#do_action('toggle_select')
   nnoremap <silent><buffer><expr> R defx#do_action('redraw')
   nnoremap <silent><buffer><expr> cd defx#do_action('change_vim_cwd')
+
 endfunction
 
 " Defx icons
