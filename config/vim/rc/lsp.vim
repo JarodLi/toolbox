@@ -3,7 +3,7 @@ Plug 'prabirshrestha/vim-lsp' "在vim中支持lsp功能的插件
 Plug 'ryanolsonx/vim-lsp-python'  "vim-lsp的python配置插件
 Plug 'autozimu/LanguageClient-neovim'
 Plug 'lgranie/vim-lsp-java'
-
+Plug 'tpope/vim-abolish'
 
 """"""""""""""""""""""""""""""
 " => vim-lsp plugin
@@ -108,8 +108,18 @@ let g:LanguageClient_serverCommands = {
 noremap <leader>rd :call LanguageClient#textDocument_definition()<cr>
 noremap <leader>rc :call LanguageClient#textDocument_references()<cr>
 noremap <leader>rh :call LanguageClient#textDocument_hover()<cr>
-noremap <leader>rr :call LanguageClient#textDocument_rename()<cr>
 noremap <leader>ri :call LanguageClient#textDocument_implementation()<cr>
 noremap <leader>rt :call LanguageClient#textDocument_typeDefinition()<cr>
 
 
+" Rename - rn => rename
+noremap <leader>rr :call LanguageClient#textDocument_rename()<CR>
+" Rename - rc => rename camelCase
+noremap <leader>rC :call LanguageClient#textDocument_rename(
+        \ {'newName': Abolish.camelcase(expand('<cword>'))})<CR>
+" Rename - rs => rename snake_case
+noremap <leader>rs :call LanguageClient#textDocument_rename(
+        \ {'newName': Abolish.snakecase(expand('<cword>'))})<CR>
+" Rename - ru => rename UPPERCASE
+noremap <leader>rU :call LanguageClient#textDocument_rename(
+        \ {'newName': Abolish.uppercase(expand('<cword>'))})<CR>
