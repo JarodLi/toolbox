@@ -32,8 +32,15 @@ let g:Lf_RgConfig = [
 \ "--max-columns=150",
 \ "--glob=!node_modules/*",
 \ "--glob=!dist/*",
+"\ "--hidden",
+"\ "--no-ignore",
 \ ]
 
+let g:Lf_WildIgnore = {
+      \ 'dir': ['.root','.svn','.git','.hg','.ccls-cache'],
+      \ 'file': ['*.sw?','~$*','*.exe','*.o','*.so','*.py[co]']
+      \}
+let g:Lf_ShowHidden=1
 
 " don't show the help in normal mode
 let g:Lf_HideHelp = 1
@@ -46,15 +53,31 @@ let g:Lf_PreviewInPopup = 1
 let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
 let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
 
-"let g:Lf_ShortcutF = "<leader>ff"
-noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
-noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
-noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
-"noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
+"let g:Lf_ShortcutB = '<c-b>'
+nmap <leader>l :Leaderf
+nmap <leader>bf :Leaderf! buffer<CR>
+nmap <leader>lb :Leaderf! buffer<CR>
+nmap <leader>lt :LeaderfBufTag!<CR>
+"nmap <leader>lf :LeaderfFunction!<CR>
+"
+"搜索所有工程文件
+nmap <leader>lf :Leaderf file /usr1/code<CR>
+"搜索当前工程文件
+let g:Lf_ShortcutF = '<c-p>'
 
-noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR>
 " 添加--wd-mode=ac，指定从当前工程目录搜索, 参考: https://github.com/Yggdroot/LeaderF/issues/277
-noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg --wd-mode=ac -e %s ", expand("<cword>"))<CR>
-" search visually selected text literally
-xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR>
+noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg --wd-mode=ac -S -e %s ", expand("<cword>"))<CR>
+"noremap <C-F> :Leaderf! rg --wd-mode=ac --cword<CR>
+
+" recall last search. If the result window is closed, reopen it.
 noremap go :<C-U>Leaderf! rg --recall<CR>
+
+"noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
+"noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
+"noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+
+"noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg --stayOpen --current-buffer -e %s ", expand("<cword>"))<CR>
+
+" search visually selected text literally, don't quit LeaderF after accepting an entry
+"xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F --stayOpen --wd-mode=ac -e %s ", leaderf#Rg#visual())<CR>
+
