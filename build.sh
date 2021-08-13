@@ -12,6 +12,7 @@ function pre_tmux()
     #mkdir -p pkgs/tmux
     #wget https://github.com/tmux/tmux/releases/download/3.2a/tmux-3.2a.tar.gz -P pkgs/tmux
     #git clone https://github.com.cnpmjs.org/tmux-plugins/tpm pkgs/tmux
+    git clone https://github.com.cnpmjs.org/gpakosz/.tmux.git pkgs/tmux/oh-my-tmux
     return 0
 }
 
@@ -39,7 +40,7 @@ function pre_vim()
     git clone --depth 1 https://github.com.cnpmjs.org/Yggdroot/indentLine || exit 1
     git clone --depth 1 https://github.com.cnpmjs.org/jiangmiao/auto-pairs || exit 1 
     git clone --depth 1 https://github.com.cnpmjs.org/jlanzarotta/bufexplorer || exit 1
-    git clone --depth 1 https://github.com.cnpmjs.org/bling/vim-airline || exit 1
+    git clone --depth 1 https://github.com.cnpmjs.org/vim-airline/vim-airline || exit 1
     git clone --depth 1 https://github.com.cnpmjs.org/vim-airline/vim-airline-themes || exit 1
     git clone --depth 1 https://github.com.cnpmjs.org/tpope/vim-surround || exit 1
     git clone --depth 1 https://github.com.cnpmjs.org/flazz/vim-colorschemes || exit 1
@@ -93,6 +94,13 @@ function pre_vim()
     git clone https://github.com.cnpmjs.org/autozimu/LanguageClient-neovim.git || exit 1
     git clone https://github.com.cnpmjs.org/tell-k/vim-autoflake.git || exit 1
     git clone https://github.com.cnpmjs.org/octol/vim-cpp-enhanced-highlight || exit 1
+    git clone https://github.com.cnpmjs.org/mhinz/vim-signify || exit 1
+    git clone https://github.com.cnpmjs.org/edkolev/tmuxline.vim || exit 1
+    git clone https://github.com.cnpmjs.org/tpope/vim-fugitive || exit 1
+    git clone https://github.com.cnpmjs.org/bling/vim-bufferline || exit 1
+    git clone https://github.com.cnpmjs.org/Shougo/echodoc.vim || exit 1
+    git clone https://github.com.cnpmjs.org/tpope/vim-abolish || exit 1
+    git clone https://github.com.cnpmjs.org/sbdchd/vim-shebang || exit 1
     cd -
 }
 

@@ -12,7 +12,10 @@ RUN pacman -S wget zsh --noconfirm \
   && echo "source ~/.oh-my-zsh/plugins/incr/incr*.zsh" >> ~/.zshrc \
   && echo "/bin/zsh" >> /etc/shells \
   && chsh -s /bin/zsh \
-  && git clone https://github.com.cnpmjs.org/zsh-users/zsh-history-substring-search ~/.oh-my-zsh/plugins/zsh-history-substring-search 
+  && git clone https://github.com.cnpmjs.org/zsh-users/zsh-history-substring-search ~/.oh-my-zsh/plugins/zsh-history-substring-search \
+  && git clone https://github.com.cnpmjs.org/wting/autojump.git \
+  && cd autojump \
+  && ./install.py 
 
 COPY pkgs/zsh/zsh-autosuggestions /root/.oh-my-zsh/plugins/zsh-autosuggestions
 COPY pkgs/zsh/zsh-syntax-highlighting /root/.oh-my-zsh/plugins/zsh-syntax-highlighting
