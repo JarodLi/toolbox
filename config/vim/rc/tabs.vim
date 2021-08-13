@@ -13,17 +13,14 @@ noremap <silent><A-h> :tabprevious<cr>
 noremap <silent><A-w> :tabclose<cr>
 noremap <silent><A-o> :tabonly<cr>
 
+
+
 " Open Explore in new tab with current directory
-function! Open_Explore(where)
-    let l:path = expand("%:p:h")
+function! Open_Explore(where)                                                                                                                                                                     let l:path = expand("%:p:h")
     if l:path == ''
-        let l:path = getcwd()
-    endif
-    if a:where == 0
-        exec 'Explore '.fnameescape(l:path)
-    elseif a:where == 1
-        exec 'vnew'
-        exec 'Explore '.fnameescape(l:path)
+        let l:path = getcwd()                                                                                                                                                                     endif                                                                                                                                                                                         if a:where == 0
+        exec 'Explore '.fnameescape(l:path)                                                                                                                                                       elseif a:where == 1
+        exec 'vnew'                                                                                                                                                                                   exec 'Explore '.fnameescape(l:path)
         exec 'set modifiable'
     else
         exec 'tabnew'
@@ -31,7 +28,7 @@ function! Open_Explore(where)
     endif
     exec 'set modifiable'
 endfunc
-nnoremap <C-o> :call Open_Explore(2)<cr>
+nnoremap <C-A-o> :call Open_Explore(2)<cr>
 
 "function! Switch_buff_to_tab()
     "let current_buff = bufnr("%")
@@ -42,3 +39,4 @@ nnoremap <C-o> :call Open_Explore(2)<cr>
 
 " 将buf转成tab
 nmap <leader>tb :tab sb
+
