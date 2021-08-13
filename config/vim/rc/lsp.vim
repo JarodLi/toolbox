@@ -71,11 +71,12 @@ let g:lsp_diagnostics_enabled = 0         " disable diagnostics support"
 let g:lsp_highlight_references_enabled = 1
 "highlight lspReference ctermfg=red guifg=red ctermbg=green guibg=green
 
-nmap <leader>ld :LspDefinition<CR>
-nmap <leader>lpd :LspPeekDefinition<CR>
-nmap <leader>lh :LspHover<CR>
-nmap <leader>lr :LspRename<CR>
-nmap <leader>lc :LspReferences<CR>
+"出让<leader>l给LeaderF, 使用LanguageClient
+"nmap <leader>ld :LspDefinition<CR>
+"nmap <leader>lpd :LspPeekDefinition<CR>
+"nmap <leader>lh :LspHover<CR>
+"nmap <leader>lr :LspRename<CR>
+"nmap <leader>lc :LspReferences<CR>
 "nmap <leader>lf :LspDocumentRangeFormat<CR>
 
 
