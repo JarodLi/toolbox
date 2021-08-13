@@ -10,7 +10,7 @@ let g:airline#extensions#ale#enabled = 1
 
 let g:ale_linters = {
     \ 'python': ['flake8', 'pylint', 'pyright'],
-    \ 'sh': ['language_server'],
+    \ 'sh': ['language_server', 'shell', 'shellcheck'],
     \ 'xml': ['xmllint'],
     \ 'cpp': ['clang'],
     \ 'c': ['clang'],
@@ -64,3 +64,6 @@ let g:ale_c_clangformat_use_local_file = 1
 let g:ale_c_parse_compile_commands = 1
 " ale 将在工程目录下的 build 和 . 中搜索 compile_commands.json
 let g:ale_c_build_dir_names = ['build','.']
+
+let g:ale_sh_shell_default_shell = 'bash'
+
