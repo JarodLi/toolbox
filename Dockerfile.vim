@@ -70,7 +70,8 @@ RUN cd /root/.vim/bundle/LanguageClient-neovim \
 # 安COC
 RUN cd /root/.vim/bundle/coc.nvim \
     && yarn install --frozen-lockfile
-COPY config/vim/coc /root/.config/coc
+COPY pkgs/vim/pkgs/coc /root/.config/coc
+COPY config/vim/coc-settings.json /root/.vim
 
 # python-mode doc功能依赖
 RUN pip install doq \
