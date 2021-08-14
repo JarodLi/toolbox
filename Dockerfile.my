@@ -9,7 +9,9 @@ RUN cd /opt \
   && git clone https://github.com.cnpmjs.org/wting/autojump.git \
   && cd /opt/autojump \
   && export SHELL=zsh \
-  && ./install.py
+  && ./install.py \
+  && echo "[[ -s /root/.autojump/etc/profile.d/autojump.sh ]] && source /root/.autojump/etc/profile.d/autojump.sh" >> /root/.zshrc \
+  && echo "autoload -U compinit && compinit -u" >> /root/.zshrc 
 
 # obsutil
 RUN wget https://obs-community.obs.cn-north-1.myhuaweicloud.com/obsutil/current/obsutil_linux_amd64.tar.gz -P /opt \
