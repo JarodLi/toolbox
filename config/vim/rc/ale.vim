@@ -14,7 +14,6 @@ let g:ale_linters = {
     \ 'xml': ['xmllint'],
     \ 'cpp': ['clang'],
     \ 'c': ['clang'],
-
     \ }
 "ALE can fix files with the ALEFix command.
 let g:ale_fixers = {
