@@ -3,19 +3,21 @@ ENV container docker
 
 ADD pkgs/vim/pkgs/* /opt/
 RUN rm -rf /usr/lib/python3.9/site-packages/clang
-RUN pacman -S vim clang --noconfirm
+RUN pacman -S vim clang neovim --noconfirm
 
 RUN mkdir -p /root/.vim/{autoload,bundle,rc} \
     && mv /opt/plug.vim ~/.vim/autoload/
 
 # nvim
     #&& wget https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage \
-RUN cd /opt &&  chmod u+x nvim.appimage && ./nvim.appimage --appimage-extract && cp -fpr ./squashfs-root/usr/* /usr/\
-    && mkdir -p ~/.config \
+
+    #RUN cd /opt &&  chmod u+x nvim.appimage && ./nvim.appimage --appimage-extract && cp -fpr ./squashfs-root/usr/* /usr/\
+    RUN mkdir -p ~/.config \
     && ln -s ~/.vim ~/.config/nvim \
-    && ln -s ~/.vimrc ~/.config/nvim/init.vim \
-    && rm -rf /opt/nvim.appimage \
-    && ln -s /usr/bin/vim /usr/bin/vi 
+    && ln -s ~/.vimrc ~/.config/nvim/init.vim 
+    #&& rm -rf /opt/nvim.appimage \
+    #&& ln -s /usr/bin/vim /usr/bin/vi 
+
 
 # 使用universal ctags进行前端符号分析定义，提供给gtags使用（GNU tags）
 # GTags （或者叫做 GNU GLOBAL）比起 ctags 来说，有几个主要的优点：
@@ -65,12 +67,18 @@ RUN pacman -S npm shfmt --noconfirm \
 RUN cd /root/.vim/bundle/LanguageClient-neovim \
     && bash install.sh
 
+# 安COC
+RUN cd /root/.vim/bundle/coc.nvim \
+    && yarn install --frozen-lockfile
+COPY config/vim/coc /root/.config/coc
+
 # python-mode doc功能依赖
 RUN pip install doq \
     && pacman -S pyright --noconfirm
 
 RUN pip install autoflake
 RUN pip install autoimport
+RUN pip install cmake-language-server
 
 COPY config/vim/vimrc /root/.vimrc
 COPY config/vim/rc /root/.vim/rc

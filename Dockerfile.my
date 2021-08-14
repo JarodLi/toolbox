@@ -4,6 +4,13 @@ ENV container docker
 RUN touch ~/.zshrc.my
 RUN echo "source ~/.zshrc.my" >> ~/.zshrc
 
+# autojump
+RUN cd /opt \
+  && git clone https://github.com.cnpmjs.org/wting/autojump.git \
+  && cd /opt/autojump \
+  && export SHELL=zsh \
+  && ./install.py
+
 # obsutil
 RUN wget https://obs-community.obs.cn-north-1.myhuaweicloud.com/obsutil/current/obsutil_linux_amd64.tar.gz -P /opt \
     && tar xzvf /opt/obsutil_linux_amd64.tar.gz -C /opt \
