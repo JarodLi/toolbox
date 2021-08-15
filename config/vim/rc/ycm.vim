@@ -1,5 +1,5 @@
-"Plug 'ycm-core/YouCompleteMe', { 'for': ['python', 'c', 'cpp', 'go', 'sh']}
-Plug 'ycm-core/YouCompleteMe'
+Plug 'ycm-core/YouCompleteMe', { 'for': ['c', 'cpp', 'go',]}
+"Plug 'ycm-core/YouCompleteMe'
 
 set tags+=/usr/tags
 " 关闭函数原型预览窗口
