@@ -102,6 +102,7 @@ function pre_vim()
     git clone https://github.com.cnpmjs.org/tpope/vim-abolish || exit 1
     git clone https://github.com.cnpmjs.org/sbdchd/vim-shebang || exit 1
     git clone https://github.com.cnpmjs.org/justinmk/vim-dirvish || exit 1
+    git clone https://github.com.cnpmjs.org/honza/vim-snippets.git || exit 1
     cd -
 }
 
@@ -146,6 +147,7 @@ function main()
     docker build . -f Dockerfile.c -t c:latest --rm --no-cache || exit 1
     docker build . -f Dockerfile.java -t java:latest --rm --no-cache || exit 1
     docker build . -f Dockerfile.vim -t vim:latest --rm --no-cache || exit 1
+    docker build . -f Dockerfile.vim -t vim:latest --rm || exit 1
     docker build . -f Dockerfile.my  -t my:${today} --rm --no-cache || exit 1
     docker save my:${today} > my_${today}.tar
     obsutil cp my_${today}.tar obs://lijian-test && rm -rf my_${today}.tar

@@ -13,6 +13,20 @@ RUN cd /opt \
   && echo "[[ -s /root/.autojump/etc/profile.d/autojump.sh ]] && source /root/.autojump/etc/profile.d/autojump.sh" >> /root/.zshrc \
   && echo "autoload -U compinit && compinit -u" >> /root/.zshrc 
 
+RUN pip3 install cppman \
+  && pip3 install icdiff \
+  && pip3 install glances \
+  && pip3 install ranger-fm
+
+RUN wget https://github.com/cheat/cheat/releases/download/4.2.2/cheat-linux-amd64.gz -P /opt/ \
+  && cd /opt \
+  && gunzip cheat-linux-amd64.gz \
+  && mv cheat-linux-amd64 /usr/local/bin \
+  && chmod +x /usr/local/bin/cheat 
+COPY config/cheat /root/.config/cheat
+
+
+
 # obsutil
 RUN wget https://obs-community.obs.cn-north-1.myhuaweicloud.com/obsutil/current/obsutil_linux_amd64.tar.gz -P /opt \
     && tar xzvf /opt/obsutil_linux_amd64.tar.gz -C /opt \
