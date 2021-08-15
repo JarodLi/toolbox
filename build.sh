@@ -147,7 +147,6 @@ function main()
     docker build . -f Dockerfile.c -t c:latest --rm --no-cache || exit 1
     docker build . -f Dockerfile.java -t java:latest --rm --no-cache || exit 1
     docker build . -f Dockerfile.vim -t vim:latest --rm --no-cache || exit 1
-    docker build . -f Dockerfile.vim -t vim:latest --rm || exit 1
     docker build . -f Dockerfile.my  -t my:${today} --rm --no-cache || exit 1
     docker save my:${today} > my_${today}.tar
     obsutil cp my_${today}.tar obs://lijian-test && rm -rf my_${today}.tar
