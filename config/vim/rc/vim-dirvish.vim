@@ -5,7 +5,7 @@ map <silent> - :Dirvish %<CR>
 map <TAB>7 <TAB>v<TAB>l-
 map <TAB>8 <TAB>s<TAB>j-
 
-g:dirvish_relative_paths = 0
+let g:dirvish_relative_paths = 0
 
 "How to override the netrw :Explore, :Sexplore, :Vexplore commands? ~
 "Put this in your vimrc: >
@@ -13,7 +13,7 @@ let g:loaded_netrwPlugin = 1
 command! -nargs=? -complete=dir Explore Dirvish <args>
 command! -nargs=? -complete=dir Sexplore belowright split | silent Dirvish <args>
 command! -nargs=? -complete=dir Vexplore leftabove vsplit | silent Dirvish <args>
-                                                                                                                                                                                              "expand a directory inline (like a tree-style view)
+															      "expand a directory inline (like a tree-style view)
 augroup dirvish_config1
   autocmd!
   autocmd FileType dirvish
