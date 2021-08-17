@@ -81,6 +81,9 @@ RUN pip install autoflake
 RUN pip install autoimport
 RUN pip install cmake-language-server
 
+# for vim-terminal-help
+RUN pip install neovim-remote
+
 COPY config/vim/vimrc /root/.vimrc
 COPY config/vim/rc /root/.vim/rc
 COPY config/vim/ycm_extra_conf.py /root/.vim/
