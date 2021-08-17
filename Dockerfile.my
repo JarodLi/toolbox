@@ -16,16 +16,23 @@ RUN cd /opt \
 RUN pip3 install cppman \
   && pip3 install icdiff \
   && pip3 install glances \
-  && pip3 install ranger-fm
+  && pip3 install ranger-fm \
+  && pip3 install tldr
 
 RUN wget https://github.com/cheat/cheat/releases/download/4.2.2/cheat-linux-amd64.gz -P /opt/ \
   && cd /opt \
   && gunzip cheat-linux-amd64.gz \
-  && mv cheat-linux-amd64 /usr/local/bin \
+  && mv cheat-linux-amd64 /usr/local/bin/cheat \
   && chmod +x /usr/local/bin/cheat 
 COPY config/cheat /root/.config/cheat
 
-
+RUN cd /opt/ \
+  && git clone https://github.com/Angelmmiguel/pm.git\
+  && mkdir -p /root/.pm \
+  && cp /opt/pm/zsh/pm.zsh /root/.pm/ \
+  && mkdir -p /root/.oh-my-zsh/custom/plugins/pm \
+  && cp /opt/pm/zsh/_pm /root/.oh-my-zsh/custom/plugins/pm/_pm \
+  && echo "source /root/.pm/pm.zsh" >> ~/.zshrc
 
 # obsutil
 RUN wget https://obs-community.obs.cn-north-1.myhuaweicloud.com/obsutil/current/obsutil_linux_amd64.tar.gz -P /opt \

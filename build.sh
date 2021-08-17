@@ -103,6 +103,8 @@ function pre_vim()
     git clone https://github.com.cnpmjs.org/sbdchd/vim-shebang || exit 1
     git clone https://github.com.cnpmjs.org/justinmk/vim-dirvish || exit 1
     git clone https://github.com.cnpmjs.org/honza/vim-snippets.git || exit 1
+    git clone https://github.com.cnpmjs.org/jpalardy/vim-slime || exit 1
+    git clone https://github.com.cnpmjs.org/easymotion/vim-easymotion || exit 1
     cd -
 }
 

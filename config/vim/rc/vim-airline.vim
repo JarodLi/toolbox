@@ -15,5 +15,11 @@ if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 "let g:airline_symbols.linenr=' l:'
-let g:airline_symbols.colnr='c'
+let g:airline_symbols.colnr=''
 let g:airline_symbols.whitespace=' '
+
+
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline#extensions#tabline#show_close_button = 0
+let g:airline#extensions#tabline#tabs_label = ''
+let g:airline#extensions#tabline#show_splits = 0

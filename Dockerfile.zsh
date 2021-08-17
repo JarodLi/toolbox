@@ -10,7 +10,7 @@ RUN pacman -S wget zsh zsh-autosuggestions zsh-completions zsh-history-substring
   && bash /opt/install.sh \
   && mkdir -p ~/.oh-my-zsh/plugins/incr \
   && wget http://mimosa-pudica.net/src/incr-0.2.zsh -P ~/.oh-my-zsh/plugins/incr \
-  && cp -fpr /usr/share/zsh/plugins/* /root/.oh-my-zsh/plugins/
+  && cp -fpr /usr/share/zsh/plugins/* /root/.oh-my-zsh/plugins/ \
   && echo "source ~/.oh-my-zsh/plugins/incr/incr*.zsh" >> ~/.zshrc \
   && echo "/bin/zsh" >> /etc/shells \
   && chsh -s /bin/zsh 

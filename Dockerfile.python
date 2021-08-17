@@ -80,7 +80,9 @@ RUN rm -rf /usr/bin/python \
     && pip3 install pylama \
     && pip3 install pyroute2 \
     && pip3 install scapy \
-    && pip3 install psutil 
+    && pip3 install psutil \
+    && pip3 install flask_apscheduler \
+    && pip3 install gevent 
 
 # jupyter
 RUN jupyter notebook --generate-config 

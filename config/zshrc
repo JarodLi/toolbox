@@ -95,7 +95,7 @@ export LANG=en_US.UTF-8
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 source ~/.oh-my-zsh/plugins/incr/incr*.zsh
 # 解决git目录下执行命令卡问题
-git config --add oh-my-zsh.hide-dirty 1
+# git config --add oh-my-zsh.hide-dirty 1
 #git config --add oh-my-zsh.hide-status 1
 #
 
@@ -123,5 +123,7 @@ pastefinish() {
 zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish
 
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
 source ~/.zshrc.my
-/usr/bin/tmux
