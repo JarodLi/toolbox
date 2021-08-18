@@ -4,6 +4,8 @@ ENV container docker
 ADD pkgs/vim/pkgs/* /opt/
 RUN rm -rf /usr/lib/python3.9/site-packages/clang
 RUN pacman -S vim clang neovim --noconfirm
+RUN rm -rf /usr/bin/vi \
+  && ln -s /usr/bin/nvim /usr/bin/vi
 
 RUN mkdir -p /root/.vim/{autoload,bundle,rc} \
     && mv /opt/plug.vim ~/.vim/autoload/

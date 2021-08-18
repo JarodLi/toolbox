@@ -137,6 +137,7 @@ function pre_c()
     #wget https://ftp.gnu.org/gnu/glibc/glibc-2.32.tar.gz
     # cland
     #wget https://github.com/clangd/clangd/releases/download/10.0.0/clangd-linux-10.0.0.zip
+    cd -
 }
 
 function main()
