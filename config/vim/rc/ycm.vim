@@ -1,4 +1,4 @@
-Plug 'ycm-core/YouCompleteMe', { 'for': ['c', 'cpp', 'go',]}
+"Plug 'ycm-core/YouCompleteMe', { 'for': ['c', 'cpp', 'go',]}
 "Plug 'ycm-core/YouCompleteMe'
 
 set tags+=/usr/tags
