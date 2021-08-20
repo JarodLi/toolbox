@@ -72,6 +72,7 @@ RUN cd /root/.vim/bundle/LanguageClient-neovim \
 # 安COC
 RUN cd /root/.vim/bundle/coc.nvim \
     && yarn install --frozen-lockfile
+RUN npm install -g dockerfile-language-server-nodejs
 COPY pkgs/vim/pkgs/coc /root/.config/coc
 COPY config/vim/coc-settings.json /root/.vim
 
