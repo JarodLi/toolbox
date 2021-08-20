@@ -34,6 +34,8 @@ RUN cd /opt/ \
   && cp /opt/pm/zsh/_pm /root/.oh-my-zsh/custom/plugins/pm/_pm \
   && echo "source /root/.pm/pm.zsh" >> ~/.zshrc
 
+RUN pacman -S docker
+
 # obsutil
 RUN wget https://obs-community.obs.cn-north-1.myhuaweicloud.com/obsutil/current/obsutil_linux_amd64.tar.gz -P /opt \
     && tar xzvf /opt/obsutil_linux_amd64.tar.gz -C /opt \
