@@ -1,5 +1,5 @@
 Plug 'mhinz/vim-signify'
-nmap <leader>gd :SignifyDiff<CR>
+"nmap <leader>gd :SignifyDiff<CR>
 "nmap <leader>ge :SignifyEnable<CR>
 
 let s:signify_enable = 1
