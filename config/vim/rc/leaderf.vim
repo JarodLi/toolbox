@@ -5,11 +5,6 @@ let g:Lf_ShortcutB = '<m-n>'
 ""noremap <m-p> :LeaderfFunction!<cr>
 "noremap <m-n> :LeaderfBuffer<cr>
 ""noremap <m-m> :LeaderfTag<cr>
-nmap <leader>l :Leaderf
-nmap <leader>bf :Leaderf! buffer<CR>
-nmap <leader>lb :Leaderf! buffer<CR>
-nmap <leader>lt :LeaderfBufTag!<CR>
-nmap <leader>lf :LeaderfFunction!<CR>
 "nmap <leader>fl :Leaderf! file<CR>
 "nmap <leader>lf :Leaderf! file<CR>
 "nmap <leader>lm :Leaderf! mru<CR>
@@ -35,7 +30,6 @@ let g:Lf_RgConfig = [
 "\ "--hidden",
 "\ "--no-ignore",
 \ ]
-
 let g:Lf_WildIgnore = {
       \ 'dir': ['.root','.svn','.git','.hg','.ccls-cache'],
       \ 'file': ['*.sw?','~$*','*.exe','*.o','*.so','*.py[co]']
@@ -55,9 +49,9 @@ let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
 
 "let g:Lf_ShortcutB = '<c-b>'
 nmap <leader>l :Leaderf
-nmap <leader>bf :Leaderf! buffer<CR>
+nmap <leader>bf :Leaderf! buffer --nowrap<CR>
 nmap <leader>lb :Leaderf! buffer<CR>
-nmap <leader>lt :LeaderfBufTag!<CR>
+nmap <leader>lt :Leaderf bufTag --nowrap<CR>
 "nmap <leader>lf :LeaderfFunction!<CR>
 "
 "搜索所有工程文件
@@ -82,4 +76,3 @@ noremap go :<C-U>Leaderf! rg --recall<CR>
 "xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F --stayOpen --wd-mode=ac -e %s ", leaderf#Rg#visual())<CR>
 
 let g:Lf_ShowDevIcons = 0
-
