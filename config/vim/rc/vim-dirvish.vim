@@ -2,8 +2,8 @@ Plug 'justinmk/vim-dirvish'
 "Plug 'tpope/vim-eunuch'
 
 map <silent> - :Dirvish %<CR>
-map <TAB>7 <TAB>v<TAB>l-
-map <TAB>8 <TAB>s<TAB>j-
+map <TAB>V <TAB>v<TAB>l-
+map <TAB>S <TAB>s<TAB>j-
 
 let g:dirvish_relative_paths = 0
 
@@ -13,11 +13,11 @@ let g:loaded_netrwPlugin = 1
 command! -nargs=? -complete=dir Explore Dirvish <args>
 command! -nargs=? -complete=dir Sexplore belowright split | silent Dirvish <args>
 command! -nargs=? -complete=dir Vexplore leftabove vsplit | silent Dirvish <args>
-															      "expand a directory inline (like a tree-style view)
+                                                                                                    "expand a directory inline (like a tree-style view)
 augroup dirvish_config1
   autocmd!
   autocmd FileType dirvish
-          \ nnoremap <silent><buffer> b ddO<Esc>:let @"=substitute(@", '\n', '', 'g')<CR>:r ! find "<C-R>"" -maxdepth 1 -print0 \| xargs -0 ls -Fd<CR>:silent! keeppatterns %s/\/\//\//g<CR>:silent! keeppatterns %s/[^a-zA-Z0-9\/]$//g<CR>:silent! keeppatterns g/^$/d<CR>:noh<CR>                                                                                                         augroup END                                                                                                                                                                                                                                                                                                                                                                                 
+          \ nnoremap <silent><buffer> b ddO<Esc>:let @"=substitute(@", '\n', '', 'g')<CR>:r ! find "<C-R>"" -maxdepth 1 -print0 \| xargs -0 ls -Fd<CR>:silent! keeppatterns %s/\/\//\//g<CR>:silent! keeppatterns %s/[^a-zA-Z0-9\/]$//g<CR>:silent! keeppatterns g/^$/d<CR>:noh<CR>                                                                                                         augroup END                                                                                                                                                                                   
 augroup dirvish_config2
 autocmd!
 " Map `t` to open in new tab.
