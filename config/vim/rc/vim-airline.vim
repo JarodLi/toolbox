@@ -30,3 +30,14 @@ let g:airline#extensions#tabline#overflow_marker = '…'
 let g:airline#extensions#tabline#show_tab_nr = 0
 
 let g:airline#extensions#ale#enabled = 0
+
+let g:tmuxline_preset = {
+\'a'       : '#S',
+\'b'       : '',
+\'c'       : '',
+\'win'     : '#W',
+\'cwin'    : '#W',
+\'x'       : '%a',
+\'y'       : '%R',
+\'z'       : '',
+\'options' : {'status-justify' : 'left'}}
