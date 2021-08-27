@@ -1,12 +1,19 @@
-"languageserver": {
-        "cmake": {
-                "command": "cmake-language-server",
-                "filetypes": ["cmake"],
-                "rootPatterns": [
-                        "build/"
-                ],
-                "initializationOptions": {
-                        "buildDirectory": "build"
+{
+        "languageserver": {
+                "cmake": {
+                        "command": "cmake-language-server",
+                        "filetypes": [
+                                "cmake"
+                        ],
+                        "rootPatterns": [
+                                "build/"
+                        ],
+                        "initializationOptions": {
+                                "buildDirectory": "build"
+                        }
                 }
+        },
+        "yaml.schemas": {
+                "/usr1/share/v1.14.0-standalone-strict/deployment.json": "*deployment.yaml"                                                                                               
         }
 }
