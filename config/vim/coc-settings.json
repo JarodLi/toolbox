@@ -21,10 +21,10 @@
                   "hover": true,
                   "completion": true,
                   "schemas": {
-                          "/usr1/share/v1.14.0-standalone-strict/deployment.json": "*deployment.yaml",
-                          "/usr1/share/v1.14.0-standalone-strict/daemonset.json": "*daemonset.yaml",
-                          "/usr1/share/v1.14.0-standalone-strict/pod.json": "*pod.yaml",
-                          "/usr1/share/v1.14.0-standalone-strict/configmap.json": "*configmap.yaml"
+                          "/usr1/share/v1.18.1-standalone-strict/deployment.json": "*deployment.yaml",
+                          "/usr1/share/v1.18.1-standalone-strict/daemonset.json": "*daemonset.yaml",
+                          "/usr1/share/v1.18.1-standalone-strict/pod.json": "*pod.yaml",
+                          "/usr1/share/v1.18.1-standalone-strict/configmap.json": "*configmap.yaml"
                   }
           }
 }
