@@ -5,7 +5,7 @@ COPY config/pacman/mirrorlist /etc/pacman.d/mirrorlist
 COPY config/pacman/pacman.conf /etc/pacman.conf
 RUN pacman -Sy --noconfirm
 # systemd-sysvcompat中包含init
-RUN pacman -Sy openssh git systemd-sysvcompat sshpass gcc glibc mpc gmp mpfr cmake make clang iputils iproute2 tree tcpdump traceroute man man-pages diffutils ripgrep icu libxml2 yarn nodejs lsof netstat-nat which rpm rpmextract cpio unzip bc autoconf automake libaio grpc --noconfirm
+RUN pacman -Sy openssh git systemd-sysvcompat sshpass gcc glibc mpc gmp mpfr cmake make clang iputils iproute2 tree tcpdump traceroute man man-pages diffutils ripgrep icu libxml2 yarn nodejs lsof netstat-nat which rpm rpmextract cpio unzip bc autoconf automake libaio grpc docker --noconfirm
 
 # OS config
 ENV TimeZone=Asia/Shanghai

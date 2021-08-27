@@ -4,7 +4,7 @@ ENV container docker
 COPY pkgs/tmux /opt
 
 RUN pacman -S tmux --noconfirm \
-    && echo "/usr/bin/tmux" >> /root/.zshrc \
+    #&& echo "/usr/bin/tmux" >> /root/.zshrc \
     && mv /opt/oh-my-tmux /root/ \
     && ln -s -f /root/oh-my-tmux/.tmux.conf ~/.tmux.conf \
     && ln -s -f /root/oh-my-tmux/.tmux.conf.local ~/.tmux.conf.local \

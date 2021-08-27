@@ -75,4 +75,4 @@ noremap go :<C-U>Leaderf! rg --recall<CR>
 " search visually selected text literally, don't quit LeaderF after accepting an entry
 "xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F --stayOpen --wd-mode=ac -e %s ", leaderf#Rg#visual())<CR>
 
-let g:Lf_ShowDevIcons = 0
+let g:Lf_ShowDevIcons = 1

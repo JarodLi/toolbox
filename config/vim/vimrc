@@ -23,9 +23,10 @@ call defx#custom#option('_', {
 syntax on
 filetype plugin indent on
 set number
+set rnu
 set showmatch
 set encoding=utf-8
-set fencs=utf-8    " Sets the default encoding
+set fencs=utf-8,GB18030,ucs-bom,default,latin1    " Sets the default encoding
 set hlsearch
 set novb  "关闭闪屏
 set nocompatible
@@ -130,6 +131,7 @@ nnoremap <leader>1 : call Showleft()<cr>
 func! Showleft()
         if s:showleft == 1
                 exec "set nonu"
+                exec "set nornu"
                 exec "IndentLinesDisable"
                 if &filetype == 'python'
                         exec "ALEDisable"
@@ -137,6 +139,7 @@ func! Showleft()
                 let s:showleft=0
         else
                 exec "set nu"
+                exec "set rnu"
                 exec "IndentLinesEnable"
                 if &filetype == 'python'
                         exec "ALEEnable"

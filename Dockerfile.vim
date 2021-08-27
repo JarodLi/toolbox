@@ -46,20 +46,20 @@ COPY pkgs/vim/vim-bundle /root/.vim/bundle/
 RUN cd /root/.vim/bundle/markdown-preview.nvim/app \
     && yarn install
 
-# YCM
-#ADD YouCompleteMe.tar.gz /root/.vim/bundle
 RUN pacman -S cmake make --noconfirm 
-RUN cd /root/.vim/bundle/ \
-    #&& git clone --recursive https://github.com/ycm-core/YouCompleteMe \
-    #&& /root/.vim/bundle/YouCompleteMe/install.py --clang-completer --system-libclang \
-    # 支持java： --java-complete会去下载eclipse.jdt.ls，下载失败概率高。 直接使用下载好的，建议link使用
-    #&& /root/.vim/bundle/YouCompleteMe/install.py --clangd-completer --java-complete \
-    && mkdir -p /root/.vim/bundle/YouCompleteMe/third_party/ycmd/third_party/eclipse.jdt.ls/target/ \
-    && ln -s /opt/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/ /root/.vim/bundle/YouCompleteMe/third_party/ycmd/third_party/eclipse.jdt.ls/target/repository \
-    # 提前下载好clangd, install.py自动下载会失败
-    && wget https://github.com.cnpmjs.org/ycm-core/llvm/releases/download/12.0.0/clangd-12.0.0-x86_64-unknown-linux-gnu.tar.bz2 -P /root/.vim/bundle/YouCompleteMe/third_party/ycmd/third_party/clangd/cache/ \
-    && /root/.vim/bundle/YouCompleteMe/install.py --clangd-completer \
-    && cp /root/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py /root/
+## YCM
+##ADD YouCompleteMe.tar.gz /root/.vim/bundle
+#RUN cd /root/.vim/bundle/ \
+#    #&& git clone --recursive https://github.com/ycm-core/YouCompleteMe \
+#    #&& /root/.vim/bundle/YouCompleteMe/install.py --clang-completer --system-libclang \
+#    # 支持java： --java-complete会去下载eclipse.jdt.ls，下载失败概率高。 直接使用下载好的，建议link使用
+#    #&& /root/.vim/bundle/YouCompleteMe/install.py --clangd-completer --java-complete \
+#    && mkdir -p /root/.vim/bundle/YouCompleteMe/third_party/ycmd/third_party/eclipse.jdt.ls/target/ \
+#    && ln -s /opt/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/ /root/.vim/bundle/YouCompleteMe/third_party/ycmd/third_party/eclipse.jdt.ls/target/repository \
+#    # 提前下载好clangd, install.py自动下载会失败
+#    && wget https://github.com.cnpmjs.org/ycm-core/llvm/releases/download/12.0.0/clangd-12.0.0-x86_64-unknown-linux-gnu.tar.bz2 -P /root/.vim/bundle/YouCompleteMe/third_party/ycmd/third_party/clangd/cache/ \
+#    && /root/.vim/bundle/YouCompleteMe/install.py --clangd-completer \
+#    && cp /root/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py /root/
 
 # 安装bash的lsp server, shfmt
 RUN pacman -S npm shfmt --noconfirm \ 
@@ -86,6 +86,7 @@ RUN pip install cmake-language-server
 
 # for vim-terminal-help
 RUN pip install neovim-remote
+RUN pacman -S powerline-fonts --noconfirm
 
 COPY config/vim/vimrc /root/.vimrc
 COPY config/vim/rc /root/.vim/rc
