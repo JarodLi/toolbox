@@ -31,6 +31,12 @@ let g:airline#extensions#tabline#show_tab_nr = 0
 
 let g:airline#extensions#ale#enabled = 0
 
+let g:airline#extensions#vista#enabled = 0
+
+let g:airline_section_c_only_filename = 1
+let g:airline_stl_path_style = 'short'
+let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
+let g:airline#extensions#searchcount#enabled=0
 let g:tmuxline_preset = {
 \'a'       : '#S',
 \'b'       : '',
