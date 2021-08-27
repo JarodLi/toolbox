@@ -13,7 +13,18 @@
                         }
                 }
         },
-        "yaml.schemas": {
-                "/usr1/share/v1.14.0-standalone-strict/deployment.json": "*deployment.yaml"                                                                                               
-        }
+        "yaml": {
+                "format": {       
+                        "enable": false
+                  },
+                  "validate": true,
+                  "hover": true,
+                  "completion": true,
+                  "schemas": {
+                          "/usr1/share/v1.14.0-standalone-strict/deployment.json": "*deployment.yaml",
+                          "/usr1/share/v1.14.0-standalone-strict/daemonset.json": "*daemonset.yaml",
+                          "/usr1/share/v1.14.0-standalone-strict/pod.json": "*pod.yaml",
+                          "/usr1/share/v1.14.0-standalone-strict/configmap.json": "*configmap.yaml"
+                  }
+          }
 }
