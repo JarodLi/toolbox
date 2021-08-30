@@ -24,7 +24,8 @@
                           "/root/.config/coc/v1.18.1-standalone-strict/deployment.json": "*deployment.yaml",
                           "/root/.config/coc/v1.18.1-standalone-strict/daemonset.json": "*daemonset.yaml",
                           "/root/.config/coc/v1.18.1-standalone-strict/pod.json": "*pod.yaml",
-                          "/root/.config/coc/v1.18.1-standalone-strict/configmap.json": "*configmap.yaml"
+                          "/root/.config/coc/v1.18.1-standalone-strict/configmap.json": "*configmap.yaml",
+                          "/root/.config/coc/v1.18.1-standalone-strict/service.json": "*service.yaml"
                   }
           }
 }

@@ -62,8 +62,8 @@ RUN pacman -S cmake make --noconfirm
 #    && cp /root/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py /root/
 
 # 安装bash的lsp server, shfmt
-RUN pacman -S npm shfmt --noconfirm \ 
-    && npm i -g bash-language-server
+RUN pacman -S npm shfmt bash-language-server --noconfirm 
+    #&& npm install -g bash-language-server
 
 # 安装LC
 RUN cd /root/.vim/bundle/LanguageClient-neovim \
@@ -73,6 +73,7 @@ RUN cd /root/.vim/bundle/LanguageClient-neovim \
 RUN cd /root/.vim/bundle/coc.nvim \
     && yarn install --frozen-lockfile
 RUN npm install -g dockerfile-language-server-nodejs
+RUN npm install -g prettier
 COPY pkgs/vim/pkgs/coc /root/.config/coc
 COPY config/vim/coc-settings.json /root/.vim
 

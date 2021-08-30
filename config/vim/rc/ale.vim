@@ -1,4 +1,4 @@
-Plug 'dense-analysis/ale', { 'for': ['python', 'c', 'cpp', 'go', 'sh', 'java', 'cpp']}
+Plug 'dense-analysis/ale', { 'for': ['python', 'c', 'cpp', 'go', 'sh', 'java', 'cpp', 'yaml', 'markdown', 'json']}
 
 let g:ale_completion_delay = 500
 let g:ale_echo_delay = 20
@@ -23,6 +23,9 @@ let g:ale_fixers = {
             \ 'sh': ['shfmt'],
             "\ 'cpp': ['astyle', 'clang-format', 'clangtidy'],
             \ 'c': ['clang-format'],
+            \ 'yaml': ['prettier'],
+            \ 'markdown': ['prettier'],
+            \ 'json': ['prettier'],
             \ }
 noremap <F4> :ALEFix<CR>
 " 关闭保存时自动修复，防止文件太大时卡顿的问题
