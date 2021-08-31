@@ -14,7 +14,7 @@ Plug 'kristijanhusak/defx-icons'
       "\ })
 
 
-map <silent> <A--> :Defx<CR>
+map <silent> <A--> :Defx -columns=icons:indent:filename:type<CR>
 " Avoid the white space highting issue
 autocmd FileType defx match ExtraWhitespace /^^/
 " Keymap in defx

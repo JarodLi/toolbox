@@ -51,11 +51,13 @@ let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
 nmap <leader>l :Leaderf
 nmap <leader>bf :Leaderf! buffer --nowrap<CR>
 nmap <leader>lb :Leaderf! buffer<CR>
-nmap <leader>lt :Leaderf bufTag --nowrap --recall<CR>
+nmap <leader>lt :Leaderf bufTag --nowrap<CR>
+nmap <leader>llt :Leaderf bufTag --nowrap --recall<CR>
 "nmap <leader>lf :LeaderfFunction!<CR>
 "
 "搜索所有工程文件
-nmap <leader>lf :Leaderf file /usr1/code --nowrap --recall<CR>
+nmap <leader>lf :Leaderf file /usr1/code --nowrap<CR>
+nmap <leader>llf :Leaderf file /usr1/code --nowrap --recall<CR>
 "搜索当前工程文件
 let g:Lf_ShortcutF = '<c-p>'
 
@@ -63,7 +65,8 @@ let g:Lf_ShortcutF = '<c-p>'
 noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg --wd-mode=ac -S -e %s ", expand("<cword>"))<CR>
 
 " recall last search. If the result window is closed, reopen it.
-noremap <leader>lr :Leaderf rg --wd-mode-ac -S --recall<CR>
+noremap <leader>lr :Leaderf rg --wd-mode-ac -S<CR>
+noremap <leader>llr :Leaderf rg --wd-mode-ac -S --recall<CR>
 
 "noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
 "noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
