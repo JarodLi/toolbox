@@ -8,13 +8,17 @@ let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_insert_leave = 1
 let g:airline#extensions#ale#enabled = 1
 
-let g:ale_linters = {
-    \ 'python': ['flake8', 'pylint', 'pyright'],
-    \ 'sh': ['language_server', 'shell', 'shellcheck'],
-    \ 'xml': ['xmllint'],
-    \ 'cpp': ['clang'],
-    \ 'c': ['clang'],
-    \ }
+let g:ale_fixers = {                                                                                                                                                                      \  '*': ['remove_trailing_lines', 'trim_whitespace'],
+            \ 'python': ['yapf', 'autopep8', 'autoimport', 'isort', 'black', 'add_blank_lines_for_python_control_statements'],
+            \ 'java': ['google_java_format'],
+            \ 'sh': ['shfmt'],
+            "\ 'cpp': ['astyle', 'clang-format', 'clangtidy'],
+            \ 'c': ['clang-format'],
+            \ 'yaml': ['prettier'],
+            \ 'markdown': ['prettier'],
+            \ 'json': ['prettier'],
+            \ }
+
 "ALE can fix files with the ALEFix command.
 let g:ale_fixers = {
             \  '*': ['remove_trailing_lines', 'trim_whitespace'],
