@@ -8,7 +8,8 @@ let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_insert_leave = 1
 let g:airline#extensions#ale#enabled = 1
 
-let g:ale_fixers = {                                                                                                                                                                      \  '*': ['remove_trailing_lines', 'trim_whitespace'],
+let g:ale_fixers = {
+            \  '*': ['remove_trailing_lines', 'trim_whitespace'],
             \ 'python': ['yapf', 'autopep8', 'autoimport', 'isort', 'black', 'add_blank_lines_for_python_control_statements'],
             \ 'java': ['google_java_format'],
             \ 'sh': ['shfmt'],
