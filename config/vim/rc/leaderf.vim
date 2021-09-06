@@ -49,24 +49,24 @@ let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
 
 "let g:Lf_ShortcutB = '<c-b>'
 nmap <leader>l :Leaderf
-nmap <leader>bf :Leaderf! buffer --nowrap<CR>
+nmap <leader>bf :Leaderf! buffer --nowrap --fullScreen<CR>
 nmap <leader>lb :Leaderf! buffer<CR>
 nmap <leader>lt :Leaderf bufTag --nowrap<CR>
 nmap <leader>llt :Leaderf bufTag --nowrap --recall<CR>
 "nmap <leader>lf :LeaderfFunction!<CR>
 "
 "搜索所有工程文件
-nmap <leader>lf :Leaderf file /usr1/code --nowrap<CR>
-nmap <leader>llf :Leaderf file /usr1/code --nowrap --recall<CR>
+nmap <leader>lf :Leaderf file /usr1/code --nowrap --fullScreen<CR>
+nmap <leader>llf :Leaderf file /usr1/code --nowrap --recall --fullScreen<CR>
 "搜索当前工程文件
 let g:Lf_ShortcutF = '<c-p>'
 
 " 添加--wd-mode=ac，指定从当前工程目录搜索, 参考: https://github.com/Yggdroot/LeaderF/issues/277
-noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg --wd-mode=ac -S -e %s ", expand("<cword>"))<CR>
+noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg --wd-mode=ac -S --fullScreen -e %s ", expand("<cword>"))<CR>
 
 " recall last search. If the result window is closed, reopen it.
-noremap <leader>lr :Leaderf rg --wd-mode=ac -S<CR>
-noremap <leader>llr :Leaderf rg --wd-mode=ac -S --recall<CR>
+noremap <leader>lr :Leaderf rg --wd-mode=ac --nowrap -S --fullScreen<CR>
+noremap <leader>llr :Leaderf rg --wd-mode=ac --nowrap -S --recall --fullScreen<CR>
 
 "noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
 "noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
