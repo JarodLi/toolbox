@@ -27,7 +27,7 @@ RUN wget https://github.com/cheat/cheat/releases/download/4.2.2/cheat-linux-amd6
 COPY config/cheat /root/.config/cheat
 
 RUN cd /opt/ \
-  && git clone https://github.com/Angelmmiguel/pm.git\
+  && git clone https://github.com.cnpmjs.org/Angelmmiguel/pm.git\
   && mkdir -p /root/.pm \
   && cp /opt/pm/zsh/pm.zsh /root/.pm/ \
   && mkdir -p /root/.oh-my-zsh/custom/plugins/pm \

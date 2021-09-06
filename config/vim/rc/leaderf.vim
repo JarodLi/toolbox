@@ -65,8 +65,8 @@ let g:Lf_ShortcutF = '<c-p>'
 noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg --wd-mode=ac -S -e %s ", expand("<cword>"))<CR>
 
 " recall last search. If the result window is closed, reopen it.
-noremap <leader>lr :Leaderf rg --wd-mode-ac -S<CR>
-noremap <leader>llr :Leaderf rg --wd-mode-ac -S --recall<CR>
+noremap <leader>lr :Leaderf rg --wd-mode=ac -S<CR>
+noremap <leader>llr :Leaderf rg --wd-mode=ac -S --recall<CR>
 
 "noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
 "noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
