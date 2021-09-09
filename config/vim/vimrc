@@ -7,6 +7,7 @@ call plug#begin('~/.vim/bundle')
   endfor
 call plug#end()
 
+
 "defx窗口大小配置必须在plug加载 完成后执行
 call defx#custom#option('_', {
       \ 'winwidth': 30,
@@ -229,3 +230,8 @@ call Terminal_MetaMode(0)
 " only for putty
 map <Esc>x <A-x>
 
+"如下配置必须放在最后， 在完成所有初始化后调用
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+au Syntax * RainbowParenthesesLoadRound
