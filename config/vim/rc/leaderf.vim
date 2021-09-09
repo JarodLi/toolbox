@@ -12,7 +12,7 @@ let g:Lf_ShortcutB = '<m-n>'
 ""nmap <leader>lf :LeaderfFunction!<CR>
 let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
 
-let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
+let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git',]
 let g:Lf_WorkingDirectoryMode = 'Ac'
 let g:Lf_WindowHeight = 0.30
 let g:Lf_CacheDirectory = expand('~/.cache/leader_tags')
