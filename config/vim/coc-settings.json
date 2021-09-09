@@ -13,8 +13,33 @@
                         }
                 }
         },
+	"python.pythonPath": "/usr/bin/python3",
+	"python.linting.enabled": true,
+	"python.linting.flake8Enabled": true,
+	"python.linting.flake8Args": [
+		"--max-line-length=88",
+		"--config=/root/py_check/flake8_minimal_cis_tox_python3.ini"
+	],
+	"python.linting.pylintEnabled": true,
+	"python.linting.pylintArgs": [
+		"--max-line-length=88",
+		"--rcfile=/root/py_check/pylintrc-python3"
+	],
+	"python.formatting.provider": "yapf",
+	"python.formatting.yapfPath": "/usr/bin/yapf",
+	"python.formatting.blackPath": "/usr/bin/black",
+	"python.formatting.blackArgs": [
+		"--line-length=88",
+		"--skip-string-normalization"
+	],
+	"python.analysis.autoSearchPaths": false,
+	"python.sortImports.path": "/usr/bin/isort",
+	"pyright.enable": true,
+	"pyright.disableDiagnostics": false,
+	"pyright.completion.snippetSupport": true,
+	"pyright.organizeimports.provider": "isort",
         "yaml": {
-                "format": {       
+                "format": {
                         "enable": false
                   },
                   "validate": true,
@@ -25,7 +50,10 @@
                           "/root/.config/coc/kubernetes-json-schema/v1.18.1-standalone-strict/daemonset.json": "*daemonset.yaml",
                           "/root/.config/coc/kubernetes-json-schema/v1.18.1-standalone-strict/pod.json": "*pod.yaml",
                           "/root/.config/coc/kubernetes-json-schema/v1.18.1-standalone-strict/configmap.json": "*configmap.yaml",
-                          "/root/.config/coc/kubernetes-json-schema/v1.18.1-standalone-strict/service.json": "*service.yaml"
+                          "/root/.config/coc/kubernetes-json-schema/v1.18.1-standalone-strict/service.json": "*service.yaml",
+                          "/root/.config/coc/kubernetes-json-schema/v1.18.1-standalone-strict/persistentvolume.json": "*pv.yaml",
+                          "/root/.config/coc/kubernetes-json-schema/v1.18.1-standalone-strict/persistentvolumeclaim.json": "*pvc.yaml",
+                          "/root/.config/coc/kubernetes-json-schema/v1.18.1-standalone-strict/storageclass.json": "*storageclass.yaml"
                   }
           }
 }
