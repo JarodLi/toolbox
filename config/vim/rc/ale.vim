@@ -8,22 +8,20 @@ let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_insert_leave = 1
 let g:airline#extensions#ale#enabled = 1
 
-let g:ale_fixers = {
-            \  '*': ['remove_trailing_lines', 'trim_whitespace'],
-            \ 'python': ['yapf', 'autopep8', 'autoimport', 'isort', 'black', 'add_blank_lines_for_python_control_statements'],
-            \ 'java': ['google_java_format'],
-            \ 'sh': ['shfmt'],
-            "\ 'cpp': ['astyle', 'clang-format', 'clangtidy'],
-            \ 'c': ['clang-format'],
-            \ 'yaml': ['prettier'],
-            \ 'markdown': ['prettier'],
-            \ 'json': ['prettier'],
-            \ }
-
+ "检查工具用coc，定位更准确
+    "\ 'python': ['flake8', 'pylint', 'pyright'],
+let g:ale_linters = {
+    "\ 'python': ['flake8', 'pylint', 'pyright'],
+    \ 'sh': ['language_server', 'shell', 'shellcheck'],
+    \ 'xml': ['xmllint'],
+    \ 'cpp': ['clang'],
+    \ 'c': ['clang'],
+    \ }
 "ALE can fix files with the ALEFix command.
 let g:ale_fixers = {
             \  '*': ['remove_trailing_lines', 'trim_whitespace'],
-            \ 'python': ['yapf', 'autopep8',  'autoimport', 'isort', 'black', 'add_blank_lines_for_python_control_statements'],
+            "\ 'python': ['yapf', 'autopep8', 'autoimport', 'isort', 'black', 'add_blank_lines_for_python_control_statements'],
+	    \ 'python': ['autoimport', 'isort', 'add_blank_lines_for_python_control_statements', 'black',],
             \ 'java': ['google_java_format'],
             \ 'sh': ['shfmt'],
             "\ 'cpp': ['astyle', 'clang-format', 'clangtidy'],
@@ -36,8 +34,10 @@ noremap <F4> :ALEFix<CR>
 " 关闭保存时自动修复，防止文件太大时卡顿的问题
 let g:ale_fix_on_save = 0
 
-let g:ale_python_pylint_options = '--max-line-length=79 --rcfile=~/py_check/pylintrc'
-let g:ale_python_flake8_options = '--max-line-length=79 --select E122,E123,E126,E127,E128,E129,E265,E402,F821,W503,W504,W605,W606,E203,F841'
+let g:ale_python_pylint_options = '--max-line-length=88 --rcfile=~/py_check/pylint-python3'
+"let g:ale_python_flake8_options = '--max-line-length=88 --select E122,E123,E126,E127,E128,E129,E265,E402,F821,W503,W504,W605,W606,E203,F841'
+let g:ale_python_flake8_options = '--max-line-length=88 --config=~/py_check/flake8_minimal_cis_tox_python3.ini'
+let g:ale_python_black_options = '--line-length=88 --skip-string-normalization'
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
