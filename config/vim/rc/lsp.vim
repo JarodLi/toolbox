@@ -109,6 +109,8 @@ let g:LanguageClient_serverCommands = {
 noremap <leader>rd :call LanguageClient#textDocument_definition()<cr>
 noremap <leader>rc :call LanguageClient#textDocument_references()<cr>
 noremap <leader>rh :call LanguageClient#textDocument_hover()<cr>
+nnoremap <silent>K :call LanguageClient#textDocument_hover()<CR>
+let g:LanguageClient_hoverPreview = 'always'
 noremap <leader>ri :call LanguageClient#textDocument_implementation()<cr>
 noremap <leader>rt :call LanguageClient#textDocument_typeDefinition()<cr>
 
