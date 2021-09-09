@@ -107,6 +107,9 @@ function pre_vim()
     git clone https://github.com.cnpmjs.org/easymotion/vim-easymotion || exit 1
     git clone https://github.com.cnpmjs.org/skywind3000/vim-terminal-help || exit 1
     git clone https://github.com.cnpmjs.org/ekalinin/Dockerfile.vim || exit 1
+    git clone https://github.com.cnpmjs.org/voldikss/vim-floaterm || exit 1
+    git clone https://github.com.cnpmjs.org/voldikss/LeaderF-floaterm || exit 1
+    git clone https://github.com.cnpmjs.org/kien/rainbow_parentheses.vim || exit 1 
     cd -
 }
 
