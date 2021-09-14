@@ -13,6 +13,11 @@
                         }
                 }
         },
+	"cmake.cmakePath":"cmake",
+	"cmake.fromatter":"/usr/bin/cmake-format",
+	"cmake.lsp.enable":true,
+	"cmake.lsp.serverPath":"/usr/bin/cmake-language-server",
+	"cmake.lsp.buildDirectory":"build",
 	"python.pythonPath": "/usr/bin/python3",
 	"python.linting.enabled": true,
 	"python.linting.flake8Enabled": true,

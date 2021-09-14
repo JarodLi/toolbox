@@ -83,7 +83,9 @@ RUN pip install doq \
 
 RUN pip install autoflake
 RUN pip install autoimport
-RUN pip install cmake-language-server
+RUN pip install cmake-language-server \
+    && pip install cmakelang \
+    && pip install cmakelint
 
 # for vim-terminal-help
 RUN pip install neovim-remote

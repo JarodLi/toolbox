@@ -126,4 +126,6 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+eval $(thefuck --alias)
 source ~/.zshrc.my
+

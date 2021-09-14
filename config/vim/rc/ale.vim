@@ -1,4 +1,4 @@
-Plug 'dense-analysis/ale', { 'for': ['python', 'c', 'cpp', 'go', 'sh', 'java', 'cpp', 'yaml', 'markdown', 'json']}
+Plug 'dense-analysis/ale', { 'for': ['python', 'c', 'cpp', 'go', 'sh', 'java', 'cpp', 'yaml', 'markdown', 'json', 'cmake']}
 
 let g:ale_completion_delay = 500
 let g:ale_echo_delay = 20
@@ -16,12 +16,13 @@ let g:ale_linters = {
     \ 'xml': ['xmllint'],
     \ 'cpp': ['clang'],
     \ 'c': ['clang'],
+    \ 'cmake': ['cmakelint'],
     \ }
 "ALE can fix files with the ALEFix command.
 let g:ale_fixers = {
             \  '*': ['remove_trailing_lines', 'trim_whitespace'],
             "\ 'python': ['yapf', 'autopep8', 'autoimport', 'isort', 'black', 'add_blank_lines_for_python_control_statements'],
-	    \ 'python': ['autoimport', 'isort', 'add_blank_lines_for_python_control_statements', 'black',],
+	    \ 'python': ['autoimport', 'isort', 'add_blank_lines_for_python_control_statements','autoflake8', 'black',],
             \ 'java': ['google_java_format'],
             \ 'sh': ['shfmt'],
             "\ 'cpp': ['astyle', 'clang-format', 'clangtidy'],
@@ -29,6 +30,7 @@ let g:ale_fixers = {
             \ 'yaml': ['prettier'],
             \ 'markdown': ['prettier'],
             \ 'json': ['prettier'],
+            \ 'cmake': ['cmakeformat'],
             \ }
 noremap <F4> :ALEFix<CR>
 " 关闭保存时自动修复，防止文件太大时卡顿的问题
