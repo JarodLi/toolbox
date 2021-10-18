@@ -10,8 +10,8 @@ ADD pkgs/java/jdt-language-server-latest.tar.gz /opt/eclipse.jdt.ls/org.eclipse.
 
 RUN pacman -S maven tomcat9 --noconfirm
 
-RUN cd /opt &&  wget https://github.com/google/google-java-format/releases/download/google-java-format-1.9/google-java-format-1.9-all-deps.jar
-RUN echo "java -jar /opt/google-java-format-1.9-all-deps.jar -r \$@" > /usr/bin/google-java-format && chmod +x /usr/bin/google-java-format
+#RUN cd /opt &&  wget https://github.com/google/google-java-format/releases/download/google-java-format-1.9/google-java-format-1.9-all-deps.jar
+#RUN echo "java -jar /opt/google-java-format-1.9-all-deps.jar -r \$@" > /usr/bin/google-java-format && chmod +x /usr/bin/google-java-format
 
 #RUN cd /opt \
     #&& git clone https://github.com/eclipse/eclipse.jdt.ls.git 

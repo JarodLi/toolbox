@@ -1,4 +1,7 @@
 {
+	"coc.preferences.jumpCommand": "tab drop",
+	"coc.preferences.colorSupport": true,
+	"clangd.semanticHighlighting": true,
         "languageserver": {
                 "cmake": {
                         "command": "cmake-language-server",
