@@ -55,10 +55,10 @@ nmap <leader>lt :Leaderf bufTag --nowrap<CR>
 nmap <leader>llt :Leaderf bufTag --nowrap --recall<CR>
 "nmap <leader>lf :LeaderfFunction!<CR>
 "
-"搜索所有工程文件
-nmap <leader>lf :Leaderf file /usr1/code --nowrap --fullScreen<CR>
-nmap <leader>llf :Leaderf file /usr1/code --nowrap --recall --fullScreen<CR>
-"搜索当前工程文件
+"搜索所有工程文件(能够搜索出gitignore的文件)
+nmap <leader>lf :Leaderf file /usr1/code --nowrap --fullScreen --no-ignore<CR>
+nmap <leader>llf :Leaderf file /usr1/code --nowrap --recall --fullScreen --no-ignore<CR>
+"搜索当前工程文件(无法搜索出gitignore的文件)
 let g:Lf_ShortcutF = '<c-p>'
 
 " 添加--wd-mode=ac，指定从当前工程目录搜索, 参考: https://github.com/Yggdroot/LeaderF/issues/277
