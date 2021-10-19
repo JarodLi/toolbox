@@ -1,5 +1,5 @@
 {
-	"coc.preferences.jumpCommand": "tab drop",
+	"coc.preferences.jumpCommand": "pedit",
 	"coc.preferences.colorSupport": true,
 	"clangd.semanticHighlighting": true,
         "languageserver": {
@@ -14,7 +14,19 @@
                         "initializationOptions": {
                                 "buildDirectory": "build"
                         }
-                }
+                },
+		  "ccls":{
+              "command": "ccls",
+              "filetypes": ["c", "cpp", "c++"],
+              "rootPatterns": ["compile_commands.json"],
+              "initializationOptions": {
+                      "cache": {
+                              "directory": "/tmp/ccls"
+                      },
+                      "highlight": { "lsRanges": true }
+              }
+          }
+
         },
 	"cmake.cmakePath":"cmake",
 	"cmake.fromatter":"/usr/bin/cmake-format",
