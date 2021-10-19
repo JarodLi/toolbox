@@ -35,7 +35,7 @@ call defx#custom#column('mark', {
 syntax on
 filetype plugin indent on
 set number
-set rnu
+"set rnu
 set showmatch
 set encoding=utf-8
 set fencs=utf-8,GB18030,ucs-bom,default,latin1    " Sets the default encoding
