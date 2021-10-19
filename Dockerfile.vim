@@ -91,6 +91,7 @@ RUN pip install cmake-language-server \
 RUN pip install neovim-remote
 RUN pacman -S powerline-fonts --noconfirm
 
+RUN pacman -S ccls --noconfirm 
 COPY config/vim/vimrc /root/.vimrc
 COPY config/vim/rc /root/.vim/rc
 COPY config/vim/ycm_extra_conf.py /root/.vim/
