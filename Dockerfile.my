@@ -52,10 +52,11 @@ RUN pacman -S cling llvm nlohmann-json pkgconf --noconfirm \
   && make install \
   && cd /opt \
   && git clone https://github.com.cnpmjs.org/xtensor-stack/xtl.git \
+  && cd xtl \
   && cmake -D CMAKE_BUILD_TYPE=Release \
   && make install \
   && cd /opt \
-  && https://github.com.cnpmjs.org/jupyter-xeus/xeus.git \
+  && git clone https://github.com.cnpmjs.org/jupyter-xeus/xeus.git \
   && cd xeus \
   && cmake -D CMAKE_BUILD_TYPE=Release \
   && make && make install \
