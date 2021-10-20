@@ -61,7 +61,7 @@ RUN pacman -S cling llvm nlohmann-json pkgconf --noconfirm \
   && cmake -D CMAKE_BUILD_TYPE=Release \
   && make && make install \
   && cd /opt \
-  && https://github.com.cnpmjs.org/jupyter-xeus/xeus-cling.git \
+  && git clone https://github.com.cnpmjs.org/jupyter-xeus/xeus-cling.git \
   && cd xeus-cling \
   && cmake -D CMAKE_INSTALL_PREFIX=/usr/local/bin -D CMAKE_C_COMPILER=gcc -D CMAKE_CXX_COMPILER=g++ -D CMAKE_INSTALL_LIBDIR=/usr/lib -D DOWNLOAD_GTEST=ON \
   && make && make install
