@@ -37,36 +37,6 @@ RUN cd /opt/ \
 
 RUN pacman -S google-glog nginx jenkins --noconfirm
 
-RUN pacman -S cling llvm nlohmann-json pkgconf --noconfirm \
-  && cd /opt \
-  && git clone https://github.com.cnpmjs.org/zeromq/libzmq.git \
-  && cd libzmq \
-  && mkdir build \
-  && cd build \
-  && cmake -D WITH_PERF_TOOL=OFF -D ZMQ_BUILD_TESTS=OFF -D ENABLE_CPACK=OFF -D CMAKE_BUILD_TYPE=Release .. \
-  && make && make install \
-  && cd /opt \
-  && git clone https://github.com.cnpmjs.org/zeromq/cppzmq.git \
-  && cd cppzmq \
-  && cmake -D CMAKE_BUILD_TYPE=Release \
-  && make install \
-  && cd /opt \
-  && git clone https://github.com.cnpmjs.org/xtensor-stack/xtl.git \
-  && cd xtl \
-  && cmake -D CMAKE_BUILD_TYPE=Release \
-  && make install \
-  && cd /opt \
-  && git clone https://github.com.cnpmjs.org/jupyter-xeus/xeus.git \
-  && cd xeus \
-  && cmake -D CMAKE_BUILD_TYPE=Release \
-  && make && make install \
-  && cd /opt \
-  && git clone https://github.com.cnpmjs.org/jupyter-xeus/xeus-cling.git \
-  && cd xeus-cling \
-  && cmake -D CMAKE_INSTALL_PREFIX=/usr/local/bin -D CMAKE_C_COMPILER=gcc -D CMAKE_CXX_COMPILER=g++ -D CMAKE_INSTALL_LIBDIR=/usr/lib -D DOWNLOAD_GTEST=ON \
-  && make && make install
-
-
 # obsutil
 RUN wget https://obs-community.obs.cn-north-1.myhuaweicloud.com/obsutil/current/obsutil_linux_amd64.tar.gz -P /opt \
     && tar xzvf /opt/obsutil_linux_amd64.tar.gz -C /opt \
