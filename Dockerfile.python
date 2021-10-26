@@ -82,7 +82,9 @@ RUN rm -rf /usr/bin/python \
     && pip3 install scapy \
     && pip3 install psutil \
     && pip3 install flask_apscheduler \
-    && pip3 install gevent 
+    && pip3 install gevent \
+    && pip3 install kazoo \
+    && pip3 install grpcio-tools
 
 # jupyter
 RUN jupyter notebook --generate-config 
