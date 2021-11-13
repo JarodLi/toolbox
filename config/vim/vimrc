@@ -35,7 +35,7 @@ call defx#custom#column('mark', {
 syntax on
 filetype plugin indent on
 set number
-"set rnu
+set rnu
 set showmatch
 set encoding=utf-8
 set fencs=utf-8,GB18030,ucs-bom,default,latin1    " Sets the default encoding
@@ -90,7 +90,7 @@ colorscheme gruvbox
  \ set tabstop=4 |
  \ set softtabstop=4 |
  \ set shiftwidth=4 |
- \ set textwidth=79 |
+ "\ set textwidth=79 |
  \ set expandtab |
  \ set autoindent |
  \ set fileformat=unix |
@@ -106,7 +106,7 @@ colorscheme gruvbox
  \ set tabstop=2 |
  \ set softtabstop=2 |
  \ set shiftwidth=2 |
- \ set textwidth=79 |
+ "\ set textwidth=79 |
  \ set expandtab |
  \ set autoindent |
  \ set fileformat=unix |
