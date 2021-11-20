@@ -22,7 +22,7 @@ let g:ale_linters = {
 let g:ale_fixers = {
             \  '*': ['remove_trailing_lines', 'trim_whitespace'],
             "\ 'python': ['yapf', 'autopep8', 'autoimport', 'isort', 'black', 'add_blank_lines_for_python_control_statements'],
-	    \ 'python': ['autoimport', 'isort', 'add_blank_lines_for_python_control_statements','autoflake8', 'black',],
+	    \ 'python': ['autoimport', 'isort', 'add_blank_lines_for_python_control_statements','autoflake', 'black',],
             \ 'java': ['google_java_format'],
             \ 'sh': ['shfmt'],
             "\ 'cpp': ['astyle', 'clang-format', 'clangtidy'],

@@ -18,7 +18,8 @@ RUN pip3 install cppman \
   && pip3 install glances \
   && pip3 install ranger-fm \
   && pip3 install tldr \
-  && pip3 install thefuck
+  && pip3 install thefuck \
+  && pip3 install black
 
 RUN wget https://github.com/cheat/cheat/releases/download/4.2.2/cheat-linux-amd64.gz -P /opt/ \
   && cd /opt \
@@ -36,6 +37,7 @@ RUN cd /opt/ \
   && echo "source /root/.pm/pm.zsh" >> ~/.zshrc
 
 RUN pacman -S google-glog nginx jenkins tig shellcheck --noconfirm
+RUN systemctl enable nginx
 
 # obsutil
 RUN wget https://obs-community.obs.cn-north-1.myhuaweicloud.com/obsutil/current/obsutil_linux_amd64.tar.gz -P /opt \
