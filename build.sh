@@ -70,7 +70,7 @@ function pre_vim()
     git clone https://github.com.cnpmjs.org/sillybun/vim-async.git || exit 1
     # 支持异步运行python || exit 1
     git clone https://github.com.cnpmjs.org/skywind3000/asyncrun.vim.git || exit 1
-    https://github.com.cnpmjs.org/skywind3000/asynctasks.vim.git || exit 1
+    git clone https://github.com.cnpmjs.org/skywind3000/asynctasks.vim.git || exit 1
     git clone https://github.com.cnpmjs.org/prabirshrestha/async.vim.git || exit 1
     git clone https://github.com.cnpmjs.org/skywind3000/vim-preview.git || exit 1
     git clone https://github.com.cnpmjs.org/skywind3000/gutentags_plus.git || exit 1
