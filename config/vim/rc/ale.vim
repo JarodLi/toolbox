@@ -22,7 +22,7 @@ let g:ale_linters = {
 let g:ale_fixers = {
             \  '*': ['remove_trailing_lines', 'trim_whitespace'],
             "\ 'python': ['yapf', 'autopep8', 'autoimport', 'isort', 'black', 'add_blank_lines_for_python_control_statements'],
-	    \ 'python': ['autoimport', 'isort', 'add_blank_lines_for_python_control_statements','autoflake', 'black',],
+           \ 'python': ['autoimport', 'isort', 'autoflake', 'black', 'yapf'],
             \ 'java': ['google_java_format'],
             \ 'sh': ['shfmt'],
             "\ 'cpp': ['astyle', 'clang-format', 'clangtidy'],
@@ -39,7 +39,8 @@ let g:ale_fix_on_save = 0
 let g:ale_python_pylint_options = '--max-line-length=88 --rcfile=~/py_check/pylint-python3'
 "let g:ale_python_flake8_options = '--max-line-length=88 --select E122,E123,E126,E127,E128,E129,E265,E402,F821,W503,W504,W605,W606,E203,F841'
 let g:ale_python_flake8_options = '--max-line-length=88 --config=~/py_check/flake8_minimal_cis_tox_python3.ini'
-let g:ale_python_black_options = '--line-length=88 --skip-string-normalization'
+let g:ale_python_black_options = '--line-length=88 --skip-string-normalization' 
+let g:ale_python_autoflake_options = '--remove-all-unused-imports'
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
