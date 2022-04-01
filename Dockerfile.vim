@@ -78,7 +78,7 @@ COPY pkgs/vim/pkgs/coc /root/.config/coc
 COPY config/vim/coc-settings.json /root/.vim
 
 # python-mode doc功能依赖
-RUN pip install doq \
+RUN pip install doq  \
     && pacman -S pyright --noconfirm
 
 RUN pip install autoflake

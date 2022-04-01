@@ -6,7 +6,7 @@ RUN echo "source ~/.zshrc.my" >> ~/.zshrc
 
 # autojump
 RUN cd /opt \
-  && git clone https://github.com.cnpmjs.org/wting/autojump.git \
+  && git clone http://github.com/wting/autojump.git \
   && cd /opt/autojump \
   && export SHELL=zsh \
   && ./install.py \
@@ -21,7 +21,7 @@ RUN pip3 install cppman \
   && pip3 install thefuck \
   && pip3 install black
 
-RUN wget https://github.com/cheat/cheat/releases/download/4.2.2/cheat-linux-amd64.gz -P /opt/ \
+RUN wget http://github.com/cheat/cheat/releases/download/4.2.2/cheat-linux-amd64.gz -P /opt/ \
   && cd /opt \
   && gunzip cheat-linux-amd64.gz \
   && mv cheat-linux-amd64 /usr/local/bin/cheat \
@@ -29,14 +29,17 @@ RUN wget https://github.com/cheat/cheat/releases/download/4.2.2/cheat-linux-amd6
 COPY config/cheat /root/.config/cheat
 
 RUN cd /opt/ \
-  && git clone https://github.com.cnpmjs.org/Angelmmiguel/pm.git\
+  #&& git clone http://github.com/Angelmmiguel/pm.git\
+  && wget http://github.com/Angelmmiguel/pm/archive/refs/tags/v0.4.tar.gz \
+  && tar xzvf v0.4.tar.gz \
   && mkdir -p /root/.pm \
-  && cp /opt/pm/zsh/pm.zsh /root/.pm/ \
+  && cp /opt/pm-0.4/zsh/pm.zsh /root/.pm/ \
   && mkdir -p /root/.oh-my-zsh/custom/plugins/pm \
-  && cp /opt/pm/zsh/_pm /root/.oh-my-zsh/custom/plugins/pm/_pm \
+  && cp /opt/pm-0.4/zsh/_pm /root/.oh-my-zsh/custom/plugins/pm/_pm \
   && echo "source /root/.pm/pm.zsh" >> ~/.zshrc
 
-RUN pacman -S google-glog nginx jenkins tig shellcheck --noconfirm
+#RUN pacman -S google-glog nginx jenkins tig shellcheck --noconfirm
+RUN pacman -S google-glog nginx jenkins tig --noconfirm
 RUN systemctl enable nginx
 
 # obsutil

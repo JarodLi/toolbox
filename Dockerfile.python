@@ -14,7 +14,7 @@ ENV container docker
     #&& chmod +x /usr/local/bin/chpy2 \
     #&& /usr/local/bin/chpy2  \
     #&& mkdir -p  ~/.pip/ \
-    #&& echo -e "[global]\nindex-url = https://pypi.mirrors.ustc.edu.cn/simple/\n\n[install]\ntrusted-host = pypi.mirrors.ustc.edu.cn" > ~/.pip/pip.conf  \
+    #&& echo -e "[global]\nindex-url = http://mirrors.myhuaweicloud.com/pypi/web/simple\nformat=columns\n\n[install]\ntrusted-host = mirrors.myhuaweicloud.com" > ~/.pip/pip.conf  \
     #&& pip2 install cliff \
     #&& pip2 install crypto \
     #&& pip2 install ipython \ 
@@ -40,6 +40,9 @@ ENV container docker
 #ADD pkgs/python/python3-pacman-pkgs.tar.gz /opt
 #RUN rm -rf /usr/bin/python \
     #&& pacman -U /opt/python3-pacman-pkgs/* --noconfirm 
+
+RUN mkdir -p  ~/.pip/ \
+    && echo -e "[global]\nindex-url = http://mirrors.myhuaweicloud.com/pypi/web/simple\nformat=columns\n\n[install]\ntrusted-host = mirrors.myhuaweicloud.com" > ~/.pip/pip.conf  
 
 RUN rm -rf /usr/bin/python \
     && pacman -S python3 --noconfirm \
