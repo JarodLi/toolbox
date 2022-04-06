@@ -39,6 +39,10 @@ RUN cd /opt/ \
   && echo "source /root/.pm/pm.zsh" >> ~/.zshrc
 
 #RUN pacman -S google-glog nginx jenkins tig shellcheck --noconfirm
+RUN cd /opt && wget https://github.com/koalaman/shellcheck/releases/download/v0.8.0/shellcheck-v0.8.0.linux.x86_64.tar.xz  \
+  && tar xJvf shellcheck-v0.8.0.linux.x86_64.tar.xz \
+  && cp /opt/shellcheck-v0.8.0/shellcheck /usr/bin \
+  && cd - 
 RUN pacman -S google-glog nginx jenkins tig --noconfirm
 RUN systemctl enable nginx
 
