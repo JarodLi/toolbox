@@ -28,7 +28,7 @@ RUN mkdir -p /root/.vim/{autoload,bundle,rc} \
 # gtags for LeaderF and cscope, for vista
 # archlinux中，ctags已经被universal-ctags收编
 #RUN pacman -S universal-ctags --noconfirm \
-RUN pacman -S ctags --noconfirm \
+RUN pacman -S ctags \
     && pacman -S shellcheck \
     && pacman -S stylua \
     && pacman -S glow \
