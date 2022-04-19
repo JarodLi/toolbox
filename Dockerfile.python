@@ -1,46 +1,6 @@
 FROM tmux:latest
 ENV container docker
 
-# python2包下载失败，使用备份
-# remove py2 for libffi.so.7 not support
-#ADD pkgs/python/python2-pacman-pkgs.tar.gz /opt
-#RUN pacman -U /opt/python2-pacman-pkgs/* --noconfirm \
-
-##RUN pacman -S python2 --noconfirm \
-    ##&& pacman -S python2-setuptools --noconfirm \
-    ##&& pacman -S python2-wheel --noconfirm \
-    ##&& pacman -S python2-pip --noconfirm \
-    #&& echo -e "#! /bin/bash\nrm -rf /usr/bin/python\nln -s /usr/bin/python2 /usr/bin/python" > /usr/local/bin/chpy2 \
-    #&& chmod +x /usr/local/bin/chpy2 \
-    #&& /usr/local/bin/chpy2  \
-    #&& mkdir -p  ~/.pip/ \
-    #&& echo -e "[global]\nindex-url = http://mirrors.myhuaweicloud.com/pypi/web/simple\nformat=columns\n\n[install]\ntrusted-host = mirrors.myhuaweicloud.com" > ~/.pip/pip.conf  \
-    #&& pip2 install cliff \
-    #&& pip2 install crypto \
-    #&& pip2 install ipython \ 
-    #&& pip2 install numpy==1.15.1 \
-    #&& pip2 install pandas==0.20.3 \
-    #&& pip2 install openpyxl==2.5.4 \
-    #&& pip2 install IPy==0.83 \
-    #&& pip2 install Cython==0.28.4 \
-    #&& pip2 install PyInstaller==3.2.1  \
-    #&& pip2 install xlrd==1.1.0 \
-    #&& pip2 install xlwt==1.1.2 \
-    #&& pip2 install pycdlib==1.0.0 \ 
-    #&& pip2 install PyYAML==3.13 \
-    #&& pip2 install jinja2==2.7.3 \
-    #&& pip2 install pyping \
-    #&& pip2 install ecdsa \
-    #&& pip2 install ipdb \
-    #&& pip2 install pylint \
-    #&& pip2 install flake8 \
-    #&& pip2 install ipaddress 
-
-# python2包下载失败，使用备份
-#ADD pkgs/python/python3-pacman-pkgs.tar.gz /opt
-#RUN rm -rf /usr/bin/python \
-    #&& pacman -U /opt/python3-pacman-pkgs/* --noconfirm 
-
 RUN mkdir -p  ~/.pip/ \
     && echo -e "[global]\nindex-url = http://mirrors.myhuaweicloud.com/pypi/web/simple\nformat=columns\n\n[install]\ntrusted-host = mirrors.myhuaweicloud.com" > ~/.pip/pip.conf  
 
