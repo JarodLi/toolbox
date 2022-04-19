@@ -1,4 +1,4 @@
-FROM vim:latest
+FROM nvim:latest
 ENV container docker
 
 RUN touch ~/.zshrc.my
@@ -43,7 +43,7 @@ RUN cd /opt && wget https://github.com/koalaman/shellcheck/releases/download/v0.
   && tar xJvf shellcheck-v0.8.0.linux.x86_64.tar.xz \
   && cp /opt/shellcheck-v0.8.0/shellcheck /usr/bin \
   && cd - 
-RUN pacman -S google-glog nginx jenkins tig --noconfirm
+RUN pacman -S google-glog nginx jenkins tig kubectl --noconfirm
 RUN systemctl enable nginx
 
 # obsutil
