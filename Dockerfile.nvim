@@ -1,0 +1,17 @@
+FROM vim:latest
+
+RUN pacman -S neovim --noconfirm
+RUN rm -rf /usr/bin/vi \
+  && ln -s /usr/bin/nvim /usr/bin/vi
+
+RUN mkdir -p ~/.config \
+  && ln -s ~/.vim ~/.config/nvim \
+  && ln -s ~/.vimrc ~/.config/nvim/init.vim 
+
+COPY config/nvim/ftplugin /root/.config/nvim/
+COPY config/nvim/lua /root/.config/nvim/
+COPY config/nvim/init.lua /root/.config/nvim/
+
+ADD pkgs/nvim/lsp_servers.tar.gz /root/.local/share/nvim
+ADD pkgs/nvim/parser.tar.gz /root/.local/share/nvim/site/pack/packer/start/nvim-treesitter
+ADD pkgs/nvim/plugins/* /root/.local/share/nvim/site/pack/packer/start/
