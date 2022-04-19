@@ -2,23 +2,18 @@ FROM java:latest
 ENV container docker
 
 ADD pkgs/vim/pkgs/* /opt/
-RUN rm -rf /usr/lib/python3.9/site-packages/clang
-RUN pacman -S vim clang neovim --noconfirm
-RUN rm -rf /usr/bin/vi \
-  && ln -s /usr/bin/nvim /usr/bin/vi
+# RUN rm -rf /usr/lib/python3.9/site-packages/clang
+RUN pacman -S vim clang --noconfirm
+#RUN rm -rf /usr/bin/vi \
+  #&& ln -s /usr/bin/nvim /usr/bin/vi
 
 RUN mkdir -p /root/.vim/{autoload,bundle,rc} \
     && mv /opt/plug.vim ~/.vim/autoload/
 
-# nvim
-    #&& wget https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage \
 
-    #RUN cd /opt &&  chmod u+x nvim.appimage && ./nvim.appimage --appimage-extract && cp -fpr ./squashfs-root/usr/* /usr/\
-    RUN mkdir -p ~/.config \
-    && ln -s ~/.vim ~/.config/nvim \
-    && ln -s ~/.vimrc ~/.config/nvim/init.vim 
-    #&& rm -rf /opt/nvim.appimage \
-    #&& ln -s /usr/bin/vim /usr/bin/vi 
+#RUN mkdir -p ~/.config \
+    #&& ln -s ~/.vim ~/.config/nvim \
+    #&& ln -s ~/.vimrc ~/.config/nvim/init.vim 
 
 
 # 使用universal ctags进行前端符号分析定义，提供给gtags使用（GNU tags）
@@ -34,6 +29,10 @@ RUN mkdir -p /root/.vim/{autoload,bundle,rc} \
 # archlinux中，ctags已经被universal-ctags收编
 #RUN pacman -S universal-ctags --noconfirm \
 RUN pacman -S ctags --noconfirm \
+    && pacman -S shellcheck \
+    && pacman -S stylua \
+    && pacman -S glow \
+    && pacman -S uncrustify \
     && pacman -S global --noconfirm 
 
 # 使用pygments进行前端符号分析引用，提供给gtags使用（GNU tags）
@@ -94,4 +93,4 @@ RUN pacman -S powerline-fonts --noconfirm
 RUN pacman -S ccls --noconfirm 
 COPY config/vim/vimrc /root/.vimrc
 COPY config/vim/rc /root/.vim/rc
-COPY config/vim/ycm_extra_conf.py /root/.vim/
+# COPY config/vim/ycm_extra_conf.py /root/.vim/
