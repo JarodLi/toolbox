@@ -13,6 +13,8 @@ RUN pacman -S maven tomcat10 --noconfirm
 RUN cd /opt && wget https://github.com/google/google-java-format/releases/download/v1.15.0/google-java-format-1.15.0-all-deps.jar
 RUN echo "java -jar /opt/google-java-format-1.15-all-deps.jar -r \$@" > /usr/bin/google-java-format && chmod +x /usr/bin/google-java-format
 
+RUN cd /root/ && git clone https://github.com/SpencerPark/IJava.git && cd IJava && python3 install.py && cd -
+
 #RUN cd /opt \
     #&& git clone https://github.com/eclipse/eclipse.jdt.ls.git 
 
