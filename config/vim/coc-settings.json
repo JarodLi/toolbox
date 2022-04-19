@@ -75,5 +75,14 @@
                           "/root/.config/coc/kubernetes-json-schema/v1.18.1-standalone-strict/persistentvolumeclaim.json": "*pvc.yaml",
                           "/root/.config/coc/kubernetes-json-schema/v1.18.1-standalone-strict/storageclass.json": "*storageclass.yaml"
                   }
-          }
+          },
+	"java.configuration.runtimes": [
+		{
+			"name": "JavaSE-17",
+			"path": "/usr/lib/jvm/default-runtime",
+			"default": true
+		}
+	],
+
+	"java.home": "/usr/lib/jvm/default-runtime"
 }
