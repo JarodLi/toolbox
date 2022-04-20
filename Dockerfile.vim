@@ -28,12 +28,12 @@ RUN mkdir -p /root/.vim/{autoload,bundle,rc} \
 # gtags for LeaderF and cscope, for vista
 # archlinux中，ctags已经被universal-ctags收编
 #RUN pacman -S universal-ctags --noconfirm \
-RUN pacman -S ctags \
-    && pacman -S shellcheck \
-    && pacman -S stylua \
-    && pacman -S glow \
-    && pacman -S uncrustify \
-    && pacman -S global --noconfirm 
+RUN pacman -S ctags --noconfirm
+RUN pacman -S shellcheck --noconfirm
+RUN pacman -S stylua --noconfirm
+RUN pacman -S glow --noconfirm
+RUN pacman -S uncrustify --noconfirm
+RUN pacman -S global --noconfirm 
 
 # 使用pygments进行前端符号分析引用，提供给gtags使用（GNU tags）
 RUN pip3 install pygments
