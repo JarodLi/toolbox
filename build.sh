@@ -233,12 +233,12 @@ function main() {
 	obsutil cp my_${today}.tar obs://lijian-test && rm -rf my_${today}.tar
 }
 
-pre &&
+        pre &&
 	pre_tmux &&
 	pre_zsh &&
 	pre_fish &&
 	pre_c &&
 	pre_python &&
 	pre_vim &&
-  pre_nvim &&
+        pre_nvim &&
 	main
