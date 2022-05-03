@@ -9,3 +9,5 @@ COPY pkgs/fish/fish_share /root/.local/share/fish
 COPY pkgs/fish/omf_share /root/.local/share/omf
 COPY pkgs/fish/fish_config /root/.config/fish
 COPY pkgs/fish/omf_config /root/.config/omf
+
+COPY config/config.fish /root/.onfig/fish/config.fish
