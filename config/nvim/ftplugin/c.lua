@@ -1,6 +1,6 @@
-vim.bo.tabstop = 4
 vim.bo.shiftwidth = 4
 vim.bo.softtabstop = 4
+vim.bo.tabstop = 4
 -- >> << 时移动长度
 vim.o.shiftwidth = 4
 vim.bo.shiftwidth = 4
@@ -10,5 +10,3 @@ vim.bo.expandtab = true
 
 vim.o.autoindent = true
 vim.bo.autoindent = true
--- vim.opt.listchars:append("space:.")
--- vim.opt.listchars:append("eol:↴")

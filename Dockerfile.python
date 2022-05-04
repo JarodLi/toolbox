@@ -1,8 +1,8 @@
 FROM tmux:latest
 ENV container docker
 
-RUN mkdir -p  ~/.pip/ \
-    && echo -e "[global]\nindex-url = http://mirrors.myhuaweicloud.com/pypi/web/simple\nformat=columns\n\n[install]\ntrusted-host = mirrors.myhuaweicloud.com" > ~/.pip/pip.conf  
+#RUN mkdir -p  ~/.pip/ \
+    #&& echo -e "[global]\nindex-url = http://mirrors.myhuaweicloud.com/pypi/web/simple\nformat=columns\n\n[install]\ntrusted-host = mirrors.myhuaweicloud.com" > ~/.pip/pip.conf  
 
 RUN rm -rf /usr/bin/python \
     && pacman -S python3 --noconfirm \

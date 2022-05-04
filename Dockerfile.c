@@ -6,7 +6,7 @@ ENV container docker
     #&& pacman -S clang --noconfirm 
 
 
-RUN pacman -S lldb 
+#RUN pacman -S lldb 
 
 RUN cd /opt \
     && git clone https://github.com/alexmurray/cstyle.git \
