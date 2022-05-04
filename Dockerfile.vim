@@ -71,20 +71,20 @@ RUN cd /root/.vim/bundle/LanguageClient-neovim \
 # 安COC
 RUN cd /root/.vim/bundle/coc.nvim \
     && yarn install --frozen-lockfile
-RUN npm install -g dockerfile-language-server-nodejs
-RUN npm install -g prettier
+RUN npm install -g dockerfile-language-server-nodejs \
+  && npm install -g prettier
+
 COPY pkgs/vim/pkgs/coc /root/.config/coc
 COPY config/vim/coc-settings.json /root/.vim
 
 # python-mode doc功能依赖
 RUN pip install doq  \
-    && pacman -S pyright --noconfirm
-
-RUN pip install autoflake
-RUN pip install autoimport
-RUN pip install cmake-language-server \
-    && pip install cmakelang \
-    && pip install cmakelint
+  && pacman -S pyright --noconfirm \
+  && pip install autoflake \
+  && pip install autoimport \
+  && pip install cmake-language-server \
+  && pip install cmakelang \
+  && pip install cmakelint
 
 # for vim-terminal-help
 RUN pip install neovim-remote

@@ -1,11 +1,10 @@
 FROM nvim:latest
 ENV container docker
 
-RUN touch ~/.zshrc.my
-RUN echo "source ~/.zshrc.my" >> ~/.zshrc
-
+RUN touch ~/.zshrc.my \
+  && echo "source ~/.zshrc.my" >> ~/.zshrc \
 # autojump
-RUN cd /opt \
+  && cd /opt \
   && git clone http://github.com/wting/autojump.git \
   && cd /opt/autojump \
   && export SHELL=zsh \
@@ -26,6 +25,7 @@ RUN wget http://github.com/cheat/cheat/releases/download/4.2.2/cheat-linux-amd64
   && gunzip cheat-linux-amd64.gz \
   && mv cheat-linux-amd64 /usr/local/bin/cheat \
   && chmod +x /usr/local/bin/cheat 
+
 COPY config/cheat /root/.config/cheat
 
 RUN cd /opt/ \
@@ -38,18 +38,19 @@ RUN cd /opt/ \
   && cp /opt/pm-0.4/zsh/_pm /root/.oh-my-zsh/custom/plugins/pm/_pm \
   && echo "source /root/.pm/pm.zsh" >> ~/.zshrc
 
+COPY config/ansible.cfg /etc/ansible/ansible.cfg
+COPY config/nginx.conf /etc/nginx/nginx.conf
+
 #RUN pacman -S google-glog nginx jenkins tig shellcheck --noconfirm
 RUN cd /opt && wget https://github.com/koalaman/shellcheck/releases/download/v0.8.0/shellcheck-v0.8.0.linux.x86_64.tar.xz  \
   && tar xJvf shellcheck-v0.8.0.linux.x86_64.tar.xz \
   && cp /opt/shellcheck-v0.8.0/shellcheck /usr/bin \
-  && cd - 
-RUN pacman -S google-glog nginx jenkins tig kubectl --noconfirm
-RUN systemctl enable nginx
+  && cd - \
+  &&pacman -S google-glog nginx jenkins tig kubectl --noconfirm \
+  &&  systemctl enable nginx
 
 # obsutil
 RUN wget https://obs-community.obs.cn-north-1.myhuaweicloud.com/obsutil/current/obsutil_linux_amd64.tar.gz -P /opt \
     && tar xzvf /opt/obsutil_linux_amd64.tar.gz -C /opt \
     && cp /opt/obsutil_linux_amd64_*/obsutil /usr/bin \
     && rm -rf /opt/obsutil_linux_amd64*
-
-

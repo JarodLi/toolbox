@@ -21,4 +21,5 @@ RUN pacman -S wget zsh zsh-autosuggestions zsh-completions zsh-history-substring
 #COPY pkgs/zsh/zsh-syntax-highlighting /root/.oh-my-zsh/plugins/zsh-syntax-highlighting
 
 COPY config/zshrc /root/.zshrc
+COPY config/p10k.zsh /root/.p10k.zsh
 

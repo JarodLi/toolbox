@@ -1,10 +1,9 @@
 FROM vim:latest
 
-RUN pacman -S neovim --noconfirm
-RUN rm -rf /usr/bin/vi \
-  && ln -s /usr/bin/nvim /usr/bin/vi
-
-RUN mkdir -p ~/.config \
+RUN pacman -S neovim --noconfirm \
+  && rm -rf /usr/bin/vi \
+  && ln -s /usr/bin/nvim /usr/bin/vi \
+  && mkdir -p ~/.config \
   && ln -s ~/.vim ~/.config/nvim \
   && ln -s ~/.vimrc ~/.config/nvim/init.vim 
 
