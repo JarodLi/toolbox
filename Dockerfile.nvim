@@ -5,17 +5,21 @@ RUN pacman -S neovim --noconfirm \
   && ln -s /usr/bin/nvim /usr/bin/vi \
   && mkdir -p ~/.config \
   && ln -s ~/.vim ~/.config/nvim \
-  && ln -s ~/.vimrc ~/.config/nvim/init.vim 
+  && ln -s ~/.vimrc ~/.config/nvim/init1.vim 
 
-COPY config/nvim/ftplugin /root/.config/nvim/
-COPY config/nvim/lua /root/.config/nvim/
-COPY config/nvim/init.lua /root/.config/nvim/
+COPY config/nvim/ftplugin /root/.config/nvim/ftplugin
+COPY config/nvim/lua /root/.config/nvim/lua
+COPY config/nvim/init.lua /root/.config/nvim/init.lua
 
 ADD pkgs/nvim/lsp_servers.tar.gz /root/.local/share/nvim
+COPY pkgs/nvim/plugins /root/.local/share/nvim/site/pack/packer/start/
+ADD pkgs/nvim/java-debug.tar.gz /root/.local/share/nvim/site/pack/packer/start/
 ADD pkgs/nvim/parser.tar.gz /root/.local/share/nvim/site/pack/packer/start/nvim-treesitter
-COPY pkgs/nvim/plugins/* /root/.local/share/nvim/site/pack/packer/start/
-RUN cd /root/.local/share/nvim/site/pack/packer/start/ \
-  && git clone https://github.com/microsoft/java-debug.git \
-  && cd java-debug \
-  && ./mvnw clean install \
-  && cd -
+RUN cd /root/.local/share/nvim/site/pack/packer/start/cmp-tabnine \
+  && ./install.sh
+
+#RUN cd /root/.local/share/nvim/site/pack/packer/start/ \
+  #&& git clone https://github.com/microsoft/java-debug.git \
+  #&& cd java-debug \
+  #&& ./mvnw clean install \
+  #&& cd -

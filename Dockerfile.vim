@@ -28,12 +28,13 @@ RUN mkdir -p /root/.vim/{autoload,bundle,rc} \
 # gtags for LeaderF and cscope, for vista
 # archlinux中，ctags已经被universal-ctags收编
 #RUN pacman -S universal-ctags --noconfirm \
-RUN pacman -S ctags --noconfirm
-RUN pacman -S shellcheck --noconfirm
-RUN pacman -S stylua --noconfirm
-RUN pacman -S glow --noconfirm
-RUN pacman -S uncrustify --noconfirm
-RUN pacman -S global --noconfirm 
+RUN pacman -S ctags --noconfirm \
+#&& pacman -S shellcheck --noconfirm \
+  && pacman -S stylua --noconfirm \
+  && pacman -S glow --noconfirm \
+  && pacman -S uncrustify --noconfirm \
+  && pacman -S global --noconfirm  \
+  && pacman -S cmake make --noconfirm 
 
 # 使用pygments进行前端符号分析引用，提供给gtags使用（GNU tags）
 RUN pip3 install pygments
@@ -45,7 +46,6 @@ COPY pkgs/vim/vim-bundle /root/.vim/bundle/
 RUN cd /root/.vim/bundle/markdown-preview.nvim/app \
     && yarn install
 
-RUN pacman -S cmake make --noconfirm 
 ## YCM
 ##ADD YouCompleteMe.tar.gz /root/.vim/bundle
 #RUN cd /root/.vim/bundle/ \
@@ -62,7 +62,6 @@ RUN pacman -S cmake make --noconfirm
 
 # 安装bash的lsp server, shfmt
 RUN pacman -S npm shfmt bash-language-server --noconfirm 
-    #&& npm install -g bash-language-server
 
 # 安装LC
 RUN cd /root/.vim/bundle/LanguageClient-neovim \
@@ -84,13 +83,14 @@ RUN pip install doq  \
   && pip install autoimport \
   && pip install cmake-language-server \
   && pip install cmakelang \
-  && pip install cmakelint
+  && pip install cmakelint \
 
-# for vim-terminal-help
-RUN pip install neovim-remote
-RUN pacman -S powerline-fonts --noconfirm
+  # for vim-terminal-help
+  && pip install neovim-remote \
 
-RUN pacman -S ccls --noconfirm 
+  && pacman -S powerline-fonts --noconfirm \
+  && pacman -S ccls --noconfirm 
+
 COPY config/vim/vimrc /root/.vimrc
 COPY config/vim/rc /root/.vim/rc
 # COPY config/vim/ycm_extra_conf.py /root/.vim/

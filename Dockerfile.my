@@ -10,9 +10,9 @@ RUN touch ~/.zshrc.my \
   && export SHELL=zsh \
   && ./install.py \
   && echo "[[ -s /root/.autojump/etc/profile.d/autojump.sh ]] && source /root/.autojump/etc/profile.d/autojump.sh" >> /root/.zshrc \
-  && echo "autoload -U compinit && compinit -u" >> /root/.zshrc 
-
-RUN pip3 install cppman \
+  && echo "autoload -U compinit && compinit -u" >> /root/.zshrc  \
+ 
+  && pip3 install cppman \
   && pip3 install icdiff \
   && pip3 install glances \
   && pip3 install ranger-fm \
@@ -38,15 +38,14 @@ RUN cd /opt/ \
   && cp /opt/pm-0.4/zsh/_pm /root/.oh-my-zsh/custom/plugins/pm/_pm \
   && echo "source /root/.pm/pm.zsh" >> ~/.zshrc
 
-COPY config/ansible.cfg /etc/ansible/ansible.cfg
-COPY config/nginx.conf /etc/nginx/nginx.conf
 
-#RUN pacman -S google-glog nginx jenkins tig shellcheck --noconfirm
+#RUN pacman -S google-glog nginx tig shellcheck --noconfirm \
+  #&&  systemctl enable nginx
 RUN cd /opt && wget https://github.com/koalaman/shellcheck/releases/download/v0.8.0/shellcheck-v0.8.0.linux.x86_64.tar.xz  \
   && tar xJvf shellcheck-v0.8.0.linux.x86_64.tar.xz \
   && cp /opt/shellcheck-v0.8.0/shellcheck /usr/bin \
   && cd - \
-  &&pacman -S google-glog nginx jenkins tig kubectl --noconfirm \
+  &&pacman -S google-glog nginx tig kubectl --noconfirm \
   &&  systemctl enable nginx
 
 # obsutil
@@ -54,3 +53,6 @@ RUN wget https://obs-community.obs.cn-north-1.myhuaweicloud.com/obsutil/current/
     && tar xzvf /opt/obsutil_linux_amd64.tar.gz -C /opt \
     && cp /opt/obsutil_linux_amd64_*/obsutil /usr/bin \
     && rm -rf /opt/obsutil_linux_amd64*
+
+COPY config/ansible.cfg /etc/ansible/ansible.cfg
+COPY config/nginx.conf /etc/nginx/nginx.conf

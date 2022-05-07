@@ -29,7 +29,7 @@ vim.o.autoindent = true
 -- 设定自动缩进的策略为plugin
 vim.o.filetype="plugin"
 vim.bo.autoindent = true
-vim.o.smartindent = true
+-- vim.o.smartindent = true
 -- 搜索大小写不敏感，除非包含大写
 vim.o.ignorecase = true
 vim.o.smartcase = true
