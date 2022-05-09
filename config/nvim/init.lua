@@ -59,3 +59,25 @@ require("plugin-config.nvim-dap")
 require("plugin-config.nvim-dap-ui")
 require("plugin-config.nvim-dap-virtual-text")
 -- require("plugin-config.nvim-jdtls")
+require("plugin-config.minimap")
+
+function DEV_MODE() 
+       open_diagnose()
+       vim.wo.number = true
+       vim.wo.relativenumber = true
+       vim.notify("switch to develop mode")
+   end
+
+   function BROWSER_MODE()
+       close_diagnose()
+       vim.wo.number = true
+       vim.wo.relativenumber = false
+       vim.notify("switch to browser mode")
+   end
+
+   local map = vim.api.nvim_set_keymap
+   local opt = { noremap = true, silent = true }
+
+   map("n", "<leader>b", ":lua BROWSER_MODE()<CR>", opt)
+   map("n", "<leader>d", ":lua DEV_MODE()<CR>", opt)
+
