@@ -37,6 +37,19 @@ bufferline.setup({
 				highlight = "Directory",
 				text_align = "left",
 			},
+			{
+				filetype = "Outline",
+				text = "Outline",
+				highlight = "Directory",
+				text_align = "left",
+			},
+			{
+				filetype = "minimap",
+				text = "Minimap",
+				highlight = "Directory",
+				text_align = "left",
+			},
+
 		},
 		-- 使用 nvim 内置 LSP  后续课程会配置
 		diagnostics = false,
