@@ -128,6 +128,7 @@ function pre_nvim() {
 	git clone http://github.com/bps/vim-textobj-python || exit 1
 	git clone http://github.com/arkav/lualine-lsp-progress || exit 1
 	git clone http://github.com/nvim-telescope/telescope.nvim || exit 1
+	git clone http://github.com/nvim-telescope/telescope-project.nvim || exit 1
 	git clone http://github.com/nvim-lua/plenary.nvim || exit 1
 	git clone http://github.com/simrat39/symbols-outline.nvim || exit 1
 	git clone http://github.com/LinArcX/telescope-env.nvim || exit 1
@@ -172,7 +173,6 @@ function pre_nvim() {
 	git clone http://github.com/jose-elias-alvarez/null-ls.nvim || exit 1
 	git clone http://github.com/rcarriga/nvim-notify || exit 1
 	git clone http://github.com/folke/todo-comments.nvim || exit 1
-	git clone http://github.com/f-person/git-blame.nvim || exit 1
 	git clone http://github.com/tveskag/nvim-blame-line || exit 1
 	git clone http://github.com/kana/vim-textobj-function || exit 1
 	git clone http://github.com/rmagatti/goto-preview || exit 1
@@ -181,6 +181,9 @@ function pre_nvim() {
 	git clone http://github.com/ellisonleao/glow.nvim || exit 1
 	git clone http://github.com/leisiji/interestingwords.nvim || exit 1
 	git clone http://github.com/justinmk/vim-dirvish || exit 1
+	git clone http://github.com/mfussenegger/nvim-dap || exit 1
+	git clone http://github.com/theHamsta/nvim-dap-virtual-text || exit 1
+	git clone http://github.com/rcarriga/nvim-dap-ui || exit 1
 	cd -
 }
 
@@ -215,20 +218,21 @@ function pre_c() {
 }
 
 function main() {
+	docker images | grep none | awk '{print $3}' | xargs -I{} docker rmi {} -f
 	today=$(date "+%Y%m%d")
 	build_args="--no-cache"
 	docker build . -f Dockerfile.basic -t basic:latest --rm --no-cache || exit 1
 	docker build . -f Dockerfile.zsh -t zsh:latest --rm --no-cache || exit 1
-	docker build . -f Dockerfile.fish -t fish:latest --rm --no-cache || exit 1
 	docker build . -f Dockerfile.tmux -t tmux:latest --rm --no-cache || exit 1
 	docker build . -f Dockerfile.python -t python:latest --rm || exit 1
 	docker build . -f Dockerfile.c -t c:latest --rm --no-cache || exit 1
 	docker build . -f Dockerfile.java -t java:latest --rm --no-cache || exit 1
 	docker build . -f Dockerfile.vim -t vim:latest --rm --no-cache || exit 1
 	docker build . -f Dockerfile.nvim -t nvim:latest --rm --no-cache || exit 1
+	docker build . -f Dockerfile.fish -t fish:latest --rm --no-cache || exit 1
 	docker build . -f Dockerfile.my -t my:${today} --rm || exit 1
 	docker save my:${today} >my_${today}.tar
-	obsutil cp my_${today}.tar obs://lijian-test && rm -rf my_${today}.tar
+	obsutil cp my_${today}.tar obs://lijian-test1 && rm -rf my_${today}.tar
 }
 
         pre &&

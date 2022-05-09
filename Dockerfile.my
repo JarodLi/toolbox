@@ -1,4 +1,4 @@
-FROM nvim:latest
+FROM fish:latest
 ENV container docker
 
 RUN touch ~/.zshrc.my \

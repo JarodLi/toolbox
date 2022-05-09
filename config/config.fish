@@ -47,3 +47,5 @@ if test -f /root/.autojump/share/autojump/autojump.fish; . /root/.autojump/share
 function history
     builtin history --show-time='%F %T '
 end
+
+fish_vi_key_bindings
