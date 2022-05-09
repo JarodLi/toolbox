@@ -126,6 +126,8 @@ packer.startup(function(use)
 	use({ "rcarriga/nvim-dap-ui" })
 
 	use("mfussenegger/nvim-jdtls")
+	use("wfxr/minimap.vim")
+	use("psliwka/vim-smoothie")
 end)
 
 -- 实时生效配置
