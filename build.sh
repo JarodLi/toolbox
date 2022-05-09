@@ -184,6 +184,8 @@ function pre_nvim() {
 	git clone http://github.com/mfussenegger/nvim-dap || exit 1
 	git clone http://github.com/theHamsta/nvim-dap-virtual-text || exit 1
 	git clone http://github.com/rcarriga/nvim-dap-ui || exit 1
+	git clone http://github.com/wfxr/minimap.vim.git || exit 1
+	git clone http://github.com/psliwka/vim-smoothie.git || exit 1
 	cd -
 }
 
