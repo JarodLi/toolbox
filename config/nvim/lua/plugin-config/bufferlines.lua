@@ -88,6 +88,8 @@ map("n", "<A-6>", ":NvimTreeClose<CR>:SymbolsOutlineClose<CR>:BufferLineGoToBuff
 map("n", "<A-7>", ":NvimTreeClose<CR>:SymbolsOutlineClose<CR>:BufferLineGoToBuffer 7<CR>", opt)
 map("n", "<A-8>", ":NvimTreeClose<CR>:SymbolsOutlineClose<CR>:BufferLineGoToBuffer 8<CR>", opt)
 map("n", "<A-9>", ":NvimTreeClose<CR>:SymbolsOutlineClose<CR>:BufferLineGoToBuffer 9<CR>", opt)
+map("n", "<A-l>", ":NvimTreeClose<CR>:SymbolsOutlineClose<CR>:BufferLineGoToBuffer 9<CR>", opt)
+map("n", "<A-h>", ":NvimTreeClose<CR>:SymbolsOutlineClose<CR>:BufferLineGoToBuffer 9<CR>", opt)
 
 -- TODO: 切换tab时出现nvim崩溃问题，先把close nvim tree关闭
 -- map("n", "<A-1>", ":SymbolsOutlineClose<CR>:BufferLineGoToBuffer 1<CR>", opt)
