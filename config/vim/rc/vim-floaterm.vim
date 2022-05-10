@@ -1,7 +1,7 @@
 Plug 'voldikss/vim-floaterm'
 Plug 'voldikss/LeaderF-floaterm'
 
-let g:floaterm_keymap_new = '<Leader>ft'
+" let g:floaterm_keymap_new = '<Leader>ft'
 let g:floaterm_keymap_toggle = '<F12>'
 
 let g:floaterm_wintype = 'float'
