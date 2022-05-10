@@ -115,8 +115,8 @@ pluginKeys.nvimTreeList = {
 map("n", "<leader>ff", "<cmd>Telescope find_files theme=dropdown<CR>", opt)
 -- 查找文字
 map("n", "<leader>fg", "<cmd>Telescope live_grep theme=dropdown<CR>", opt)
--- 查找特殊符号
-map("n", "<leader>fb", "<cmd>Telescope buffers theme=dropdown<CR>", opt)
+-- 查找当前buffer内容
+map("n", "<leader>fb", "<cmd>Telescope current_buffer_fuzzy_find theme=dropdown<CR>", opt)
 -- 查找帮助文档
 map("n", "<leader>fh", "<cmd>Telescope help_tags theme=dropdown<CR>", opt)
 -- 查找最近打开的文件
