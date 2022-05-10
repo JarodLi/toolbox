@@ -60,6 +60,7 @@ require("plugin-config.nvim-dap-ui")
 require("plugin-config.nvim-dap-virtual-text")
 -- require("plugin-config.nvim-jdtls")
 require("plugin-config.minimap")
+require("plugin-config.vim-smoothie")
 
 function DEV_MODE() 
        open_diagnose()
