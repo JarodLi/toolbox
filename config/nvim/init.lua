@@ -63,6 +63,7 @@ require("plugin-config.minimap")
 require("plugin-config.vim-smoothie")
 require("plugin-config.accelerated-jk")
 require("plugin-config.vim-eft")
+require("plugin-config.toggleterm")
 
 function DEV_MODE() 
        open_diagnose()
