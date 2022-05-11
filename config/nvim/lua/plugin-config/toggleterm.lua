@@ -28,9 +28,14 @@ require("toggleterm").setup({
    local opt = { noremap = true, silent = true }
 
    map("n", "<F12>", ":ToggleTerm direction=float<CR>", opt)
-   map("n", "<leader><space>", ":ToggleTerm direction=horizontal<CR>", opt)
-   map("t", "<c-h>", "<C-\\><C-n><C-W>h", opt)
-   map("t", "<c-l>", "<C-\\><C-n><C-W>l", opt)
-   map("t", "<c-j>", "<C-\\><C-n><C-W>j", opt)
-   map("t", "<c-k>", "<C-\\><C-n><C-W>k", opt)
+ map("t", "<F12>", "<C-\\><C-n><C-W>l", opt)
+
+   map("n", "<tab><space>", ":ToggleTerm direction=horizontal<CR>", opt)
+   --  从term中退出
+   map("t", "<tab><space>", "<C-\\><C-n><C-W>k:ToggleTerm<CR>", opt)
+   map("t", "<tab>h", "<C-\\><C-n><C-W>h", opt)
+   map("t", "<tab>l", "<C-\\><C-n><C-W>l", opt)
+   map("t", "<tab>j", "<C-\\><C-n><C-W>j", opt)
+   map("t", "<tab>k", "<C-\\><C-n><C-W>k", opt)
    map("t", "<esc>", "<C-\\><C-n>", opt)
+
