@@ -1,0 +1,16 @@
+vim.cmd("xmap ; <Plug>(eft-repeat)")
+vim.cmd("omap ; <Plug>(eft-repeat)")
+
+vim.cmd("nmap f <Plug>(eft-f)")
+vim.cmd("xmap f <Plug>(eft-f)")
+vim.cmd("omap f <Plug>(eft-f)")
+vim.cmd("nmap F <Plug>(eft-F)")
+vim.cmd("xmap F <Plug>(eft-F)")
+vim.cmd("omap F <Plug>(eft-F)")
+
+vim.cmd("nmap t <Plug>(eft-t)")
+vim.cmd("xmap t <Plug>(eft-t)")
+vim.cmd("omap t <Plug>(eft-t)")
+vim.cmd("nmap T <Plug>(eft-T)")
+vim.cmd("xmap T <Plug>(eft-T)")
+vim.cmd("omap T <Plug>(eft-T)")
