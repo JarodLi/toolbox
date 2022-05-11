@@ -128,6 +128,8 @@ packer.startup(function(use)
 	use("mfussenegger/nvim-jdtls")
 	use("wfxr/minimap.vim")
 	use("psliwka/vim-smoothie")
+	use("rhysd/accelerated-jk")
+	use("hrsh7th/vim-eft")
 end)
 
 -- 实时生效配置
