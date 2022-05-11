@@ -130,6 +130,7 @@ packer.startup(function(use)
 	use("psliwka/vim-smoothie")
 	use("rhysd/accelerated-jk")
 	use("hrsh7th/vim-eft")
+	use("akinsho/toggleterm.nvim")
 end)
 
 -- 实时生效配置
