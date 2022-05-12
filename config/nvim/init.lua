@@ -64,6 +64,8 @@ require("plugin-config.vim-smoothie")
 require("plugin-config.accelerated-jk")
 require("plugin-config.vim-eft")
 require("plugin-config.toggleterm")
+require("nvim-ts-rainbow")
+
 
 function DEV_MODE() 
        open_diagnose()
