@@ -85,7 +85,6 @@ cmp.setup.cmdline(":", {
 	sources = cmp.config.sources({
 		{ name = "path" },
 	}, {
-		-- cmd中使用cmp补全无法使用tab，暂时注释掉
 	        { name = "cmdline" },
 	}),
 })
