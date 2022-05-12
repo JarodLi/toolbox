@@ -1,6 +1,6 @@
 FROM vim:latest
 
-RUN pacman -S neovim --noconfirm \
+RUN pacman -S neovim lazygit --noconfirm \
   && rm -rf /usr/bin/vi \
   && ln -s /usr/bin/nvim /usr/bin/vi \
   && mkdir -p ~/.config \
