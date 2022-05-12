@@ -124,6 +124,7 @@ pluginKeys.nvimTreeList = {
    -- 查找 marks 标记
    map("n", "<leader>fm", "<cmd>Telescope marks theme=dropdown<CR>", opt)
    map("n", "<leader>fs", "<cmd>Telescope treesitter<CR>", opt)
+   map("n", "<leader>fg", "<cmd>Telescope lsp_workspace_symbols<CR>", opt)
    vim.cmd("nmap <leader>ff :Telescope ")
 
    map("n", "<leader>fp", ":lua require'telescope'.extensions.project.project{}<CR>", opt)
