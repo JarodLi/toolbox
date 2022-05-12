@@ -65,6 +65,7 @@ require("plugin-config.accelerated-jk")
 require("plugin-config.vim-eft")
 require("plugin-config.toggleterm")
 require("nvim-ts-rainbow")
+require("plugin-config.yankv")
 
 
 function DEV_MODE() 
