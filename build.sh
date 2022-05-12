@@ -190,6 +190,8 @@ function pre_nvim() {
 	git clone http://github.com/rhysd/accelerated-jkt || exit 1
 	git clone http://github.com/hrsh7th/vim-eft || exit 1
 	git clone http://github.com/norcalli/nvim-colorizer.lua || exit 1	
+	git clone http://github.com/gbprod/yanky.nvim || exit 1	
+	git clone http://github.com/kdheepak/lazygit.nvim || exit 1	
 	
 	cd -
 }
