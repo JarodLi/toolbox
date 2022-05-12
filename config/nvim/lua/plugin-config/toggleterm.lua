@@ -39,3 +39,50 @@ require("toggleterm").setup({
    map("t", "<tab>k", "<C-\\><C-n><C-W>k", opt)
    map("t", "<esc>", "<C-\\><C-n>", opt)
 
+
+ local function inInsert()                                                                                                                         Thu 20:53
+   -- 删除 Esc 的映射                                            ).lazygit_toggle()<CR>", vim.keybinds.opts)
+   vim.keybinds.dgmap("t", "<Esc>")
+   end
+
+   local Toggleterm = require("toggleterm")
+   -- 新建终端
+   local Terminal = require("toggleterm.terminal").Terminal
+   -- 新建 lazygit 终端
+   local lazyGit = Terminal:new({
+   cmd = "lazygit",
+   hidden = true,
+   direction = "float",C-
+   float_opts = {
+   -- The border key is *almost* the same as 'nvim_open_win'
+   -- see :h nvim_open_win for details on borders however
+   -- the 'curved' border is a custom border type
+   -- not natively supported but implemented in this plugin.
+   -- border = 'single' | 'double' | 'shadow' | 'curved' | ... other options supported by win open
+   border = "curved",
+   width = 110,
+   height = 30,
+   -- winblend = 3,
+   },
+ inInsert()
+   -- lazygit 中 q 是退出
+   vim.keybinds.bmap(term.bufnr, "i", "q", "<cmd>close<CR>", vim.keybinds.opts)
+   end,
+   on_close = function()
+   -- 重新映射 Esc
+   vim.keybinds.gmap("t", "<Esc>", "<C-\\><C-n>", vim.keybinds.opts)
+   end,
+   })
+   -- 定义新的方法
+   -- Toggleterm.float_toggle = function()
+   -- floatTerm:toggle()
+   -- end
+   Toggleterm.lazygit_toggle = function()
+   lazyGit:toggle()
+   end
+
+   -- 打开lazy git 终端
+   vim.keybinds.gmap("n", "<F11>", "<cmd>lua require('toggleterm').lazygit_toggle()<CR>", vim.keybinds.opts)
+   map("t", "<F11>", "<C-\\><C-n><C-W>l", opt)
+
+
