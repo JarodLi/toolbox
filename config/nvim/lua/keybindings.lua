@@ -14,6 +14,9 @@ local map = vim.api.nvim_set_keymap
 -- 复用 opt 参数
 local opt = { noremap = true, silent = true }
 
+--折叠
+map("n", "<space>", "za", opt)
+
 -- windows 分屏快捷键
 map("n", "<TAB>|", ":vsp<CR>", opt)
 map("n", "<TAB>_", ":sp<CR>", opt)
