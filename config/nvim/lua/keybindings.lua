@@ -134,6 +134,7 @@ map("n", "<leader>fp", ":lua require'telescope'.extensions.project.project{}<CR>
 map("n", "<C-p>", ":Telescope find_files<CR>", opt)
 -- 全局搜索
 map("n", "<C-f>", ":Telescope live_grep<CR>", opt)
+map("n", "<A-f>", ":Telescope grep_string<CR>", opt)
 --map("n", "<leader>bf", ":Telescope buffers<CR>", opt)
 -- Telescope 列表中 插入模式快捷键
 pluginKeys.telescopeList = {
