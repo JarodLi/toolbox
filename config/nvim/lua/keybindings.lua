@@ -107,7 +107,8 @@ pluginKeys.nvimTreeList = {
 	{ key = "p", action = "paste" },
 	{ key = "s", action = "system_open" },
 	{ key = "-", action = "dir_up" },
-	{ key = "<leader>p", action = "preview" },
+	{ key = "`", action = "preview" },
+	{ key = "<Tab>", action = "" },
 }
 
 -- Telescope
