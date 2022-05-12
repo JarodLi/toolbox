@@ -116,13 +116,13 @@ pluginKeys.nvimTreeList = {
 
 -- Telescope
  -- 查找当前buffer内容
-   map("n", "<leader>fb", "<cmd>Telescope current_buffer_fuzzy_find theme=dropdown<CR>", opt)
+ map("n", "<leader>fb", "<cmd>Telescope current_buffer_fuzzy_find theme=ivy<CR>", opt)
    -- 查找帮助文档
    map("n", "<leader>fh", "<cmd>Telescope help_tags theme=dropdown<CR>", opt)
    -- 查找最近打开的文件
-   map("n", "<leader>fo", "<cmd>Telescope oldfiles theme=dropdown<CR>", opt)
+   map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", opt)
    -- 查找 marks 标记
-   map("n", "<leader>fm", "<cmd>Telescope marks theme=dropdown<CR>", opt)
+   map("n", "<leader>fm", "<cmd>Telescope marks<CR>", opt)
    map("n", "<leader>fs", "<cmd>Telescope treesitter<CR>", opt)
    map("n", "<leader>fg", "<cmd>Telescope lsp_workspace_symbols<CR>", opt)
    vim.cmd("nmap <leader>ff :Telescope ")
@@ -132,8 +132,9 @@ pluginKeys.nvimTreeList = {
    -- 查找文件
    map("n", "<C-p>", ":Telescope find_files<CR>", opt)
    -- 全局搜索
-   map("n", "<C-f>", ":Telescope live_grep<CR>", opt)
+   map("n", "<C-f>", ":Telescope live_grep theme=ivy<CR>", opt)
    map("n", "<A-f>", ":Telescope grep_string<CR>", opt)
+
 
 
 -- Telescope 列表中 插入模式快捷键
