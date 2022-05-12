@@ -131,6 +131,8 @@ packer.startup(function(use)
 	use("rhysd/accelerated-jk")
 	use("hrsh7th/vim-eft")
 	use("akinsho/toggleterm.nvim")
+	use("norcalli/nvim-colorizer.lua")
+	use("gbprod/yanky.nvim")
 end)
 
 -- 实时生效配置
