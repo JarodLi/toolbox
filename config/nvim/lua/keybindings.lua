@@ -303,4 +303,6 @@ map("i", "<F2>", '<cmd>lua require("renamer").rename()<cr>', { noremap = true, s
 map("n", "<leader>rn", '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
 map("v", "<leader>rn", '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
 
+map("n", "<leader>g", ":Gwrite<CR>", opt)
+
 return pluginKeys
