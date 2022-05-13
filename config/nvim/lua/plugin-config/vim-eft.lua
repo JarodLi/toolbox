@@ -1,5 +1,6 @@
-vim.cmd("xmap ; <Plug>(eft-repeat)")
-vim.cmd("omap ; <Plug>(eft-repeat)")
+-- vim.cmd("nmap ; <Plug>(eft-repeat)")
+-- vim.cmd("xmap ; <Plug>(eft-repeat)")
+-- vim.cmd("omap ; <Plug>(eft-repeat)")
 
 vim.cmd("nmap f <Plug>(eft-f)")
 vim.cmd("xmap f <Plug>(eft-f)")
