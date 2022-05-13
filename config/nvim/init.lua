@@ -66,7 +66,9 @@ require("plugin-config.vim-eft")
 require("plugin-config.toggleterm")
 require("nvim-ts-rainbow")
 require("plugin-config.yankv")
-
+require("plugin-config.nvim-spectre")
+require("plugin-config.undotree")
+require("plugin-config.which-key")
 
 function DEV_MODE() 
        open_diagnose()
