@@ -133,6 +133,16 @@ packer.startup(function(use)
 	use("akinsho/toggleterm.nvim")
 	use("norcalli/nvim-colorizer.lua")
 	use("gbprod/yanky.nvim")
+	use({                                                                                                                       
+	   "nvim-pack/nvim-spectre",
+	   requires = {
+	   "nvim-lua/plenary.nvim", -- Lua 开发模块
+	   "BurntSushi/ripgrep", -- 文字查找
+	   },
+	   })
+	use("mbbill/undotree")
+	use("folke/which-key.nvim")
+
 end)
 
 -- 实时生效配置
