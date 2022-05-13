@@ -86,6 +86,7 @@ end
 function COPY_MODE()
     close_diagnose()
     vim.cmd("IndentBlanklineDisable")
+    vim.cmd("set nolist")
     vim.notify("switch to copy mode")
 end
    local map = vim.api.nvim_set_keymap
