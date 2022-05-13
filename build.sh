@@ -192,6 +192,9 @@ function pre_nvim() {
 	git clone http://github.com/norcalli/nvim-colorizer.lua || exit 1	
 	git clone http://github.com/gbprod/yanky.nvim || exit 1	
 	git clone http://github.com/kdheepak/lazygit.nvim || exit 1	
+	git clone http://github.com/BurntSushi/ripgrep || exit 1	
+	git clone http://github.com/mbbill/undotree || exit 1	
+	git clone http://github.com/folke/which-key.nvim || exit 1	
 	
 	cd -
 }
