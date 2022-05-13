@@ -75,18 +75,24 @@ function DEV_MODE()
        vim.wo.number = true
        vim.wo.relativenumber = true
        vim.notify("switch to develop mode")
-   end
+end
 
-   function BROWSER_MODE()
+function BROWSER_MODE()
        close_diagnose()
        vim.wo.number = true
        vim.wo.relativenumber = false
        vim.notify("switch to browser mode")
-   end
-
+end
+function COPY_MODE()
+    close_diagnose()
+    vim.cmd("IndentBlanklineDisable")
+    vim.notify("switch to copy mode")
+end
    local map = vim.api.nvim_set_keymap
    local opt = { noremap = true, silent = true }
 
    map("n", "<leader>b", ":lua BROWSER_MODE()<CR>", opt)
    map("n", "<leader>d", ":lua DEV_MODE()<CR>", opt)
+-- 开启copy模式，可以按住alt，然后鼠标左键选择块，在windows上能直接粘贴
+map("n", "<leader>c", ":lua COPY_MODE()<CR>", opt)
 
