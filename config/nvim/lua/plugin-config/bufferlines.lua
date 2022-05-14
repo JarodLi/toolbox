@@ -85,7 +85,7 @@ map("n", "<A-,>", ":BufferLineMovePrev<CR>", opt)
 --"moll/vim-bbye"
 map("n", "<A-w>", ":Bdelete!<CR>", opt)
 map("n", "<A-p>", ":BufferLineTogglePin<CR>", opt)
-map("n", "<A-k>", ":BufferLinePick<CR>", opt)
+map("n", "<A-i>", ":BufferLinePick<CR>", opt)
 map("n", "<leader>bl", ":BufferLineCloseRight<CR>", opt)
 map("n", "<leader>bh", ":BufferLineCloseLeft<CR>", opt)
 map("n", "<A-o>", ":BufferLineCloseRight<CR>:BufferLineCloseLeft<CR>", opt)
