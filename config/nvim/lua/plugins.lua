@@ -142,6 +142,7 @@ packer.startup(function(use)
 	   })
 	use("mbbill/undotree")
 	use("folke/which-key.nvim")
+	use({ "michaelb/sniprun" })
 
 end)
 
