@@ -49,7 +49,12 @@ bufferline.setup({
 				highlight = "Directory",
 				text_align = "left",
 			},
-
+			{
+				filetype = "undotree",
+				text = "UndoTree",
+				highlight = "Directory",
+				text_align = "left",
+			},
 		},
 		-- 使用 nvim 内置 LSP  后续课程会配置
 		diagnostics = false,
@@ -77,8 +82,8 @@ local opt = { noremap = true, silent = true }
 
 -- bufferline
 -- 左右Tab切换
-map("n", "<A-h>", ":BufferLineCyclePrev<CR>", opt)
-map("n", "<A-l>", ":BufferLineCycleNext<CR>", opt)
+map("n", "<A-h>", ":NvimTreeClose<CR>:SymbolsOutlineClose<CR>:BufferLineCyclePrev<CR>", opt)
+map("n", "<A-l>", ":NvimTreeClose<CR>:SymbolsOutlineClose<CR>:BufferLineCycleNext<CR>", opt)
 map("n", "<A-.>", ":BufferLineMoveNext<CR>", opt)
 map("n", "<A-,>", ":BufferLineMovePrev<CR>", opt)
 -- 关闭
@@ -101,9 +106,16 @@ map("n", "<A-6>", ":NvimTreeClose<CR>:SymbolsOutlineClose<CR>:BufferLineGoToBuff
 map("n", "<A-7>", ":NvimTreeClose<CR>:SymbolsOutlineClose<CR>:BufferLineGoToBuffer 7<CR>", opt)
 map("n", "<A-8>", ":NvimTreeClose<CR>:SymbolsOutlineClose<CR>:BufferLineGoToBuffer 8<CR>", opt)
 map("n", "<A-9>", ":NvimTreeClose<CR>:SymbolsOutlineClose<CR>:BufferLineGoToBuffer 9<CR>", opt)
-map("n", "<A-l>", ":NvimTreeClose<CR>:SymbolsOutlineClose<CR>:BufferLineGoToBuffer 9<CR>", opt)
-map("n", "<A-h>", ":NvimTreeClose<CR>:SymbolsOutlineClose<CR>:BufferLineGoToBuffer 9<CR>", opt)
 
+map("i", "<A-1>", "<esc>:NvimTreeClose<CR>:SymbolsOutlineClose<CR>:BufferLineGoToBuffer 1<CR>", opt)
+map("i", "<A-2>", "<esc>:NvimTreeClose<CR>:SymbolsOutlineClose<CR>:BufferLineGoToBuffer 2<CR>", opt)
+map("i", "<A-3>", "<esc>:NvimTreeClose<CR>:SymbolsOutlineClose<CR>:BufferLineGoToBuffer 3<CR>", opt)
+map("i", "<A-4>", "<esc>:NvimTreeClose<CR>:SymbolsOutlineClose<CR>:BufferLineGoToBuffer 4<CR>", opt)
+map("i", "<A-5>", "<esc>:NvimTreeClose<CR>:SymbolsOutlineClose<CR>:BufferLineGoToBuffer 5<CR>", opt)
+map("i", "<A-6>", "<esc>:NvimTreeClose<CR>:SymbolsOutlineClose<CR>:BufferLineGoToBuffer 6<CR>", opt)
+map("i", "<A-7>", "<esc>:NvimTreeClose<CR>:SymbolsOutlineClose<CR>:BufferLineGoToBuffer 7<CR>", opt)
+map("i", "<A-8>", "<esc>:NvimTreeClose<CR>:SymbolsOutlineClose<CR>:BufferLineGoToBuffer 8<CR>", opt)
+map("i", "<A-9>", "<esc>:NvimTreeClose<CR>:SymbolsOutlineClose<CR>:BufferLineGoToBuffer 9<CR>", opt)
 -- TODO: 切换tab时出现nvim崩溃问题，先把close nvim tree关闭
 -- map("n", "<A-1>", ":SymbolsOutlineClose<CR>:BufferLineGoToBuffer 1<CR>", opt)
 -- map("n", "<A-2>", ":SymbolsOutlineClose<CR>:BufferLineGoToBuffer 2<CR>", opt)
