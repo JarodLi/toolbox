@@ -195,6 +195,7 @@ function pre_nvim() {
 	git clone http://github.com/BurntSushi/ripgrep || exit 1	
 	git clone http://github.com/mbbill/undotree || exit 1	
 	git clone http://github.com/folke/which-key.nvim || exit 1	
+	git clone http://github.com/folke/kassio/neoterm || exit 1	
 	
 	cd -
 }
