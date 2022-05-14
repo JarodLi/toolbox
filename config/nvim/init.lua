@@ -69,6 +69,7 @@ require("plugin-config.yankv")
 require("plugin-config.nvim-spectre")
 require("plugin-config.undotree")
 require("plugin-config.which-key")
+require("plugin-config.sniprun")
 
 function DEV_MODE() 
        open_diagnose()
