@@ -59,34 +59,34 @@ dapui.setup({
 		repl = "r",
 		toggle = "t",
 	},
-	sidebar = {
-		-- You can change the order of elements in the sidebar
-		elements = {
-			-- Provide as ID strings or tables with "id" and "size" keys
-			{
-				id = "scopes",
-				size = 0.25, -- Can be float or integer > 1
-			},
-			{ id = "breakpoints", size = 0.25 },
-			{ id = "stacks", size = 0.25 },
-			{ id = "watches", size = 00.25 },
-		},
-		size = 40,
-		position = "right", -- Can be "left", "right", "top", "bottom"
-	},
-	tray = {
-		elements = { "repl" },
-		size = 10,
-		position = "bottom", -- Can be "left", "right", "top", "bottom"
-	},
-	floating = {
-		max_height = 10, -- These can be integers or a float between 0 and 1.
-		max_width = 10, -- Floats will be treated as percentage of your screen.
-		border = "single", -- Border style. Can be "single", "double" or "rounded"
-		mappings = {
-			close = { "q", "<Esc>" },
-		},
-	},
+	 sidebar = {                                                                    
+	     -- You can change the order of elements in the sidebar
+	     elements = {
+		 -- Provide as ID strings or tables with "id" and "size" keys
+		 {
+		     id = "scopes",
+		     size = 0.40, -- Can be float or integer > 1
+		 },
+		 { id = "watches", size = 0.2 },
+		 { id = "stacks", size = 0.25 },
+		 { id = "breakpoints", size = 0.2 },
+	     },
+	     size = 45,
+	     position = "right", -- Can be "left", "right", "top", "bottom"
+	 },
+	 tray = {
+	     elements = { "repl" },
+	     size = 10,
+	     position = "bottom", -- Can be "left", "right", "top", "bottom"
+	 },
+	 floating = {  [2/4]
+	     max_height = 40, -- These can be integers or a float between 0 and 1.
+	     max_width = 40, -- Floats will be treated as percentage of your screen.
+	     border = "rounded", -- Border style. Can be "single", "double" or "rounded"
+	     mappings = {
+		 close = { "q", "<Esc>" },
+	     },
+	 },
 	windows = { indent = 1 },
 	render = {
 		max_type_length = nil, -- Can be integer or nil.
