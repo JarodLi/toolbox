@@ -15,7 +15,8 @@ lualine.setup({
     section_separators = { left = '', right = ''},
     -- https://github.com/ryanoasis/powerline-extra-symbols
     -- section_separators = { left = " ", right = "" },
-    disabled_filetypes = { "dapui_scopes", "dapui_watches", "dapui_stacks", "dapui_breakpoints" },
+    -- disabled_filetypes = { "dapui_scopes", "dapui_watches", "dapui_stacks", "dapui_breakpoints" },
+    disabled_filetypes = { "dashboard" },
     always_divide_middle = true,
     globalstatus = false,
   },
