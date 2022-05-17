@@ -68,7 +68,7 @@ dapui.setup({
 		     size = 0.40, -- Can be float or integer > 1
 		 },
 		 { id = "watches", size = 0.2 },
-		 { id = "stacks", size = 0.25 },
+		 { id = "stacks", size = 0.2 },
 		 { id = "breakpoints", size = 0.2 },
 	     },
 	     size = 45,
@@ -76,7 +76,7 @@ dapui.setup({
 	 },
 	 tray = {
 	     elements = { "repl" },
-	     size = 10,
+	     size = 8,
 	     position = "bottom", -- Can be "left", "right", "top", "bottom"
 	 },
 	 floating = {  [2/4]
