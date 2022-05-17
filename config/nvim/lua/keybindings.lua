@@ -81,8 +81,8 @@ map("n", "qq", ":q!<CR>", opt)
 map("n", "Q", ":qa!<CR>", opt)
 
 -- insert 模式下，跳到行首行尾
-map("i", "<C-h>", "<ESC>I", opt)
-map("i", "<C-l>", "<ESC>A", opt)
+map("i", "<A-h>", "<ESC>I", opt)
+map("i", "<A-l>", "<ESC>A", opt)
 
 -- 插件快捷键
 local pluginKeys = {}
