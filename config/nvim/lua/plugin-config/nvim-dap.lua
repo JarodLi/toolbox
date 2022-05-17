@@ -30,7 +30,7 @@ vim.keybinds.gmap(
     vim.keybinds.opts
 )
 -- 开启调试或到下一个断点处
-vim.keybinds.gmap("n", "<F5>", "<cmd>lua require'dap'.continue()<CR>", vim.keybinds.opts)
+vim.keybinds.gmap("n", "<F5>", "<cmd>lua require'dap'.continue()<CR>:DapVirtualTextEnable<CR>", vim.keybinds.opts)
 -- 单步进入执行（会进入函数内部，有回溯阶段）
 vim.keybinds.gmap("n", "<F6>", "<cmd>lua require'dap'.step_into()<CR>", vim.keybinds.opts)
 -- 单步跳过执行（不进入函数内部，无回溯阶段）
