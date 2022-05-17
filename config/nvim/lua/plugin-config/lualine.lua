@@ -58,3 +58,8 @@ lualine.setup({
   lualine_z = {}
 },
 })
+vim.cmd("autocmd FileType dap_scopes set statusline=")
+vim.cmd("autocmd FileType dap_watches set statusline=")
+vim.cmd("autocmd FileType dap_stacks set statusline=")
+vim.cmd("autocmd FileType dap_breakpoints set statusline=")
+vim.cmd("autocmd FileType dap-repl set statusline=")
