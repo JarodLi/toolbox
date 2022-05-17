@@ -11,7 +11,7 @@ require("lsp_signature").setup(
         -- 自动触发
         floating_window = false,
         -- 绑定按键
-        toggle_key = "<C-j>",
+        toggle_key = "<C-n>",
         -- 虚拟提示关闭
         hint_enable = false,
         -- 正在输入的参数将如何突出显示
