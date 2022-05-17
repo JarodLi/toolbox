@@ -13,7 +13,7 @@ require("lsp_signature").setup(
         -- 绑定按键
         toggle_key = "<C-n>",
         -- 虚拟提示关闭
-        hint_enable = false,
+        hint_enable = true,
         -- 正在输入的参数将如何突出显示
         hi_parameter = "LspSignatureActiveParameter"
     }
