@@ -64,7 +64,7 @@ packer.startup(function(use)
 		"arkav/lualine-lsp-progress",
 		-- ft = { "python", "java", "c", "cpp", "lua", "sh", "fish", "markdown" }
 	})
-	-- use({ "nvim-telescope/telescope-project.nvim" })
+	use({ "nvim-telescope/telescope-project.nvim" })
 	use({
 		"nvim-telescope/telescope.nvim",
 		requires = { "nvim-lua/plenary.nvim" },
