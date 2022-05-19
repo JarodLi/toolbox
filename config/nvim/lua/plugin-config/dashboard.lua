@@ -20,4 +20,4 @@ vim.g.dashboard_custom_header = {
     [[ ██║ ╚═╝ ██║███████╗███████╗██║     ╚██████╔╝ ]],
     [[ ╚═╝     ╚═╝╚══════╝╚══════╝╚═╝      ╚═════╝  ]],
 }
-vim.cmd("set laststatus=0")
+-- vim.cmd("autocmd FileType dashboard set laststatus=0")
