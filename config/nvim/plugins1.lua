@@ -52,7 +52,10 @@ packer.startup(function(use)
 	-- use 'feline-nvim/feline.nvim'
 	-- use({"vim-airline/vim-airline"})
 	-- use({"kdheepak/tabline.nvim"})
-	use({ "arkav/lualine-lsp-progress", ft = { "python", "java", "c", "cpp", "lua", "sh", "fish", "mark" } })
+	use({
+		"arkav/lualine-lsp-progress",
+		-- ft = { "python", "java", "c", "cpp", "lua", "sh", "fish", "mark" }
+	})
 	-- use({ "nvim-telescope/telescope-project.nvim" })
 	use({
 		"nvim-telescope/telescope.nvim",
@@ -87,14 +90,14 @@ packer.startup(function(use)
 		config = function()
 			require("plugin-config.nvim-lsp-installer")
 		end,
-		ft = { "python", "lua", "java", "c", "cpp", "markdown", "bash", "fish" },
+		-- ft = { "python", "lua", "java", "c", "cpp", "markdown", "bash", "fish" },
 	})
 	use({
 		"neovim/nvim-lspconfig",
 		config = function()
 			require("plugin-config.nvim-lspconfig")
 		end,
-		ft = { "python", "lua", "java", "c", "cpp", "markdown", "bash", "fish" },
+		-- ft = { "python", "lua", "java", "c", "cpp", "markdown", "bash", "fish" },
 	})
 	-- LSP UI 美化
 	use({
@@ -102,7 +105,7 @@ packer.startup(function(use)
 		config = function()
 			require("plugin-config.lspsaga")
 		end,
-		ft = { "python", "lua", "java", "c", "cpp", "markdown", "bash", "fish" },
+		-- ft = { "python", "lua", "java", "c", "cpp", "markdown", "bash", "fish" },
 	})
 
 	-- LSP 进度提示
@@ -111,7 +114,7 @@ packer.startup(function(use)
 		config = function()
 			require("plugin-config.fidget")
 		end,
-		ft = { "python", "lua", "java", "c", "cpp", "markdown", "bash", "fish" },
+		-- ft = { "python", "lua", "java", "c", "cpp", "markdown", "bash", "fish" },
 	})
 	-- 插入模式获得函数签名
 	use({
@@ -119,7 +122,7 @@ packer.startup(function(use)
 		config = function()
 			require("plugin-config.lsp_signature")
 		end,
-		ft = { "python", "lua", "java", "c", "cpp", "markdown", "bash", "fish" },
+		-- ft = { "python", "lua", "java", "c", "cpp", "markdown", "bash", "fish" },
 	})
 	-- 灯泡提示代码行为
 	use({
@@ -150,7 +153,7 @@ packer.startup(function(use)
 		config = function()
 			require("plugin-config.lsp-cmp")
 		end,
-		ft = { "python", "lua", "java", "c", "cpp", "markdown", "bash", "fish" },
+		-- ft = { "python", "lua", "java", "c", "cpp", "markdown", "bash", "fish" },
 	})
 
 	-- 扩展 LSP 诊断
