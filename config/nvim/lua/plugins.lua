@@ -331,7 +331,7 @@ packer.startup(function(use)
 		config = function()
 			require("plugin-config.nvim-dap")
 		end,
-		ft = { "python", "lua", "java", "c", "cpp", "markdown", "bash", "fish" },
+		-- ft = { "python", "lua", "java", "c", "cpp", "markdown", "bash", "fish" },
 	})
 	use({
 		"theHamsta/nvim-dap-virtual-text",
