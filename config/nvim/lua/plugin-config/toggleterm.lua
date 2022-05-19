@@ -56,7 +56,7 @@ local function inInsert()
 	vim.keybinds.dgmap("t", "<Esc>")
 end
 
-local Toggleterm = require("toggleterm")
+-- local Toggleterm = require("toggleterm")
 -- 新建终端
 local Terminal = require("toggleterm.terminal").Terminal
 -- 新建 lazygit 终端
