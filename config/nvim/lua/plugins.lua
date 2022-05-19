@@ -132,6 +132,13 @@ packer.startup(function(use)
 	use("hrsh7th/vim-eft")
 	use("akinsho/toggleterm.nvim")
 	use("norcalli/nvim-colorizer.lua")
+	use({
+	    "nvim-pack/nvim-spectre", 
+	    requires = {
+		"nvim-lua/plenary.nvim", -- Lua 开发模块
+		"BurntSushi/ripgrep", -- 文字查找
+	    },
+	})
 	use("gbprod/yanky.nvim")
 	use({                                                                                                                       
 	   "nvim-pack/nvim-spectre",
