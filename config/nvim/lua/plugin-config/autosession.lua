@@ -3,16 +3,16 @@
 -- 推荐设置
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
 
-require("auto-session").setup(
-    {
-        -- 自动加载最后保存的一次会话
-        auto_session_enable_last_session = true,
-        -- 保存会话时自动关闭 nvim-tree
-        -- 这是因为 nvim-tree 如果处于开启
-        -- 状态，会破坏会话的保存
-        pre_save_cmds = {"tabdo NvimTreeClose"}
-    }
-)
+require("auto-session").setup({
+	-- 自动加载最后保存的一次会话
+	auto_session_enable_last_session = false,
+	-- 保存会话时自动关闭 nvim-tree
+	-- 这是因为 nvim-tree 如果处于开启
+	-- 状态，会破坏会话的保存
+	pre_save_cmds = { "tabdo NvimTreeClose" },
+	auto_restore_enabled = false,
+	auto_session_enabled = false,
+})
 
 -- 在每次退出 neovim 时自动保存会话
 -- 其实该插件不加这个自动命令也能
