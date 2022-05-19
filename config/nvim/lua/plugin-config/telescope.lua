@@ -55,8 +55,6 @@ telescope.setup({
 
 		project = {
 			base_dirs = {
-				"/usr1/code/memartscc",
-				{ "/root/.vim/lua" },
 				-- {'/root/.config/nvim'},
 				-- {'~/dev/src3', max_depth = 4},
 				-- {path = '/root/.config/nvim'},
