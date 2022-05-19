@@ -79,7 +79,7 @@ dapui.setup({
 	     size = 8,
 	     position = "bottom", -- Can be "left", "right", "top", "bottom"
 	 },
-	 floating = {  [2/4]
+	 floating = {
 	     max_height = 40, -- These can be integers or a float between 0 and 1.
 	     max_width = 40, -- Floats will be treated as percentage of your screen.
 	     border = "rounded", -- Border style. Can be "single", "double" or "rounded"
