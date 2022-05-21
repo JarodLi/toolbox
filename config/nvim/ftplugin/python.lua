@@ -14,3 +14,12 @@ vim.bo.autoindent = true
 -- vim.o.smartindent = true
 -- vim.opt.listchars:append("space:.")
 -- vim.opt.listchars:append("eol:↴")
+
+function run()
+    local args = vim.fn.input("run args: ")
+    run_cmd = "!python3 % " .. args
+    vim.api.nvim_command(run_cmd)
+end
+local map = vim.api.nvim_set_keymap
+local opt = { noremap = true, silent = true }
+map("n", "<leader>r", ":lua run()<cr>", opt)
