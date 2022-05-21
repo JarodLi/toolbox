@@ -14,6 +14,8 @@ require("lsp_signature").setup(
         toggle_key = "<C-n>",
         -- 虚拟提示关闭
         hint_enable = true,
+        max_width = 120,
+        max_height = 20,
         -- 正在输入的参数将如何突出显示
         hi_parameter = "LspSignatureActiveParameter"
     }
