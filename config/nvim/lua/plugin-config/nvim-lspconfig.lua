@@ -52,3 +52,17 @@ close_diagnose()
 -- 复用 opt 参数
 -- local opt = { noremap = true, silent = true }
 -- map("v", "<leader>d", "<cmd>lua switch_diagnose()<CR>", opt)
+
+-- local map = vim.api.nvim_set_keymap
+-- 复用 opt 参数
+-- local opt = { noremap = true, silent = true }
+-- map("v", "<leader>d", "<cmd>lua switch_diagnose()<CR>", opt)
+
+-- 关闭buffer时从lsp中清理出去，避免index错误nvim崩溃
+function DetachBufferFromClients(bufnr)
+    local clients = vim.lsp.buf_get_clients(bufnr)
+    for client_id, _ in pairs(clients) do
+        vim.lsp.buf_detach_client(bufnr, client_id)
+    end
+end
+vim.cmd('autocmd BufDelete * lua DetachBufferFromClients(tonumber(vim.fn.expand("<abuf>")))')
