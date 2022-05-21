@@ -5,5 +5,5 @@ require("spellsitter").setup(
         enable = true
     }
 )
-vim.o.spell = false,
+vim.o.spell = false
 vim.o.spelllang = "en_us,cjk"
