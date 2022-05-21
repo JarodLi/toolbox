@@ -55,6 +55,6 @@ require("sniprun").setup({
 local map = vim.api.nvim_set_keymap
 -- 复用 opt 参数
 local opt = { noremap = true, silent = true }
-map("v", "<leader>rr", "<Plug>SnipRun", opt)
-map("n", "<leader>rr", "<Plug>SnipRun", opt)
-map("n", "<leader>rc", "<Plug>SnipClose", opt)
+-- map("v", "<leader>rr", "<Plug>SnipRun", opt)
+-- map("n", "<leader>rr", "<Plug>SnipRun", opt)
+-- map("n", "<leader>rc", "<Plug>SnipClose", opt)
