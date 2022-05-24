@@ -14,9 +14,8 @@ local map = vim.api.nvim_set_keymap
 -- 复用 opt 参数
 local opt = { noremap = true, silent = true }
 
---折叠
+-- 折叠
 map("n", "<space>", "za", opt)
-
 -- windows 分屏快捷键
 map("n", "<TAB>|", ":vsp<CR>", opt)
 map("n", "<TAB>_", ":sp<CR>", opt)
@@ -26,6 +25,8 @@ map("n", "<TAB>c", "<C-w>c", opt)
 map("n", "<TAB>o", "<C-w>o", opt)
 -- Alt + hjkl  窗口之间跳转
 map("n", "<TAB>h", "<C-w>h", opt)
+map("t", "<TAB>h", "<C-w>h", opt)
+map("i", "<TAB>h", "<C-w>h", opt)
 map("n", "<TAB>j", "<C-w>j", opt)
 map("n", "<TAB>k", "<C-w>k", opt)
 map("n", "<TAB>l", "<C-w>l", opt)
@@ -117,28 +118,27 @@ pluginKeys.nvimTreeList = {
 }
 
 -- Telescope
- -- 查找当前buffer内容
- map("n", "<leader>fb", "<cmd>Telescope current_buffer_fuzzy_find theme=ivy<CR>", opt)
-   -- 查找帮助文档
-   map("n", "<leader>fh", "<cmd>Telescope help_tags theme=dropdown<CR>", opt)
-   -- 查找最近打开的文件
-   map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", opt)
-   -- 查找 marks 标记
-   map("n", "<leader>fm", "<cmd>Telescope marks<CR>", opt)
-   map("n", "<leader>fs", "<cmd>Telescope treesitter<CR>", opt)
-   map("n", "<leader>fg", "<cmd>Telescope lsp_workspace_symbols<CR>", opt)
-   vim.cmd("nmap <leader>ff :Telescope ")
+-- 查找当前buffer内容
+map("n", "<leader>fb", "<cmd>Telescope current_buffer_fuzzy_find theme=ivy<CR>", opt)
+-- 查找帮助文档
+map("n", "<leader>fh", "<cmd>Telescope help_tags theme=dropdown<CR>", opt)
+-- 查找最近打开的文件
+map("n", "<leader>fo", "<cmd>Telescope oldfiles theme=ivy<CR>", opt)
+-- 查找 marks 标记
+map("n", "<leader>fm", "<cmd>Telescope marks<CR>", opt)
+map("n", "<leader>fs", "<cmd>Telescope treesitter<CR>", opt)
+map("n", "<leader>fg", "<cmd>Telescope lsp_workspace_symbols<CR>", opt)
+vim.cmd("nmap <leader>ff :Telescope ")
 
-   map("n", "<leader>fp", ":lua require'telescope'.extensions.project.project{}<CR>", opt)
+map("n", "<leader>fp", ":lua require'telescope'.extensions.project.project{}<CR>", opt)
 
-   -- 查找文件
-   map("n", "<C-p>", ":Telescope find_files<CR>", opt)
-   -- 全局搜索
-   map("n", "<C-f>", ":Telescope live_grep theme=ivy<CR>", opt)
-   map("n", "<A-f>", ":Telescope grep_string<CR>", opt)
+-- 查找文件
+map("n", "<C-p>", ":Telescope find_files theme=ivy<CR>", opt)
+-- 全局搜索
+map("n", "<C-f>", ":Telescope live_grep theme=ivy <CR>", opt)
+map("n", "<A-f>", ":Telescope grep_string theme=ivy<CR>", opt)
 
-
-
+--map("n", "<leader>bf", ":Telescope buffers<CR>", opt)
 -- Telescope 列表中 插入模式快捷键
 pluginKeys.telescopeList = {
 	i = {
@@ -232,15 +232,14 @@ pluginKeys.cmp = function(cmp)
 			i = cmp.mapping.abort(),
 			c = cmp.mapping.close(),
 		}),
-		
-		-- 确认
+
 		["<CR>"] = cmp.mapping.confirm({
 			select = true,
 			behavior = cmp.ConfirmBehavior.Replace,
 		}),
 		-- 如果窗口内容太多，可以滚动
-		["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-		["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
+		["<C-,>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+		["<C-.>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
 
 		-- 自定义代码段跳转到下一个参数
 		["<C-l>"] = cmp.mapping(function(_)
@@ -256,48 +255,47 @@ pluginKeys.cmp = function(cmp)
 			end
 		end, { "i", "s" }),
 
-		                ["<C-j>"] = cmp.mapping(function(fallback)
-                        if cmp.visible() then
-                                cmp.select_next_item()
-                        elseif vim.fn["vsnip#available"](1) == 1 then
-                                feedkey("<Plug>(vsnip-expand-or-jump)", "")
-                        elseif has_words_before() then
-                                cmp.complete()
-                        else
-                                fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
-                        end
-                end, { "i", "c", "s" }),
+		["<C-j>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_next_item()
+			elseif vim.fn["vsnip#available"](1) == 1 then
+				feedkey("<Plug>(vsnip-expand-or-jump)", "")
+			elseif has_words_before() then
+				cmp.complete()
+			else
+				fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+			end
+		end, { "i", "c", "s" }),
 
-                ["<C-k>"] = cmp.mapping(function()
-                        if cmp.visible() then
-                                cmp.select_prev_item()
-                        elseif vim.fn["vsnip#jumpable"](-1) == 1 then
-                                feedkey("<Plug>(vsnip-jump-prev)", "")
-                        end
-                end, { "i", "c", "s" }),
+		["<C-k>"] = cmp.mapping(function()
+			if cmp.visible() then
+				cmp.select_prev_item()
+			elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+				feedkey("<Plug>(vsnip-jump-prev)", "")
+			end
+		end, { "i", "c", "s" }),
 
-                -- Super Tab
-                ["<Tab>"] = cmp.mapping(function(fallback)
-                        if cmp.visible() then
-                                cmp.select_next_item()
-                        elseif vim.fn["vsnip#available"](1) == 1 then
-                                feedkey("<Plug>(vsnip-expand-or-jump)", "")
-                        elseif has_words_before() then
-                                cmp.complete()
-                        else
-                                fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
-                        end
-                end, { "i", "c", "s" }),
+		-- Super Tab
+		["<Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_next_item()
+			elseif vim.fn["vsnip#available"](1) == 1 then
+				feedkey("<Plug>(vsnip-expand-or-jump)", "")
+			elseif has_words_before() then
+				cmp.complete()
+			else
+				fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+			end
+		end, { "i", "c", "s" }),
+
 		["<S-Tab>"] = cmp.mapping(function()
-                        if cmp.visible() then
-                                cmp.select_prev_item()
-                        elseif vim.fn["vsnip#jumpable"](-1) == 1 then
-                                feedkey("<Plug>(vsnip-jump-prev)", "")
-                        end
-                end, { "i", "c", "s" }),
-                -- end of super Tab
-
-
+			if cmp.visible() then
+				cmp.select_prev_item()
+			elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+				feedkey("<Plug>(vsnip-jump-prev)", "")
+			end
+		end, { "i", "c", "s" }),
+		-- end of super Tab
 	}
 end
 
