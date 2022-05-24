@@ -34,9 +34,7 @@ nvim_tree.setup({
 		signcolumn = "yes",
 		mappings = {
 			custom_only = false,
-			list = {
-				-- user mappings go here
-			},
+			list = list_keys,
 		},
 	},
 	renderer = {
