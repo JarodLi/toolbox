@@ -339,7 +339,7 @@ packer.startup(function(use)
 		config = function()
 			require("plugin-config.nvim-dap-virtual-text")
 		end,
-		ft = { "python", "lua", "java", "c", "cpp", "markdown", "bash", "fish" },
+		-- ft = { "python", "lua", "java", "c", "cpp", "markdown", "bash", "fish" },
 	})
 	use({
 		"rcarriga/nvim-dap-ui",
@@ -347,7 +347,7 @@ packer.startup(function(use)
 		config = function()
 			require("plugin-config.nvim-dap-ui")
 		end,
-		ft = { "python", "lua", "java", "c", "cpp", "markdown", "bash", "fish" },
+		-- ft = { "python", "lua", "java", "c", "cpp", "markdown", "bash", "fish" },
 	})
 
 	use({
