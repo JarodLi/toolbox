@@ -112,6 +112,8 @@ pluginKeys.nvimTreeList = {
 	{ key = "-", action = "dir_up" },
 	{ key = "`", action = "preview" },
 	{ key = "<Tab>", action = "" },
+	{ key = "<C-l>", action = "toggle_file_info" },
+	{ key = "<C-k>", action = "" },
 }
 
 -- Telescope
