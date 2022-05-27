@@ -352,10 +352,10 @@ packer.startup(function(use)
 
 	use({
 		"mfussenegger/nvim-jdtls",
-		config = function()
-			require("plugin-config.nvim-jdtls")
-		end,
-		ft = { "java" },
+		--config = function()
+		--	require("plugin-config.nvim-jdtls")
+		--end,
+		--ft = { "java" },
 	})
 	use({
 		"wfxr/minimap.vim",
