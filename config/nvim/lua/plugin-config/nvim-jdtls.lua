@@ -1,5 +1,32 @@
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
 
+function tprint(tbl, indent)                                     
+    if not indent then                                           
+        indent = 0                                               
+    end
+    local toprint = string.rep(" ", indent) .. "{\r\n"
+    indent = indent + 2                                          
+    for k, v in pairs(tbl) do
+        toprint = toprint .. string.rep(" ", indent)
+        if type(k) == "number" then
+            toprint = toprint .. "[" .. k .. "] = "
+        elseif type(k) == "string" then
+            toprint = toprint .. k .. "= "
+        end
+        if type(v) == "number" then
+            toprint = toprint .. v .. ",\r\n"
+        elseif type(v) == "string" then
+            toprint = toprint .. '"' .. v .. '",\r\n'
+        elseif type(v) == "table" then
+            toprint = toprint .. tprint(v, indent + 2) .. ",\r\n"
+        else
+            toprint = toprint .. '"' .. tostring(v) .. '",\r\n'
+        end
+    end
+    toprint = toprint .. string.rep(" ", indent - 2) .. "}"
+    return toprint
+end
+
 on_attach_general = function(client, bufnr)                                     
     -- java使用jdtls自带的格式化工具                                            
     client.resolved_capabilities.document_formatting = true                     
@@ -122,3 +149,9 @@ local config = {
 require("jdtls").start_or_attach(config)
 
 -- require("jdtls.dap").setup_dap_main_class_configs()
+
+-- for debug
+function get_dap_info()
+    print(tprint(require("dap")["adapters"]))
+    print(tprint(require("dap")["configurations"]))
+end                                   
