@@ -432,6 +432,12 @@ packer.startup(function(use)
 	-- 		require("plugin-config.neoterm")
 	-- 	end,
 	-- })
+	use({
+	    "nvim-telescope/telescope-ui-select.nvim",
+	    config = function()
+		require("plugin-config.telescope-ui-select")
+	    end,
+	})
 end)
 
 -- 实时生效配置
