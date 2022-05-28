@@ -16,6 +16,7 @@ local servers = {
 	jsonls = require("lsp.json"),
 	lemminx = require("lsp.xml"),
 	yamlls = require("lsp.yaml"),
+	zk = require("lsp.markdown"),
 }
 -- 自动安装 Language Servers
 for name, server_options in pairs(servers) do
