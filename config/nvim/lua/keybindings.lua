@@ -165,10 +165,10 @@ pluginKeys.mapLSP = function(mapbuf)
 	-- 变量重命名（代替内置 LSP 的窗口，Lspsaga 让变量重命名更美观）
 	mapbuf("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opt)
 
-	-- code action
-	-- mapbuf("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
-	-- 显示代码可用操作（代替内置 LSP 的窗口，telescope 插件让代码行为更方便）
-	mapbuf("n", "<leader>ca", "<cmd>Telescope lsp_code_actions theme=dropdown<CR>", opt)
+	 -- code action telescope lsp_code_actions已经被remove掉，使用vim.lsp.buf.code_action配合telescope-ui-select使用
+	 mapbuf("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
+	 -- 显示代码可用操作（代替内置 LSP 的窗口，telescope 插件让代码行为更方便）
+	 -- mapbuf("n", "<leader>ca", "<cmd>Telescope lsp_code_actions theme=dropdown<CR>", opt)
 
 	-- go xx
 	-- mapbuf("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opt)
