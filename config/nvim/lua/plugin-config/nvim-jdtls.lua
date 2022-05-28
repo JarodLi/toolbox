@@ -1,7 +1,22 @@
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
 
+on_attach_general = function(client, bufnr)                                     
+    -- java使用jdtls自带的格式化工具                                            
+    client.resolved_capabilities.document_formatting = true                     
+    client.resolved_capabilities.document_range_formatting = true
+
+    local function buf_set_keymap(...)
+        vim.api.nvim_buf_set_keymap(bufnr, ...)
+    end
+    -- 绑定快捷键
+    require("keybindings").mapLSP(buf_set_keymap)
+    require("illuminate").on_attach(client)
+    -- 保存时自动格式化
+    --vim.cmd('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()')
+end
+
 local on_attach_java = function(client, bufnr)
-	-- on_attach_general(client, bufnr)
+	on_attach_general(client, bufnr)
 	require("jdtls").setup_dap({ hotcodereplace = "auto" })
 
 	require("jdtls.dap").setup_dap_main_class_configs()
