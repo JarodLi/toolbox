@@ -132,7 +132,7 @@ local config = {
 		bundles = {
 			-- "/usr1/docker/mount/java_check/com.microsoft.java.debug.plugin-0.36.0.jar",
 			vim.fn.glob(
-				"/usr2/docker/mount/java_check/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar"
+				"/usr1/docker/mount/java_check/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar"
 			),
 		},
 	},
