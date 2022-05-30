@@ -42,21 +42,32 @@ null_ls.setup({
 
 		-- frontend
 		formatting.prettier.with({ -- 只比默认配置少了 markdown
-			filetypes = {
-				"javascript",
-				"javascriptreact",
-				"typescript",
-				"typescriptreact",
-				"vue",
-				"css",
-				"scss",
-				"less",
-				"html",
-				"json",
-				"yaml",
-				"graphql",
-			},
-			prefer_local = "node_modules/.bin",
+		     filetypes = {
+			 "javascript",
+			 "javascriptreact",
+			 "typescript",                                                 
+			 "typescriptreact",
+			 "vue",
+			 "css",
+			 "scss",
+			 "less",
+			 "html",
+			 "json",
+			 -- "yaml",
+			 "graphql",
+			 -- "xml", -- xml使用lsp自带格式化
+		     },
+		     prefer_local = "node_modules/.bin",
+		     extra_args = function(params)
+			 if params.ft == "markdown" or params.ft == "vimwiki" then
+			     return { "--tab-width", "4" }
+			 elseif params.ft == "xml" then
+			     return { "--parser", "xml" }
+			 end
+		     end,
+		     condition = function()
+			 return vim.fn.executable("prettier") > 0
+		     end,
 		}),
 		-- formatting.fixjson,
 		-- formatting.black.with({ extra_args = { "--fast" } }),
