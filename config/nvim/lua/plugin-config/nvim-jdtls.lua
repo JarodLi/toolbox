@@ -48,11 +48,11 @@ local on_attach_java = function(client, bufnr)
 	require("jdtls").setup_dap({ hotcodereplace = "auto" })
 	--
 	require("jdtls.dap").setup_dap_main_class_configs({ verbose = true })
-	-- require("jdtls.setup").add_commands()
-	-- local dap = require("dap")
-	-- dap.repl.close()
+	require("jdtls.setup").add_commands()
+	local dap = require("dap")
+	dap.repl.close()
 	-- dap.defaults.fallback.terminal_win_cmd = "10split new"
-	-- dap.defaults.fallback.terminal_win_cmd = "tabnew"
+	dap.defaults.fallback.terminal_win_cmd = "tabnew"
 end
 
 local config = {
@@ -94,6 +94,8 @@ local config = {
 		-- See `data directory configuration` section in the README
 		"-data",
 		"/root/workspace/folder",
+		"--jvm-arg=-javaagent:/root/.local/share/nvim/lsp_servers/jdtls/lombok.jar",
+		-- "-Xbootclasspath/a=/root/.local/share/nvim/lsp_servers/jdtls/lombok.jar",
 	},
 
 	-- 💀
