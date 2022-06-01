@@ -438,7 +438,18 @@ packer.startup(function(use)
 		require("plugin-config.telescope-ui-select")
 	    end,
 	})
-end)
+	-- test，java工程在pom.xml所在目录下open； python要根据ut中能import来确定open目录
+	use({
+	    "vim-test/vim-test",
+	})
+
+	-- 仅python使用，需要执行UpdateRemotePlugins
+	use({
+	    "rcarriga/vim-ultest",
+	    requires = { "vim-test/vim-test" },
+	    run = ":UpdateRemotePlugins",
+	})
+	end)
 
 -- 实时生效配置
 vim.cmd([[
