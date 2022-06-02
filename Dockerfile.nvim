@@ -1,43 +1,41 @@
 FROM vim:latest
 
-RUN pacman -Sy --noconfirm
-RUN pacman -S neovim lazygit --noconfirm \
+RUN pacman -Sy --noconfirm \
+  && pacman -S neovim lazygit --noconfirm \
   && rm -rf /usr/bin/vi \
   && ln -s /usr/bin/nvim /usr/bin/vi \
   && mkdir -p ~/.config \
   && ln -s ~/.vim ~/.config/nvim \
-  && ln -s ~/.vimrc ~/.config/nvim/init1.vim 
+  && ln -s ~/.vimrc ~/.config/nvim/init1.vim  \
+  && mkdir -p /root/java
 
 COPY config/nvim/ftplugin /root/.config/nvim/ftplugin
 COPY config/nvim/lua /root/.config/nvim/lua
 COPY config/nvim/init.lua /root/.config/nvim/init.lua
 
-COPY config/py_check /root/
-COPY config/java_check /root/
+COPY config/py_check /root/py_check
+COPY config/java_check /root/java_check
 
 ADD pkgs/nvim/lsp_servers.tar.gz /root/.local/share/nvim
 #COPY pkgs/nvim/plugins /root/.local/share/nvim/site/pack/packer/start/
 ADD pkgs/nvim/packer.tar.gz /root/.local/share/nvim/site/pack/
-RUN mkdir -p /root/java
 ADD pkgs/nvim/java-debug.tar.gz /root/java/
 ADD pkgs/nvim/vscode-java-test.tar.gz /root/java/
 
 ADD pkgs/nvim/parser.tar.gz /root/.local/share/nvim/site/pack/packer/start/nvim-treesitter
 RUN cd /root/.local/share/nvim/site/pack/packer/start/cmp-tabnine \
-  && ./install.sh
-
-RUN wget https://github.com/wfxr/code-minimap/releases/download/v0.6.4/code-minimap-v0.6.4-x86_64-unknown-linux-gnu.tar.gz -P /opt \
+  && ./install.sh \
+  && wget https://github.com/wfxr/code-minimap/releases/download/v0.6.4/code-minimap-v0.6.4-x86_64-unknown-linux-gnu.tar.gz -P /opt \
   && cd /opt && tar xzvf code-minimap-v0.6.4-x86_64-unknown-linux-gnu.tar.gz \
   && cp code-minimap-v0.6.4-x86_64-unknown-linux-gnu/code-minimap /usr/bin \
-  && cd -
+  && cd - \
+  && wget https://github.com/checkstyle/checkstyle/releases/download/checkstyle-10.3/checkstyle-10.3-all.jar -P /root/java_check \
+  && echo "java -jar /root/java_check/checkstyle-10.3-all.jar" >> /root/java_check/checkstyle \
+  && chmod +x /root/java_check/checkstyle \
+  && ln -s /root/java_check/checkstyle /usr/bin/checkstyle
 
 #RUN cd /root/.local/share/nvim/site/pack/packer/start/ \
   #&& git clone https://github.com/microsoft/java-debug.git \
   #&& cd java-debug \
   #&& ./mvnw clean install \
   #&& cd -
-
-RUN wget https://github.com/checkstyle/checkstyle/releases/download/checkstyle-10.3/checkstyle-10.3-all.jar -P /root/java_check \
-  && echo "java -jar /root/java_check/checkstyle-10.3-all.jar" >> /root/java_check/checkstyle \
-  && chmod +x /root/java_check/checkstyle \
-  && ln -s /root/java_check/checkstyle /usr/bin/checkstyle
