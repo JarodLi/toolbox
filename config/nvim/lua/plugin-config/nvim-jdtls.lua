@@ -57,10 +57,10 @@ end
 local bundles = {
 	-- "/usr1/docker/mount/java_check/com.microsoft.java.debug.plugin-0.36.0.jar",
 	vim.fn.glob(
-		"/usr1/docker/mount/java_check/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar"
+		"/root/java/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar"
 	),
 }
-vim.list_extend(bundles, vim.split(vim.fn.glob("/usr1/docker/mount/java_check/vscode-java-test/server/*.jar"), "\n"))
+vim.list_extend(bundles, vim.split(vim.fn.glob("/root/java/vscode-java-test/server/*.jar"), "\n"))
 
 local config = {
 	-- The command that starts the language server
