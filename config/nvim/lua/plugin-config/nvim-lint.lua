@@ -16,14 +16,14 @@ require("lint").linters_by_ft = {
 require("lint.linters.pylint").args = {
 	"json",
 	"--rcfile=~/py_check/pylintrc-python3",
-	"--max-line-length=120",
+	-- "--max-line-length=120",
 }
 
 require("lint.linters.flake8").args = {
 	"--format=%(path)s:%(row)d:%(col)d:%(code)s:%(text)s",
 	"--no-show-source",
-	"--config=~/py_check/flake8_minimal_cis_tox_python3.ini",
-	"--max-line-length=120",
+	"--config=~/py_check/tox.ini",
+	-- "--max-line-length=120",
 	"-",
 }
 
