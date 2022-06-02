@@ -23,7 +23,7 @@ require("lint.linters.flake8").args = {
 	"--format=%(path)s:%(row)d:%(col)d:%(code)s:%(text)s",
 	"--no-show-source",
 	"--config=~/py_check/tox.ini",
-	-- "--max-line-length=120",
+	"--max-line-length=120",
 	"-",
 }
 
