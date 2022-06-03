@@ -276,7 +276,7 @@ packer.startup(function(use)
 		config = function()
 			require("plugin-config.null-ls")
 		end,
-		ft = { "python", "lua", "java", "c", "cpp", "markdown", "bash", "fish", "xml", "yaml" }, -- 即使使用lsp自带的格式化能力，也要加载null-ls
+		ft = { "python", "lua", "java", "c", "cpp", "markdown", "sh", "fish", "xml", "yaml" }, -- 即使使用lsp自带的格式化能力，也要加载null-ls
 	})
 
 	-- 精美弹窗
