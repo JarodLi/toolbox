@@ -91,6 +91,7 @@ local pluginKeys = {}
 -- nvim-tree
 -- alt + - 键打开关闭tree
 map("n", "<A-->", ":NvimTreeToggle<CR>", opt)
+map("n", "<A-0>", ":NvimTreeCollaps<CR>", opt)
 -- 列表快捷键
 pluginKeys.nvimTreeList = {
 	-- 打开文件或文件夹
