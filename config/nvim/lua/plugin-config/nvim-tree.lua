@@ -71,7 +71,7 @@ nvim_tree.setup({
 	},
 	filters = {
 		dotfiles = false,
-		custom = {},
+		custom = { "__pycache__", "build", "dist" },
 		exclude = {},
 	},
 	git = {
