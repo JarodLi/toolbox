@@ -5,7 +5,7 @@ local lsp_installer = require("nvim-lsp-installer")
 -- key 必须为下列网址列出的名称
 -- https://github.com/williamboman/nvim-lsp-installer#available-lsps
 local servers = {
-	sumneko_lua = require("lsp.lua"), -- lua/lsp/config/lua.lua
+	lua_ls = require("lsp.lua"), -- lua/lsp/config/lua.lua
 	-- pyright = require("lsp.python"),
 	pyright = require("lsp.python"),
 	-- jdtls = require("lsp.java"),
@@ -28,7 +28,7 @@ for name, server_options in pairs(servers) do
 		end
 		-- 使用 cmp_nvim_lsp 代替内置 omnifunc，获得更强的补全体验
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
-		capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+		capabilities = require("cmp_nvim_lsp").default_capabilities()
 		-- 代替内置 omnifunc
 		server_options.capabilities = capabilities
 	end
