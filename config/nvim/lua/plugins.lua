@@ -123,6 +123,7 @@ packer.startup(function(use)
 		config = function()
 			require("plugin-config.fidget")
 		end,
+        tag="legacy",
 		-- ft = { "python", "lua", "java", "c", "cpp", "markdown", "bash", "fish" },
 	})
 	-- 插入模式获得函数签名
@@ -445,7 +446,8 @@ packer.startup(function(use)
 
 	-- 仅python使用，需要执行UpdateRemotePlugins
 	use({
-	    "rcarriga/vim-ultest",
+	    -- "rcarriga/vim-ultest",
+	    "nvim-neotest/neotest",
 	    requires = { "vim-test/vim-test" },
 	    run = ":UpdateRemotePlugins",
 	})
