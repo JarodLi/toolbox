@@ -80,8 +80,9 @@ function pre_vim() {
 
 	#git clone --recursive https://github.com/ycm-core/YouCompleteMe || exit 1
 	# github.com/LooEv/A-bridge-to-YouCompleteMe
-	wget -O YouCompleteMe.tar.gz "http://106.53.74.248:8888/YouCompleteMe.tar.gz" || exit 1
-	tar xzvf YouCompleteMe.tar.gz
+	# 20230713 cannot download ycm, comment it
+	#wget -O YouCompleteMe.tar.gz "http://106.53.74.248:8888/YouCompleteMe.tar.gz" || exit 1
+	#tar xzvf YouCompleteMe.tar.gz
 	git clone https://github.com/mg979/vim-visual-multi.git || exit 1
 	git clone https://github.com/uguu-org/vim-matrix-screensaver.git || exit 1
 	git clone https://github.com/iamcco/markdown-preview.nvim.git || exit 1
@@ -186,8 +187,7 @@ function pre_nvim() {
 	git clone http://github.com/rcarriga/nvim-dap-ui || exit 1
 	git clone http://github.com/wfxr/minimap.vim.git || exit 1
 	git clone http://github.com/psliwka/vim-smoothie.git || exit 1
-	git clone http://github.com/psliwka/vim-smoothie.git || exit 1
-	git clone http://github.com/rhysd/accelerated-jkt || exit 1
+	git clone http://github.com/rhysd/accelerated-jk || exit 1
 	git clone http://github.com/hrsh7th/vim-eft || exit 1
 	git clone http://github.com/norcalli/nvim-colorizer.lua || exit 1	
 	git clone http://github.com/gbprod/yanky.nvim || exit 1	
@@ -195,7 +195,7 @@ function pre_nvim() {
 	git clone http://github.com/BurntSushi/ripgrep || exit 1	
 	git clone http://github.com/mbbill/undotree || exit 1	
 	git clone http://github.com/folke/which-key.nvim || exit 1	
-	git clone http://github.com/folke/kassio/neoterm || exit 1	
+	git clone http://github.com/kassio/neoterm || exit 1	
 	
 	cd -
 }
@@ -248,11 +248,11 @@ function main() {
 	obsutil cp my_${today}.tar obs://lijian-test1 && rm -rf my_${today}.tar
 }
 
-        pre &&
+    pre &&
 	pre_tmux 
 	pre_zsh &&
 	pre_c &&
 	pre_python &&
 	pre_vim &&
-        pre_nvim &&
+    pre_nvim &&
 	main
