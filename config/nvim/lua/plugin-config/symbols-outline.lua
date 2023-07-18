@@ -1,4 +1,11 @@
-vim.g.symbols_outline = {
+local status, symbols_outline = pcall(require, "symbols-outline")
+if not status then
+	vim.notify("没有找到 symbols-outline")
+	return
+end
+
+-- vim.g.symbols_outline = {
+symbols_outline.setup({
 	highlight_hovered_item = true,
 	show_guides = true,
 	auto_preview = false,
@@ -52,6 +59,7 @@ vim.g.symbols_outline = {
 		-- TypeParameter = { icon = "𝙏", hl = "TSParameter" },
 	},
 }
+)
 
 local map = vim.api.nvim_set_keymap
 -- 复用 opt 参数
