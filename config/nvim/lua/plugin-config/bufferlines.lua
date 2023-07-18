@@ -3,14 +3,31 @@ if not status then
 	vim.notify("没有找到 bufferline")
 	return
 end
+-- bufferline.setup{
+--     options = {
+-- 		indicator_icon = "▎",
+-- 		show_buffer_close_icon = false,
+-- 		-- buffer_close_icon = "",
+-- 		buffer_close_icon = "",
+-- 		always_show_bufferline = true,
+-- 		show_tab_indicators = true,
+-- 		modified_icon = "●",
+-- 		separator_style = "thin",
+-- 		left_trunc_marker = "",
+-- 		right_trunc_marker = "",
+-- 		-- 关闭 Tab 的命令，这里使用 moll/vim-bbye 的 :Bdelete 命令
+-- 		close_command = "Bdelete! %d",
+--
+--     }
+-- }
 
 -- bufferline 配置
 -- https://github.com/akinsho/bufferline.nvim#configuration
 bufferline.setup({
 	options = {
 		mode = "buffers",
-		-- mode = "tabs",
-		numbers = "none",
+-- 		mode = "tabs",
+-- 		numbers = "none",
 		indicator_icon = "▎",
 		show_buffer_close_icon = false,
 		-- buffer_close_icon = "",
@@ -72,9 +89,11 @@ bufferline.setup({
 			items = {
 				require("bufferline.groups").builtin.pinned:with({ icon = "" }),
 			},
-		},
+		}--[[ , ]]
 	},
-})
+}
+)
+--
 
 local map = vim.api.nvim_set_keymap
 -- 复用 opt 参数
