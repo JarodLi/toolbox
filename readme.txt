@@ -18,7 +18,9 @@ lualine_z = {}
 2. nvim-tree不可用
 解决方案：nvim-tree中配置变更较多，按照最新的要求删除不支持的配置即可。 变化较大的是keylist映射部分，要用on_attach方法重写（可以用nvim-tree提供的迁移命令生成代码）
 3. symbols-outline不可用
-解决方法：解决了nvim-tree的问题就可以使用了
+解决方法：1. 解决了nvim-tree的问题就可以使用了（能正常打开）
+2. 退回到老版本symbols-outline（解决symbolclose报错问题）
+新版本和老版本最大区别是，新版本使用setup()方式启动
 4. cscope不可用
 解决方案：nvim不再支持cscope，将gtags.vim，cscope.vim，gutentags.vim，gutentags_plus.vim删掉即可
 5. lsp不可用
