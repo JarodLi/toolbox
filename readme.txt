@@ -28,3 +28,5 @@ lualine_z = {}
 6. null-ls不可用
 1）修改formating接口： vim.lsp.buf.formatting() -> vim.lsp.buf.format()
 2) 默认支持了range formate能力，直接调用： map("v", "<leader>f", "<cmd>lua vim.lsp.buf.format()<CR>", opt)，删掉原来的format_range_operator
+7. nvim-lint不可用
+TODO：替换成老版本还是不行，怀疑和lsp相关。  注意：nvim-lint的包是放在opt下面，而不是start下面
