@@ -16,6 +16,7 @@ COPY config/nvim/init.lua /root/.config/nvim/init.lua
 COPY config/py_check /root/py_check
 COPY config/java_check /root/java_check
 
+# 开启nvim，会自动下载lsp_servers，通过lsp_install插件配置的
 ADD pkgs/nvim/lsp_servers.tar.gz /root/.local/share/nvim
 #COPY pkgs/nvim/plugins /root/.local/share/nvim/site/pack/packer/start/
 ADD pkgs/nvim/packer.tar.gz /root/.local/share/nvim/site/pack/
