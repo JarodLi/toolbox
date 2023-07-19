@@ -24,3 +24,7 @@ lualine_z = {}
 4. cscope不可用
 解决方案：nvim不再支持cscope，将gtags.vim，cscope.vim，gutentags.vim，gutentags_plus.vim删掉即可
 5. lsp不可用
+1) 更新所有lsp_server,   删除/root/.local/nvim/lsp_servers，启动nvim默认更新，也可以通过执行：LspInstall xxx安装，通过:LspInstallInfo查看安装进度
+6. null-ls不可用
+1）修改formating接口： vim.lsp.buf.formatting() -> vim.lsp.buf.format()
+2) 默认支持了range formate能力，直接调用： map("v", "<leader>f", "<cmd>lua vim.lsp.buf.format()<CR>", opt)，删掉原来的format_range_operator
