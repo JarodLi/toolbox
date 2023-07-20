@@ -42,6 +42,8 @@ vim.cmd([[
 au BufEnter * lua require('lint').try_lint()
 au BufWritePost * lua require('lint').try_lint()
 ]])
+-- 修改virtual_text显示格式，该方法在lspconfig中定义
+open_diagnose()
 
 default_severity = {
 	["error"] = vim.diagnostic.severity.ERROR,
