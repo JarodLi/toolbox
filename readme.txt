@@ -37,6 +37,7 @@ client.resolved_capabilities.document_range_formatting = false -> client.server_
 TODO：替换成老版本还是不行，怀疑和lsp相关。  注意：nvim-lint的包是放在opt下面，而不是start下面
 1) flake8执行失败原因： 参数改为/root/py_check/tox.ini不存在。  定位方式：可以手工执行lint命令，如果报错，是无法显示virtual_text的
 2）pylint失败原因：args里加上"-f"
+3) 调用在lspconfig中定义的open_diagnose()，否则显示格式未生效
 8. 补全信息图标显示错误
 替换成老版本的lskind
 9. lualine状态 lint图标显示错误
