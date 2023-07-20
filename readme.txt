@@ -32,5 +32,6 @@ lualine_z = {}
 1）修改lsp/xx.lua下面的所有文件，替换接口：
 client.resolved_capabilities.document_formatting = false -> client.server_capabilities.documentFormattingProvider = false
 client.resolved_capabilities.document_range_formatting = false -> client.server_capabilities.documentRangeFormattingProvider = false
+2)删掉 lua.lua和json.lua里的lua vim.lsp.buf.formatting_sync()
 7. nvim-lint不可用
 TODO：替换成老版本还是不行，怀疑和lsp相关。  注意：nvim-lint的包是放在opt下面，而不是start下面
