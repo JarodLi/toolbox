@@ -12,8 +12,8 @@ local opts = {
 	},
 	on_attach = function(client, bufnr)
 		-- java使用jdtls自带的格式化工具
-		client.resolved_capabilities.document_formatting = true
-		client.resolved_capabilities.document_range_formatting = true
+		client.server_capabilities.documentFormattingProvider = false     
+		client.server_capabilities.documentRangeFormattingProvider = false
 
 		local function buf_set_keymap(...)
 			vim.api.nvim_buf_set_keymap(bufnr, ...)
