@@ -4,8 +4,8 @@
 -- pip3 install pylint
 
 require("lint").linters_by_ft = {
-	-- python = { "pylint", "flake8" },
-	python = { "flake8" },
+	python = { "pylint", "flake8" },
+	-- python = { "flake8" },
 	sh = { "shellcheck" },
 	java = { "checkstyle" },
 	-- javascript = {"eslint"},
@@ -14,15 +14,16 @@ require("lint").linters_by_ft = {
 }
 
 require("lint.linters.pylint").args = {
+	"-f",
 	"json",
-	"--rcfile=~/py_check/pylintrc-python3",
+	"--rcfile=/root/py_check/pylintrc-python3",
 	-- "--max-line-length=120",
 }
 
 require("lint.linters.flake8").args = {
 	"--format=%(path)s:%(row)d:%(col)d:%(code)s:%(text)s",
 	"--no-show-source",
-	"--config=~/py_check/tox.ini",
+	"--config=/root/py_check/tox.ini",
 	"--max-line-length=120",
 	"-",
 }
