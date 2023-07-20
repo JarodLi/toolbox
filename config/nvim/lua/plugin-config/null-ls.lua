@@ -85,7 +85,10 @@ local map = vim.api.nvim_set_keymap
 local opt = { noremap = true, silent = true }
 
 -- map("v", "<leader>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opt)
-map("n", "<F4>", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
+-- map("n", "<F4>", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
+-- neovim 0.9 修改了format接口，支持range format               
+map("n", "<F4>", "<cmd>lua vim.lsp.buf.format()<CR>", opt)     
+map("v", "<leader>f", "<cmd>lua vim.lsp.buf.format()<CR>", opt)
 -- local vimp = require("vimp")
 -- vimp.vnoremap(opt, "<leader>f", vim.lsp.buf.range_formatting)
 
