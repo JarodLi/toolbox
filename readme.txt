@@ -35,3 +35,4 @@ client.resolved_capabilities.document_range_formatting = false -> client.server_
 2)删掉 lua.lua和json.lua里的lua vim.lsp.buf.formatting_sync()
 7. nvim-lint不可用
 TODO：替换成老版本还是不行，怀疑和lsp相关。  注意：nvim-lint的包是放在opt下面，而不是start下面
+1) flake8执行失败原因： /root/py_check/tox.ini不存在。  定位方式：可以手工执行lint命令，如果报错，是无法显示virtual_text的
