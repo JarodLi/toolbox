@@ -13,6 +13,7 @@ packer.startup(function(use)
 	use({
 		"glepnir/dashboard-nvim",
 		requires = { "rmagatti/auto-session" },
+        event = 'VimEnter',
 		config = function()
 			require("plugin-config.dashboard")
 		end,
@@ -25,10 +26,11 @@ packer.startup(function(use)
 	use({ "glepnir/zephyr-nvim" })
 	-- use("ahmedkhalf/project.nvim")
 	use("folke/tokyonight.nvim")
-	use({ "kyazdani42/nvim-web-devicons" })
+	use({ "nvim-tree/nvim-web-devicons" })
 	use({
 		"kyazdani42/nvim-tree.lua",
 		-- requires = "kyazdani42/nvim-web-devicons",
+		requires = "nvim-tree/nvim-web-devicons",
 		config = function()
 			require("plugin-config.nvim-tree")
 		end,
@@ -36,15 +38,8 @@ packer.startup(function(use)
 	-- use({"romgrk/barbar.nvim", requires = { "kyazdani42/nvim-web-devicons", "moll/vim-bbye" }})
 	use({ "moll/vim-bbye" })
 	use({
-		"akinsho/bufferline.nvim",
-		requires = { "kyazdani42/nvim-web-devicons", "moll/vim-bbye" },
-		config = function()
-			require("plugin-config.bufferlines")
-		end,
-	})
-	use({
 		"nvim-lualine/lualine.nvim",
-		requires = { "kyazdani42/nvim-web-devicons", "akinsho/bufferline.nvim" },
+		requires = { "nvim-tree/nvim-web-devicons", "akinsho/bufferline.nvim" },
 		config = function()
 			require("plugin-config.lualine")
 		end,
@@ -60,10 +55,10 @@ packer.startup(function(use)
 	-- use 'feline-nvim/feline.nvim'
 	-- use({"vim-airline/vim-airline"})
 	-- use({"kdheepak/tabline.nvim"})
-	use({
-		"arkav/lualine-lsp-progress",
-		-- ft = { "python", "java", "c", "cpp", "lua", "sh", "fish", "markdown" }
-	})
+	-- use({
+	-- 	"arkav/lualine-lsp-progress",
+	-- 	-- ft = { "python", "java", "c", "cpp", "lua", "sh", "fish", "markdown" }
+	-- })
 	use({ "nvim-telescope/telescope-project.nvim" })
 	use({
 		"nvim-telescope/telescope.nvim",
@@ -99,6 +94,15 @@ packer.startup(function(use)
 		end,
 		-- ft = { "python", "lua", "java", "c", "cpp", "markdown", "bash", "fish" },
 	})
+	-- 扩展 LSP 诊断
+	use({
+		"mfussenegger/nvim-lint",
+		config = function()
+			require("plugin-config.nvim-lint")
+		end,
+		ft = { "python", "lua", "java", "c", "cpp", "markdown", "bash", "fish" },
+	})
+
 	-- 注意lspconfig放到lspsaga后面加载，否则lint来源信息会丢失
 	use({
 		"neovim/nvim-lspconfig",
@@ -164,15 +168,6 @@ packer.startup(function(use)
 			require("plugin-config.lsp-cmp")
 		end,
 		-- ft = { "python", "lua", "java", "c", "cpp", "markdown", "bash", "fish" },
-	})
-
-	-- 扩展 LSP 诊断
-	use({
-		"mfussenegger/nvim-lint",
-		config = function()
-			require("plugin-config.nvim-lint")
-		end,
-		ft = { "python", "lua", "java", "c", "cpp", "markdown", "bash", "fish" },
 	})
 
 	use("fcying/telescope-ctags-outline.nvim")
@@ -450,6 +445,14 @@ packer.startup(function(use)
 	    "nvim-neotest/neotest",
 	    requires = { "vim-test/vim-test" },
 	    run = ":UpdateRemotePlugins",
+	})
+
+	use({
+		"akinsho/bufferline.nvim",
+		requires = { "nvim-tree/nvim-web-devicons", "moll/vim-bbye" },
+		config = function()
+			require("plugin-config.bufferlines")
+		end,
 	})
 	end)
 
