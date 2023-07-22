@@ -104,4 +104,4 @@ function format_range_operator()
 	vim.go.operatorfunc = "v:lua.op_func_formatting"
 	vim.api.nvim_feedkeys("g@", "n", false)
 end
-map("v", "<leader>f", "<cmd>lua format_range_operator()<CR>", opt)
+-- map("v", "<leader>f", "<cmd>lua format_range_operator()<CR>", opt)
