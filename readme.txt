@@ -39,6 +39,8 @@ TODO：替换成老版本还是不行，怀疑和lsp相关。  注意：nvim-lin
 2）pylint失败原因：args里加上"-f"
 3) 调用在lspconfig中定义的open_diagnose()，否则显示格式未生效
 8. 补全信息图标显示错误
-替换成老版本的lskind
+替换成老版本的lskind  --或许是因为nerd字体原因
 9. lualine状态 lint图标显示错误
 怀疑：需要更新最新的nvim-tree/nvim-web-devicons
+10. dashboard不显示
+dashboard更新版本，配置要重写
