@@ -133,8 +133,9 @@ vim.cmd("nmap <leader>ff :Telescope ")
 
 map("n", "<leader>fp", ":lua require'telescope'.extensions.project.project{}<CR>", opt)
 
--- 查找文件
-map("n", "<C-p>", ":Telescope find_files theme=ivy<CR>", opt)
+-- 查找文件(C-P不好用，换成C-s)
+map("n", "<C-s>", ":Telescope find_files theme=ivy<CR>", opt)
+-- map("n", "<C-p>", ":Telescope find_files theme=ivy<CR>", opt)
 -- 全局搜索
 map("n", "<C-f>", ":Telescope live_grep theme=ivy <CR>", opt)
 map("n", "<A-f>", ":Telescope grep_string theme=ivy<CR>", opt)
