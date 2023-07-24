@@ -42,5 +42,6 @@ TODO：替换成老版本还是不行，怀疑和lsp相关。  注意：nvim-lin
 替换成老版本的lskind  --或许是因为nerd字体原因
 9. lualine状态 lint图标显示错误
 怀疑：需要更新最新的nvim-tree/nvim-web-devicons
+--上述两个字体显示问题，通过安装nerd补丁解决（从https://github.com/ryanoasis/nerd-fonts/releases行的sourcecodepro补丁安装，在msys2上选择SauceCodePro Nerd Font Mono字体使用
 10. dashboard不显示
 dashboard更新版本，配置要重写
