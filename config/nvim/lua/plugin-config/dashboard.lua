@@ -86,7 +86,7 @@ db.setup({
         -- key = 'a',
         -- keymap = 'a',
         key_hl = 'Number',
-        action = 'edit ~/.local/share/nvim/project_nvim/project_history'
+        action = 'edit /root/.local/share/nvim/telescope-projects.txt'
       },
       {
         icon = ' ',
