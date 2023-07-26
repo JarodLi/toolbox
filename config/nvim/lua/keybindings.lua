@@ -307,4 +307,6 @@ map("v", "<leader>rn", '<cmd>lua require("renamer").rename()<cr>', { noremap = t
 
 map("n", "<leader>g", ":Gwrite<CR>", opt)
 
+vim.api.nvim_set_keymap("i", "<C-I>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+
 return pluginKeys
