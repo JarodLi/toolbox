@@ -454,6 +454,10 @@ packer.startup(function(use)
 			require("plugin-config.bufferlines")
 		end,
 	})
+	use({
+	    "github/copilot.vim",
+	})
+
 	end)
 
 -- 实时生效配置
