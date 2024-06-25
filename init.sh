@@ -8,27 +8,35 @@ ln -s "${MOUNT_DIR}"/gitconfig /root/.gitconfig
 rm -rf /root/.zshrc.my && ln -s "${MOUNT_DIR}"/zshrc.my /root/.zshrc.my
 rm -rf /root/.zsh_history && ln -s "${MOUNT_DIR}"/zsh_history /root/.zsh_history
 rm -rf /root/.tmux/resurrect && ln -s "${MOUNT_DIR}"/resurrect /root/.tmux/resurrect
-mkdir -p /root/.pip && ln -s "${MOUNT_DIR}"/pip.conf /root/.pip/pip.conf                                                                                        
-# FIXME                                                                                                                                                         
+mkdir -p /root/.pip && ln -s "${MOUNT_DIR}"/pip.conf /root/.pip/pip.conf
+# FIXME
 # rm -rf /root/.local/share/nvim
 # ln -s "${MOUNT_DIR}"/nvim /root/.local/share/nvim
-                                                                                                                                                                
-rm /root/.config/cheat/cheatsheets/personal                                                                                                                     
-ln -s "${MOUNT_DIR}"/cheat_personal /root/.config/cheat/cheatsheets/personal                                                                                    
-                                                                                                                                                                
-ln -s "${MOUNT_DIR}"/pm/projects /root/.pm/projects                                                                                                             
-ln -s "${MOUNT_DIR}"/ssh /root/.ssh                                                                                                                             
-rm -rf /root/.local/share/autojump && ln -s "${MOUNT_DIR}"/autojump /root/.local/share/autojump                                                                 
-ln -s "${MOUNT_DIR}"/ansible/hosts /etc/ansible/hosts                                                                                                           
+
+rm -rf /root/.config/cheat/cheatsheets/personal
+ln -s "${MOUNT_DIR}"/cheat_personal /root/.config/cheat/cheatsheets/personal
+
+ln -s "${MOUNT_DIR}"/pm/projects /root/.pm/projects
+rm -rf /root/.ssh && ln -s "${MOUNT_DIR}"/ssh /root/.ssh
+rm -rf /root/.local/share/autojump && ln -s "${MOUNT_DIR}"/autojump /root/.local/share/autojump
+ln -s "${MOUNT_DIR}"/ansible/hosts /etc/ansible/hosts
 ln -s "${MOUNT_DIR}"/vim_tasks.ini /root/.vim/tasks.ini
 ln -s "${MOUNT_DIR}"/kube/ /root/.kube
 mkdir -p /root/.local/share/fish/ && rm -rf /root/.local/share/fish/fish_history && ln -s "${MOUNT_DIR}"/fish/fish_history /root/.local/share/fish/fish_history
 ln -s "${MOUNT_DIR}"/TabNine /root/.local/share/TabNine
-mkdir -p /root/.m2 && ln -s "${MOUNT_DIR}"/settings.xml /root/.m2/settings.xml                                                                                  
-#rm -rf /etc/resolv.conf && ln -s "${MOUNT_DIR}"/resolv.conf /etc/resolv.conf                                                                                   
-ln -s "${MOUNT_DIR}"/telescope-projects.txt /root/.local/share/nvim/telescope-projects.txt                                                                      
-rm -rf /usr/bin/checkstyle && ln -s "${MOUNT_DIR}"/java_check/checkstyle /usr/bin/checkstyle                                                                    
-                                                                                                                                                                
+mkdir -p /root/.m2 && ln -s "${MOUNT_DIR}"/settings.xml /root/.m2/settings.xml
+#rm -rf /etc/resolv.conf && ln -s "${MOUNT_DIR}"/resolv.conf /etc/resolv.conf
+ln -s "${MOUNT_DIR}"/telescope-projects.txt /root/.local/share/nvim/telescope-projects.txt
+rm -rf /usr/bin/checkstyle && ln -s "${MOUNT_DIR}"/java_check/checkstyle /usr/bin/checkstyle
+
+# echo "export HTTPS_PROXY=http://l00534690:Osf%2F11%21%40@proxyhk.huawei.com:8080" >> /root/.config/fish/config.fish
+# echo "export HTTP_PROXY=http://l00534690:Osf%2F11%21%40@proxyhk.huawei.com:8080" >> /root/.config/fish/config.fish
+
+# 注释掉maven settings.xml中的maven-default-http-blocker配置： nvim  /opt/maven/conf/settings.xml
+# 安装cbu中心maven仓库证书
+cd /usr/lib/jvm/java-18-openjdk/lib/security || exit 1
+keytool -keystore cacerts -importcert -alias HWITEnterpriseCA1 -file /usr1/docker/mount/install_maven_ca/ca/HWITEnterpriseCA1.cer -storepass changeit
+keytool -keystore cacerts -importcert -alias HuaweiITRootCA -file /usr1/docker/mount/install_maven_ca/ca/HuaweiITRootCA.cer -storepass changeit
 cd - || exit 1
 
 pip3 install flask_restx
@@ -46,3 +54,6 @@ pip3 install pytest
 pip3 install faker
 pip3 install tenacity
 pip3 install coverage
+
+cp seccomponent-1.1.7-release.x86_64.rpm / && cd / && rpm2cpio seccomponent-1.1.7-release.x86_64.rpm | cpio -div && cd -
+echo "/usr/local/seccomponent/lib" > /etc/ld.so.conf.d/scc.conf && ldconfig
