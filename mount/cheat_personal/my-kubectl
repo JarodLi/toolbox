@@ -1,0 +1,41 @@
+# 创建pod/configmap/deployment
+$ kubectl create -f 我的配置文件
+
+# 检查pod状态
+$ kubectl get pods -l app=nginx
+
+# 删除pod
+ kubectl delete pod xxx
+
+# 查看api对象的细节
+kubectl describe pod xxx
+
+# 更新yml
+kubectl apply -f nginx-deployment.yaml
+
+# 进入容器
+kubectl exec -it nginx-deployment-5c678cfb6d-lg9lw -- /bin/bash
+
+# 删除deployment
+kubectl delete -f nginx-deployment.yaml
+
+# 进入容器
+kubectl exec -it nginx-deployment-5c678cfb6d-lg9lw -- /bin/bash
+
+# 打印环境变量
+kubectl exec envar-demo -- printenv
+
+# 删除configmap
+kubectl delete configmap xxx
+
+# 查询configmap的值
+kubectl get configmaps xxx -o yaml
+
+# 更新configmap的值
+kubectl edit configmap xxx
+
+# 查看node的label
+kubectl get nodes --show-labels
+
+# 给node添加label
+kubectl label nodes <your-node-name> disktype=ssd
