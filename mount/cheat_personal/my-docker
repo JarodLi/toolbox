@@ -1,0 +1,5 @@
+docker build . -f Dockerfile --network=host -t cc:latest --rm
+
+docker run -dit --name cc -v /etc/timezone:/etc/timezone:ro -v /etc/localtime:/etc/localtime:ro  cc:latest /bin/bash
+
+docker run -dit --name cc -e TZ=Asia/Shanghai  cc:latest /bin/bash
