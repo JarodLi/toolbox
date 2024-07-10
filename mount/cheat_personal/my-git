@@ -1,1 +1,61 @@
-hello
+git diff
+git diff:  此命令比较的是工作目录中当前文件和暂存区域快照之间的差异。 也就是修改之后还没有暂存起来的变化内容。
+git diff --staged 此命令将比对已暂存文件与最后一次提交的文件差异
+git stash 贮藏当前修改.   可以在一个分支上保存一个贮藏，切换到另一个分支，然后尝试重新应用这些修改
+git stash list
+git stash apply  或 git stash apply stash@{2}
+移除贮藏 git stash drop stash@{2}  或git stash pop
+从贮藏创建一个分支git stash branch <new branchname>
+清理工作目录
+git clen -df 用 git clean -f -d 命令来移除工作目录中所有未追踪的文件以及空的子目录。 -f 意味着“强制（force）”或“确定要移除”，使用它需要 Git 配置变量 clean.requireForce 没有显式设置为 false。
+git clean -df -n 如果只是想要看看它会做什么，可以使用 --dry-run 或 -n 选项来运行命令， 这意味着“做一次演习然后告诉你 将要 移除什么”。
+git clean -x 默认情况下，git clean 命令只会移除没有忽略的未跟踪文件。 任何与 .gitiignore 或其他忽略文件中的模式匹配的文件都不会被移除。 如果你也想要移除那些文件，例如为了做一次完全干净的构建而移除所有由构建生成的 .o 文件， 可以给 clean 命令增加一个 -x 选项。
+你需要谨慎地使用这个命令，因为它被设计为从工作目录中移除未被追踪的文件。 如果你改变主意了，你也不一定能找回来那些文件的内容。 一个更安全的选项是运行 git stash --all 来移除每一样东西并存放在栈中。
+恢复某个已经push到远端分支的文件
+git checkout commitid filename。  commitid为删除该文件的commit上一次的id
+丢弃工作区的所有修改   git checkout .
+
+# 强制用远端分支覆盖本地分支
+git fetch --all
+git reset --hard origin/master
+git pull
+
+# 回退已经commit到本地的修改(将修改保留在工作区)
+git reset --soft HEAD^
+
+# 回退已经commit到本地的修改(丢弃修改)
+git reset --hard HEAD^
+
+# 使用git rebase合并提交。
+在push之前，使用git rebase -i  [startpoint]  [endpoint] 合并
+rebase结束后如果进入一个临时分支，先切出来，然后执行git branch aaa 0b003f7创建一个新分支(aaa)
+删除远端分支, 用新分支强行覆盖远端 git push origin aaa:l00534690_xxx
+
+# 删除远端分支
+git push origin --delete l00534690_sidecar
+
+# 丢弃当前工作区的修改，保持和本机分支一致
+git reset --hard HEAD
+
+# 设置git log输出格式
+git log --pretty=format:"%h - %an, %ar : %s"
+
+# git blame <file> 来定位代码的最后一次修改
+git blame -L 10,12 package.json
+git log -p -L 10,12:package.json
+
+# 清除远程跟踪分支
+git remote prune origin --dry-run
+git remote prune origin
+
+# 关联本地分支和远端分支
+git branch --set-upstream-to=origin/develop develop
+
+# git fork方式
+1. 配置remote，指向上游仓库  
+git remote add source https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git
+
+git remote -v
+2. 更新代码
+git fetch source
+git rebase source/master
