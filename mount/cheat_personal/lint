@@ -1,0 +1,6 @@
+# flake8
+flake8 --config=/root/py_check/flake8_minimal_cis_tox_python3.ini  --exclude=test --statistics --output-file=result.txt --tee --count .
+
+# pylint
+pylint  --rcfile=/root/py_check/pylintrc-python3 cc_sidecar
+
