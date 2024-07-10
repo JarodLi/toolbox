@@ -1,0 +1,63 @@
+HISTSIZE=100000000
+SAVEHIST=100000000
+set -o vi
+alias cdcode='cd /usr1/code/'
+alias cdoj='cd /usr1/code/oj'
+alias cdobsrun='cd /usr1/code/toolkit/src/obs_run/obs_run'
+alias cdpreinstall='cd /usr1/code/toolkit/src/obs_run/preinstall'
+alias cdoam='cd /usr1/code/oam-v1'
+alias cdoamsrc='cd /usr1/code/oam-v1/src'
+alias cdsysconfig='cd /usr1/code/oam-v1/Deploy/oam/packages/sysconfig'
+alias cdsftp='cd /usr1/code/obs_sftp'
+alias vi='vim'
+alias cdrepo='cd /usr2/euleros/repo'
+alias cd2.8='cd /usr2/euleros/euleros2.8'
+alias cd2.5='cd /usr2/euleros/euleros2.5'
+alias cd2.3='cd /usr2/euleros/euleros2.3'
+alias cd2.2='cd /usr2/euleros/euleros2.2'
+alias cdpy='cd /usr/lib/python3.8'
+alias cdnet='cd /usr1/code/oam-v1/src/netmgr'
+
+# obsutil config -i=Z2IGH4RTVIZSY6OIKXJH -k=nXUgCG8kTvrEF6QURlDb06cRLJMEQG1LThSxN77O -e obs.cn-north-1.myhuaweicloud.com
+alias cdoamu='cd /usr1/code/oam-v1/src/unified-manager/src/main/java/com/huawei/dfv/oam/unified'
+alias cdoamf='cd /usr1/code/oam-v1/src/unified-manager/src/main/java/com/huawei/dfv/oam/unified'
+alias cdoamv2='cd /usr1/code/oam-v2'
+alias cdhw='cd /usr1/code/toolkit/src/obs_hardware/'
+alias cdos='cd /usr1/code/euleros'
+alias cdtool='cd /usr1/code/toolkit'
+
+alias cduser='cd /usr1/'
+alias cdcc='cd /usr1/code/memartscc'
+alias cdsidecar='cd /usr1/code/memartscc/src/sidecar'
+
+alias go='pm go'
+
+rm -rf /var/run/docker.sock && ln -s /docker.sock /var/run/docker.sock
+export LCRP_HOME=/usr1/docker/mount/cmcTools/LCRP_HOME/
+export PATH=$PATH:$LCRP_HOME/bin
+export PATH=$PATH:/usr1/bin
+
+
+
+if [[ $FLOATERM ]];then
+    export GIT_EDITOR=/usr/bin/vim
+    export VIM_EXE=/usr/bin/vim
+    export VIMRUNTIME=/usr/share/vim/vim82
+#else
+    #if [[ -z $TMUX ]];then
+	#echo "no"
+	# tmux switch-session -t meepo\ IDE:1
+    #else
+	#echo "yes"
+	# tmux attach-session -t meepo\ IDE
+    #fi
+fi
+
+
+bindkey '\e[1;3D' backward-word       # ALT+左键：向后跳一个单词
+bindkey '\e[1;3C' forward-word        # ALT+右键：前跳一个单词
+bindkey '\e[1;3A' beginning-of-line   # ALT+上键：跳到行首
+bindkey '\e[1;3B' end-of-line         # ALT+下键：调到行尾
+export PATH=$PATH:/opt/anaconda/bin:/opt/anaconda/envs/cling/bin
+
+source <(kubectl completion zsh)
