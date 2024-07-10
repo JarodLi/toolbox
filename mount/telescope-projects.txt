@@ -1,0 +1,5 @@
+vim=/root/.vim=w0=1
+nvim=/root/.vim/lua/=w0=1
+train=/usr1/code/ParticipateTraining=w0=1
+docker=/usr1/docker/=w0=1
+root=/root=w0=1
