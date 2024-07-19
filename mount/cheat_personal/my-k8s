@@ -1,0 +1,48 @@
+# macos安装k8s
+1. 参考https://xiangflight.github.io/build-kubernetes-on-mac-os/ 安装
+2 安装helm 
+3.安装kubernetes-dashboard: https://github.com/kubernetes/dashboard
+helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/
+helm upgrade --install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard --create-namespace --namespace kubernetes-dashboard --set kong.admin.tls.enabled=false
+kubectl -n kubernetes-dashboard port-forward svc/kubernetes-dashboard-kong-proxy 8443:443
+
+4. 创建dashboard admin帐号：
+1) dashboard-admin.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: dashboard-admin
+subjects:
+- kind: User
+  name: dashboard-admin # 替换为实际用户名
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+
+2)dashboard-admin-user.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: dashboard-admin
+subjects:
+- kind: User
+  name: dashboard-admin # 替换为实际用户名
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+(base) lijian@MacBook-Pro K8S % cat dashboard-admin-user.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: dashboard-admin-user
+  namespace: kubernetes-dashboard
+
+kubectl apply -f dashboard-admin.yaml
+kubectl apply -f dashboard-admin-user.yaml
+生成token: kubectl -n kubernetes-dashboard create token dashboard-admin-use
+
+5. 登录dashboard: https://localhost:8443
