@@ -45,3 +45,4 @@ TODO：替换成老版本还是不行，怀疑和lsp相关。  注意：nvim-lin
 --上述两个字体显示问题，通过安装nerd补丁解决（从https://github.com/ryanoasis/nerd-fonts/releases行的sourcecodepro补丁安装，在msys2上选择SauceCodePro Nerd Font Mono字体使用
 10. dashboard不显示
 dashboard更新版本，配置要重写
+11. nvim-lint需要更新

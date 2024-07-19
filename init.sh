@@ -46,7 +46,7 @@ files_to_link=(
 	"${MOUNT_DIR}/zsh_history" "/root/.zsh_history"
 	"${MOUNT_DIR}/pm/projects" "/root/.pm/projects"
 	"${MOUNT_DIR}/pip.conf" "/root/.pip/pip.conf"
-	"${MOUNT_DIR}/ansible/hosts" "/etc/ansible/hosts"
+	# "${MOUNT_DIR}/ansible/hosts" "/etc/ansible/hosts"
 	"${MOUNT_DIR}/fish/fish_history" "/root/.local/share/fish/fish_history"
 	"${MOUNT_DIR}/telescope-projects.txt" "/root/.local/share/nvim/telescope-projects.txt"
 
@@ -54,7 +54,6 @@ files_to_link=(
 	# {"${MOUNT_DIR}/java_check/checkstyle","/usr/bin/checkstyle"}
 	# {"${MOUNT_DIR}/java_check","/root/java_check"}
 	# {"${MOUNT_DIR}/vim_tasks.ini","/root/.vim/tasks.ini"}
-	# {"${MOUNT_DIR}/kube/","/root/.kube"}
 )
 
 dirs_to_link=(
@@ -64,6 +63,7 @@ dirs_to_link=(
 	"${MOUNT_DIR}/TabNine" "/root/.local/share/TabNine"
 	"${MOUNT_DIR}/ssh" "/root/.ssh"
 	"${MOUNT_DIR}/autojump" "/root/.local/share/autojump"
+	"${MOUNT_DIR}/kube/" "/root/.kube"
 )
 
 # 使用 for 循环调用 link_file 函数

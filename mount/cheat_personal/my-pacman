@@ -1,0 +1,5 @@
+# 初始化
+pacman-key --init
+pacman -Syy
+pacman -S archlinux-keyring
+pacman -S docker-compose
