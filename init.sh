@@ -92,10 +92,10 @@ done
 
 # 注释掉maven settings.xml中的maven-default-http-blocker配置： nvim  /opt/maven/conf/settings.xml
 # 安装cbu中心maven仓库证书
-cd /usr/lib/jvm/java-18-openjdk/lib/security || exit 1
-keytool -keystore cacerts -importcert -alias HWITEnterpriseCA1 -file /usr1/docker/mount/install_maven_ca/ca/HWITEnterpriseCA1.cer -storepass changeit
-keytool -keystore cacerts -importcert -alias HuaweiITRootCA -file /usr1/docker/mount/install_maven_ca/ca/HuaweiITRootCA.cer -storepass changeit
-cd - || exit 1
+# cd /usr/lib/jvm/java-18-openjdk/lib/security || exit 1
+# keytool -keystore cacerts -importcert -alias HWITEnterpriseCA1 -file /usr1/docker/mount/install_maven_ca/ca/HWITEnterpriseCA1.cer -storepass changeit
+# keytool -keystore cacerts -importcert -alias HuaweiITRootCA -file /usr1/docker/mount/install_maven_ca/ca/HuaweiITRootCA.cer -storepass changeit
+# cd - || exit 1
 
 pip3 install flask_restx
 pip3 install flask_restful
@@ -113,5 +113,5 @@ pip3 install faker
 pip3 install tenacity
 pip3 install coverage
 
-cp seccomponent-1.1.7-release.x86_64.rpm / && cd / && rpm2cpio seccomponent-1.1.7-release.x86_64.rpm | cpio -div && cd -
-echo "/usr/local/seccomponent/lib" >/etc/ld.so.conf.d/scc.conf && ldconfig
+# cp seccomponent-1.1.7-release.x86_64.rpm / && cd / && rpm2cpio seccomponent-1.1.7-release.x86_64.rpm | cpio -div && cd -
+# echo "/usr/local/seccomponent/lib" >/etc/ld.so.conf.d/scc.conf && ldconfig
