@@ -1,12 +1,13 @@
 #!/bin/bash
 # 注意，执行之前，先打开nvim，执行:PackerCompile
-MOUNT_DIR="/usr1/docker/mount"
+CONFIG_DIR_GIT="/usr1/toolbox/config"
+MOUNT_DIR_LOCAL="/usr1/mount"
 
 link_file() {
 	local host_file="$1"      # 宿主机上的文件
 	local container_file="$2" # 容器内的文件
 
-	# 检查文件是否存在
+# 检查文件是否存在
 	if [ ! -f "${host_file}" ]; then
 		# 文件不存在，创建一个空的文件
 		mkdir -p "$(dirname "${host_file}")"
@@ -41,29 +42,31 @@ link_dir() {
 
 # 定义一个数组，包含多组参数
 files_to_link=(
-	"${MOUNT_DIR}/gitconfig" "/root/.gitconfig"
-	"${MOUNT_DIR}/zshrc.my" "/root/.zshrc.my"
-	"${MOUNT_DIR}/zsh_history" "/root/.zsh_history"
-	"${MOUNT_DIR}/pm/projects" "/root/.pm/projects"
-	"${MOUNT_DIR}/pip.conf" "/root/.pip/pip.conf"
-	# "${MOUNT_DIR}/ansible/hosts" "/etc/ansible/hosts"
-	"${MOUNT_DIR}/fish/fish_history" "/root/.local/share/fish/fish_history"
-	"${MOUNT_DIR}/telescope-projects.txt" "/root/.local/share/nvim/telescope-projects.txt"
+	"${MOUNT_DIR_LOCAL}/gitconfig" "/root/.gitconfig"
+	"${CONFIG_DIR_GIT}/zshrc.my" "/root/.zshrc.my"
+	"${MOUNT_DIR_LOCAL}/zsh_history" "/root/.zsh_history"
+	"${CONFIG_DIR_GIT}/pm/projects" "/root/.pm/projects"
+	"${MOUNT_DIR_LOCAL}/pip.conf" "/root/.pip/pip.conf"
+	# "${CONFIG_DIR_GIT}/ansible/hosts" "/etc/ansible/hosts"
+	"${MOUNT_DIR_LOCAL}/fish/fish_history" "/root/.local/share/fish/fish_history"
+	"${MOUNT_DIR_LOCAL}/telescope-projects.txt" "/root/.local/share/nvim/telescope-projects.txt"
+	"/docker.sock" "/var/run/docker.sock"
 
-	# {"${MOUNT_DIR}/settings.xml","/root/.m2/settings.xml"}
-	# {"${MOUNT_DIR}/java_check/checkstyle","/usr/bin/checkstyle"}
-	# {"${MOUNT_DIR}/java_check","/root/java_check"}
-	# {"${MOUNT_DIR}/vim_tasks.ini","/root/.vim/tasks.ini"}
+	# {"${CONFIG_DIR_GIT}/settings.xml","/root/.m2/settings.xml"}
+	# {"${CONFIG_DIR_GIT}/java_check/checkstyle","/usr/bin/checkstyle"}
+	# {"${CONFIG_DIR_GIT}/java_check","/root/java_check"}
+	# {"${CONFIG_DIR_GIT}/vim_tasks.ini","/root/.vim/tasks.ini"}
 )
 
 dirs_to_link=(
-	"${MOUNT_DIR}/py_check" "/root/py_check"
-	"${MOUNT_DIR}/resurrect" "/root/.tmux/resurrect"
-	"${MOUNT_DIR}/cheat_personal" "/root/.config/cheat/cheatsheets/personal"
-	"${MOUNT_DIR}/TabNine" "/root/.local/share/TabNine"
-	"${MOUNT_DIR}/ssh" "/root/.ssh"
-	"${MOUNT_DIR}/autojump" "/root/.local/share/autojump"
-	"${MOUNT_DIR}/kube/" "/root/.kube"
+	"${CONFIG_DIR_GIT}/py_check" "/root/py_check"
+	"${MOUNT_DIR_LOCAL}/resurrect" "/root/.tmux/resurrect"
+	"${CONFIG_DIR_GIT}/cheat_personal" "/root/.config/cheat/cheatsheets/personal"
+	"${MOUNT_DIR_LOCAL}/TabNine" "/root/.local/share/TabNine"
+	"${MOUNT_DIR_LOCAL}/ssh" "/root/.ssh"
+	"${CONFIG_DIR_GIT}/autojump" "/root/.local/share/autojump"
+	"${MOUNT_DIR_LOCAL}/kube/" "/root/.kube"
+	"${CONFIG_DIR_GIT}/nvim/lua/" "/root/.vim/lua"
 )
 
 # 使用 for 循环调用 link_file 函数
@@ -85,7 +88,7 @@ done
 
 # FIXME
 # rm -rf /root/.local/share/nvim
-# ln -s "${MOUNT_DIR}"/nvim /root/.local/share/nvim
+# ln -s "${CONFIG_DIR_GIT}"/nvim /root/.local/share/nvim
 
 # echo "export HTTPS_PROXY=http://l00534690:Osf%2F11%21%40@proxyhk.huawei.com:8080" >> /root/.config/fish/config.fish
 # echo "export HTTP_PROXY=http://l00534690:Osf%2F11%21%40@proxyhk.huawei.com:8080" >> /root/.config/fish/config.fish
