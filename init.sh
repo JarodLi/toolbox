@@ -64,7 +64,7 @@ dirs_to_link=(
 	"${CONFIG_DIR_GIT}/cheat_personal" "/root/.config/cheat/cheatsheets/personal"
 	"${MOUNT_DIR_LOCAL}/TabNine" "/root/.local/share/TabNine"
 	"${MOUNT_DIR_LOCAL}/ssh" "/root/.ssh"
-	"${CONFIG_DIR_GIT}/autojump" "/root/.local/share/autojump"
+	"${MOUNT_DIR_LOCAL}/autojump" "/root/.local/share/autojump"
 	"${MOUNT_DIR_LOCAL}/kube/" "/root/.kube"
 	"${CONFIG_DIR_GIT}/nvim/lua/" "/root/.vim/lua"
 )
