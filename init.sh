@@ -66,7 +66,8 @@ dirs_to_link=(
 	"${MOUNT_DIR_LOCAL}/ssh" "/root/.ssh"
 	"${MOUNT_DIR_LOCAL}/autojump" "/root/.local/share/autojump"
 	"${MOUNT_DIR_LOCAL}/kube/" "/root/.kube"
-	"${CONFIG_DIR_GIT}/nvim/lua/" "/root/.vim/lua"
+	#"${CONFIG_DIR_GIT}/nvim/lua/" "/root/.vim/lua"
+	"${CONFIG_DIR_GIT}/nvim/lua/" "/root/.config/nvim/lua"
 )
 
 # 使用 for 循环调用 link_file 函数

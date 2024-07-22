@@ -12,7 +12,7 @@ RUN rm -rf /usr/bin/python \
     && echo -e "#! /bin/bash\nrm -rf /usr/bin/python\nln -s /usr/bin/python3 /usr/bin/python" > /usr/local/bin/chpy3 \
     && chmod +x /usr/local/bin/chpy3 \
     && /usr/local/bin/chpy3 \
-    && rm /usr/lib/python3.11/EXTERNALLY-MANAGED \
+    && rm /usr/lib/python3.12/EXTERNALLY-MANAGED \
     && pip3 install cliff  \
     && pip3 install crypto \
     && pip3 install ipython  \
@@ -55,8 +55,8 @@ RUN rm -rf /usr/bin/python \
 RUN jupyter notebook --generate-config 
 COPY config/jupyter/jupyter_notebook_config.py /root/.jupyter
 COPY config/jupyter/jupyter.service /usr/lib/systemd/system  
-RUN jupyter contrib nbextension install --user --skip-running-check \
-    && echo "c.NotebookApp.ip = '0.0.0.0'" >> /root/.jupyter/jupyter_notebook_config.py \
-    && systemctl enable jupyter.service
+# RUN jupyter contrib nbextension install --user --skip-running-check \
+#     && echo "c.NotebookApp.ip = '0.0.0.0'" >> /root/.jupyter/jupyter_notebook_config.py \
+#     && systemctl enable jupyter.service
 
-RUN pacman -S cloc --noconfirm 
+# RUN pacman -S cloc --noconfirm 

@@ -1,4 +1,5 @@
-FROM java:latest
+#FROM java:latest
+FROM c:latest
 ENV container docker
 
 ADD pkgs/vim/pkgs/* /opt/
@@ -68,13 +69,13 @@ RUN cd /root/.vim/bundle/LanguageClient-neovim \
     && bash install.sh
 
 # 安COC
-RUN cd /root/.vim/bundle/coc.nvim \
-    && yarn install --frozen-lockfile
-RUN npm install -g dockerfile-language-server-nodejs \
-  && npm install -g prettier
+#RUN cd /root/.vim/bundle/coc.nvim \
+    #&& yarn install --frozen-lockfile
+#RUN npm install -g dockerfile-language-server-nodejs \
+  #&& npm install -g prettier
 
-COPY pkgs/vim/pkgs/coc /root/.config/coc
-COPY config/vim/coc-settings.json /root/.vim
+#COPY pkgs/vim/pkgs/coc /root/.config/coc
+#COPY config/vim/coc-settings.json /root/.vim
 
 # python-mode doc功能依赖
 RUN pip install doq  \

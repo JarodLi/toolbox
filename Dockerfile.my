@@ -1,18 +1,18 @@
 FROM fish:latest
 ENV container docker
 
-RUN touch ~/.zshrc.my \
-  && echo "source ~/.zshrc.my" >> ~/.zshrc \
+# RUN touch ~/.zshrc.my \
+#   && echo "source ~/.zshrc.my" >> ~/.zshrc \
 # autojump
-  && cd /opt \
+RUN cd /opt \
   && git clone http://github.com/wting/autojump.git \
   && cd /opt/autojump \
-  && export SHELL=zsh \
-  && ./install.py \
-  && echo "[[ -s /root/.autojump/etc/profile.d/autojump.sh ]] && source /root/.autojump/etc/profile.d/autojump.sh" >> /root/.zshrc \
-  && echo "autoload -U compinit && compinit -u" >> /root/.zshrc  \
+  && export SHELL=fish \
+  && ./install.py 
+  # && echo "[[ -s /root/.autojump/etc/profile.d/autojump.sh ]] && source /root/.autojump/etc/profile.d/autojump.sh" >> /root/.zshrc \
+  # && echo "autoload -U compinit && compinit -u" >> /root/.zshrc 
  
-  && pip3 install cppman \
+  RUN pip3 install cppman \
   && pip3 install icdiff \
   && pip3 install glances \
   && pip3 install ranger-fm \

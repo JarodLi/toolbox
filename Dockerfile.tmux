@@ -1,4 +1,5 @@
-FROM zsh:latest
+# FROM zsh:latest
+FROM basic:latest
 ENV container docker
 
 COPY pkgs/tmux /opt

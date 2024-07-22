@@ -1,5 +1,4 @@
 local packer = require("packer")
-
 packer.startup(function(use)
 	-- Packer 可以管理自己本身
 	use("wbthomason/packer.nvim")
@@ -44,14 +43,14 @@ packer.startup(function(use)
 			require("plugin-config.lualine")
 		end,
 	})
-	use({ "kana/vim-textobj-function" })
-	use({
-		"bps/vim-textobj-python",
-		config = function()
-			require("plugin-config.textobj")
-		end,
-		ft = { "python" },
-	})
+	-- use({ "kana/vim-textobj-function" })
+	--use({
+		--"bps/vim-textobj-python",
+		--config = function()
+			--require("plugin-config.textobj")
+		--end,
+		--ft = { "python" },
+	--})
 	-- use 'feline-nvim/feline.nvim'
 	-- use({"vim-airline/vim-airline"})
 	-- use({"kdheepak/tabline.nvim"})
@@ -59,6 +58,14 @@ packer.startup(function(use)
 	-- 	"arkav/lualine-lsp-progress",
 	-- 	-- ft = { "python", "java", "c", "cpp", "lua", "sh", "fish", "markdown" }
 	-- })
+    use({
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    after = "nvim-treesitter",
+    requires = "nvim-treesitter/nvim-treesitter",
+		config = function()
+      require("plugin-config.nvim-treesitter-textobjects")
+		end,
+  })
 	use({ "nvim-telescope/telescope-project.nvim" })
 	use({
 		"nvim-telescope/telescope.nvim",
