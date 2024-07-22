@@ -1,8 +1,8 @@
 -- 基础设置
 require("basic")
 -- 先加载viml相关配置
-require("vimplug")
-require("plugins-vim")
+-- require("vimplug")
+-- require("plugins-vim")
 
 require("keybindings")
 require("colorscheme")
