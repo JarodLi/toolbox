@@ -125,8 +125,8 @@ Toggleterm.ipython_toggle = function()
 end
 
 -- 打开lazy git 终端
-vim.keybinds.gmap("n", "<F11>", "<cmd>lua require('toggleterm').lazygit_toggle()<CR>", vim.keybinds.opts)
-map("t", "<F11>", "<C-\\><C-n><C-W>h", opt)
+-- vim.keybinds.gmap("n", "<F11>", "<cmd>lua require('toggleterm').lazygit_toggle()<CR>", vim.keybinds.opts)
+-- map("t", "<F11>", "<C-\\><C-n><C-W>h", opt)
 
 -- vim.keybinds.gmap("n", "<tab><space>", "<cmd>lua require('toggleterm').ipython_toggle()<CR>", vim.keybinds.opts)
 
@@ -145,3 +145,28 @@ vim.keybinds.gmap("x", "<leader>ss", "<cmd>ToggleTermSendVisualSelection<CR>", v
 -- 	vim.keybinds.opts
 -- )
 vim.keybinds.gmap("n", "<leader>ss", "<cmd>ToggleTermSendCurrentLine<CR>", vim.keybinds.opts)
+
+
+local lazygit = Terminal:new({
+  cmd = "lazygit",
+  dir = "git_dir",
+  direction = "float",
+  float_opts = {
+    border = "double",
+  },
+  -- function to run on opening the terminal
+  on_open = function(term)
+    vim.cmd("startinsert!")
+    vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", {noremap = true, silent = true})
+  end,
+  -- function to run on closing the terminal
+  on_close = function(term)
+    vim.cmd("startinsert!")
+  end,
+})
+
+function _lazygit_toggle()
+  lazygit:toggle()
+end
+
+vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})

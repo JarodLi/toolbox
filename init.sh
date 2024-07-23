@@ -51,6 +51,7 @@ files_to_link=(
 	"${MOUNT_DIR_LOCAL}/fish/fish_history" "/root/.local/share/fish/fish_history"
 	"${MOUNT_DIR_LOCAL}/telescope-projects.txt" "/root/.local/share/nvim/telescope-projects.txt"
 	"/docker.sock" "/var/run/docker.sock"
+	"${MOUNT_DIR_LOCAL}/obsutilconfig" "/root/.obsutilconfig"
 
 	# {"${CONFIG_DIR_GIT}/settings.xml","/root/.m2/settings.xml"}
 	# {"${CONFIG_DIR_GIT}/java_check/checkstyle","/usr/bin/checkstyle"}
@@ -101,21 +102,21 @@ done
 # keytool -keystore cacerts -importcert -alias HuaweiITRootCA -file /usr1/docker/mount/install_maven_ca/ca/HuaweiITRootCA.cer -storepass changeit
 # cd - || exit 1
 
-pip3 install flask_restx
-pip3 install flask_restful
-pip3 install httpx
-pip3 install pure-sasl
-
-pip3 install allure-pytest
-pip3 install pytest_httpx
-pip3 install pytest-mock
-pip3 install pytest-html
-pip3 install pytest-cov
-pip3 install mock
-pip3 install pytest
-pip3 install faker
-pip3 install tenacity
-pip3 install coverage
+# pip3 install flask_restx
+# pip3 install flask_restful
+# pip3 install httpx
+# pip3 install pure-sasl
+#
+# pip3 install allure-pytest
+# pip3 install pytest_httpx
+# pip3 install pytest-mock
+# pip3 install pytest-html
+# pip3 install pytest-cov
+# pip3 install mock
+# pip3 install pytest
+# pip3 install faker
+# pip3 install tenacity
+# pip3 install coverage
 
 # cp seccomponent-1.1.7-release.x86_64.rpm / && cd / && rpm2cpio seccomponent-1.1.7-release.x86_64.rpm | cpio -div && cd -
 # echo "/usr/local/seccomponent/lib" >/etc/ld.so.conf.d/scc.conf && ldconfig

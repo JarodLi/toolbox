@@ -19,6 +19,3 @@ RUN pacman -S tmux --noconfirm \
 
 COPY config/tmux/tmux.conf /root/tmux.conf.my
 RUN cat /root/tmux.conf.my >> /root/oh-my-tmux/.tmux.conf.local
-
-
-

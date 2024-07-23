@@ -109,7 +109,7 @@ db.setup({
         action = 'Telescope colorscheme'
       },
       {
-        icon = ' ',
+        icon = ' ',
         icon_hl = '',
         desc = 'Find file                 ',
         desc_hl = 'String',
@@ -119,7 +119,7 @@ db.setup({
         action = 'Telescope find_files'
       },
       {
-        icon = ' ',
+        icon = ' ',
         icon_hl = '',
         desc = 'Find text            ',
         desc_hl = 'String',

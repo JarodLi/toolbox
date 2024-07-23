@@ -94,13 +94,28 @@ packer.startup(function(use)
 			require("plugin-config.nvim-treesitter")
 		end,
 	})
-	use({
-		"williamboman/nvim-lsp-installer",
-		config = function()
-			require("plugin-config.nvim-lsp-installer")
-		end,
-		-- ft = { "python", "lua", "java", "c", "cpp", "markdown", "bash", "fish" },
-	})
+	-- use({
+	--
+	-- 	"williamboman/nvim-lsp-installer",
+	-- 	config = function()
+	-- 		require("plugin-config.nvim-lsp-installer")
+	-- 	end,
+	-- 	-- ft = { "python", "lua", "java", "c", "cpp", "markdown", "bash", "fish" },
+	-- })
+    use({ "williamboman/mason.nvim",
+      config = function()
+        require("plugin-config.mason")
+      end,
+  })
+
+    use({ "williamboman/mason-lspconfig.nvim",
+      after = 'mason.nvim',
+      config = function()
+        require("plugin-config.mason")
+        require("plugin-config.mason-lspconfig")
+      end,
+  })
+
 	-- 扩展 LSP 诊断
 	use({
 		"mfussenegger/nvim-lint",
@@ -111,22 +126,46 @@ packer.startup(function(use)
 	})
 
 	-- 注意lspconfig放到lspsaga后面加载，否则lint来源信息会丢失
-	use({
-		"neovim/nvim-lspconfig",
-		-- requires = { "tami5/lspsaga.nvim" },
-		config = function()
-			require("plugin-config.nvim-lspconfig")
-		end,
-		-- ft = { "python", "lua", "java", "c", "cpp", "markdown", "bash", "fish" },
-	})
 	-- LSP UI 美化
-	use({
-		"tami5/lspsaga.nvim",
-		config = function()
+  use ({
+    'nvimdev/lspsaga.nvim',
+    -- after = 'nvim-lspconfig',
+    config = function()
+        -- require('lspsaga').setup({})
 			require("plugin-config.lspsaga")
-		end,
-		-- ft = { "python", "lua", "java", "c", "cpp", "markdown", "bash", "fish" },
-	})
+    end,
+})
+--   use ({
+--     'tami5/lspsaga.nvim',
+--     name='lspsaga1.nvim',
+--     config = function()
+-- 			require("plugin-config.lspsaga1")
+--     end,
+-- })
+	-- use({
+	-- 	"neovim/nvim-lspconfig",
+	-- 	-- requires = { "tami5/lspsaga.nvim" },
+	-- 	config = function()
+	-- 		require("plugin-config.nvim-lspconfig")
+	-- 	end,
+	-- 	-- ft = { "python", "lua", "java", "c", "cpp", "markdown", "bash", "fish" },
+	-- })
+
+	-- use({
+	-- 	"tami5/lspsaga.nvim",
+	-- 	config = function()
+	-- 		require("plugin-config.lspsaga")
+	-- 	end,
+	-- 	-- ft = { "python", "lua", "java", "c", "cpp", "markdown", "bash", "fish" },
+	-- })
+--   use ({
+--     'nvimdev/lspsaga.nvim',
+--     after = 'nvim-lspconfig',
+--     config = function()
+--         require('lspsaga').setup({})
+--     end,
+-- })
+
 
 	-- LSP 进度提示
 	use({
@@ -178,7 +217,7 @@ packer.startup(function(use)
 	})
 
 	use("fcying/telescope-ctags-outline.nvim")
-	use({ "filipdutescu/renamer.nvim", requires = { { "nvim-lua/plenary.nvim" } } })
+	-- use({ "filipdutescu/renamer.nvim", requires = { { "nvim-lua/plenary.nvim" } } })
 	use({
 		"numToStr/Comment.nvim",
 		requires = { "JoosepAlviste/nvim-ts-context-commentstring" },
@@ -346,10 +385,10 @@ packer.startup(function(use)
 	})
 	use({
 		"rcarriga/nvim-dap-ui",
-		requires = { "mfussenegger/nvim-dap" },
-		config = function()
-			require("plugin-config.nvim-dap-ui")
-		end,
+		requires = { "mfussenegger/nvim-dap",  "nvim-neotest/nvim-nio" },
+		-- config = function()
+		-- 	require("plugin-config.nvim-dap-ui")
+		-- end,
 		-- ft = { "python", "lua", "java", "c", "cpp", "markdown", "bash", "fish" },
 	})
 
@@ -422,13 +461,13 @@ packer.startup(function(use)
 		end,
 	})
 	-- use { 'michaelb/sniprun', run = 'bash ./install.sh'}
-	use({
-		"michaelb/sniprun",
-		config = function()
-			require("plugin-config.sniprun")
-		end,
-		ft = { "python", "lua", "java", "c", "cpp", "markdown", "bash", "fish" },
-	})
+	-- use({
+	-- 	"michaelb/sniprun",
+	-- 	config = function()
+	-- 		require("plugin-config.sniprun")
+	-- 	end,
+	-- 	ft = { "python", "lua", "java", "c", "cpp", "markdown", "bash", "fish" },
+	-- })
 	-- use({
 	-- 	"kassio/neoterm",
 	-- 	config = function()

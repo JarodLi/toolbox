@@ -46,7 +46,7 @@ function open_diagnose()
 end
 
 -- open_diagnose()
-close_diagnose()
+-- close_diagnose()
 
 -- local map = vim.api.nvim_set_keymap
 -- 复用 opt 参数
@@ -59,10 +59,20 @@ close_diagnose()
 -- map("v", "<leader>d", "<cmd>lua switch_diagnose()<CR>", opt)
 
 -- 关闭buffer时从lsp中清理出去，避免index错误nvim崩溃
-function DetachBufferFromClients(bufnr)
-    local clients = vim.lsp.buf_get_clients(bufnr)
-    for client_id, _ in pairs(clients) do
-        vim.lsp.buf_detach_client(bufnr, client_id)
-    end
-end
-vim.cmd('autocmd BufDelete * lua DetachBufferFromClients(tonumber(vim.fn.expand("<abuf>")))')
+-- function DetachBufferFromClients(bufnr)
+--     local clients = vim.lsp.buf_get_clients(bufnr)
+--     for client_id, _ in pairs(clients) do
+--         vim.lsp.buf_detach_client(bufnr, client_id)
+--     end
+-- end
+
+local lspconfig = require('lspconfig')
+lspconfig.rust_analyzer.setup {
+  -- Server-specific settings. See `:help lspconfig-setup`
+  settings = {
+    ['rust-analyzer'] = {},
+  },
+}
+
+-- require'lspconfig'.anakin_language_server.setup{}
+-- vim.cmd('autocmd BufDelete * lua DetachBufferFromClients(tonumber(vim.fn.expand("<abuf>")))')

@@ -12,44 +12,10 @@ RUN rm -rf /usr/bin/python \
     && echo -e "#! /bin/bash\nrm -rf /usr/bin/python\nln -s /usr/bin/python3 /usr/bin/python" > /usr/local/bin/chpy3 \
     && chmod +x /usr/local/bin/chpy3 \
     && /usr/local/bin/chpy3 \
-    && rm /usr/lib/python3.12/EXTERNALLY-MANAGED \
-    && pip3 install cliff  \
-    && pip3 install crypto \
-    && pip3 install ipython  \
-    #&& pip3 install pycrypto \
-    && pip3 install pandas \
-    && pip3 install openpyxl \
-    && pip3 install IPy \
-    && pip3 install Cython \
-    && pip3 install PyInstaller \
-    && pip3 install xlrd \
-    && pip3 install xlwt \
-    && pip3 install pycdlib \
-    && pip3 install pyping \
-    && pip3 install ecdsa \
-    && pip3 install jupyter \
-    && pip3 install notebook \
-    && pip3 install jupyter_contrib_nbextensions \
-    && pip3 install ipdb \
-    && pip3 install pylint \
-    && pip3 install flake8  \
-    && pip3 install autopep8 \
-    && pip3 install pynvim \
-    && pip3 install wget \
-    && pip3 install sqlalchemy \
-    && pip3 install python-language-server \
-    && pip3 install transitions \
-    && pip3 install isort \
-    && pip3 install yapf \
-    && pip3 install asyncssh  \
-    && pip3 install pylama \
-    && pip3 install pyroute2 \
-    && pip3 install scapy \
-    && pip3 install psutil \
-    && pip3 install flask_apscheduler \
-    && pip3 install gevent \
-    && pip3 install kazoo \
-    && pip3 install grpcio-tools
+    && rm /usr/lib/python3.12/EXTERNALLY-MANAGED 
+
+COPY requirements.txt /root/
+RUN pip3 install --no-cache-dir -r /root/requirements.txt 
 
 # jupyter
 RUN jupyter notebook --generate-config 

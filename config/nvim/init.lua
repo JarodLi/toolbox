@@ -44,3 +44,9 @@ map("n", "<leader>sb", ":lua BROWSER_MODE()<CR>", opt)
 map("n", "<leader>sd", ":lua DEV_MODE()<CR>", opt)
 -- 开启copy模式，可以按住alt，然后鼠标左键选择块，在windows上能直接粘贴
 map("n", "<leader>sc", ":lua COPY_MODE()<CR>", opt)
+
+
+vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
+    pattern = {"*Dockerfile*", "*Dockerfile*"},
+    command = "set filetype=dockerfile"
+})

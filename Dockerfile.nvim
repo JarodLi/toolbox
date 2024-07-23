@@ -1,15 +1,21 @@
 # FROM vim:latest
-FROM c:latest
+FROM python:latest
 
 RUN pacman -Sy --noconfirm \
   && pacman -S vim neovim lazygit --noconfirm \
   && rm -rf /usr/bin/vi \
   && ln -s /usr/bin/nvim /usr/bin/vi \
-  && mkdir -p ~/.config/nvim \
+  && mkdir -p ~/.config/nvim
   # && mkdir -p ~/.vim \
   # && ln -s ~/.vim ~/.config/nvim \
   # && ln -s ~/.vimrc ~/.config/nvim/init1.vim  \
   # && mkdir -p /root/java
+
+RUN mkdir -p /root/.vim/{autoload,bundle,rc} 
+COPY pkgs/vim/pkgs/plug.vim /root/.vim/autoload 
+COPY pkgs/vim/vim-bundle /root/.vim/bundle/
+COPY config/vim/vimrc /root/.vimrc
+COPY config/vim/rc /root/.vim/rc
 
 COPY config/nvim/ftplugin /root/.config/nvim/
 COPY config/nvim/lua /root/.config/nvim/lua
@@ -19,14 +25,14 @@ COPY config/py_check /root/py_check
 # COPY config/java_check /root/java_check
 
 # 开启nvim，会自动下载lsp_servers，通过lsp_install插件配置的
-ADD pkgs/nvim/lsp_servers.tar.gz /root/.local/share/nvim
+# ADD pkgs/nvim/lsp_servers.tar.gz /root/.local/share/nvim
+ADD pkgs/nvim/mason.tar.gz /root/.local/share/nvim
+
 ADD pkgs/nvim/packer.tar.gz /root/.local/share/nvim/site/pack/
 # ADD pkgs/nvim/java-debug.tar.gz /root/java/
 # ADD pkgs/nvim/vscode-java-test.tar.gz /root/java/
 
-RUN pacman -S wget --noconfirm
-
-ADD pkgs/nvim/parser.tar.gz /root/.local/share/nvim/site/pack/packer/start/nvim-treesitter
+# ADD pkgs/nvim/parser.tar.gz /root/.local/share/nvim/site/pack/packer/start/nvim-treesitter
 RUN cd /root/.local/share/nvim/site/pack/packer/start/cmp-tabnine \
   && ./install.sh \
   && wget https://github.com/wfxr/code-minimap/releases/download/v0.6.4/code-minimap-v0.6.4-x86_64-unknown-linux-gnu.tar.gz -P /opt \
