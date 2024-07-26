@@ -2,7 +2,7 @@
 FROM python:latest
 
 RUN pacman -Sy --noconfirm \
-  && pacman -S vim neovim lazygit --noconfirm \
+  && pacman -S vim neovim lazygit npm --noconfirm \
   && rm -rf /usr/bin/vi \
   && ln -s /usr/bin/nvim /usr/bin/vi \
   && mkdir -p ~/.config/nvim

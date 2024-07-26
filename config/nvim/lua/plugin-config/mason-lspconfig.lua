@@ -159,3 +159,6 @@ lspconfig.dockerls.setup({
 	on_attach = on_attach,
 })
 
+lspconfig.docker_compose_language_service.setup({
+	on_attach = on_attach,
+})

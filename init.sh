@@ -62,7 +62,7 @@ files_to_link=(
 dirs_to_link=(
 	"${CONFIG_DIR_GIT}/py_check" "/root/py_check"
 	"${MOUNT_DIR_LOCAL}/resurrect" "/root/.tmux/resurrect"
-	"${CONFIG_DIR_GIT}/cheat_personal" "/root/.config/cheat/cheatsheets/personal"
+	"${CONFIG_DIR_GIT}/cheat" "/root/.config/cheat/cheatsheets/personal"
 	"${MOUNT_DIR_LOCAL}/TabNine" "/root/.local/share/TabNine"
 	"${MOUNT_DIR_LOCAL}/ssh" "/root/.ssh"
 	"${MOUNT_DIR_LOCAL}/autojump" "/root/.local/share/autojump"
