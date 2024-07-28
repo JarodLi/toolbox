@@ -12,3 +12,5 @@ require("indent_blankline").setup(
 )
 
 vim.cmd('let indent_blankline_filetype = ["python", "c", "cpp", "java", "lua"]')
+
+-- require("ibl").setup()

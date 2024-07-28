@@ -69,3 +69,7 @@ pcall(telescope.load_extension, "env")
 
 pcall(telescope.load_extension, "ctags_outline")
 pcall(telescope.load_extension, "project")
+-- 加载 notify 扩展
+-- require('telescope').extensions.notify.setup({
+--   -- 这里可以添加 notify 扩展的配置选项
+-- })

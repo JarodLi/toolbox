@@ -17,14 +17,14 @@ require("plugin-config.nvim-lspconfig")
 function DEV_MODE()
 	open_diagnose()
 	vim.wo.number = true
-	vim.cmd("IndentBlanklineEnable")
+-- vim.cmd("IndentBlanklineEnable")
 	vim.wo.relativenumber = true
 	vim.notify("switch to develop mode")
 end
 
 function BROWSER_MODE()
 	close_diagnose()
-	vim.cmd("IndentBlanklineEnable")
+-- vim.cmd("IndentBlanklineEnable")
 	vim.wo.number = true
 	vim.wo.relativenumber = true
 	vim.notify("switch to browser mode")
@@ -32,7 +32,7 @@ end
 
 function COPY_MODE()
 	close_diagnose()
-	vim.cmd("IndentBlanklineDisable")
+-- vim.cmd("IndentBlanklineDisable")
 	vim.cmd("set nolist")
 	vim.notify("switch to copy mode")
 end
@@ -45,8 +45,7 @@ map("n", "<leader>sd", ":lua DEV_MODE()<CR>", opt)
 -- 开启copy模式，可以按住alt，然后鼠标左键选择块，在windows上能直接粘贴
 map("n", "<leader>sc", ":lua COPY_MODE()<CR>", opt)
 
-
-vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
-    pattern = {"*Dockerfile*", "*Dockerfile*"},
-    command = "set filetype=dockerfile"
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+	pattern = { "*Dockerfile*", "*Dockerfile*" },
+	command = "set filetype=dockerfile",
 })

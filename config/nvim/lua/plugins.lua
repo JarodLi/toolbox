@@ -142,14 +142,14 @@ packer.startup(function(use)
 -- 			require("plugin-config.lspsaga1")
 --     end,
 -- })
-	-- use({
-	-- 	"neovim/nvim-lspconfig",
-	-- 	-- requires = { "tami5/lspsaga.nvim" },
-	-- 	config = function()
-	-- 		require("plugin-config.nvim-lspconfig")
-	-- 	end,
-	-- 	-- ft = { "python", "lua", "java", "c", "cpp", "markdown", "bash", "fish" },
-	-- })
+	use({
+		"neovim/nvim-lspconfig",
+		-- requires = { "tami5/lspsaga.nvim" },
+			-- require("plugin-config.nvim-lspconfig")
+		-- config = function()
+		-- end,
+		-- ft = { "python", "lua", "java", "c", "cpp", "markdown", "bash", "fish" },
+	})
 
 	-- use({
 	-- 	"tami5/lspsaga.nvim",
@@ -265,6 +265,8 @@ packer.startup(function(use)
 	-- 显示缩进线
 	use({
 		"lukas-reineke/indent-blankline.nvim",
+    -- 最新版本未提供enable、disable命令，无法使用SC、SD、SB场景切换
+    branch = '4541d690816cb99a7fc248f1486aa87f3abce91c',
 		config = function()
 			require("plugin-config.indent-blankline")
 		end,
@@ -345,13 +347,14 @@ packer.startup(function(use)
 			require("plugin-config.goto-preview")
 		end,
 	})
-	use({
-		"heavenshell/vim-pydocstring",
-		config = function()
-			require("plugin-config.pydocstring")
-		end,
-		ft = { "python" },
-	})
+	-- use({
+	-- 	"heavenshell/vim-pydocstring",
+ --    -- run = "make install",
+	-- 	config = function()
+	-- 		require("plugin-config.pydocstring")
+	-- 	end,
+	-- 	ft = { "python" },
+	-- })
 	use({
 		"chentoast/marks.nvim",
 		config = function()
@@ -386,9 +389,10 @@ packer.startup(function(use)
 	use({
 		"rcarriga/nvim-dap-ui",
 		requires = { "mfussenegger/nvim-dap",  "nvim-neotest/nvim-nio" },
-		-- config = function()
-		-- 	require("plugin-config.nvim-dap-ui")
-		-- end,
+    after = "nvim-dap",
+		config = function()
+			require("plugin-config.nvim-dap-ui")
+		end,
 		-- ft = { "python", "lua", "java", "c", "cpp", "markdown", "bash", "fish" },
 	})
 
@@ -503,6 +507,14 @@ packer.startup(function(use)
 	use({
 	    "github/copilot.vim",
 	})
+  use {
+     "danymat/neogen",
+     config = function()
+         require("plugin-config.neogen")
+     end,
+     -- Uncomment next line if you want to follow only stable versions
+     -- tag = "*"
+ }
 
 	end)
 

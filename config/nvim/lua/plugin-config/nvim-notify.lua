@@ -32,3 +32,5 @@ vim.keybinds.gmap(
     "<cmd>lua require('telescope').extensions.notify.notify()<CR>",
     vim.keybinds.opts
 )
+
+-- let g:notify_format = '%s\n%s'

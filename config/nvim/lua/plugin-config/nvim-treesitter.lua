@@ -37,7 +37,7 @@ treesitter.setup({
 		-- termcolors = {} -- table of colour name strings
 	},
 	-- 根据当前上下文定义文件类型，由 nvim-ts-context-commentstring 插件提供
-	context_commentstring = {
+	ts_context_commentstring = {
 		enable = true,
 	},
 })

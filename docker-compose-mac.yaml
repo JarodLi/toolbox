@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  my:
+    image: my:20240727
+    container_name: my
+    hostname: lijian
+    privileged: true
+    ports:
+      - "8000:22"
+      - "8888:8888"
+      - "9999:9999"
+      - "8080:8080"
+      - "7443:7443"
+      - "8090:8090"
+      - "2181:2181"
+      - "80:80"
+      - "123:123"
+      - "20051:20051"
+    volumes:
+      - /Users/lijian/Downloads:/usr1/downloads
+      - /Users/lijian/Workspace:/usr1
+      - /Users/lijian/ASU:/usr1/asu
+      - /var/run/docker.sock:/docker.sock
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '4' # 限制 CPU 使用不超过 0.5 个核
+          memory: 4096M # 限制内存使用不超过 1024 兆字节
+        reservations:
+          cpus: '3' # 容器启动时请求的 CPU，建议设置为 limits 的一半或更少
+          memory: 2048M  # 容器启动时请求的内存
