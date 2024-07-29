@@ -1,0 +1,10 @@
+ 1. 启动docker： docker-compose up -d -f docker-compose-linux.yaml      
+ 2. 进入容器完成初始化： cd toolbox; bash init.sh                       
+ 3. 恢复tmux: C-A, R                                                    
+ 3. 初始化nvim, 执行：PackerCompile                                     
+                                                                        
+ # 查找快捷键                                                           
+ :Telescope keymaps                                                     
+                                                                        
+ # obsutil                                                              
+ obsutil config -i=<ak> -k=<sk> -e obs.ap-southeast-3.myhuaweicloud.com 
