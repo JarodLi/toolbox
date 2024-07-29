@@ -52,6 +52,7 @@ files_to_link=(
 	"${MOUNT_DIR_LOCAL}/telescope-projects.txt" "/root/.local/share/nvim/telescope-projects.txt"
 	"/docker.sock" "/var/run/docker.sock"
 	"${MOUNT_DIR_LOCAL}/obsutilconfig" "/root/.obsutilconfig"
+	"${CONFIG_DIR_GIT}/nvim/init.lua" "/root/.config/nvim/init.lua"
 
 	# {"${CONFIG_DIR_GIT}/settings.xml","/root/.m2/settings.xml"}
 	# {"${CONFIG_DIR_GIT}/java_check/checkstyle","/usr/bin/checkstyle"}
@@ -88,7 +89,6 @@ for ((i = 0; i < ${#dirs_to_link[@]}; i+=2)); do
 	link_dir "$arg1" "$arg2"
 done
 
-# FIXME
 # rm -rf /root/.local/share/nvim
 # ln -s "${CONFIG_DIR_GIT}"/nvim /root/.local/share/nvim
 

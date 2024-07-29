@@ -235,7 +235,8 @@ function main() {
     today=$(date "+%Y%m%d")
     build_args="--no-cache"
     arch="linux/amd64"
-    docker buildx build --progress=plain --platform ${arch} -f Dockerfile.basic -t basic:latest . || exit 1
+    # arch="linux/arm64"
+    # docker buildx build --progress=plain --platform ${arch} -f Dockerfile.basic -t basic:latest . || exit 1
     # docker build . -f Dockerfile.zsh -t zsh:latest --rm --no-cache || exit 1
     docker buildx build --progress=plain --platform ${arch} -f Dockerfile.tmux -t tmux:latest . || exit 1
     docker buildx build --progress=plain --platform ${arch} -f Dockerfile.python -t python:latest . || exit 1

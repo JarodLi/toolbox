@@ -30,6 +30,7 @@ cmp.setup({
 		{ name = "buffer" },
 		{ name = "cmdline" },
 		{ name = "spell" },
+    { name = "friendly-snippets", keyword_length = 2, keyword_pattern = "\\%(-\\|\\w\\)*" },
 
 		-- For luasnip users.
 		-- { name = 'luasnip' },

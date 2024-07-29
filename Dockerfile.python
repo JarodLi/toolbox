@@ -12,12 +12,15 @@ RUN rm -rf /usr/bin/python \
     && echo -e "#! /bin/bash\nrm -rf /usr/bin/python\nln -s /usr/bin/python3 /usr/bin/python" > /usr/local/bin/chpy3 \
     && chmod +x /usr/local/bin/chpy3 \
     && /usr/local/bin/chpy3 \
-    && rm /usr/lib/python3.12/EXTERNALLY-MANAGED 
+    # 删除externally-managed才能使用pip3安装包
+    && rm -rf /usr/lib/python3.*/EXTERNALLY-MANAGED 
+
 
 COPY requirements.txt /root/
 RUN pip3 install --no-cache-dir -r /root/requirements.txt 
 
 # jupyter
+# 启动之前在命令行执行jupyter notebook password设置密码
 RUN jupyter notebook --generate-config 
 COPY config/jupyter/jupyter_notebook_config.py /root/.jupyter
 COPY config/jupyter/jupyter.service /usr/lib/systemd/system  

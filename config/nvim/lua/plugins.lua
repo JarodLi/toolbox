@@ -193,6 +193,10 @@ packer.startup(function(use)
 		ft = { "python", "lua", "java", "c", "cpp", "markdown", "bash", "fish" },
 	})
 
+  use({
+			"rafamadriz/friendly-snippets", -- 提供多种语言的代码片段
+  })
+
 	-- 自动代码补全系列插件
 	use({
 		"hrsh7th/nvim-cmp", -- 代码补全核心插件，下面都是增强补全的体验插件

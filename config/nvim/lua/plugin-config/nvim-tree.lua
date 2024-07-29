@@ -123,7 +123,7 @@ local opts={
 	},
 	filters = {
 		dotfiles = false,
-		custom = { "__pycache__", "build", "dist" },
+		custom = { "__pycache__", "dist" },
 		exclude = {},
 	},
 	git = {

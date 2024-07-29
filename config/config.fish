@@ -1,11 +1,12 @@
-set -g theme_display_git yes
-set -g theme_display_git_dirty yes
-set -g theme_display_git_untracked yes
-set -g theme_display_git_ahead_verbose yes
-set -g theme_display_git_dirty_verbose yes
-set -g theme_display_git_stashed_verbose yes
-set -g theme_display_git_default_branch yes
-set -g theme_git_default_branches yes
+# 关闭git状态显示，防止fish卡顿
+set -g theme_display_git no
+set -g theme_display_git_dirty no
+set -g theme_display_git_untracked no
+set -g theme_display_git_ahead_verbose no
+set -g theme_display_git_dirty_verbose no
+set -g theme_display_git_stashed_verbose no
+set -g theme_display_git_default_branch no
+set -g theme_git_default_branches no
 # 必须设置为no，否则不显示分支
 set -g theme_git_worktree_support no
 set -g theme_use_abbreviated_branch_name yes

@@ -50,4 +50,12 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 	command = "set filetype=dockerfile",
 })
 
-vim.o.clipboard = 'unnamed'
+-- 关闭clipboard，不需要在nvim中复杂到宿主机clipboard，可以使用item2来复制，只需要同时按住option+command
+-- vim.o.clipboard = 'unnamedplus'
+vim.o.clipboard = ''
+
+vim.keymap.set('i', '<C-J>', 'copilot#Accept("\\<CR>")', {
+  expr = true,
+  replace_keycodes = false
+})
+vim.g.copilot_no_tab_map = true

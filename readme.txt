@@ -46,3 +46,13 @@ TODO：替换成老版本还是不行，怀疑和lsp相关。  注意：nvim-lin
 10. dashboard不显示
 dashboard更新版本，配置要重写
 11. nvim-lint需要更新
+
+12. indent_blackline v3和v2版本不兼容，暂时回退到v2版本； null-ls、lsp_signature提示有breaking down,暂时示发现配置差异
+nvim-dap-ui有配置变更，暂未修改
+lspcofnig
+
+
+20250101:
+1.更新到nvim 0.10版本，使用上个版本的packer.tar.gz，除了nvim-lint外，其他全部更新到最新版本。  nvim-lint更新后报错
+2. mason配置中注释掉tsserver
+
