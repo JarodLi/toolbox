@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   my:
-    image: my:20240727
+    image: my:20240728
     container_name: my
     hostname: lijian
     privileged: true
